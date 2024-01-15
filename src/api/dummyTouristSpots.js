@@ -58,7 +58,79 @@ const dummyTouristSpots = [
         city : '포항',
         locationName: '호미곶 해맞이 광장',
         keyword : ['#관광지', '#힐링', '#연인과','#부모님과']
-     }
-];
+     }   
+      
+
+   ];
 
 export default dummyTouristSpots;
+     
+     
+     
+     
+     /*  서울
+
+
+     {
+        id : ,
+        city : '서울',
+        locationName: '롯데월드 어드벤처',
+        keyword : ['SNS핫플', '#친구와', '#아이와', '#연인과']
+     },
+     {
+        id : ,
+        city : '서울',
+        locationName: '북촌 한옥마을',
+        keyword : ['#관광지', '#친구와', '#아이와', '#연인과', '#부모님과']
+     },
+     {
+        id : ,
+        city : '서울',
+        locationName: '뚝섬한강공원',
+        keyword : ['#SNS핫플', '#힐링','#친구와', '#아이와', '#연인과'] 
+     },
+     {
+        id : ,
+        city : '서울',
+        locationName: '덕수궁',
+        keyword : ['#관광지', '#힐링', '#아이와', '#부모님과'] 
+     }, 
+     {
+        id : ,
+        city : '서울',
+        locationName: '남산타워',
+        keyword : ['#SNS핫플', '#관광지', '#친구와', '#아이와', '#연인과', '#부모님과']
+     },
+    // 경주
+     {
+       id : ,
+       city : '경주',
+       locationName: '석굴암',
+       keyword : ['#관광지', '#힐링', '#친구와', '#아이와', '#연인과', '#부모님과']
+    },
+     {
+       id : ,
+       city : '경주',
+       locationName: '황리단길',
+       keyword : ['#SNS핫플', '#관광지', '#힐링', '#친구와', '#아이와', '#연인과', '#부모님과']
+    },
+     {
+       id : ,
+       city : '경주',
+       locationName: '경주월드',
+       keyword : ['#SNS핫플', '#힐링', '#친구와', '#아이와', '#연인과']
+    },
+     {
+       id : ,
+       city : '경주',
+       locationName: '양남 눈썰매장',
+       keyword : ['#SNS핫플', '#힐링', '#친구와', '#아이와']
+    },
+     {
+       id : ,
+       city : '경주',
+       locationName: '경주문무대왕릉',
+       keyword : ['#관광지', '#친구와', '#아이와', '#부모님과']
+    }
+
+    */
