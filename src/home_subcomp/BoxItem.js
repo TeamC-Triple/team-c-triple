@@ -1,13 +1,15 @@
 
-
-const BoxItem = ({id, locationName, city})=> {
+const BoxItem = ({ranking, locationName, city, photo})=> {
     return(
         <div className="BoxItem">
             <div className="SpotPhoto">
-                <div className="SpotContents">
-                    <p>순위</p>
-                    <p className="locationName">{locationName}</p>
-                    <p>{city}</p>
+                <img src={photo}/>
+                <div className="spotInfo">
+                    <div className="ranking">{ranking}</div>
+                    <div className="infoTxt">
+                        <p className="locationName">{locationName}</p>
+                        <p>{city}</p>
+                    </div>
                 </div>
             </div>
         </div>
