@@ -5,6 +5,7 @@ import H1Section3 from "../homecomp/H1Section3.js";
 
 import HeaderIcon from "../common/HeaderIcon.js";
 import Footer1 from "../common/Footer1.js";
+import Button from '../common/Button.js';
 
 const Home = () => {
     return (

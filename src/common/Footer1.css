@@ -1,2 +1,36 @@
 @charset "utf-8";
 /* Footer1.css */
+
+.Footer1{
+    padding: 0 20px;
+    margin-top: 65px;
+    margin-bottom: 45px;
+}
+.Footer1 .footer_1 p{
+    font-size: 10px;
+    color: #AAAAAA;
+    line-height: 1.5em;
+}
+.Footer1 .footer_2{
+    display: flex;
+    position: relative;
+}
+.Footer1 .footer_2 p{
+    font-size: 11px;
+    color: #666;
+    padding: 0 5px;
+    cursor: pointer;
+}
+.Footer1 .footer_2 p:first-child{
+    padding-left: 0;
+}
+.Footer1 .footer_2 p:first-child::after{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 6px;
+    left: 79px;
+    width: 1px;
+    height: 10px;
+    background-color: #666;
+}
