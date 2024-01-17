@@ -1,6 +1,7 @@
 
 
 const TravelogItem = ({id, title, writer, profileImg, travelImg, date, ment})=> {
+    
     const truncate = (str, n) => {
         return str && str.length > n
             ? str.substring(0, n) + '...'
@@ -23,7 +24,7 @@ const TravelogItem = ({id, title, writer, profileImg, travelImg, date, ment})=> 
                         ))}
                     </div>
             </div>
-            <div className="ment">{ment}</div>
+            <div className="ment">{truncate(ment, 60)}</div>
         </li>
     );
 }
