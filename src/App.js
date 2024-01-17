@@ -3,7 +3,6 @@ import React from 'react';
 
 import './App.css';
 import Home from './pages/Home.js';
-import Home2 from './pages/Home2.js';
 import dummyTouristSpots from './api/data_TouristSpots.js';
 import dummyTravelog from './api/data_Travelog.js';
 
@@ -17,7 +16,6 @@ function App() {
             <BrowserRouter>
                 <div className="App">
                     <Routes>
-                        <Route path='/home2' element={<Home2 />} />
                         <Route path='/' element={<Home />} />
                     </Routes>
                 </div>

@@ -4,7 +4,7 @@
 /* 홈 섹션2 */
 .H1Section2{
     padding-top: 40px;
-    overflow: hidden;
+    overflow: scroll;
 }
 .H1Section2 .section_top{
     display: flex;
