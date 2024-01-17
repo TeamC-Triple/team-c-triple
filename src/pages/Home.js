@@ -3,7 +3,6 @@ import Header1 from "../common/Header1.js";
 import H1Section1 from "../homecomp/H1Section1.js";
 import H1Section2 from "../homecomp/H1Section2.js";
 import H1Section3 from "../homecomp/H1Section3.js";
-import Home2 from "./Home2.js";
 
 import HeaderIcon from "../common/HeaderIcon.js";
 import Footer1 from "../common/Footer1.js";
