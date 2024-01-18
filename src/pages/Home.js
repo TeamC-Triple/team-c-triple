@@ -1,5 +1,5 @@
 import Header1 from "../common/Header1.js";
-import H1Section1 from "../homecomp/H1Section1.js";
+import H1Section4 from "../homecomp/H1Section4.js";
 import H1Section2 from "../homecomp/H1Section2.js";
 import H1Section3 from "../homecomp/H1Section3.js";
 
@@ -10,6 +10,12 @@ import Button from '../common/Button.js';
 const Home = () => {
     return (
         <div id="Home">
+<<<<<<< HEAD
+            <Header1 />
+            <H1Section2 />
+            <H1Section3 />
+            <H1Section4 />
+=======
             <Header1
                 headTxt={'김이박님'}
                 leftChild={
@@ -32,6 +38,7 @@ const Home = () => {
             <H1Section2 />
             <H1Section3 />
             <Footer1 />
+>>>>>>> cef0a3e1d179ffae05d73e11305be475a5fed219
         </div>
     );
 };
