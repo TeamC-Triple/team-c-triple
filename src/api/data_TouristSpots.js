@@ -1,4 +1,4 @@
-const dummyTouristSpots = [
+export const dummyTouristSpots = [
     {
         id : 0,
         city : '부산',
@@ -83,7 +83,6 @@ const dummyTouristSpots = [
 
    ];
 
-export default dummyTouristSpots;
      
      
      
