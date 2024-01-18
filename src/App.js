@@ -8,7 +8,6 @@ import { dummyMyTripList } from './api/data_myTripList.js';
 
 import './App.css';
 import Home from './pages/Home.js';
-import MTSection3 from './homecomp/MTSection3.js';
  
 
 
