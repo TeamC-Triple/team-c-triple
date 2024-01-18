@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import './H1Section1.css';
+import './H1Section4.css';
 
 import { MagazineDataContext } from '../App';
 import MagazineItem from '../home_subcomp/MagazineItem';
