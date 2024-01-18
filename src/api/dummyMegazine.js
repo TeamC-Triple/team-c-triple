@@ -9,7 +9,7 @@
     }
   */
 
-const dummyMagazine = [
+export const dummyMagazine = [
     {
       id : 5,
       magaPhoto: 'magazine6',
@@ -59,5 +59,3 @@ const dummyMagazine = [
       magaWeek: '1월 1주차'
     },
  ]
- 
-export default dummyMagazine;
