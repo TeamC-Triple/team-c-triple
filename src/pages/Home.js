@@ -1,3 +1,4 @@
+
 import Header1 from "../common/Header1.js";
 import H1Section4 from "../homecomp/H1Section4.js";
 import H1Section2 from "../homecomp/H1Section2.js";
@@ -7,6 +8,7 @@ import HeaderIcon from "../common/HeaderIcon.js";
 import Footer1 from "../common/Footer1.js";
 
 const Home = () => {
+    
     return (
         <div id="Home">
             <Header1
