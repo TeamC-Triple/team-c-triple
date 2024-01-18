@@ -1,21 +1,24 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+import dummyMagazine from './api/dummyMegazine.js';
+import dummyRecoCourse from './api/data_recommendCourse.js';
+import dummyTouristSpots from './api/data_TouristSpots.js';
+
 import './App.css';
-
-import { dummyRecoCourse } from './api/data_recommendCourse.js';
-
 import Home from './pages/Home.js';
  
 
-import dummyTouristSpots from './api/data_TouristSpots.js';
 
 export const RecoCourseDataContext = React.createContext();
 export const SpotsDataContext = React.createContext();
+export const MagazineDataContext = React.createContext();
 
 function App() {
-  return (
-    <RecoCourseDataContext.Provider value={dummyRecoCourse}>
-        <SpotsDataContext.Provider value={dummyTouristSpots}>
+    return (
+      <MagazineDataContext.Provider value={dummyMagazine}>
+        <RecoCourseDataContext.Provider value={dummyRecoCourse}>
+            <SpotsDataContext.Provider value={dummyTouristSpots}>
                 <BrowserRouter>
                     <div className="App">
                         <Routes>
@@ -23,8 +26,9 @@ function App() {
                         </Routes>
                     </div>
                 </BrowserRouter>
-        </SpotsDataContext.Provider>
-    </RecoCourseDataContext.Provider>
+            </SpotsDataContext.Provider>
+        </RecoCourseDataContext.Provider>
+      </MagazineDataContext.Provider>
   );
 }
 
