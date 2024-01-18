@@ -1,2 +1,48 @@
 @charset "utf-8";
 /* Header1.css */
+
+.Header1{
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    height: 60px;
+    line-height: 60px;
+    border-bottom: 1px solid #eee;
+    box-sizing: border-box;
+}
+.Header1 .head_text{
+    font-weight: 500;
+    flex-grow: 1;
+}
+.Header1 .head_btn_right{
+    display: flex;
+}
+
+/* Home의 헤더부분 */
+#Home .Header1 .head_btn_left p{
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    margin-right: 14px;
+    background-color: aquamarine;
+}
+#Home .Header1 .head_btn_right1{
+    width: 24px;
+    height: auto;
+    background-image: url(/public/assets/icon-mytrip.svg);
+    background-size: 24px auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 14px;
+}
+#Home .Header1 .head_btn_right2{
+    width: 24px;
+    height: auto;
+    background-image: url(/public/assets/icon-menu.svg);
+    background-size: 24px auto;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#Home .Header1 .head_btn_right1 p, #Home .Header1 .head_btn_right2 p{
+    text-indent: -9999px;
+}
