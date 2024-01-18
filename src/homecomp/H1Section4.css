@@ -33,6 +33,7 @@
 }
 .MagazineItem{
     margin:0 20px 30px;
+    cursor: pointer;
 }
 .MagazineItem .itemPhoto{
     margin-bottom: 15px;
