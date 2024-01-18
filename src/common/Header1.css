@@ -2,13 +2,19 @@
 /* Header1.css */
 
 .Header1{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
+    box-sizing: border-box;
     align-items: center;
     padding: 0 20px;
     height: 60px;
     line-height: 60px;
     border-bottom: 1px solid #eee;
-    box-sizing: border-box;
+    background-color: #fff;
+    z-index: 500;
 }
 .Header1 .head_text{
     font-weight: 500;
@@ -25,6 +31,7 @@
     border-radius: 50%;
     margin-right: 14px;
     background-color: aquamarine;
+    cursor: pointer;
 }
 #Home .Header1 .head_btn_right1{
     width: 24px;
@@ -34,6 +41,7 @@
     background-repeat: no-repeat;
     background-position: center;
     margin-right: 14px;
+    cursor: pointer;
 }
 #Home .Header1 .head_btn_right2{
     width: 24px;
@@ -42,6 +50,7 @@
     background-size: 24px auto;
     background-repeat: no-repeat;
     background-position: center;
+    cursor: pointer;
 }
 #Home .Header1 .head_btn_right1 p, #Home .Header1 .head_btn_right2 p{
     text-indent: -9999px;

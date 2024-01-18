@@ -1,2 +1,77 @@
 @charset "utf-8";
 /* H1Section2.css */
+
+/* 홈 섹션2 */
+.H1Section2{
+    padding-top: 30px;
+    margin: 0 0 40px 0;
+}
+.H1Section2 .section_top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 20px;
+}
+.H1Section2 .section_title{
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5em;
+    margin-bottom: 30px;
+}
+
+/* Best10 컴포넌트 */
+.Best10 .BestList{
+    overflow-x: scroll;
+    margin-right: 10px;
+}
+.Best10 .row{
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+}
+
+/* BoxItem 컴포넌트 */
+.BoxItem{
+    box-sizing: border-box;
+    width: 20vw;
+    min-width: 140px;
+    padding-right: 10px;
+    margin-bottom: 10px;
+}
+.BoxItem .SpotPhoto{
+    position: relative;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.SpotPhoto img{
+    width: 100%;
+    height: 134px;
+    object-fit: cover;
+}
+.spotInfo{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.ranking{
+    margin: 10px;
+    font-size: 18px;
+    font-weight: 700;
+}
+.infoTxt{
+    margin: 10px;
+    font-weight: 500;
+}
+.locationName{
+    font-size: 16px;
+    font-weight: 600;
+}

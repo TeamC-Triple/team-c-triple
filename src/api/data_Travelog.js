@@ -37,16 +37,11 @@ export const dummyTravelog = [
         },
         city : '',
         ment : '아이를 위한 아이로 인한 아이가 행복한 여행'
-     }
-];
-
-
-/*
-
+     }, 
      {
         id : 3,
         title: '여자혼자 연말 제주여행',
-        writer : 'user',
+        writer : '서넝',
         profileImg : '/profile2.JPG',
         travelImg : ['/travelPhoto_16.jpg', '/travelPhoto_17.jpg', '/travelPhoto_18.jpg', '/travelPhoto_19.jpg', '/travelPhoto_1.jpg'],
         date : {
@@ -57,4 +52,4 @@ export const dummyTravelog = [
         ment : '연말 제주여행을 결정하게된 이유는 바로 버킷리스트인 혼자 여행을 이루기 위해서! 혼자 빠르게 슝- 떠났습니다.'
      }
 
-*/ 
+];

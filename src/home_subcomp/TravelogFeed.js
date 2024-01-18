@@ -2,11 +2,11 @@
 import TravelogItem from "./TravelogItem";
 
 
-const TravelogFeed = ({TravelogData})=> {
+const TravelogFeed = ({data})=> {
     return(
         <div className="TravelogFeed">
             <ul>
-                {TravelogData.map((it) => <TravelogItem key={it.id} {...it} />)}
+                {data.map((it) => (<TravelogItem key={it.id} {...it} />))}
             </ul>
         </div>
     );

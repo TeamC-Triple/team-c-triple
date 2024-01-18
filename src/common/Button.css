@@ -38,10 +38,13 @@
     background-color: #0BD0AF;
 }
 .Button .btn.gray_border{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #BBBBBB;
+    background-color: #fff;
     font-size: 12px;
     font-weight: 600;
     color: #333;
-    padding: 10px;
-    border: 1px solid #BBBBBB;
-    background-color: #fff;
 }
