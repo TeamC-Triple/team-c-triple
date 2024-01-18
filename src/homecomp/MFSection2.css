@@ -2,6 +2,7 @@
 /* H2Section2.css */
 
 .MFSection2{
+    padding-top: 20px;
     overflow: hidden;
 }
 .MFSection2 .section_top{
@@ -62,8 +63,10 @@
     overflow: hidden;
 }
 .photo .mainImg{
+    box-sizing: border-box;
     width: 50%;
     height: 100%;
+    border: 1px solid #fff;
 }
 .photo .mainImg img{
     width: 100%;
@@ -76,9 +79,11 @@
     width: 50%;
 }
 .photo .smallImg p{
+    box-sizing: border-box;
     width: 50%;
     height: 50%;
     overflow: hidden;
+    border: 1px solid #fff;
 }
 .photo .smallImg p img{
     width: 100%;
