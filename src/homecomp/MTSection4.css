@@ -1,1 +1,9 @@
 @charset "utf-8";
+
+.MTSection4{
+    padding: 0 20px;
+}
+.MTSection4 h2{
+    font-size: 18px;
+    margin-bottom: 12px;
+}

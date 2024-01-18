@@ -1,16 +1,21 @@
 const MTSection4Item = ({id, title, city, firstDate, lastDate, recoNum, commentNum, downloadNum, photo, reviewTxt}) => {
+    const truncate = (str, n) => {
+        return str && str.length > n
+            ? str.substring(0, n) + '...'
+            : str;
+    }
+
     return(
         <li className="MTSection4Item">
             <p>{title}</p>
             <div className="photoList">
                 <div className="p_L">
-                    <img />
+                    <img src={`/assets/${photo[0]}`}/>
                 </div>
                 <div className="p_R">
-                    <img />
-                    <img />
-                    <img />
-                    <img />
+                    {photo.slice(1).map((it)=>(
+                            <p key={it}><img src={`/assets/${it}`} /></p>
+                    ))}
                 </div>
             </div>
             <div className="info">
@@ -19,7 +24,7 @@ const MTSection4Item = ({id, title, city, firstDate, lastDate, recoNum, commentN
                 <p>{downloadNum}</p>
             </div>
             <p className="txt">
-                {reviewTxt}
+                {truncate(reviewTxt, 100)}
             </p>
         </li>
     );

@@ -4,7 +4,7 @@ import './MTSection4.css';
 import { MyTripListDataContext } from '../App';
 import MTSection4Item from '../home_subcomp/MTSection4Item';
 
-const MTSection3 = () => {
+const MTSection4 = () => {
     const MyTripList = useContext(MyTripListDataContext);
 
     const [data, setData] = useState([]);
@@ -14,7 +14,7 @@ const MTSection3 = () => {
     })
 
     return(
-        <div className="MTSection3">
+        <div className="MTSection4">
             <h2>나의 여행기</h2>
             <div className='mytrip_list'>
                 <ul>
@@ -25,4 +25,4 @@ const MTSection3 = () => {
     );
 };
 
-export default MTSection3;
+export default MTSection4;
