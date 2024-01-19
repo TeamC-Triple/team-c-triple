@@ -19,7 +19,6 @@ const TravelogFeed = ({type, data})=> {
             </div>
         );
     } else if(type === HotTL_item){
-        
         return(
             <div className="TravelogFeed">
                 <ul>

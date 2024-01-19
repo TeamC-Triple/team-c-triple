@@ -30,8 +30,8 @@ const TravelogItem = ({id, title, writer, profileImg, travelImg, date, ment, tru
 export default TravelogItem;
 
 const Hotphoto = styled.li`
-    
 display: flex;
+margin: 0 20px;
 `
 
 const TL_Item = styled.li`
@@ -72,7 +72,7 @@ const TL_writer= styled.div`
 const TL_photo= styled.div`
     display: flex;
     height: 120px;
-    margin: 0 20px 10px 20px;
+    margin-right: 10px;
     border-radius: 10px;
     overflow: hidden;
     width: 50%;
@@ -108,7 +108,7 @@ const TL_Img= styled.p`
     }
 `
 const TL_ment= styled.div`
-    margin: 0 20px;
+    margin: 0;
     width: 50%;
 }
 `

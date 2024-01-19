@@ -42,12 +42,11 @@ const MFSection2 = () => {
                     onClick={clickMore}
                 />
             </div>
-
             <div className="MFSection3">
-                    <div className="section_top">
-                        <h2 className="section_title">인기 급상승 여행기</h2>
-                        <p className="go_more">더보기</p>
-                    </div>
+                <div className="section_top">
+                    <h2 className="section_title">인기 급상승 여행기</h2>
+                    <p className="go_more">더보기</p>
+                </div>
                 </div>
                 <TravelogFeed type={HotTL_item} data={data} />
                 <Button 
