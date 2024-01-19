@@ -9,7 +9,7 @@ export const dummyTravelog = [
             firstDay : new Date('2023-12-29').getTime(),
             lastDay : new Date('2023-12-31').getTime()
         },
-        city : '',
+        city : '부산',
         ment : '한 해를 마무리하면서 큰 기대와 준비없이 갔지만 오히려 기억에 남는 여행이었다.'
      },
      {
@@ -22,7 +22,7 @@ export const dummyTravelog = [
             firstDay : new Date('2023-12-29').getTime(),
             lastDay : new Date('2024-1-1').getTime()
         },
-        city : '',
+        city : '부산',
         ment : '공휴일이 아까워서 간 여행이었는데 놀다보니 일출 보고 가고 싶어서 운좋게 1/1 비행기표 구해서 일출도 보고 왔어요.'
      },
      {
@@ -35,7 +35,7 @@ export const dummyTravelog = [
             firstDay : new Date('2023-12-01').getTime(),
             lastDay : new Date('2023-12-03').getTime()
         },
-        city : '',
+        city : '제주',
         ment : '아이를 위한 아이로 인한 아이가 행복한 여행'
      }, 
      {
@@ -48,7 +48,7 @@ export const dummyTravelog = [
             firstDay : new Date('2023-12-15').getTime(),
             lastDay : new Date('2023-12-18').getTime()
         },
-        city : '',
+        city : '제주',
         ment : '연말 제주여행을 결정하게된 이유는 바로 버킷리스트인 혼자 여행을 이루기 위해서! 혼자 빠르게 슝- 떠났습니다.'
      }
 

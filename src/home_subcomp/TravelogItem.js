@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const TravelogItem = ({id, title, writer, profileImg, travelImg, date, ment, truncate})=> {
+const TravelogItem = ({id, title, writer, profileImg, travelImg, date, ment,city, truncate})=> {
     
     return(
         <TL_Item>
@@ -8,7 +8,7 @@ const TravelogItem = ({id, title, writer, profileImg, travelImg, date, ment, tru
                 <TL_profile><img src={`/assets/travelogPhoto${profileImg}`} /></TL_profile>
                 <TL_postInfo>
                     <TL_title>{title}</TL_title>
-                    <TL_writer>{writer}님의 일정</TL_writer>
+                    <TL_writer>{writer}님의 일정<City>{city}</City></TL_writer>
                 </TL_postInfo>
             </TL_Info>
             <TL_photo>
@@ -27,7 +27,13 @@ const TravelogItem = ({id, title, writer, profileImg, travelImg, date, ment, tru
 export default TravelogItem;
 
 
-const TL_Item = styled.li`
+const City = styled.span`
+    margin-left: 16px;
+    color: #999;
+    font-size: 12px;
+`
+
+const TL_Item = styled.div`
     width: 100%;
     margin-bottom: 30px;
 `
@@ -59,7 +65,7 @@ const TL_title = styled.div`
     font-weight: 600;
 `
 const TL_writer= styled.div`
-    color: #666;
+    color: #999;
     font-size: 12px;
 `
 const TL_photo= styled.div`
