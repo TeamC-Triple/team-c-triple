@@ -115,6 +115,7 @@ const TL_Img= styled.p`
 const TL_ment= styled.div`
     margin: 0;
     width: 50%;
+    font-size : 12px;
 }
 `
 

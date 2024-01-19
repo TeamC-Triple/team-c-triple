@@ -107,6 +107,7 @@ const TL_smallImg= styled.div`
 `
 const TL_ment= styled.div`
     margin: 0 20px;
+    font-size : 12px;
 }
 `
 
