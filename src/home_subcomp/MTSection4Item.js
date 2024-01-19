@@ -6,8 +6,14 @@ const MTSection4Item = ({id, title, city, firstDate, lastDate, recoNum, commentN
     }
 
     return(
-        <li className="MTSection4Item">
-            <p>{title}</p>
+        <li key={id} className="MTSection4Item">
+            <div className="top">
+                <p className="title">{title}</p>
+                <div className="top_R">
+                    <p className="city">{city}</p>
+                    <p className="date">{new Date(firstDate).toLocaleDateString()} - {new Date(lastDate).toLocaleDateString()}</p>
+                </div>
+            </div>
             <div className="photoList">
                 <div className="p_L">
                     <img src={`/assets/${photo[0]}`}/>
@@ -19,12 +25,12 @@ const MTSection4Item = ({id, title, city, firstDate, lastDate, recoNum, commentN
                 </div>
             </div>
             <div className="info">
-                <p>{recoNum}</p>
-                <p>{commentNum}</p>
-                <p>{downloadNum}</p>
+                <p className="recoNum">{recoNum}</p>
+                <p className="commentNum">{commentNum}</p>
+                <p className="downloadNum">{downloadNum}</p>
             </div>
             <p className="txt">
-                {truncate(reviewTxt, 100)}
+                {truncate(reviewTxt, 95)}
             </p>
         </li>
     );
