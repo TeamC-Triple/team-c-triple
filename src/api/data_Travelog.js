@@ -41,9 +41,9 @@ export const dummyTravelog = [
      {
         id : 3,
         title: '여자혼자 연말 제주여행',
-        writer : '서넝',
+        writer : '서누',
         profileImg : '/profile2.JPG',
-        travelImg : ['/travelPhoto_16.jpg', '/travelPhoto_17.jpg', '/travelPhoto_18.jpg', '/travelPhoto_19.jpg', '/travelPhoto_1.jpg'],
+        travelImg : ['/travelPhoto_16.jpg', '/travelPhoto_17.jpg', '/travelPhoto_18.jpg', '/travelPhoto_19.jpg', '/travelPhoto_20.jpg'],
         date : {
             firstDay : new Date('2023-12-15').getTime(),
             lastDay : new Date('2023-12-18').getTime()

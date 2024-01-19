@@ -11,21 +11,28 @@ const TravelogItem = ({id, title, writer, profileImg, travelImg, date, ment, tru
                     <TL_writer>{writer}님의 일정</TL_writer>
                 </TL_postInfo>
             </TL_Info>
-            <TL_photo>
-                    <TL_mainImg><img src={`/assets/travelogPhoto${travelImg[0]}`} alt="여행사진" /></TL_mainImg>
+
+            <Hotphoto>
+                <TL_photo>
+                    <TL_mainImg><img src={`/assets/travelogPhoto${travelImg[1]}`} alt="여행사진" /></TL_mainImg>
                     <TL_smallImg>
-                        {travelImg.slice(1).map((it)=>(
+                        {travelImg.slice(2, 4).map((it)=>(
                             <TL_Img key={it}><img src={`/assets/travelogPhoto${it}`} /></TL_Img>
                         ))}
                     </TL_smallImg>
-            </TL_photo>
+                </TL_photo>
             <TL_ment>{truncate(ment, 60)}</TL_ment>
+            </Hotphoto>
         </TL_Item>
     );
 }
 
 export default TravelogItem;
 
+const Hotphoto = styled.li`
+    
+display: flex;
+`
 
 const TL_Item = styled.li`
     width: 100%;
@@ -68,24 +75,12 @@ const TL_photo= styled.div`
     margin: 0 20px 10px 20px;
     border-radius: 10px;
     overflow: hidden;
+    width: 50%;
 `
 const TL_mainImg= styled.div`
     box-sizing: border-box;
     width: 50%;
     height: 100%;
-    border: 1px solid #fff;
-    img{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-`
-const TL_Img= styled.p`
-
-    box-sizing: border-box;
-    width: 50%;
-    height: 50%;
-    overflow: hidden;
     border: 1px solid #fff;
     img{
         width: 100%;
@@ -99,8 +94,22 @@ const TL_smallImg= styled.div`
     flex-wrap: wrap;
     width: 50%;
 `
+const TL_Img= styled.p`
+
+    box-sizing: border-box;
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+    border: 1px solid #fff;
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+`
 const TL_ment= styled.div`
     margin: 0 20px;
+    width: 50%;
 }
 `
 

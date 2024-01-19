@@ -2,8 +2,10 @@ import { useContext, useEffect, useState } from 'react';
 
 import './MFSection2.css';
 import { TravelogContext } from '../App';
+import HotTL_item from '../home_subcomp/HotTL_item.js';
 import TravelogFeed from '../home_subcomp/TravelogFeed';
 import Button from "../common/Button.js";
+import TravelogItem from '../home_subcomp/TravelogItem.js';
 
 
 const MFSection2 = () => {
@@ -28,16 +30,31 @@ const MFSection2 = () => {
     }
     return (
         <div className="MFSection2">
-            <div className="section_top">
-                <h2 className="section_title">베스트 여행기</h2>
-                <p className="go_more">더보기</p>
+            <div className="MF2_box">
+                <div className="section_top">
+                    <h2 className="section_title">베스트 여행기</h2>
+                    <p className="go_more">더보기</p>
+                </div>
+                <TravelogFeed type={TravelogItem} data={data} />
+                <Button 
+                    text={'베스트 여행기 더보기'}
+                    type={'gray_border'}  
+                    onClick={clickMore}
+                />
             </div>
-            <TravelogFeed data={data} />
-            <Button 
-                text={'베스트 여행기 더보기'}
-                type={'gray_border'}  
-                onClick={clickMore}
-            />
+
+            <div className="MFSection3">
+                    <div className="section_top">
+                        <h2 className="section_title">인기 급상승 여행기</h2>
+                        <p className="go_more">더보기</p>
+                    </div>
+                </div>
+                <TravelogFeed type={HotTL_item} data={data} />
+                <Button 
+                    text={'인기 급상승 여행기 더보기'}
+                    type={'gray_border'}  
+                    onClick={clickMore}
+                />
         </div>
     );
 };
