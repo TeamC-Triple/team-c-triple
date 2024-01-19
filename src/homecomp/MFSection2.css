@@ -1,0 +1,31 @@
+@charset "utf-8";
+/* H2Section2.css */
+
+.MFSection2{
+    padding-top: 60px;
+    overflow: hidden;
+}
+.MF2_box{
+    margin-bottom: 70px;
+}
+.MFSection2 .section_top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 20px 20px 20px;
+}
+.MFSection2 .section_title{
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5em;
+}
+.MFSection2 .go_more{
+    font-size: 12px;
+    color: #368FFF;
+}
+
+
+.MFSection2 .Button{
+    margin: 0 20px;
+}
+/* TravelogFeed 컴포넌트 */
