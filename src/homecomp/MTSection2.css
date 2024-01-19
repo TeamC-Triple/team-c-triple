@@ -1,0 +1,49 @@
+@charset "utf-8";
+/* MTSection2.css */
+
+li{
+    list-style: none;
+}
+
+.MTSection2{
+    margin-bottom: 40px;
+}
+.MTSection2 > h2{
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5em;
+}
+.MTS2Item{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 20px 15px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #F2F2F2;
+    color: #121212;
+}
+.MTS2Item > div{
+    display: flex;
+}
+.MTS2Item .MTSLeft .photo{
+    margin-right: 10px;
+}
+.MTS2Item .MTSLeft .city{
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 10px;
+}
+.MTS2Item .MTSLeft .d-day{
+    font-size: 9px;
+    color: #368FFF;
+}
+.MTS2Item .MTSRight .day{
+    font-size: 10px;
+    margin-right: 10px;
+}
+.MTS2Item .MTSRight .edit{
+    font-size: 12px;
+    font-weight: 500;
+}
