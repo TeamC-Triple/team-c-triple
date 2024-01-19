@@ -6,8 +6,9 @@ import H1Section3 from "../homecomp/H1Section3.js";
 
 import HeaderIcon from "../common/HeaderIcon.js";
 import Footer1 from "../common/Footer1.js";
-
 import MTSection2 from "../homecomp/MTSection2.js";
+import MTSection3 from "../homecomp/MTSection3.js";
+
 
 const Home = () => {
     
@@ -37,6 +38,7 @@ const Home = () => {
             <H1Section4 />
             <Footer1 />
             <MTSection2 />
+            <MTSection3 />
         </div>
     );
 };
