@@ -39,11 +39,11 @@ const Home = () => {
             <H1Section2 />
             <H1Section3 />
             <H1Section4 />
-            <Footer1 />
             <MFSection1 />
             <MTSection2 />
             <MTSection3 />
             <MTSection4 />
+            <Footer1 />
         </div>
     );
 };

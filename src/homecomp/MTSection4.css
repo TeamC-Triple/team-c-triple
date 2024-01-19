@@ -23,8 +23,9 @@
     cursor: pointer;
 }
 .MTSection4Item .title{
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
+    margin-bottom: 8px;
 }
 
 .MTSection4Item .top{
@@ -35,7 +36,7 @@
     display: flex;
 }
 .MTSection4Item .top .top_R p{
-    font-size:8px;
+    font-size:12px;
     margin-left: 10px;
     color: #777;
 }
@@ -80,7 +81,7 @@
 }
 .MTSection4Item .info p{
     padding-left: 15px;
-    font-size: 9px;
+    font-size: 11px;
     color: #777;
     background-size: 9px 9px;
     background-repeat: no-repeat;
@@ -97,6 +98,6 @@
     background-image: url(/public/assets/icon-download.svg);
 }
 .MTSection4Item .txt{
-    font-size: 9px;
+    font-size: 11px;
     line-height: 1.4em;
 }

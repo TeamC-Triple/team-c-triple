@@ -1,6 +1,7 @@
+import { useState } from "react";
 import styled from "styled-components";
 
-const MyFeedItem = ({id, photo, title, firstDate, lasgDate, recoNum, commentNum, downloadNum}) => {
+const MyFeedItem = ({id, photo, title, firstDate, lastDate, recoNum, commentNum, downloadNum}) => {
     
     const changeStringTD = (date) => {
         const stringDay = new Date(date).getDay();
@@ -24,7 +25,6 @@ const MyFeedItem = ({id, photo, title, firstDate, lasgDate, recoNum, commentNum,
     };
     
     const onMyTravelDate = (date) => {
-        const stringDay = new Date(date).getDay();
         const myTravelDate = new Date(date).toLocaleDateString();
         const stringMTD = myTravelDate.slice(6, 11);
         const mtd = `${stringMTD}(${changeStringTD(date)})`;
@@ -42,12 +42,14 @@ const MyFeedItem = ({id, photo, title, firstDate, lasgDate, recoNum, commentNum,
             <div className="myFeedItem_in">
                 <MyTravelLog>
                     <div>    
-                        <MylIcon>{photo}</MylIcon>
+                        <MylIcon>
+                            <img src={`/assets/${photo[0]}`} />
+                        </MylIcon>
                         <MylTitle>{truncate(title, 10)}</MylTitle>
                     </div>
                     <div>
                         <MylDate>
-                            {`${onMyTravelDate(firstDate)} - ${onMyTravelDate(lasgDate)}`}
+                            {`${onMyTravelDate(firstDate)} - ${onMyTravelDate(lastDate)}`}
                         </MylDate>
                         <GoEdit>수정</GoEdit>
                     </div>
@@ -96,6 +98,12 @@ const MylIcon = styled.p`
     margin-right: 5px;
     background-color: #0BD0AF;
     border-radius: 50%;
+    overflow: hidden;
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 `;
 const MylTitle = styled.p`
     font-weight: 600;

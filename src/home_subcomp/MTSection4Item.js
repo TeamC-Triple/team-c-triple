@@ -8,7 +8,7 @@ const MTSection4Item = ({id, title, city, firstDate, lastDate, recoNum, commentN
     return(
         <li key={id} className="MTSection4Item">
             <div className="top">
-                <p className="title">{title}</p>
+                <p className="title">{truncate(title, 13)}</p>
                 <div className="top_R">
                     <p className="city">{city}</p>
                     <p className="date">{new Date(firstDate).toLocaleDateString()} - {new Date(lastDate).toLocaleDateString()}</p>
