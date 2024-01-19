@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
 
-import { MyTripDataContext } from '../App.js';
+import { MyTripListDataContext } from '../App.js';
 import MyFeedItem from '../home_subcomp/MyFeedItem.js';
 import Button from '../common/Button.js';
 import styled from 'styled-components';
 
 const MFSection1 = () => {
-    const myTripList = useContext(MyTripDataContext);
+    const myTripList = useContext(MyTripListDataContext);
     const [data, setData] = useState([]);
     const [sliceNum, setSliceNum] = useState(2)
     const ListSlice = sliceNum + (myTripList.length - sliceNum)

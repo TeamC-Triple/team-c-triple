@@ -1,0 +1,37 @@
+.MTSection3{
+    position: relative;
+    padding: 0 20px;
+
+}
+.MTSection3 h2{
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+.MTSection3 .mytrip_list ul{
+    display: flex;
+    overflow-x: scroll;
+}
+.MTSection3 .mytrip_list ul li{
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.MTSection3 .mytrip_list ul li .item_photo{
+    margin-bottom: 5px;
+}
+.MTSection3 .mytrip_list ul li img{
+    width: 25vw;
+    height: 25vw;
+    border-radius: 50%;
+}
+
+.MTSection3 .mytrip_list ul li .item_info p{
+    text-align: center;
+}
+.MTSection3 .mytrip_list ul li .item_info .item_city{
+    font-size: 12px;
+    font-weight: 500;
+}
+.MTSection3 .mytrip_list ul li .item_info .item_date{
+    font-size: 9px;
+    color: #aaa;
+}
