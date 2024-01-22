@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { dummyMyTripList } from './api/data_myTripList.js'
 import { dummyMyTripPlan } from './api/data_myTripPlan.js'
 import { dummyMagazine } from './api/dummyMegazine.js';
 import { dummyRecoCourse } from './api/data_recommendCourse.js';
