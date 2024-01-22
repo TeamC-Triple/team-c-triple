@@ -8,8 +8,7 @@ import { dummyTouristSpots } from './api/data_TouristSpots.js';
 import { dummyTravelog } from './api/data_Travelog.js';
 import { dummyMyTripList } from './api/data_myTripList.js';
 import './App.css';
-import Home from './mainComp/Home.js';
-import MainFeed from './mainComp/MainFeed.js';
+import Main from './mainComp/Main.js';
  
  
 
@@ -32,8 +31,7 @@ function App() {
                                     <BrowserRouter>
                                         <div className="App">
                                             <Routes>
-                                                <Route path='/' element={<Home />} />
-                                                <Route path='/mainfeed' element={<MainFeed />} />
+                                                <Route path='/' element={<Main />} />
                                             </Routes>
                                         </div>
                                     </BrowserRouter>

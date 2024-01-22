@@ -31,7 +31,7 @@ const MFSection1 = () => {
                     </ul>
                 </MyFeedList>
                 <Button 
-                    type={'gray_border'}
+                    type={`gray_border`}
                     text={'나의 여행 피드 더보기'}
                     onClick={clickListMore}
                 />
@@ -49,7 +49,9 @@ const MfSection1_in = styled.div`
     padding: 0 20px;
 
     h2{
+        margin-bottom : 20px;
         font-size: 18px;
+        font-weight: 700;
     }
     
     button{

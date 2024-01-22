@@ -6,7 +6,10 @@ li{
 }
 
 .MTSection2{
-    margin-bottom: 40px;
+    margin: 50px 20px 60px 20px;
+    padding: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.18);
 }
 .MTSection2 > h2{
     margin-bottom: 20px;
@@ -46,4 +49,8 @@ li{
 .MTS2Item .MTSRight .edit{
     font-size: 12px;
     font-weight: 500;
+}
+.MTSection2 Button{
+    width: calc(100% - 40px);
+    margin: 0 20px;
 }
