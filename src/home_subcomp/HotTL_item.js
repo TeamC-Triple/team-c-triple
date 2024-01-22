@@ -35,7 +35,7 @@ const TL_Item = styled.li`
 `
 const City = styled.span`
 color: #999;
-font-size: 12px;
+margin-left: 14px;
 `
 const Hotphoto = styled.div`
 display: flex;
@@ -43,6 +43,7 @@ display: flex;
 
 const TL_Info = styled.div`
     display: flex;
+    font-size: 13px;
     align-items: center;
     margin-bottom: 14px;
 `
@@ -58,7 +59,10 @@ const TL_profile = styled.div`
         height: auto;
     }
     `
-const TL_postInfo = styled.div`
+    const TL_postInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     font-size: 14px;
     font-weight: 600;
 `

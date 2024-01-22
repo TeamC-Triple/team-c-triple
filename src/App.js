@@ -8,7 +8,7 @@ import { dummyTouristSpots } from './api/data_TouristSpots.js';
 import { dummyTravelog } from './api/data_Travelog.js';
 import { dummyMyTripList } from './api/data_myTripList.js';
 import './App.css';
-import Main from './mainComp/Main.js';
+import Main from './pages/Main.js';
  
  
 
