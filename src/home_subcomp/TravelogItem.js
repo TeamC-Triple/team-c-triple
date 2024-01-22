@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const TravelogItem = ({id, title, writer, profileImg, travelImg, date, ment,city, truncate})=> {
+const TravelogItem = ({id, title, writer, profileImg, travelImg, date, ment, city, truncate})=> {
     
     return(
         <TL_Item>
@@ -27,21 +27,18 @@ const TravelogItem = ({id, title, writer, profileImg, travelImg, date, ment,city
 export default TravelogItem;
 
 
+const TL_Item = styled.div`
+    width: 100%;
+    margin-bottom: 30px;
+`
 const City = styled.span`
     margin-left: 16px;
     color: #999;
     font-size: 12px;
 `
-
-const TL_Item = styled.div`
-    width: 100%;
-    margin-bottom: 30px;
-`
-
 const TL_Info = styled.div`
     display: flex;
     align-items: center;
-    padding-left: 20px;
     margin-bottom: 14px;
 `
 const TL_profile = styled.div`
@@ -61,7 +58,7 @@ const TL_postInfo = styled.div`
     font-weight: 600;
 `
 const TL_title = styled.div`
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
 `
 const TL_writer= styled.div`
@@ -71,9 +68,9 @@ const TL_writer= styled.div`
 const TL_photo= styled.div`
     display: flex;
     height: 120px;
-    margin: 0 20px 10px 20px;
     border-radius: 10px;
     overflow: hidden;
+    margin-bottom: 8px;
 `
 const TL_mainImg= styled.div`
     box-sizing: border-box;
@@ -106,8 +103,7 @@ const TL_smallImg= styled.div`
     width: 50%;
 `
 const TL_ment= styled.div`
-    margin: 0 20px;
-    font-size : 12px;
+    font-size : 14px;
 }
 `
 

@@ -49,7 +49,7 @@ const MfSection1_in = styled.div`
     padding: 0 20px;
 
     h2{
-        margin-bottom: 16px;
+        font-size: 18px;
     }
     
     button{

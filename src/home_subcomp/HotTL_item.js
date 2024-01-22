@@ -29,25 +29,21 @@ const TravelogItem = ({id, title, writer, profileImg, travelImg, date, ment,city
 
 export default TravelogItem;
 
+const TL_Item = styled.li`
+    width: 100%;
+    margin-bottom: 30px;
+`
 const City = styled.span`
-margin-left: 16px;
 color: #999;
 font-size: 12px;
 `
 const Hotphoto = styled.div`
 display: flex;
-margin: 0 20px;
-`
-
-const TL_Item = styled.li`
-    width: 100%;
-    margin-bottom: 30px;
 `
 
 const TL_Info = styled.div`
     display: flex;
     align-items: center;
-    padding-left: 20px;
     margin-bottom: 14px;
 `
 const TL_profile = styled.div`
@@ -67,11 +63,11 @@ const TL_postInfo = styled.div`
     font-weight: 600;
 `
 const TL_title = styled.div`
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
 `
 const TL_writer= styled.div`
-color: #999;
+    color: #999;
     font-size: 12px;
 `
 const TL_photo= styled.div`
@@ -115,7 +111,7 @@ const TL_Img= styled.p`
 const TL_ment= styled.div`
     margin: 0;
     width: 50%;
-    font-size : 12px;
+    font-size : 14px;
 }
 `
 
