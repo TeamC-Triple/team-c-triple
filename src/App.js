@@ -10,8 +10,6 @@ import { dummyMyTripList } from './api/data_myTripList.js';
 import './App.css';
 import Main from './pages/Main.js';
  
- 
-
 
 export const MTLDataContext = React.createContext();
 export const RecoCourseDataContext = React.createContext();
