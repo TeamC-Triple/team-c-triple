@@ -1,8 +1,8 @@
-import Header1 from "../common/Header1";
-import MainTravel from "../mainComp/MainTravel";
-import Home from "../mainComp/Home";
-import MainFeed from "../mainComp/MainFeed";
-import Footer1 from "../common/Footer1";
+import Header1 from "../common/Header1.js";
+import MainTravel from "../mainComp/MainTravel.js";
+import Home from "../mainComp/Home.js";
+import MainFeed from "../mainComp/MainFeed.js";
+import Footer1 from "../common/Footer1.js";
 import HeaderIcon from "../common/HeaderIcon.js";
 
 const Main = () => {
