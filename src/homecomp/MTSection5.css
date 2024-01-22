@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* MTSection5.css */
+
+.MTSection5{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 20px 50px 20px;
+}
+.MTSection5 .MT5Bn{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 49.5%;
+    max-height: 180px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding:  20px 20px 14px 20px ;
+    color: #fff;
+
+}
+.MTSection5 .BnTitle{
+    margin-bottom: 10px;
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 600;
+}
+.MTSection5 .point{
+    font-size: 18px;
+    font-weight: 600;
+}
+.MTSection5 .Top{
+    margin-bottom: 10px;
+}
+.MT5_Bn1{
+    background-color: #368FFF;
+}
+.MT5_Bn2{
+    background-color: #FF669D;
+}
+.MT5_Bn2 .ment{
+    font-size: 12px;
+    font-weight: 500;
+}
+.MTSection5 .more{
+    text-align: right;
+}
