@@ -12,7 +12,6 @@ const MFSection2 = () => {
     
     const TravelogData = useContext(TravelogContext);
 
-
     const [data, setData] = useState(TravelogData.slice(0, 3));
     const [isMore,  setIsMore] = useState(false);
 
