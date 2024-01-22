@@ -24,8 +24,8 @@
     display: flex;
 }
 
-/* Home의 헤더부분 */
-#Home .Header1 .head_btn_left p{
+/* Main 헤더부분 */
+#Main .Header1 .head_btn_left p{
     width: 26px;
     height: 26px;
     border-radius: 50%;
@@ -33,7 +33,7 @@
     background-color: aquamarine;
     cursor: pointer;
 }
-#Home .Header1 .head_btn_right1{
+#Main .Header1 .head_btn_right1{
     width: 24px;
     height: auto;
     background-image: url(/public/assets/icon-mytrip.svg);
@@ -43,7 +43,7 @@
     margin-right: 14px;
     cursor: pointer;
 }
-#Home .Header1 .head_btn_right2{
+#Main .Header1 .head_btn_right2{
     width: 24px;
     height: auto;
     background-image: url(/public/assets/icon-menu.svg);
@@ -52,6 +52,6 @@
     background-position: center;
     cursor: pointer;
 }
-#Home .Header1 .head_btn_right1 p, #Home .Header1 .head_btn_right2 p{
+#Main .Header1 .head_btn_right1 p, #Main .Header1 .head_btn_right2 p{
     text-indent: -9999px;
 }

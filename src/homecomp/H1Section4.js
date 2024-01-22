@@ -3,6 +3,7 @@ import './H1Section4.css';
 
 import { MagazineDataContext } from '../App';
 import MagazineItem from '../home_subcomp/MagazineItem';
+import Button from '../common/Button';
 
 const H1Section4 = () => {
     const MagazineList = useContext(MagazineDataContext);
@@ -31,7 +32,12 @@ const H1Section4 = () => {
                     {data.slice(0,slice).map((item)=> <MagazineItem key={item.id} {...item} />)}
                 </ul>
             </div>
-            <button className={num === 0 ? 'on' : 'off'} onClick={clickBtn}>트리플 매거진 더보기</button>
+            <Button 
+                className={num === 0 ? 'on' : 'off'} 
+                onClick={clickBtn}
+                type={'gray_border'}
+                text={'매거진 더보기'}
+            />
         </div>
     );
 };
