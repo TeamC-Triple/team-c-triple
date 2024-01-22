@@ -6,7 +6,7 @@ import { dummyMagazine } from './api/dummyMegazine.js';
 import { dummyRecoCourse } from './api/data_recommendCourse.js';
 import { dummyTouristSpots } from './api/data_TouristSpots.js';
 import { dummyTravelog } from './api/data_Travelog.js';
-
+import { dummyMyTripList } from './api/data_myTripList.js';
 import './App.css';
 import Home from './pages/Home.js';
 import MainFeed from './pages/MainFeed.js';
