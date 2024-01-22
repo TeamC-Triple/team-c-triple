@@ -8,6 +8,7 @@ import HeaderIcon from "../common/HeaderIcon.js";
 import Footer1 from "../common/Footer1.js";
 
 import MFSection1 from "../homecomp/MFSection1.js";
+import MTSection1 from "../homecomp/MTSection1.js";
 import MTSection2 from "../homecomp/MTSection2.js";
 import MTSection3 from "../homecomp/MTSection3.js";
 import MTSection4 from "../homecomp/MTSection4.js"
@@ -40,6 +41,7 @@ const Home = () => {
             <H1Section3 />
             <H1Section4 />
             <MFSection1 />
+            <MTSection1 />
             <MTSection2 />
             <MTSection3 />
             <MTSection4 />
