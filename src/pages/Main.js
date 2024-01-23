@@ -5,14 +5,18 @@ import MainFeed from "../mainComp/MainFeed";
 import Footer1 from "../common/Footer1";
 import HeaderIcon from "../common/HeaderIcon.js";
 import BottomNavi from "../common/BottomNavi.js";
+import { useNavigate } from "react-router-dom";
 
 const Main = () => {
+    const navigate = useNavigate();
+
     return (
         <div id="Main">
             <Header1
                 headTxt={'김이박님'}
+                onClickHeadTxt={()=>(navigate('/mypage'))}
                 leftChild={
-                    <p>
+                    <p onClick={()=>(navigate('/mypage'))}>
                         <img />
                     </p>
                 }

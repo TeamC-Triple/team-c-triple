@@ -17,6 +17,11 @@ import MainFeed from "./mainComp/MainFeed.js";
 import Footer1 from "./common/Footer1.js";
 import HeaderIcon from "./common/HeaderIcon.js";
 import BottomNavi from "./common/BottomNavi.js";
+import Main from './pages/Main.js';
+import Mypage from './pages/Mypage.js'
+ 
+ 
+
 
 export const MTLDataContext = React.createContext();
 export const RecoCourseDataContext = React.createContext();
@@ -24,35 +29,6 @@ export const TravelogContext = React.createContext();
 export const SpotsDataContext = React.createContext();
 export const MagazineDataContext = React.createContext();
 export const MyTripListDataContext = React.createContext();
-
-
-const Main = () => {
-    return (
-        <div id='Main'>
-            <Header1
-                headTxt={'김이박님'}
-                leftChild={
-                    <p>
-                        <img />
-                    </p>
-                }
-                rightChild1={
-                    <HeaderIcon 
-                        text={'일정짜기'} 
-                    />
-                }
-                rightChild2={
-                    <HeaderIcon 
-                        text={'사이드메뉴'}   
-                    />
-                }
-            />
-            <Outlet />
-            <Footer1 />
-            <BottomNavi />
-        </div>
-    );
-};
 
 function App() {
     return (
@@ -70,6 +46,7 @@ function App() {
                                                     <Route path='/feed' element={<MainFeed />} />
                                                     <Route path='/travel' element={<MainTravel />} />
                                                 </Route>
+                                                <Route path='/mypage' element={<Mypage />} />
                                             </Routes>
                                         </div>
                                     </BrowserRouter>
