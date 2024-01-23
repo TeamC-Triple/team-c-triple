@@ -17,7 +17,6 @@ import MainFeed from "./mainComp/MainFeed.js";
 import Footer1 from "./common/Footer1.js";
 import HeaderIcon from "./common/HeaderIcon.js";
 import BottomNavi from "./common/BottomNavi.js";
-import BottomNaviIcon from './common/BottomNaviIcon.js';
 
 export const MTLDataContext = React.createContext();
 export const RecoCourseDataContext = React.createContext();
@@ -50,9 +49,7 @@ const Main = () => {
             />
             <Outlet />
             <Footer1 />
-            <BottomNavi 
-                
-            />
+            <BottomNavi />
         </div>
     );
 };
