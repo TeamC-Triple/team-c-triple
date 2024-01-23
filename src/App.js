@@ -9,6 +9,7 @@ import { dummyTravelog } from './api/data_Travelog.js';
 import { dummyMyTripList } from './api/data_myTripList.js';
 import './App.css';
 import Main from './pages/Main.js';
+import Mypage from './pages/Mypage.js'
  
  
 
@@ -32,6 +33,7 @@ function App() {
                                         <div className="App">
                                             <Routes>
                                                 <Route path='/' element={<Main />} />
+                                                <Route path='/mypage' element={<Mypage />} />
                                             </Routes>
                                         </div>
                                     </BrowserRouter>

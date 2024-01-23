@@ -19,6 +19,7 @@
 .Header1 .head_text{
     font-weight: 500;
     flex-grow: 1;
+    cursor: pointer;
 }
 .Header1 .head_btn_right{
     display: flex;

@@ -1,12 +1,12 @@
 import './Header1.css';
 
-const Header1 = ({headTxt, leftChild, centerChild, rightChild1, rightChild2}) => {
+const Header1 = ({headTxt, leftChild, centerChild, rightChild1, rightChild2, onClickHeadTxt}) => {
     return (
         <header className="Header1">
              <div className="head_btn_left">
                 {leftChild}
             </div>
-            <p className="head_text">
+            <p className="head_text" onClick={onClickHeadTxt}>
                 {headTxt}
             </p>
             <div className='centerChild'>
