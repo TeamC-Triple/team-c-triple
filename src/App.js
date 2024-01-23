@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import { BrowserRouter, Route, Routes, Outlet } from 'react-router-dom';
 
 import { dummyMyTripList } from './api/data_myTripList.js'
@@ -17,6 +16,7 @@ import MainFeed from "./mainComp/MainFeed.js";
 import Footer1 from "./common/Footer1.js";
 import HeaderIcon from "./common/HeaderIcon.js";
 import BottomNavi from "./common/BottomNavi.js";
+import MainSearch from './pages/MainSearch.js';
 
 export const MTLDataContext = React.createContext();
 export const RecoCourseDataContext = React.createContext();
@@ -70,6 +70,7 @@ function App() {
                                                     <Route path='/feed' element={<MainFeed />} />
                                                     <Route path='/travel' element={<MainTravel />} />
                                                 </Route>
+                                                <Route path='/search' element={<MainSearch />} />
                                             </Routes>
                                         </div>
                                     </BrowserRouter>
