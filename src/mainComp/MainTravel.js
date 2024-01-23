@@ -5,7 +5,7 @@ import MTSection4 from "../homecomp/MTSection4.js";
 
 const MainTravel = () => {
     return (
-        <div id="MainTravel">
+        <div id="MainTravel" >
             <MTSection1 />
             <MTSection2 />
             <MTSection3 />

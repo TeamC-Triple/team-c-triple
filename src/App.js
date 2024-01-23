@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React from 'react';
 import { BrowserRouter, Route, Routes, Outlet } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import { dummyMyTripList } from './api/data_myTripList.js'
 import { dummyMyTripPlan } from './api/data_myTripPlan.js'
@@ -28,7 +28,7 @@ export const MyTripListDataContext = React.createContext();
 
 const Main = () => {
     return (
-        <div id='Main'>
+        <div id="Main">
             <Header1
                 headTxt={'김이박님'}
                 leftChild={
@@ -64,13 +64,13 @@ function App() {
                                 <TravelogContext.Provider value={dummyTravelog} >
                                     <BrowserRouter>
                                         <div className="App">
-                                            <Routes>
-                                                <Route path='/' element={<Main />}>
-                                                    <Route index element={<Home />} />
-                                                    <Route path='/feed' element={<MainFeed />} />
-                                                    <Route path='/travel' element={<MainTravel />} />
-                                                </Route>
-                                            </Routes>
+                                            <AnimatePresence>
+                                                    <Routes >
+                                                        <Route  key="home" path='/' element={<Home />} />
+                                                        <Route key="feed" path='/feed' element={<MainFeed />}  />
+                                                        <Route key="travel" path='/travel' element={<MainTravel />} />
+                                                        </Routes>
+                                            </AnimatePresence>
                                         </div>
                                     </BrowserRouter>
                                 </TravelogContext.Provider> 
