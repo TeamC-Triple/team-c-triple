@@ -1,9 +1,10 @@
-import Header1 from "../common/Header1.js";
-import MainTravel from "../mainComp/MainTravel.js";
-import Home from "../mainComp/Home.js";
-import MainFeed from "../mainComp/MainFeed.js";
-import Footer1 from "../common/Footer1.js";
+import Header1 from "../common/Header1";
+import MainTravel from "../mainComp/MainTravel";
+import Home from "../mainComp/Home";
+import MainFeed from "../mainComp/MainFeed";
+import Footer1 from "../common/Footer1";
 import HeaderIcon from "../common/HeaderIcon.js";
+import BottomNavi from "../common/BottomNavi.js";
 import { useNavigate } from "react-router-dom";
 
 const Main = () => {
@@ -34,6 +35,7 @@ const Main = () => {
             <Home />
             <MainFeed />
             <Footer1 />
+            <BottomNavi />
         </div>
     );
 };

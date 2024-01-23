@@ -39,9 +39,11 @@ const MPmyTripItem = styled.li`
         box-sizing: border-box;
         border-radius: 50%;
         margin-right: 3vw;
+        cursor:pointer;
     }
     .info{
         flex-grow: 1;
+        cursor:pointer;
     }
     .info .title{
         font-weight: 600;
