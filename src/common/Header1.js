@@ -6,9 +6,9 @@ const Header1 = ({headTxt, leftChild, rightChild1, rightChild2}) => {
             <div className="head_btn_left">
                 {leftChild}
             </div>
-            <p className="head_text">
+            <div className="head_text">
                 {headTxt}
-            </p>
+            </div>
             <div className='head_btn_right'>
                 <div className="head_btn_right1">
                     {rightChild1}
