@@ -1,5 +1,6 @@
-import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { BrowserRouter, Route, Routes, Outlet } from 'react-router-dom';
 
 import { dummyMyTripList } from './api/data_myTripList.js'
 import { dummyMyTripPlan } from './api/data_myTripPlan.js'
@@ -9,7 +10,15 @@ import { dummyTouristSpots } from './api/data_TouristSpots.js';
 import { dummyTravelog } from './api/data_Travelog.js';
 
 import './App.css';
+import Header1 from "./common/Header1.js";
+import MainTravel from "./mainComp/MainTravel.js";
+import Home from "./mainComp/Home.js";
+import MainFeed from "./mainComp/MainFeed.js";
+import Footer1 from "./common/Footer1.js";
+import HeaderIcon from "./common/HeaderIcon.js";
+import BottomNavi from "./common/BottomNavi.js";
 import Main from './pages/Main.js';
+import Mypage from './pages/Mypage.js'
  
  
 
@@ -32,7 +41,12 @@ function App() {
                                     <BrowserRouter>
                                         <div className="App">
                                             <Routes>
-                                                <Route path='/' element={<Main />} />
+                                                <Route path='/' element={<Main />}>
+                                                    <Route index element={<Home />} />
+                                                    <Route path='/feed' element={<MainFeed />} />
+                                                    <Route path='/travel' element={<MainTravel />} />
+                                                </Route>
+                                                <Route path='/mypage' element={<Mypage />} />
                                             </Routes>
                                         </div>
                                     </BrowserRouter>
