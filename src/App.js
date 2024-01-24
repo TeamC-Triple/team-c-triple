@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { BrowserRouter, Route, Routes, Outlet } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter, Route, Routes, Outlet, useNavigate } from 'react-router-dom';
 
 import { dummyMyTripList } from './api/data_myTripList.js'
 import { dummyMyTripPlan } from './api/data_myTripPlan.js'
@@ -17,6 +17,7 @@ import Footer1 from "./common/Footer1.js";
 import HeaderIcon from "./common/HeaderIcon.js";
 import BottomNavi from "./common/BottomNavi.js";
 import MainSearch from './pages/MainSearch.js';
+import Mypage from './pages/Mypage.js';
 
 export const MTLDataContext = React.createContext();
 export const RecoCourseDataContext = React.createContext();
@@ -27,12 +28,14 @@ export const MyTripListDataContext = React.createContext();
 
 
 const Main = () => {
+    const navigate = useNavigate();
     return (
         <div id='Main'>
             <Header1
                 headTxt={'김이박님'}
+                onClickHeadTxt={()=>(navigate('/mypage'))}
                 leftChild={
-                    <p>
+                    <p onClick={()=>(navigate('/mypage'))}>
                         <img />
                     </p>
                 }
@@ -71,6 +74,7 @@ function App() {
                                                     <Route path='/travel' element={<MainTravel />} />
                                                 </Route>
                                                 <Route path='/search' element={<MainSearch />} />
+                                                <Route path='/mypage' element={<Mypage />} />
                                             </Routes>
                                         </div>
                                     </BrowserRouter>
