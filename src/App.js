@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { BrowserRouter, Route, Routes, Outlet, useNavigate } from 'react-router-dom';
 
 import { dummyMyTripList } from './api/data_myTripList.js'
@@ -19,6 +19,7 @@ import BottomNavi from "./common/BottomNavi.js";
 import MainSearch from './pages/MainSearch.js';
 import Mypage from './pages/Mypage.js';
 import SideBar from './side/SideBar.js';
+import Date from './plan/Date.js';
 
 export const MTLDataContext = React.createContext();
 export const RecoCourseDataContext = React.createContext();
@@ -96,6 +97,7 @@ const Main = () => {
                 setIsOpen={setIsOpen} 
                 openScroll={openScroll} 
             />
+            <Date />
         </div>
     );
 };
