@@ -22,6 +22,7 @@ import BottomNavi from "./common/BottomNavi.js";
 import MainSearch from './pages/MainSearch.js';
 import Mypage from './pages/Mypage.js';
 import SideBar from './side/SideBar.js';
+import PlanKeyword from './plan/PlanKeyword.js';
 
 export const MTLDataContext = React.createContext();
 export const RecoCourseDataContext = React.createContext();
@@ -123,6 +124,7 @@ function App() {
                                                         <Route path='/feed' element={<MainFeed />} />
                                                         <Route path='/travel' element={<MainTravel />} />
                                                     </Route>
+                                                    <Route path='/plan/keyword' element={<PlanKeyword />} />
                                                 </Routes>
                                             }
                                         </AnimatePresence>
