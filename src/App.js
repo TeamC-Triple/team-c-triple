@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { BrowserRouter, Route, Routes, Outlet, useLocation } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Outlet } from 'react-router-dom';
 
 import { dummyMyTripList } from './api/data_myTripList.js'
 import { dummyMyTripPlan } from './api/data_myTripPlan.js'
@@ -17,7 +17,6 @@ import MainFeed from "./mainComp/MainFeed.js";
 import Footer1 from "./common/Footer1.js";
 import HeaderIcon from "./common/HeaderIcon.js";
 import BottomNavi from "./common/BottomNavi.js";
-import { AnimatePresence } from 'framer-motion';
 
 export const MTLDataContext = React.createContext();
 export const RecoCourseDataContext = React.createContext();
@@ -56,7 +55,6 @@ const Main = () => {
 };
 
 function App() {
-    const location = useLocation();
     return (
         <MyTripListDataContext.Provider value={dummyMyTripList}>    
             <MTLDataContext.Provider value={dummyMyTripPlan}>
@@ -64,17 +62,17 @@ function App() {
                     <RecoCourseDataContext.Provider value={dummyRecoCourse}>
                         <SpotsDataContext.Provider value={dummyTouristSpots}>
                                 <TravelogContext.Provider value={dummyTravelog} >
-                                    <div className="App">
-                                        <AnimatePresence mode='wait'>
-                                            <Routes location={location} key={location.pathname}>
+                                    <BrowserRouter>
+                                        <div className="App">
+                                            <Routes>
                                                 <Route path='/' element={<Main />}>
                                                     <Route index element={<Home />} />
                                                     <Route path='/feed' element={<MainFeed />} />
                                                     <Route path='/travel' element={<MainTravel />} />
                                                 </Route>
                                             </Routes>
-                                        </AnimatePresence>
-                                    </div>
+                                        </div>
+                                    </BrowserRouter>
                                 </TravelogContext.Provider> 
                         </SpotsDataContext.Provider>
                     </RecoCourseDataContext.Provider>
