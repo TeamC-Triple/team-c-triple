@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import './SideBar.css';
 import { AccodionItem } from './accordion/AccordionItem';
 
