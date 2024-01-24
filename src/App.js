@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { BrowserRouter, Route, Routes, Outlet, useLocation } from 'react-router-dom';
+import React from 'react';
+import { Route, Routes, Outlet, useLocation } from 'react-router-dom';
+import { isVisible } from '@testing-library/user-event/dist/utils/index.js';
+import AnimatedPages from './AnimatedPages.js';
+import { AnimatePresence } from 'framer-motion';
 
 import { dummyMyTripList } from './api/data_myTripList.js'
 import { dummyMyTripPlan } from './api/data_myTripPlan.js'
@@ -17,8 +19,6 @@ import MainFeed from "./mainComp/MainFeed.js";
 import Footer1 from "./common/Footer1.js";
 import HeaderIcon from "./common/HeaderIcon.js";
 import BottomNavi from "./common/BottomNavi.js";
-import { AnimatePresence } from 'framer-motion';
-import { isVisible } from '@testing-library/user-event/dist/utils/index.js';
 
 export const MTLDataContext = React.createContext();
 export const RecoCourseDataContext = React.createContext();
@@ -49,7 +49,9 @@ const Main = () => {
                     />
                 }
             />
+            <AnimatedPages>
             <Outlet />
+            </AnimatedPages>
             <Footer1 />
             <BottomNavi />
         </div>

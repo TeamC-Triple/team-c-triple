@@ -3,9 +3,9 @@ import { motion } from "framer-motion"
 import { useLocation } from "react-router-dom";
 
 const animatioins = {
-    initial : {opacity: 1 },
-    animate : { opacity: 1 },
-    exit : { opacity: 0.05 }
+    initial : { y: 0 , opacity: 0 },
+    animate : { y: 0 , opacity: 1 },
+    exit : { y: 200 , opacity: 0 }
 }
 const AnimatedPages = ({children})=> {
     const location= useLocation();
