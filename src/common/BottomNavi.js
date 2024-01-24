@@ -1,9 +1,14 @@
 import styled from "styled-components";
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const BottomNavi = ({}) => {
     const [activeTab, setActiveTab] = useState('/');
+
+    const location = useLocation();
+    useEffect(()=>{
+        setActiveTab(`${location.pathname}`)
+    },[activeTab]);
 
     return (
         <BottomNav>
