@@ -3,7 +3,7 @@ import './Header1.css';
 const Header1 = ({headTxt, leftChild, centerChild, rightChild1, rightChild2, onClickHeadTxt}) => {
     return (
         <header className="Header1">
-             <div className="head_btn_left">
+            <div className="head_btn_left">
                 {leftChild}
             </div>
             <p className="head_text" onClick={onClickHeadTxt}>
