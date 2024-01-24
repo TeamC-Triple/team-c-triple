@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import { BrowserRouter, Route, Routes, Outlet, useNavigate } from 'react-router-dom';
 
 import { dummyMyTripList } from './api/data_myTripList.js'
@@ -18,6 +18,7 @@ import HeaderIcon from "./common/HeaderIcon.js";
 import BottomNavi from "./common/BottomNavi.js";
 import MainSearch from './pages/MainSearch.js';
 import Mypage from './pages/Mypage.js';
+import SideBar from './side/SideBar.js';
 
 export const MTLDataContext = React.createContext();
 export const RecoCourseDataContext = React.createContext();
@@ -26,9 +27,38 @@ export const SpotsDataContext = React.createContext();
 export const MagazineDataContext = React.createContext();
 export const MyTripListDataContext = React.createContext();
 
-
 const Main = () => {
+    const [sidebar, setSidebar] = useState('off');
+    const [isOpen, setIsOpen] = useState(false);
+    const { lockScroll, openScroll } = useBodyScrollLock();
     const navigate = useNavigate();
+
+    const sideBtnClick = () => {
+        setSidebar('on')
+        lockScroll();
+        setIsOpen(true);
+    };
+
+    function useBodyScrollLock() {
+        let scrollPosition = 0;
+        const lockScroll = useCallback(() => {
+          scrollPosition = window.pageYOffset;
+          document.body.style.overflow = 'hidden';
+          document.body.style.position = 'fixed';
+          document.body.style.top = `-${scrollPosition}px`;
+          document.body.style.width = '100%';
+        }, []);
+      
+        const openScroll = useCallback(() => {
+          document.body.style.removeProperty('overflow');
+          document.body.style.removeProperty('position');
+          document.body.style.removeProperty('top');
+          document.body.style.removeProperty('width');
+          window.scrollTo(0, scrollPosition);
+        }, []);
+      
+        return { lockScroll, openScroll };
+    }
     return (
         <div id='Main'>
             <Header1
@@ -47,12 +77,25 @@ const Main = () => {
                 rightChild2={
                     <HeaderIcon 
                         text={'사이드메뉴'}   
+                        onClick={sideBtnClick}
                     />
                 }
             />
             <Outlet />
             <Footer1 />
             <BottomNavi />
+            <SideBar 
+                sidebar={sidebar} 
+                setSidebar={setSidebar} 
+                leftChild={
+                    <p onClick={()=>(navigate('/mypage'))}>
+                        <img />
+                    </p>
+                } 
+                headTxt={'김이박님'} 
+                setIsOpen={setIsOpen} 
+                openScroll={openScroll} 
+            />
         </div>
     );
 };
