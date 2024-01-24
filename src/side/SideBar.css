@@ -1,0 +1,166 @@
+@charset "utf-8";
+/* SideBar.css */
+
+.SideBar{
+    position: relative;
+    line-height: 1em;
+}
+
+/* 뒷배경 */
+.sideBG{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 501;
+}
+.sideBG.on{
+    display: block;
+}
+.sideBG.off{
+    display: none;
+}
+
+/* 흰색 바 */
+.SideBar .bar{
+    position: fixed;
+    width: 95%;
+    height: 100%;
+    background-color: #fff;
+    transition: 0.2s;
+    z-index: 502;
+    overflow-y: auto;
+}
+.SideBar .bar::-webkit-scrollbar{
+    display: none;
+}
+.SideBar .bar.on{
+    top: 0;
+    left: 5%;
+}
+.SideBar .bar.off{
+    top: 0;
+    left: 100%;
+}
+
+/* 바 헤더 */
+.SDHeader{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 20px 20px;
+}
+.SDHeader button{
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: center;
+    text-indent: -9999px;
+}
+.SDHeader .close{
+    background-image: url(../../public/assets/icon-cancel.svg);
+}
+.SDHeader .SDH_right .alarm{
+    margin-right: 20px;
+    background-image: url(../../public/assets/icon-bell.svg);
+}
+.SDHeader .SDH_right .option{
+    background-image: url(../../public/assets/icon-setting.svg);
+}
+
+/* 프로필 */
+.profile{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 20px 20px;
+}
+.profile .pName{
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 60px;
+    cursor: pointer;
+}
+.profile .pPhoto{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: aqua;
+    cursor: pointer;
+}
+
+/* 버튼 */
+.btn{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 20px 20px;
+}
+.btn button{
+    width: 50px;
+    padding-top: 33px;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: center 6px;
+    background-size: 24px 24px;
+}
+.btn .myTrip{
+    background-image: url(../../public/assets/icon-mytrip.svg);
+}
+.btn .lastTrip{
+    background-image: url(../../public/assets/icon-lastTrip.svg);
+}
+.btn .myTravels{
+    background-image: url(../../public/assets/icon-myTravelLog.svg);
+}
+
+/* 리스트 */
+.list > div > ul > li{
+    margin: 0 20px 0;
+    line-height: 40px;
+}
+.list > h2::after{
+    display: inline-block;
+    content: "";
+    width: 20px;
+    height: 20px;
+    margin-top: 20px;
+    transform: rotate(-90deg);
+    background-image: url(../../public/assets/icon-arrow-left.svg);
+    background-repeat: no-repeat;
+}
+.list .acoTitle{
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.list .acoTitle .acoArrow{
+    width: 20px;
+    height: 20px;
+    margin: 20px 20px 0 0;
+    background-image: url(../../public/assets/icon-arrow-left.svg);
+}
+.acoArrow.off{
+    transform: rotate(-90deg);
+}
+.acoArrow.on{
+    transform: rotate(90deg);
+}
+
+/* 서비스 */
+.service{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px 0;
+    cursor: pointer;
+}
+.service p{
+    font-size: 12px;
+    font-weight: 500;
+    color: #121212;
+}
+.service .line{
+    color: #D9D9D9;
+}
