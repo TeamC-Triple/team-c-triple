@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { BrowserRouter, Route, Routes, Outlet, useNavigate } from 'react-router-dom';
 
 import { dummyMyTripList } from './api/data_myTripList.js'
