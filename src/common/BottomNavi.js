@@ -6,6 +6,7 @@ const BottomNavi = ({}) => {
     const [activeTab, setActiveTab] = useState('/');
 
     const location = useLocation();
+    
     useEffect(()=>{
         setActiveTab(`${location.pathname}`)
     },[activeTab]);
