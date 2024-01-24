@@ -47,7 +47,7 @@ const Div = styled.div`
     overflow: hidden;
     transition: height 0.2s ease;
     border-bottom: 1px solid #E8E8E8;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 500;
     line-height: 59px;
     text-align: left;
@@ -59,4 +59,5 @@ const H2 = styled.h2`
     background-color: #fff;
     line-height: 60px;
     cursor: pointer;
+    font-size: 16px;
 `
