@@ -90,13 +90,14 @@
     cursor: pointer;
 }
 
+/* 메인페이지 버튼도 같이 마진 생기길래 .SideBar도 넣었어요~  */
 /* 버튼 */
-.btn{
+.SideBar .btn{
     display: flex;
     justify-content: space-evenly;
     margin: 0 20px 20px;
 }
-.btn button{
+.SideBar .btn button{
     width: 60px;
     padding-top: 33px;
     font-size: 13px;
@@ -106,13 +107,13 @@
     background-position: center 6px;
     background-size: 24px 24px;
 }
-.btn .myTrip{
+.SideBar .btn .myTrip{
     background-image: url(../../public/assets/icon-mytrip.svg);
 }
-.btn .lastTrip{
+.SideBar .btn .lastTrip{
     background-image: url(../../public/assets/icon-lastTrip.svg);
 }
-.btn .myTravels{
+.SideBar .btn .myTravels{
     background-image: url(../../public/assets/icon-myTravelLog.svg);
 }
 
