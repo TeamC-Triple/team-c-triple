@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { MTLDataContext } from "../App";
+import { PlanDataContext } from "../App";
 
 import './MTSection2.css';
 import MTS2Item from "../home_subcomp/MTS2Item";
@@ -7,7 +7,7 @@ import Button from "../common/Button";
 import { useNavigate } from "react-router-dom";
 
 const MTSection2 = ({type, text, onClick}) => {
-    const MTLItem = useContext(MTLDataContext);
+    const MTLItem = useContext(PlanDataContext);
 
     const [data, setData] = useState([]);
     const navigate = useNavigate();
