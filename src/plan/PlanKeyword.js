@@ -14,12 +14,9 @@ const PlanKeyword = () => {
     const navigate = useNavigate();
 
     const [isClick, setIsClick] = useState(false);
-    const [isChoose, setIsChoose] = useState('');
 
-    const handleClick = (it, idx) => {
-        if(it.idx === isChoose){
-            
-        }
+    const handleClick = () => {
+        setIsClick(!isClick)
     };
 
     return(
@@ -36,14 +33,14 @@ const PlanKeyword = () => {
                 <SubWrap>
                     <SubTitle>인원수</SubTitle>
                     <KeywordBtn>
-                        {withWho.map((it, idx)=>(
+                        {withWho.map((it)=>(
                             <Button 
-                                key={idx}
+                                key={it}
                                 text={it}
-                                type={isChoose[idx] ? 'active' : 'deActive'}
-                                onClick={() => this.handleClick(it)}
+                                type={isClick ? 'active' : 'deActive'}
+                                onClick={()=>{handleClick(it)}} 
                             />
-                        ))}
+                        ))} 
                     </KeywordBtn>
                 </SubWrap>
                 <SubWrap>
