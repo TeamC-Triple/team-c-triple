@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect, useRef } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { MagazineDataContext } from "../App";
@@ -35,7 +35,11 @@ const MainSearch = () => {
         setSearchResult([newSearchResult, ...searchResult]);
     }
     const onClickSearchInput = () => {
+        if (searchInput.length <= 0) {
+            return;
+        }
         onCreateSearchResult(searchInput);
+        setSearchInput('');
     };
     const onDeleteSearchResult = (targetId) => {
         setSearchResult(
@@ -150,7 +154,7 @@ const Mainsearch = styled.div`
         justify-content: space-between;
         padding: 0 20px;
         input{
-            margin-top: 5px;
+            margin-top: 3px;
             width: calc(100% - 26px);
             height: 50px;
             border: 0;
