@@ -3,7 +3,6 @@ import React, { useState, useCallback } from 'react';
 import { Route, Routes, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { isVisible } from '@testing-library/user-event/dist/utils/index.js';
 import { AnimatePresence } from 'framer-motion';
-import { react } from '@babel/types';
 
 // 더미데이터 임포트
 
@@ -31,7 +30,6 @@ import Mypage from './pages/Mypage.js';
 import SideBar from './side/SideBar.js';
 
 import Plan from './pages/Plan.js';
-import userEvent from '@testing-library/user-event';
 import { useReducer } from 'react';
 import { useRef } from 'react';
 
@@ -162,6 +160,7 @@ const Main = () => {
         </div>
     );
 };
+
 
 function App() {
     // plan(여행일정짜기) 파트 관리할 reducer 선언.
