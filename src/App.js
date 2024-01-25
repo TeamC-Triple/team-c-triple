@@ -26,6 +26,7 @@ import SideBar from './side/SideBar.js';
 import PlanCity from './plan/PlanCity.js';
 import { react } from '@babel/types';
 
+import PlanKeyword from './plan/PlanKeyword.js';
 
 export const MTLDataContext = React.createContext();
 export const RecoCourseDataContext = React.createContext();
@@ -133,6 +134,7 @@ function App() {
                                                     <Route path='/search' element={<MainSearch />} />
                                                     <Route path='/mypage' element={<Mypage />} />
                                                     <Route path='/plan/city' element={<PlanCity />} />
+                                                    <Route path='/plan/keyword' element={<PlanKeyword />} />
                                                 </Routes>
                                             }
                                         </AnimatePresence>
