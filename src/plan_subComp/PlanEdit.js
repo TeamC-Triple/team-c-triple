@@ -8,11 +8,12 @@ import { PlanDispatchContext } from "../App";
 import PlanCity from "../planComp/PlanCity.js";
 import PlanKeyword from "../planComp/PlanKeyword.js";
 import Plan from "../pages/Plan.js";
-import { Link } from "react-router-dom";
 
-const PlanEdit = ({isEdit, planTotalData})=>{
+const PlanEdit = ({isEdit, originData})=>{
     
-    const [select, setSelect] = useState('/');
+    const navigate = useNavigate();
+    const location = useLocation();
+    const [select, setSelect] = useState('');
 
     const { onCreatePlan } = useContext(PlanDispatchContext);
 
@@ -21,22 +22,19 @@ const PlanEdit = ({isEdit, planTotalData})=>{
     const [lastDate, setLastDate] = useState(getStringDate(new Date()));
     const [keyword, setKeyword] = useState('');
 
+    const clickWhere= ()=> {
+        setSelect('ChooseCity');
+    }
 
     return(
         <StartWrap>
             <Traveler>0</Traveler>
             <BoxWrap>
-                <Link 
-                    to='/plan/city'
-                >
-                   <Where>어디로 여행을 가실건가요?</Where>
-                </Link>
+                <Where
+                    onClick={clickWhere}
+                >어디로 여행을 가실건가요?</Where>
             </BoxWrap>
-            <Link 
-                    to='/plan/keyword'
-                >
-                    <When>날짜 선택</When> 
-                </Link> 
+            <When >날짜 선택</When> 
             <TripKeyword>키워드 선택</TripKeyword>
             <Cost>예상 여행 경비(선택하기)</Cost>
         </StartWrap>

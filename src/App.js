@@ -208,9 +208,7 @@ function App() {
                                                         </Route>
                                                         <Route path='/search' element={<MainSearch />} />
                                                         <Route path='/mypage' element={<Mypage />} />
-                                                        <Route path='/plan' element={<NewPlan />}>
-                                                            <Route path='/plan/city' element={<Plan />} />
-                                                            <Route path='/plan/keyword' element={<PlanKeyword />} />
+                                                        <Route path='/plan' element={<Plan />}>
                                                         </Route>
                                                     </Routes>
                                                 }
