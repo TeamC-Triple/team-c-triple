@@ -33,6 +33,7 @@ import SideBar from './side/SideBar.js';
 import Plan from './pages/Plan.js';
 import userEvent from '@testing-library/user-event';
 import { useReducer } from 'react';
+import { useRef } from 'react';
 
 
 /* 
@@ -55,12 +56,24 @@ import { useReducer } from 'react';
 let newStatePlan = dummyMyTripPlan;
 const reducerPlan = (state, action) => {
     switch(action.type){
-
+        case 'INIT' : {
+            return action.data;
+        }
+        case 'CREATE' : {
+            const newPlan = {
+                ...action.data
+            }
+            newStatePlan = [newPlan, ...newStatePlan];
+            break;
+        }
+        default :
+            return state;
     }
+    return newStatePlan;
 };
 
 // 데이터 전역 공급망 (더미데이터)
-export const MTLDataContext = React.createContext();
+// export const MTLDataContext = React.createContext();
 export const RecoCourseDataContext = React.createContext();
 export const TravelogContext = React.createContext();
 export const SpotsDataContext = React.createContext();
@@ -69,6 +82,8 @@ export const MyTripListDataContext = React.createContext();
 export const CityDataContext = React.createContext();
 
 // 데이터 전역 공급망 (reducer함수)
+export const PlanDataContext = React.createContext();
+export const PlanDispatchContext = React.createContext();
 
 
 // 메인화면쪽 layout 컴포넌트 선언.
@@ -151,39 +166,58 @@ const Main = () => {
 function App() {
     // plan(여행일정짜기) 파트 관리할 reducer 선언.
     const [dataPlan, dispatchPlan] = useReducer(reducerPlan, dummyMyTripPlan);
+    const dataPlanId = useRef(5);
+    
+    // plan CREATE
+    const onCreatePlan = (city, firstDate, lastDate, photo, keyword) => {
+        dispatchPlan({
+            type : 'CREATE',
+            data : {
+                id : dataPlanId.current,
+                city,
+                firstDate : new Date(firstDate).getTime(),
+                lastDate : new Date(lastDate).getTime(),
+                photo,
+                keyword
+            }
+        });
+        dataPlanId += 1;
+    };
     
     const location = useLocation();
     return (
-        <CityDataContext.Provider value={dummyCity}>
-            <MyTripListDataContext.Provider value={dummyMyTripList}>    
-                <MTLDataContext.Provider value={dummyMyTripPlan}>
-                    <MagazineDataContext.Provider value={dummyMagazine}>
-                        <RecoCourseDataContext.Provider value={dummyRecoCourse}>
-                            <SpotsDataContext.Provider value={dummyTouristSpots}>
-                                <TravelogContext.Provider value={dummyTravelog} >
-                                    <div className="App">
-                                        <AnimatePresence mode='sync'>
-                                            {isVisible &&
-                                                <Routes location={location} key={location.pathname}>
-                                                    <Route path='/' element={<Main />}>
-                                                        <Route index element={<Home />} />
-                                                        <Route path='/feed' element={<MainFeed />} />
-                                                        <Route path='/travel' element={<MainTravel />} />
-                                                    </Route>
-                                                    <Route path='/search' element={<MainSearch />} />
-                                                    <Route path='/mypage' element={<Mypage />} />
-                                                    <Route path='/plan' element={<Plan />} />
-                                                </Routes>
-                                            }
-                                        </AnimatePresence>
-                                    </div>
-                                </TravelogContext.Provider> 
-                            </SpotsDataContext.Provider>
-                        </RecoCourseDataContext.Provider>
-                    </MagazineDataContext.Provider>
-                </MTLDataContext.Provider>
-            </MyTripListDataContext.Provider>
-        </CityDataContext.Provider>
+        <PlanDispatchContext.Provider value={{onCreatePlan}}>
+            <CityDataContext.Provider value={dummyCity}>
+                <MyTripListDataContext.Provider value={dummyMyTripList}>    
+                    <PlanDataContext.Provider value={dataPlan}>
+                        <MagazineDataContext.Provider value={dummyMagazine}>
+                            <RecoCourseDataContext.Provider value={dummyRecoCourse}>
+                                <SpotsDataContext.Provider value={dummyTouristSpots}>
+                                    <TravelogContext.Provider value={dummyTravelog} >
+                                        <div className="App">
+                                            <AnimatePresence mode='sync'>
+                                                {isVisible &&
+                                                    <Routes location={location} key={location.pathname}>
+                                                        <Route path='/' element={<Main />}>
+                                                            <Route index element={<Home />} />
+                                                            <Route path='/feed' element={<MainFeed />} />
+                                                            <Route path='/travel' element={<MainTravel />} />
+                                                        </Route>
+                                                        <Route path='/search' element={<MainSearch />} />
+                                                        <Route path='/mypage' element={<Mypage />} />
+                                                        <Route path='/plan' element={<Plan />} />
+                                                    </Routes>
+                                                }
+                                            </AnimatePresence>
+                                        </div>
+                                    </TravelogContext.Provider> 
+                                </SpotsDataContext.Provider>
+                            </RecoCourseDataContext.Provider>
+                        </MagazineDataContext.Provider>
+                    </PlanDataContext.Provider>
+                </MyTripListDataContext.Provider>
+            </CityDataContext.Provider>
+        </PlanDispatchContext.Provider>
   );
 }
 

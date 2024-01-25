@@ -7,6 +7,7 @@ export const dummyMyTripPlan = [
         firstDate: new Date(2024, 3, 1).getTime(),
         lastDate: new Date(2024, 3, 2).getTime(),
         photo:[],
+        keyword:[]
     },
     {
         id: 1,
@@ -14,6 +15,7 @@ export const dummyMyTripPlan = [
         firstDate: new Date(2024, 3, 6).getTime(),
         lastDate: new Date(2024, 3, 7).getTime(),
         photo:[],
+        keyword:[]
     },
     {
         id: 2,
@@ -21,6 +23,7 @@ export const dummyMyTripPlan = [
         firstDate: new Date(2024, 3, 12).getTime(),
         lastDate: new Date(2024, 3, 15).getTime(),
         photo:[],
+        keyword:[]
     },
     {
         id: 3,
@@ -28,6 +31,7 @@ export const dummyMyTripPlan = [
         firstDate: new Date(2024, 3, 17).getTime(),
         lastDate: new Date(2024, 3, 23).getTime(),
         photo:[],
+        keyword:[]
     },
     {
         id: 4,
@@ -35,5 +39,6 @@ export const dummyMyTripPlan = [
         firstDate: new Date(2024, 4, 11).getTime(),
         lastDate: new Date(2024, 4, 13).getTime(),
         photo:[],
+        keyword:[]
     }
 ]

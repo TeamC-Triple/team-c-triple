@@ -46,7 +46,7 @@ export default PlanCity;
 const Plancity = styled.div``;
 const CityList = styled.div`
     padding-top: 110px;
-    padding-bottom: 80px;
+    padding-bottom: 90px;
     .cl_top{
         position: fixed;
         top: 56px;
@@ -64,7 +64,7 @@ const CityList = styled.div`
         bottom: 0;
         left: 0;
         right: 0;
-        padding: 10px 20px;
+        padding: 20px;
         background-color: #fff;
         z-index: 100;
 
