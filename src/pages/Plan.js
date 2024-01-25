@@ -37,7 +37,7 @@ const Plan = () => {
     const navigate = useNavigate();
 
     // [planCity] 선택용 상태변수
-    const [choiceCity, setChoiceCity] = useState([]);
+    const [choiceCity, setChoiceCity] = useState('');
     
 
     return (
