@@ -9,6 +9,7 @@ import { dummyMagazine } from './api/dummyMegazine.js';
 import { dummyRecoCourse } from './api/data_recommendCourse.js';
 import { dummyTouristSpots } from './api/data_TouristSpots.js';
 import { dummyTravelog } from './api/data_Travelog.js';
+import { dummyCity } from './api/data_city.js';
 import AnimatedPages from './AnimatedPages.js';
 
 import './App.css';
@@ -22,6 +23,9 @@ import BottomNavi from "./common/BottomNavi.js";
 import MainSearch from './pages/MainSearch.js';
 import Mypage from './pages/Mypage.js';
 import SideBar from './side/SideBar.js';
+import PlanCity from './plan/PlanCity.js';
+import { react } from '@babel/types';
+
 import PlanKeyword from './plan/PlanKeyword.js';
 
 export const MTLDataContext = React.createContext();
@@ -30,6 +34,7 @@ export const TravelogContext = React.createContext();
 export const SpotsDataContext = React.createContext();
 export const MagazineDataContext = React.createContext();
 export const MyTripListDataContext = React.createContext();
+export const CityDataContext = React.createContext();
 
 const Main = () => {
     const [sidebar, setSidebar] = useState('off');
@@ -75,7 +80,8 @@ const Main = () => {
                 }
                 rightChild1={
                     <HeaderIcon 
-                        text={'일정짜기'} 
+                        text={'일정짜기'}
+                        onClick={() => (navigate('/plan/city'))} 
                     />
                 }
                 rightChild2={
@@ -106,14 +112,15 @@ const Main = () => {
     );
 };
 
-function App() {
+function App() { 
     const location = useLocation();
     return (
-        <MyTripListDataContext.Provider value={dummyMyTripList}>    
-            <MTLDataContext.Provider value={dummyMyTripPlan}>
-                <MagazineDataContext.Provider value={dummyMagazine}>
-                    <RecoCourseDataContext.Provider value={dummyRecoCourse}>
-                        <SpotsDataContext.Provider value={dummyTouristSpots}>
+        <CityDataContext.Provider value={dummyCity}>
+            <MyTripListDataContext.Provider value={dummyMyTripList}>    
+                <MTLDataContext.Provider value={dummyMyTripPlan}>
+                    <MagazineDataContext.Provider value={dummyMagazine}>
+                        <RecoCourseDataContext.Provider value={dummyRecoCourse}>
+                            <SpotsDataContext.Provider value={dummyTouristSpots}>
                                 <TravelogContext.Provider value={dummyTravelog} >
                                     <div className="App">
                                         <AnimatePresence mode='sync'>
@@ -124,17 +131,21 @@ function App() {
                                                         <Route path='/feed' element={<MainFeed />} />
                                                         <Route path='/travel' element={<MainTravel />} />
                                                     </Route>
+                                                    <Route path='/search' element={<MainSearch />} />
+                                                    <Route path='/mypage' element={<Mypage />} />
+                                                    <Route path='/plan/city' element={<PlanCity />} />
                                                     <Route path='/plan/keyword' element={<PlanKeyword />} />
                                                 </Routes>
                                             }
                                         </AnimatePresence>
                                     </div>
                                 </TravelogContext.Provider> 
-                        </SpotsDataContext.Provider>
-                    </RecoCourseDataContext.Provider>
-                </MagazineDataContext.Provider>
-            </MTLDataContext.Provider>
-        </MyTripListDataContext.Provider>
+                            </SpotsDataContext.Provider>
+                        </RecoCourseDataContext.Provider>
+                    </MagazineDataContext.Provider>
+                </MTLDataContext.Provider>
+            </MyTripListDataContext.Provider>
+        </CityDataContext.Provider>
   );
 }
 

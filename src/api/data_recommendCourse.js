@@ -65,7 +65,7 @@ export const dummyRecoCourse = [
     {
         id : 9,
         title : '서쪽부터 동쪽까지, 2박 3일 추천 코스',
-        city : '제주도',
+        city : '제주',
         period : '2박 3일',
         photo : './assets/recommendCourse_9.jpg'
     },

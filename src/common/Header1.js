@@ -6,9 +6,9 @@ const Header1 = ({headTxt, leftChild, centerChild, rightChild1, rightChild2, onC
             <div className="head_btn_left">
                 {leftChild}
             </div>
-            <p className="head_text" onClick={onClickHeadTxt}>
+            <div className="head_text" onClick={onClickHeadTxt}>
                 {headTxt}
-            </p>
+            </div>
             <div className='centerChild'>
                 {centerChild}
             </div>
