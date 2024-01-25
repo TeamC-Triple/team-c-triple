@@ -3,12 +3,11 @@ import styled from "styled-components";
 
 import CityLi from "../plan_subComp/CityLi.js";
 import Button from "../common/Button.js";
-
 import { CityDataContext } from "../App.js";
 
-const PlanCity = ({search}) => {
-    const cityData = useContext(CityDataContext);
 
+const PlanCity = ({ search }) => {
+    const cityData = useContext(CityDataContext);
     return (
         <Plancity>
             <CityList>
