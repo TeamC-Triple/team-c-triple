@@ -1,36 +1,53 @@
-import { useContext, useEffect, useRef, useState } from "react";
+/*
+    ※ 필독
+    - Plan.js는 화면에 노출되는 부분입니다.
+    - 데이터 관리를 위해 부득이하게 개별 컴포넌트가 router를 통해 이동하는 방식이 아닌,
+      Plan.js 안에서 각각의 단계들이 보여지고 <-> 보여지지 않는 방식으로 화면전환이 됩니다.
+    - 작업중 화면 주소 : http://localhost:3000/plan
+    - 본인의 작업 중 다른이의 작업이 겹쳐 불편할때는 주석처리를 해주세요.
+    - 추후 브랜치 병합시에는 꼭 주석 해제 해주셔야 합니다.
+    - 주석 해제 후에는 먼저 작업한 다른이들의 작업과 충돌이 되지 않는지 꼭 확인해주셔야 합니다.
+    - 다른 팀원들에게 설명이 필요한 작업부분은 꼭 주석으로 설명을 붙여주시기 바랍니다.
+    - 코드 정리시에도 꼭 주석을 붙여 다른팀원들이 작업시 햇갈리지 않게끔 부탁드립니다!
+*/
+
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
+
+import Header1 from "../common/Header1";
+import HeaderIcon from "../common/HeaderIcon";
+import PlanCity from "../planComp/PlanCity";
+import PlanKeyword from "../planComp/PlanKeyword";
 import styled from "styled-components";
 
-import Header1 from "../common/Header1.js"
-import HeaderIcon from "../common/HeaderIcon.js";
-import CityLi from "../planComp/CityLi.js";
-import Button from "../common/Button.js";
+// [planKeyword]의 더미데이터
+const withWho = [ '#친구와', '#연인과', '#아이와', '#부모님과' ];
+const travelStyle = [ '#관광지', '#SNS핫플', '#힐링', '#맛집' ];
 
-import { CityDataContext } from "../App.js";
-
-const PlanCity = () => {
+const Plan = () => {
+    // 헤더 검색창 부분 상태변수, 관련함수 시작
     const [search, setSearch] = useState('');
-    const [choiceCity, setChoiceCity] = useState([]);
     const searchRef = useRef();
-
-    const navigate = useNavigate();
-    const cityData = useContext(CityDataContext);
-
     const changeInput = (e) => {
         setSearch(e.target.value);
     };
-    const onClickSearch = () => {
+    const onClickSearch = () => {};
+    // 헤더 검색창 부분 끝
 
-    };
+    const navigate = useNavigate();
+
+    // [planCity] 선택용 상태변수
+    const [choiceCity, setChoiceCity] = useState([]);
+    
 
     return (
-        <Plancity>
+        <PlanPage>
             <Header1 
                 leftChild={<HeaderIcon 
                     text={'뒤로가기'}
                     onClick={() => {navigate(-1)}}
                 />}
+                // 헤더부분 추후에 어떤 페이지냐에 따라서 headTxt의 input태그 부분 보이고 <-> 보여지지 않고 처리할 예정. 지금은 그냥 두세요!
                 headTxt={
                     <>
                         <input 
@@ -58,39 +75,15 @@ const PlanCity = () => {
                     onClick={onClickSearch}
                 />}
             />
-            <CityList>
-                <div className="cl_top">
-                    <h4>지역 선택</h4>
-                </div>
-                <div className="cl_list">
-                    <ul>
-                        {
-                            cityData.filter((it) => {
-                                if (search === "") {
-                                    return it;
-                                } else if (it.city.toLowerCase().includes(search.toLowerCase()) || it.place.toLowerCase().includes(search.toLowerCase())) {
-                                    return it;
-                                }
-                            }).map((item) => (
-                                <CityLi key={item.id} {...item} />
-                            ))
-                        }
-                    </ul>
-                </div>
-                <div className="cl_btn">
-                    <Button 
-                        type={'deActive'}
-                        text={'최소 1개 도시 선택'}
-                    />
-                </div>
-            </CityList>
-        </Plancity>
+            <PlanCity search={search} />
+            {/* <PlanKeyword withWho={withWho} travelStyle={travelStyle} /> */}
+        </PlanPage>
     );
 };
 
-export default PlanCity;
+export default Plan;
 
-const Plancity = styled.div`
+const PlanPage = styled.div`
     .head_btn_left, .head_btn_right2{
         width: 24px;
         height: 24px;
@@ -150,35 +143,6 @@ const Plancity = styled.div`
         }
         .btnDel.show{
             display: block;
-        }
-    }
-`;
-const CityList = styled.div`
-    padding-top: 110px;
-    padding-bottom: 80px;
-    .cl_top{
-        position: fixed;
-        top: 56px;
-        left: 0;
-        right: 0;
-        z-index: 110;
-        padding: 3px 20px 0;
-        background-color: #eee;
-        h4{
-            line-height: 37px;
-        }
-    }
-    .cl_btn{
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 10px 20px;
-        background-color: #fff;
-        z-index: 100;
-
-        .btn{
-            width: 100%;
         }
     }
 `;
