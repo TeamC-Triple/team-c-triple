@@ -1,17 +1,11 @@
+import { useState } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-
 
 import Button from "../common/Button";
-import Header1 from "../common/Header1";
-import { useState } from "react";
-
-const withWho = [ '#친구와', '#연인과', '#아이와', '#부모님과' ];
-const travelStyle = [ '#관광지', '#SNS핫플', '#힐링', '#맛집' ];
 
 
-const PlanKeyword = () => {
-    const navigate = useNavigate();
+
+const PlanKeyword = ({withWho, travelStyle}) => {
 
     const [isClick, setIsClick] = useState(false);
 
@@ -21,13 +15,6 @@ const PlanKeyword = () => {
 
     return(
         <MainWrap>
-            <Header1
-                leftChild={
-                    <p onClick={()=>(navigate(-1))}>
-                        뒤로가기
-                    </p>
-                }
-            />
             <ContentsWrap>
                 <MainTitle>여행 키워드 선택</MainTitle>
                 <SubWrap>

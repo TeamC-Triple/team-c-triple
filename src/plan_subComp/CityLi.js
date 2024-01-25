@@ -5,7 +5,7 @@ const CityLi = ({id, val, city, place}) => {
     return (
         <CityListLi>
             <div className="li_left">
-                <p className="city_photo"><img src={`/assets/city_${val}.jpg`} /></p>
+                <p className="city_photo"><img src={`/assets/city_${val}.jpg`} alt={val} /></p>
                 <div className="city_title">
                     <p className="city_name">{city}</p>
                     <p className="city_place">{place}</p>
