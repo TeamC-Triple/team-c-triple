@@ -11,21 +11,6 @@ const Popup = ({title, list1, list2, list3, list4, popUp, setPopUp, setIsPopupOp
         openScroll();
     };
 
-
-function useFadeIn (duration = 0, delay = 0) {
-    if (typeof duration !== "number" || typeof duration !== "number") {
-        return;
-        const element = useRef();
-    }
-    useEffect(() => {
-        if (element.current) {
-            const { current } = element;
-            console.log(current);
-        }
-    }, []);
-    return { ref: element };
-};
-
     return (
         <PopUpModal>
             <div className={popupBg}></div>
