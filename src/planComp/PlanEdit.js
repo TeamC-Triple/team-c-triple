@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
-import { getStringDate } from "../utill/dateString.js";
 import styled from "styled-components";
 
 
@@ -8,6 +7,7 @@ import { PlanDispatchContext } from "../App.js";
 import PlanCity from "./PlanCity.js";
 import PlanKeyword from "./PlanKeyword.js";
 import Plan from "../pages/Plan.js";
+import PlanDate from "./PlanDate.js";
 
 const PlanEdit = ({
     handleCity,
@@ -22,7 +22,6 @@ const PlanEdit = ({
         handleCity();
     };
 
-
     return(
         <StartWrap>
             <Traveler>0</Traveler>
@@ -36,7 +35,8 @@ const PlanEdit = ({
                     }
                 </Where>
             </BoxWrap>
-            <When >날짜 선택</When> 
+            <When >여행 날짜 선택</When>
+            <PlanDate />
             <TripKeyword>키워드 선택</TripKeyword>
             <Cost>예상 여행 경비(선택하기)</Cost>
         </StartWrap>
