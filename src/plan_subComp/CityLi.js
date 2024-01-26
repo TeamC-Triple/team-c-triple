@@ -2,11 +2,8 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Button from "../common/Button";
 
-const CityLi = ({id, val, city, place, setCheckCity, checkCity}) => {
+const CityLi = ({id, val, city, place, setCheckCity}) => {
     const [check, setCheck] = useState(false);
-
-    useEffect(() => {
-    }, []); 
 
     const handleActiveCheck = () => {
         setCheck(true);

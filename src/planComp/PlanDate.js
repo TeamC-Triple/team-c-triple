@@ -24,8 +24,8 @@ const PlanDate = () => {
         return result;
     }
 
-    // DAY페이지 만들기전까지 확인용 페이지 만들고 지우기
-    console.log(getDateRange(startDate, lastDate));
+    // // DAY페이지 만들기전까지 확인용 페이지 만들고 지우기
+    // console.log(getDateRange(startDate, lastDate));
 
     return(
         <Div>

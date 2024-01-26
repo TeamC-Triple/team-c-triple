@@ -18,9 +18,14 @@ const PlanCity = ({isCity, setChosedCity, handleCity}) => {
     const onClickSearch = () => {};
     // 헤더 검색창 부분 끝
     const cityData = useContext(CityDataContext);
+    const [cityList, setCityList] = useState([]);
     const [checkCity, setCheckCity] = useState('');
 
-    useEffect(() => {}, [])
+    useEffect(() => {
+        if(cityData){
+            setCityList(cityData);
+        };
+    }, [isCity]);
 
     const closeCity = () => {
         handleCity();
@@ -74,14 +79,14 @@ const PlanCity = ({isCity, setChosedCity, handleCity}) => {
                 <div className="cl_list">
                     <ul>
                         {
-                            cityData.filter((it) => {
+                            cityList.filter((it) => {
                                 if (search === "") {
                                     return it;
                                 } else if (it.city.toLowerCase().includes(search.toLowerCase()) || it.place.toLowerCase().includes(search.toLowerCase())) {
                                     return it;
                                 }
                             }).map((item) => (
-                                <CityLi key={item.id} {...item} setCheckCity={setCheckCity} checkCity={checkCity} />
+                                <CityLi key={item.id} {...item} setCheckCity={setCheckCity} />
                             ))
                         }
                     </ul>
@@ -90,7 +95,7 @@ const PlanCity = ({isCity, setChosedCity, handleCity}) => {
             <CityBtn>
                 {
                     checkCity === ''
-                    ? <Button type={'deActive'} text={'최소 1개 도시 선택'} onClick={() => {alert('최소 1개 도시를 선택해 주세요.')}} />
+                    ? <Button type={'deActive'} text={'도시를 선택해주세요.'} onClick={() => {alert('도시를 선택하지 않았습니다.')}} />
                     : <Button type={'active'} text={`${checkCity} 선택 완료`} onClick={clickChoiceCity}  />
                 }
                 
