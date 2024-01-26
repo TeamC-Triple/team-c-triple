@@ -36,7 +36,7 @@ const Plan = () => {
         <PlanDataControll>
             <PlanEdit />
             <PlanKeyword withWho={withWho} travelStyle={travelStyle} />
-            <PlanCity setKeywordValue={setKeywordValue(keywordValue)} isKeyword={isKeyword} />
+            <PlanCity isKeyword={isKeyword} />
         </PlanDataControll>
     );
 };
