@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 import Button from "../common/Button";
@@ -7,40 +7,58 @@ import Button from "../common/Button";
 
 const PlanKeyword = ({withWho, travelStyle}) => {
 
-    const [isClick, setIsClick] = useState(false);
+    const [whoActive, setWhoActive] = useState('');
+    const [styleActive, setStyleActive] = useState('');
+    const [keywordValue, setKeywordValue] = useState([]);
 
-    const handleClick = () => {
-        setIsClick(!isClick)
-    };
+    
+    const whoToggleActive = (e) => {
+        setWhoActive(() => {
+          return e.target.id;
+        });
+        let thisValue = e.target.value;
+        setKeywordValue([thisValue]);
+      };
 
+    const styleToggleActive = (e) => {
+        setStyleActive(() => {
+          return e.target.id;
+        });
+        let thisValue = e.target.value;
+        setKeywordValue([thisValue]);
+      };
+
+      console.log(keywordValue);
     return(
         <MainWrap>
             <ContentsWrap>
                 <MainTitle>여행 키워드 선택</MainTitle>
                 <SubWrap>
-                    <SubTitle>인원수</SubTitle>
+                    <SubTitle>누구와?</SubTitle>
                     <KeywordBtn>
-                        {withWho.map((it)=>(
-                            <Button 
-                                key={it}
-                                text={it}
-                                type={isClick ? 'active' : 'deActive'}
-                                onClick={()=>{handleClick(it)}} 
-                            />
-                        ))} 
+                        {withWho.map((it, idx)=> (
+                                    <button
+                                        key={it}
+                                        id={it + idx}
+                                        value={it}
+                                        className={"btn" + (it + idx == whoActive ? " active" : "")}
+                                        onClick={whoToggleActive}
+                                    >{it}</button>
+                        ))}
                     </KeywordBtn>
                 </SubWrap>
                 <SubWrap>
                     <SubTitle>여행 스타일</SubTitle>
                     <KeywordBtn>
-                        {travelStyle.map((it)=>(
-                            <Button 
+                        {travelStyle.map((it, idx)=> (
+                             <button
                                 key={it}
-                                text={it}
-                                type={isClick ? 'active' : 'deActive'}
-                                onClick={()=>{handleClick(it)}} 
-                            />
-                        ))}  
+                                id={it + idx}
+                                value={it}
+                                className={"btn" + (it + idx == styleActive ? " active" : "")}
+                                onClick={styleToggleActive}
+                            >{it}</button>
+                        ))}
                     </KeywordBtn>
                 </SubWrap>
             </ContentsWrap>
@@ -56,6 +74,45 @@ const PlanKeyword = ({withWho, travelStyle}) => {
 } 
 
 export default PlanKeyword;
+
+const KeywordBtn = styled.div`
+    display: flex;
+    .btn {
+        width : 25%;
+        height : 30px;
+        margin-right : 10px;
+        border-radius: 20px;
+        text-align: center;
+        width : 100%;
+        height : 30px;
+        margin-right : 10px;
+        border-radius: 20px;
+        text-align: center;
+        line-height : 30px;
+        background-color: #ccc;
+        color: #fff;
+    
+        &.active {
+            background-color: #368FFF;
+        }
+    }
+`
+
+const Keyword = styled.div`
+`
+// const Keyword = styled.div`
+//     width : 25%;
+//     height : 30px;
+//     margin-right : 10px;
+//     border-radius: 20px;
+//     text-align: center;
+//     line-height : 30px;
+//     background-color: #bbb;
+//     color: #fff;
+// `
+
+
+
 
 const MainWrap = styled.div`
     display: flex;
@@ -95,16 +152,7 @@ const SubWrap = styled.div`
         border-radius: 20px;
     }
 `
-const KeywordBtn = styled.div`
-    display: flex;
-    .Button{
-        width : 25%;
-        margin-right : 10px;
-    }
-    button{
-        width : 100%;
-    }
-`
+
 const BottomBtn = styled.div`
     position: fixed;
     bottom: 16px;
