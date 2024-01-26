@@ -164,6 +164,7 @@ const Main = () => {
     );
 };
 
+
 function App() {
     // plan(여행일정짜기) 파트 관리할 reducer 선언.
     const [dataPlan, dispatchPlan] = useReducer(reducerPlan, dummyMyTripPlan);
