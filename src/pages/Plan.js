@@ -14,13 +14,11 @@
 
 import { useContext, useEffect, useState } from "react";
 import { PlanDataContext, PlanDispatchContext } from "../App";
+import styled from "styled-components";
 
 import PlanCity from "../planComp/PlanCity";
 import PlanKeyword from "../planComp/PlanKeyword";
-import styled from "styled-components";
 import PlanEdit from "../planComp/PlanEdit";
-import { PlanDispatchContext } from "../App";
-
 
 // [planKeyword]의 더미데이터
 const withWho = [ '#친구와', '#연인과', '#아이와', '#부모님과' ];
