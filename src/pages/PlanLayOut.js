@@ -3,16 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import { useBodyScrollLock } from '../utill/useBodyScrollLock.js';
 
-import Header1 from '../common/Header1';
-import HeaderIcon from '../common/HeaderIcon';
-import SideBar from '../side/SideBar';
+import Header1 from '../common/Header1.js';
+import HeaderIcon from '../common/HeaderIcon.js';
+import SideBar from '../side/SideBar.js';
 import BottomNaviSub from '../common/BottomNaviSub.js';
 import AnimatedPages from '../AnimatedPages.js';
 import styled from 'styled-components';
 import Popup from '../planComp/Popup.js';
 import PopupList from '../plan_subComp/PopupList.js';
 
-const PlanPage = () => {
+const PlanLayOut = () => {
     const [sidebar, setSidebar] = useState('off');
     const [popUp, setPopUp] = useState('off');
     const [isOpen, setIsOpen] = useState(false);
@@ -81,7 +81,7 @@ const PlanPage = () => {
     );
 };
 
-export default PlanPage;
+export default PlanLayOut;
 
 const PlanLayout = styled.div`
     .head_btn_left, .head_btn_right1, .head_btn_right2{

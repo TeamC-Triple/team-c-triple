@@ -1,13 +1,9 @@
-
-import { useLocation, useNavigate } from "react-router";
-import Edit from "./Edit";
-import PlanEdit from "../plan_subComp/PlanEdit";
-
+import Plan from "./Plan";
 
 const NewPlan = () => {
     return(
         <div className="NewPlan">
-            <PlanEdit />
+            <Plan />
         </div>
     ); 
 }

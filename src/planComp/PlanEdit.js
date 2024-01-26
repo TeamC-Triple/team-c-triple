@@ -4,9 +4,9 @@ import { getStringDate } from "../utill/dateString.js";
 import styled from "styled-components";
 
 
-import { PlanDispatchContext } from "../App";
-import PlanCity from "../planComp/PlanCity.js";
-import PlanKeyword from "../planComp/PlanKeyword.js";
+import { PlanDispatchContext } from "../App.js";
+import PlanCity from "./PlanCity.js";
+import PlanKeyword from "./PlanKeyword.js";
 import Plan from "../pages/Plan.js";
 
 const PlanEdit = ({isEdit, originData})=>{
@@ -22,16 +22,12 @@ const PlanEdit = ({isEdit, originData})=>{
     const [lastDate, setLastDate] = useState(getStringDate(new Date()));
     const [keyword, setKeyword] = useState('');
 
-    const clickWhere= ()=> {
-        setSelect('ChooseCity');
-    }
-
     return(
         <StartWrap>
             <Traveler>0</Traveler>
             <BoxWrap>
                 <Where
-                    onClick={clickWhere}
+                
                 >어디로 여행을 가실건가요?</Where>
             </BoxWrap>
             <When >날짜 선택</When> 

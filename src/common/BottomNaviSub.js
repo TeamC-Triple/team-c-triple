@@ -19,7 +19,7 @@ const BottomNaviSub = ({centerPage}) => {
             >
                 <div>
                     <BTNVIconOff>
-                        <img src={`./assets/icon-bottom-home-off.svg`} alt={`home-off`} />
+                        <img src={`../assets/icon-bottom-home-off.svg`} alt={`home-off`} />
                         <span>홈</span>
                     </BTNVIconOff>
                 </div>
@@ -31,10 +31,10 @@ const BottomNaviSub = ({centerPage}) => {
                 <div>
                     {activeTab === `/${centerPage}`
                         ? <BTNVIconOn>
-                            <img src={`./assets/icon-bottom-write-on.svg`} alt={`plan-on`} />
+                            <img src={`../assets/icon-bottom-write-on.svg`} alt={`plan-on`} />
                         </BTNVIconOn>
                         : <BTNVIconOff>
-                            <img src={`./assets/icon-bottom-write-off.svg`} alt={`plan-off`} />
+                            <img src={`../assets/icon-bottom-write-off.svg`} alt={`plan-off`} />
                             <span>여행일정</span>
                         </BTNVIconOff>
                     }
@@ -47,10 +47,10 @@ const BottomNaviSub = ({centerPage}) => {
                 <div>
                     {activeTab === '/mypage'
                         ? <BTNVIconOn>
-                            <img src={`./assets/icon-bottom-mypage-on.svg`} alt={`mypage-on`} />
+                            <img src={`../assets/icon-bottom-mypage-on.svg`} alt={`mypage-on`} />
                         </BTNVIconOn>
                         : <BTNVIconOff>
-                            <img src={`./assets/icon-bottom-mypage-off.svg`} alt={`mypage-off`} />
+                            <img src={`../assets/icon-bottom-mypage-off.svg`} alt={`mypage-off`} />
                             <span>마이페이지</span>
                         </BTNVIconOff>
                     }

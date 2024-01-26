@@ -1,6 +1,6 @@
 // hook
-import React from 'react';
-import { Route, Routes, Outlet, useLocation } from 'react-router-dom';
+import React, { useReducer, useRef } from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { isVisible } from '@testing-library/user-event/dist/utils/index.js';
 import { AnimatePresence } from 'framer-motion';
 
@@ -19,19 +19,14 @@ import { dummyCity } from './api/data_city.js';
 
 import './App.css';
 import Main from './pages/Main.js';
-import PlanPage from './pages/PlanPage.js';
+import PlanLayOut from './pages/PlanLayOut.js';
 import MainTravel from "./mainComp/MainTravel.js";
 import Home from "./mainComp/Home.js";
 import MainFeed from "./mainComp/MainFeed.js";
 import MainSearch from './pages/MainSearch.js';
 import Mypage from './pages/Mypage.js';
-
-import Plan from './pages/Plan.js';
-import { useReducer } from 'react';
-import { useRef } from 'react';
 import NewPlan from './pages/NewPlan.js';
-import PlanPage from './pages/PlanPage.js';
-import PlanKeyword from './planComp/PlanKeyword.js';
+
 
 
 /* 
@@ -131,8 +126,8 @@ function App() {
                                                         </Route>
                                                         <Route path='/search' element={<MainSearch />} />
                                                         <Route path='/mypage' element={<Mypage />} />
-                                                        <Route path='/plan' element={<PlanPage />}>
-                                                            <Route path='/plan/newplan' element={<NewPlan />} />
+                                                        <Route path='/plan' element={<PlanLayOut />}>
+                                                            <Route index element={<NewPlan />} />
                                                         </Route>
                                                     </Routes>
                                                 }

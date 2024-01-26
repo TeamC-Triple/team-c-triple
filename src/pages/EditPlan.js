@@ -1,11 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-
-import PlanEdit from "../plan_subComp/PlanEdit";
 import { PlanDataContext } from "../App";
+import Plan from "./Plan";
 
-const Edit = () => {
+const EditPlan = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     const PlanList = useContext(PlanDataContext);
@@ -16,9 +15,9 @@ const Edit = () => {
     return (
         <div className="Edit">
             {planTotalData && 
-            <PlanEdit isEdit={true} planTotalData={planTotalData} />}
+            <Plan isEdit={true} planTotalData={planTotalData} />}
         </div>
     );
 };
 
-export default Edit;
+export default EditPlan;

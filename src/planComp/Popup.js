@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import styled from "styled-components";
 
 const Popup = ({title, list1, list2, list3, list4, popUp, setPopUp, setIsPopupOpen, openScroll}) => {
