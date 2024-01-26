@@ -19,6 +19,7 @@ import styled from "styled-components";
 import PlanCity from "../planComp/PlanCity";
 import PlanKeyword from "../planComp/PlanKeyword";
 import PlanEdit from "../planComp/PlanEdit";
+import PlanExpenses from "../planComp/PlanExpenses";
 
 // [planKeyword]의 더미데이터
 const withWho = [ '#친구와', '#연인과', '#아이와', '#부모님과' ];
@@ -39,14 +40,34 @@ const Plan = () => {
         setIsCity(!isCity);
     };
 
+    // PlanExpenses
+    // PlanExpenses 여닫음 상태변수
+    const [click, setClick] = useState(false);
+    // 버튼 상태변수
+    const [add, setAdd] = useState(true);
+    const [money, setMoney] = useState(false)
+    // 여행 경비를 담는 상태변수
+    const [expenses, setExpenses] = useState();
+
+    const AMClick = () => {
+        setAdd(false);
+        setClick(true);
+        setExpenses();
+    }
+
     return (
         <PlanDataControll>
             <PlanEdit 
                 handleCity={handleCity}
                 chosedCity={chosedCity}
+                add={add}
+                money={money}
+                AMClick={AMClick}
+                expenses={expenses}
             />
             <PlanCity isCity={isCity} setChosedCity={setChosedCity} handleCity={handleCity} />
             {/* <PlanKeyword withWho={withWho} travelStyle={travelStyle} /> */}
+            <PlanExpenses expenses={expenses} setExpenses={setExpenses} click={click} setClick={setClick} setAdd={setAdd} setMoney={setMoney} />
         </PlanDataControll>
     );
 };

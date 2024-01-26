@@ -1,13 +1,13 @@
 import "./PlanExpenses.css"
 
-const PlanExpenses = ({expenses, setExpenses, click, setClick, addRef, moneyRef}) => {
+const PlanExpenses = ({expenses, setExpenses, click, setClick, setAdd, setMoney}) => {
     const btnClick = () => {
         if(expenses > 0){
-            moneyRef.current.style.display = 'block'
+            setMoney(true);
             setClick(false);
         } else {
-            moneyRef.current.style.display = 'none'
-            addRef.current.style.display = 'block'
+            setMoney(false);
+            setAdd(true);
             setClick(false);
         }
     }
