@@ -28,7 +28,6 @@ const PlanKeyword = ({withWho, travelStyle}) => {
         setKeywordValue([thisValue]);
       };
 
-      console.log(keywordValue);
     return(
         <MainWrap>
             <ContentsWrap>
