@@ -75,6 +75,7 @@ const Plan = () => {
                     onClick={onClickSearch}
                 />}
             />
+
             <PlanCity search={search} />
             {/* <PlanKeyword withWho={withWho} travelStyle={travelStyle} /> */}
         </PlanPage>

@@ -32,6 +32,9 @@ import SideBar from './side/SideBar.js';
 import Plan from './pages/Plan.js';
 import { useReducer } from 'react';
 import { useRef } from 'react';
+import NewPlan from './pages/NewPlan.js';
+import PlanPage from './pages/PlanPage.js';
+import PlanKeyword from './planComp/PlanKeyword.js';
 
 
 /* 
@@ -182,6 +185,8 @@ function App() {
         });
         dataPlanId += 1;
     };
+
+
     
     const location = useLocation();
     return (
@@ -204,7 +209,8 @@ function App() {
                                                         </Route>
                                                         <Route path='/search' element={<MainSearch />} />
                                                         <Route path='/mypage' element={<Mypage />} />
-                                                        <Route path='/plan' element={<Plan />} />
+                                                        <Route path='/plan' element={<Plan />}>
+                                                        </Route>
                                                     </Routes>
                                                 }
                                             </AnimatePresence>
