@@ -9,18 +9,11 @@ import PlanCity from "./PlanCity.js";
 import PlanKeyword from "./PlanKeyword.js";
 import Plan from "../pages/Plan.js";
 
-const PlanEdit = ({isEdit, originData})=>{
-    
+const PlanEdit = ()=>{
     const navigate = useNavigate();
     const location = useLocation();
     const [select, setSelect] = useState('');
 
-    const { onCreatePlan } = useContext(PlanDispatchContext);
-
-    const [city, setCity] = useState('');
-    const [firstDate, setFirstDate] = useState(getStringDate(new Date()));
-    const [lastDate, setLastDate] = useState(getStringDate(new Date()));
-    const [keyword, setKeyword] = useState('');
 
     return(
         <StartWrap>
