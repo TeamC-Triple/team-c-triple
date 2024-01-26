@@ -31,7 +31,7 @@ const PlanEdit = ({
                 >
                     {chosedCity === ''
                         ? '여행, 어디로 떠나시나요?'
-                        : {chosedCity}
+                        : `${chosedCity} 여행`
                     }
                 </Where>
             </BoxWrap>
