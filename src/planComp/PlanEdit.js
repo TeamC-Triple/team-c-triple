@@ -12,23 +12,16 @@ import PlanExpenses from "./PlanExpenses.js";
 
 const PlanEdit = ({
     handleCity,
-    chosedCity
+    chosedCity,
+    add,
+    money,
+    AMClick,
+    expenses
 })=>{
     const navigate = useNavigate();
     const location = useLocation();
     const [select, setSelect] = useState('');
 
-    const [click, setClick] = useState(false);
-    const [expenses, setExpenses] = useState();
-
-    const addRef = useRef();
-    const moneyRef = useRef();
-
-    const AMClick = () => {
-        addRef.current.style.display = 'none'
-        setClick(true);
-        setExpenses()
-    }
     const onClickChoiceCity = () => {
         handleCity();
     };
@@ -52,10 +45,10 @@ const PlanEdit = ({
             <Expenses>
                 <Cost>예상 여행 경비(선택하기)</Cost>
                 <div>
-                    <Add onClick={AMClick} ref={addRef}>추가</Add>
-                    <Money onClick={AMClick} ref={moneyRef}>￦ {expenses}</Money>
+                    <Add className={add ? 'add on' : 'add off'} onClick={AMClick} >추가</Add>
+                    <Money className={money ? 'money on' : 'money off'} onClick={AMClick}>￦ {expenses}</Money>
                 </div>
-                <PlanExpenses expenses={expenses} setExpenses={setExpenses} click={click} setClick={setClick} addRef={addRef} moneyRef={moneyRef} />
+
             </Expenses>
         </StartWrap>
     );
@@ -133,7 +126,6 @@ const Add = styled.button`
 `
 
 const Money = styled.button`
-    display: none;
     padding: 7px 20px 8px;
     margin-right: 20px;
     border-radius: 30px;
