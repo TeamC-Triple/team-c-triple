@@ -11,7 +11,9 @@
     - 코드 정리시에도 꼭 주석을 붙여 다른팀원들이 작업시 햇갈리지 않게끔 부탁드립니다!
 */
 
-import { useContext, useState } from "react";
+
+import { useContext, useEffect, useState } from "react";
+import { PlanDataContext, PlanDispatchContext } from "../App";
 
 import PlanCity from "../planComp/PlanCity";
 import PlanKeyword from "../planComp/PlanKeyword";
@@ -19,19 +21,33 @@ import styled from "styled-components";
 import PlanEdit from "../planComp/PlanEdit";
 import { PlanDispatchContext } from "../App";
 
+
 // [planKeyword]의 더미데이터
 const withWho = [ '#친구와', '#연인과', '#아이와', '#부모님과' ];
 const travelStyle = [ '#관광지', '#SNS핫플', '#힐링', '#맛집' ];
 
 const Plan = () => {
 
-    const PlanData = useContext(PlanDispatchContext);
+    const PlanData = useContext(PlanDataContext);
     const { onCreatePlan } = useContext(PlanDispatchContext);
+
+    // planCity
+    // plancity 여닫음 상태변수
+    const [isCity, setIsCity] = useState(false);
+    // 선택한 도시 정보 담는 상태변수
+    const [chosedCity, setChosedCity] = useState('');
+
+    const handleCity = () => {
+        setIsCity(!isCity);
+    };
 
     return (
         <PlanDataControll>
-            <PlanEdit />
-            <PlanCity />
+            <PlanEdit 
+                handleCity={handleCity}
+                chosedCity={chosedCity}
+            />
+            <PlanCity isCity={isCity} setChosedCity={setChosedCity} handleCity={handleCity} />
             {/* <PlanKeyword withWho={withWho} travelStyle={travelStyle} /> */}
         </PlanDataControll>
     );

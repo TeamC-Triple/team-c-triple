@@ -1,6 +1,6 @@
 const PopupList = ({content, click}) => {
     return(
-        <li className="PopupList" onClick={click}>{content}</li>
+        <p className="PopupList" onClick={click}>{content}</p>
     );
 };
 
