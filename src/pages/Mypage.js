@@ -4,6 +4,7 @@ import Header1 from "../common/Header1";
 import HeaderIcon from "../common/HeaderIcon";
 import styled from "styled-components";
 import MypageCate from "../mypageComp/MyPageCate";
+import BottomNaviSub from "../common/BottomNaviSub";
 
 const Mypage = () => {
     const navigate = useNavigate();
@@ -28,6 +29,7 @@ const Mypage = () => {
             <MypageCate 
                 setCategory={setCategory}
             />
+           <BottomNaviSub centerPage={'plan'} />
         </MyPage>
     )
 };

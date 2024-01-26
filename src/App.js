@@ -1,6 +1,6 @@
 // hook
-import React, { useState, useCallback } from 'react';
-import { Route, Routes, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Route, Routes, Outlet, useLocation } from 'react-router-dom';
 import { isVisible } from '@testing-library/user-event/dist/utils/index.js';
 import { AnimatePresence } from 'framer-motion';
 
@@ -13,21 +13,18 @@ import { dummyRecoCourse } from './api/data_recommendCourse.js';
 import { dummyTouristSpots } from './api/data_TouristSpots.js';
 import { dummyTravelog } from './api/data_Travelog.js';
 import { dummyCity } from './api/data_city.js';
-import AnimatedPages from './AnimatedPages.js';
+
 
 // 하위컴포넌트 임포트
 
 import './App.css';
-import Header1 from "./common/Header1.js";
+import Main from './pages/Main.js';
+import PlanPage from './pages/PlanPage.js';
 import MainTravel from "./mainComp/MainTravel.js";
 import Home from "./mainComp/Home.js";
 import MainFeed from "./mainComp/MainFeed.js";
-import Footer1 from "./common/Footer1.js";
-import HeaderIcon from "./common/HeaderIcon.js";
-import BottomNavi from "./common/BottomNavi.js";
 import MainSearch from './pages/MainSearch.js';
 import Mypage from './pages/Mypage.js';
-import SideBar from './side/SideBar.js';
 
 import Plan from './pages/Plan.js';
 import { useReducer } from 'react';
@@ -87,83 +84,8 @@ export const PlanDataContext = React.createContext();
 export const PlanDispatchContext = React.createContext();
 
 
-// 메인화면쪽 layout 컴포넌트 선언.
-const Main = () => {
-    const [sidebar, setSidebar] = useState('off');
-    const [isOpen, setIsOpen] = useState(false);
-    const { lockScroll, openScroll } = useBodyScrollLock();
-    const navigate = useNavigate();
-
-    const sideBtnClick = () => {
-        setSidebar('on')
-        lockScroll();
-        setIsOpen(true);
-    };
-
-    function useBodyScrollLock() {
-        let scrollPosition = 0;
-        const lockScroll = useCallback(() => {
-          scrollPosition = window.pageYOffset;
-          document.body.style.overflow = 'hidden';
-          document.body.style.position = 'fixed';
-          document.body.style.top = `-${scrollPosition}px`;
-          document.body.style.width = '100%';
-        }, []);
-      
-        const openScroll = useCallback(() => {
-          document.body.style.removeProperty('overflow');
-          document.body.style.removeProperty('position');
-          document.body.style.removeProperty('top');
-          document.body.style.removeProperty('width');
-          window.scrollTo(0, scrollPosition);
-        }, []);
-      
-        return { lockScroll, openScroll };
-    }
-    return (
-        <div id='Main'>
-            <Header1
-                headTxt={'김이박님'}
-                onClickHeadTxt={()=>(navigate('/mypage'))}
-                leftChild={
-                    <p onClick={()=>(navigate('/mypage'))}>
-                        <img />
-                    </p>
-                }
-                rightChild1={
-                    <HeaderIcon 
-                        text={'일정짜기'}
-                        onClick={() => (navigate('/plan'))} 
-                    />
-                }
-                rightChild2={
-                    <HeaderIcon 
-                        text={'사이드메뉴'}   
-                        onClick={sideBtnClick}
-                    />
-                }
-            />
-            <AnimatedPages>
-                <Outlet />
-            </AnimatedPages>
-            <Footer1 />
-            <BottomNavi />
-            <SideBar 
-                sidebar={sidebar} 
-                setSidebar={setSidebar} 
-                leftChild={
-                    <p onClick={()=>(navigate('/mypage'))}>
-                        <img />
-                    </p>
-                } 
-                headTxt={'김이박님'} 
-                setIsOpen={setIsOpen} 
-                openScroll={openScroll} 
-            />
-        </div>
-    );
-};
-
+// 메인화면쪽 layout 컴포넌트 선언. => 따로 컴포넌트로 분리시켜서 임포트 시켰습니다.
+// plan관련 layout 컴포넌트 선언. => 따로 컴포넌트로 분리시켜서 임포트 시켰습니다.
 
 function App() {
     // plan(여행일정짜기) 파트 관리할 reducer 선언.
@@ -209,7 +131,8 @@ function App() {
                                                         </Route>
                                                         <Route path='/search' element={<MainSearch />} />
                                                         <Route path='/mypage' element={<Mypage />} />
-                                                        <Route path='/plan' element={<Plan />}>
+                                                        <Route path='/plan' element={<PlanPage />}>
+                                                            <Route path='/plan/newplan' element={<NewPlan />} />
                                                         </Route>
                                                     </Routes>
                                                 }

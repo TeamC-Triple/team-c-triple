@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-const BottomNavi = ({}) => {
+const BottomNaviSub = ({centerPage}) => {
     const [activeTab, setActiveTab] = useState('/');
 
     const location = useLocation();
@@ -14,49 +14,44 @@ const BottomNavi = ({}) => {
     return (
         <BottomNav>
             <Link 
-                to='/feed'
-                onClick={() => setActiveTab('/feed')}
-            >
-                <div>
-                    {activeTab === '/feed'
-                        ? <BTNVIconOn>
-                            <img src={`./assets/icon-bottom-feed-on.svg`} alt={`feed-on`} />
-                        </BTNVIconOn>
-                        : <BTNVIconOff>
-                            <img src={`./assets/icon-bottom-feed-off.svg`} alt={`feed-off`} />
-                            <span>여행기 피드</span>
-                        </BTNVIconOff>
-                    }
-                </div>
-            </Link>
-            <Link 
                 to='/'
                 onClick={() => setActiveTab('/')}
             >
                 <div>
-                    {activeTab === '/'
+                    <BTNVIconOff>
+                        <img src={`./assets/icon-bottom-home-off.svg`} alt={`home-off`} />
+                        <span>홈</span>
+                    </BTNVIconOff>
+                </div>
+            </Link>
+            <Link 
+                to={`/${centerPage}`}
+                onClick={() => setActiveTab(`/${centerPage}`)}
+            >
+                <div>
+                    {activeTab === `/${centerPage}`
                         ? <BTNVIconOn>
-                            <img src={`./assets/icon-bottom-home-on.svg`} alt={`home-on`} />
+                            <img src={`./assets/icon-bottom-write-on.svg`} alt={`plan-on`} />
                         </BTNVIconOn>
                         : <BTNVIconOff>
-                            <img src={`./assets/icon-bottom-home-off.svg`} alt={`home-off`} />
-                            <span>홈</span>
+                            <img src={`./assets/icon-bottom-write-off.svg`} alt={`plan-off`} />
+                            <span>여행일정</span>
                         </BTNVIconOff>
                     }
                 </div>
             </Link>
             <Link 
-                to='/travel'
-                onClick={() => setActiveTab('/travel')}
+                to='/mypage'
+                onClick={() => setActiveTab('/mypage')}
             >
                 <div>
-                    {activeTab === '/travel'
+                    {activeTab === '/mypage'
                         ? <BTNVIconOn>
-                            <img src={`./assets/icon-bottom-travel-on.svg`} alt={`travel-on`} />
+                            <img src={`./assets/icon-bottom-mypage-on.svg`} alt={`mypage-on`} />
                         </BTNVIconOn>
                         : <BTNVIconOff>
-                            <img src={`./assets/icon-bottom-travel-off.svg`} alt={`travel-off`} />
-                            <span>나의 여행</span>
+                            <img src={`./assets/icon-bottom-mypage-off.svg`} alt={`mypage-off`} />
+                            <span>마이페이지</span>
                         </BTNVIconOff>
                     }
                 </div>
@@ -65,7 +60,7 @@ const BottomNavi = ({}) => {
     );
 };
 
-export default BottomNavi;
+export default BottomNaviSub;
 
 
 const BottomNav = styled.nav`
@@ -79,7 +74,7 @@ const BottomNav = styled.nav`
     height: 55px;
     background-color: #fff;
     border-top: 1px solid #eee;
-    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
     z-index: 600;
 
     div{
@@ -113,7 +108,7 @@ const BTNVIconOn = styled.p`
     height: 36px;
     margin: 0 auto;
     border-radius: 50%;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.18);
     
     img{
         width: 100%;
