@@ -5,11 +5,10 @@ import Button from "../common/Button";
 
 
 
-const PlanKeyword = ({withWho, travelStyle}) => {
+const PlanKeyword = ({withWho, travelStyle, setKeywordValue}) => {
 
     const [whoActive, setWhoActive] = useState('');
     const [styleActive, setStyleActive] = useState('');
-    const [keywordValue, setKeywordValue] = useState([]);
 
     
     const whoToggleActive = (e) => {

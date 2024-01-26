@@ -28,12 +28,15 @@ const travelStyle = [ '#관광지', '#SNS핫플', '#힐링', '#맛집' ];
 const Plan = () => {
     const PlanData = useContext(PlanDataContext);
     const { onCreatePlan } = useContext(PlanDispatchContext);
+
+    const [isKeyword, setIsKeyword] = useState(false);
+    const [keywordValue, setKeywordValue] = useState([]);
     
     return (
         <PlanDataControll>
             <PlanEdit />
             <PlanKeyword withWho={withWho} travelStyle={travelStyle} />
-            <PlanCity />
+            <PlanCity setKeywordValue={setKeywordValue(keywordValue)} isKeyword={isKeyword} />
         </PlanDataControll>
     );
 };
