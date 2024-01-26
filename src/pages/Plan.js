@@ -23,9 +23,7 @@ const withWho = [ '#친구와', '#연인과', '#아이와', '#부모님과' ];
 const travelStyle = [ '#관광지', '#SNS핫플', '#힐링', '#맛집' ];
 
 const Plan = () => {
-    // [planCity] 선택용 상태변수
-    const [choiceCity, setChoiceCity] = useState('');
-
+    
     
     return (
         <PlanDataControll>
