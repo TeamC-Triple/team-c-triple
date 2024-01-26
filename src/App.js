@@ -30,6 +30,8 @@ import Plan from './pages/Plan.js';
 import { useReducer } from 'react';
 import { useRef } from 'react';
 import NewPlan from './pages/NewPlan.js';
+import PlanPage from './pages/PlanPage.js';
+import PlanKeyword from './planComp/PlanKeyword.js';
 
 
 /* 
@@ -105,6 +107,8 @@ function App() {
         });
         dataPlanId += 1;
     };
+
+
     
     const location = useLocation();
     return (

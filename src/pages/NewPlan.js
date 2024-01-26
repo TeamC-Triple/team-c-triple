@@ -1,9 +1,16 @@
+
+import { useLocation, useNavigate } from "react-router";
+import Edit from "./Edit";
+import PlanEdit from "../plan_subComp/PlanEdit";
+
+
 const NewPlan = () => {
     return(
         <div className="NewPlan">
-            새로운 일정짜기 페이지
+            <PlanEdit />
         </div>
-    );
-};
+    ); 
+}
 
 export default NewPlan;
+
