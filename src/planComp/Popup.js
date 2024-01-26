@@ -17,10 +17,10 @@ const Popup = ({title, list1, list2, list3, list4, popUp, setPopUp, setIsPopupOp
                 <h4 className="p_title">{title}</h4>
                 <div className="p_list">
                     <ul>
-                        <li>{list1}</li>
-                        <li>{list2}</li>
-                        <li>{list3}</li>
-                        <li>{list4}</li>
+                        <li onClick={closePopUp}>{list1}</li>
+                        <li onClick={closePopUp}>{list2}</li>
+                        <li onClick={closePopUp}>{list3}</li>
+                        <li onClick={closePopUp}>{list4}</li>
                     </ul>
                 </div>
                 <button onClick={closePopUp}>닫기</button>

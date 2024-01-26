@@ -9,10 +9,18 @@ import PlanCity from "./PlanCity.js";
 import PlanKeyword from "./PlanKeyword.js";
 import Plan from "../pages/Plan.js";
 
-const PlanEdit = ()=>{
+const PlanEdit = ({
+    handleCity,
+    chosedCity
+})=>{
     const navigate = useNavigate();
     const location = useLocation();
     const [select, setSelect] = useState('');
+
+    // planCity
+    const onClickChoiceCity = () => {
+        handleCity();
+    };
 
 
     return(
@@ -20,8 +28,13 @@ const PlanEdit = ()=>{
             <Traveler>0</Traveler>
             <BoxWrap>
                 <Where
-                
-                >어디로 여행을 가실건가요?</Where>
+                    onClick={onClickChoiceCity}
+                >
+                    {chosedCity === ''
+                        ? '여행, 어디로 떠나시나요?'
+                        : {chosedCity}
+                    }
+                </Where>
             </BoxWrap>
             <When >날짜 선택</When> 
             <TripKeyword>키워드 선택</TripKeyword>
@@ -63,6 +76,7 @@ const BoxWrap = styled.div`
 const Where = styled.div`
     font-size: 18px;
     font-weight: 700;
+    cursor: pointer;
      
 `
 const When = styled.div`
