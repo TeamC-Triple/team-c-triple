@@ -20,6 +20,7 @@ import PlanCity from "../planComp/PlanCity";
 import PlanKeyword from "../planComp/PlanKeyword";
 import PlanEdit from "../planComp/PlanEdit";
 import PlanExpenses from "../planComp/PlanExpenses";
+import PlanCourseModal from "../plan_subComp/PlanCourseModal";
 
 // [planKeyword]의 더미데이터
 const withWho = [ '#친구와', '#연인과', '#아이와', '#부모님과' ];
@@ -55,6 +56,14 @@ const Plan = () => {
         setExpenses();
     }
 
+    // PlanCourseModal
+    // PlanCourseModal 여닫음 상태변수
+    const [PCModal, setPCModal] = useState(false);
+
+    const PCMClick = () => {
+        setPCModal(true);
+    }
+
     return (
         <PlanDataControll>
             <PlanEdit 
@@ -64,10 +73,12 @@ const Plan = () => {
                 money={money}
                 AMClick={AMClick}
                 expenses={expenses}
+                PCMClick={PCMClick}
             />
             <PlanCity isCity={isCity} setChosedCity={setChosedCity} handleCity={handleCity} />
             {/* <PlanKeyword withWho={withWho} travelStyle={travelStyle} /> */}
             <PlanExpenses expenses={expenses} setExpenses={setExpenses} click={click} setClick={setClick} setAdd={setAdd} setMoney={setMoney} />
+            <PlanCourseModal PCModal={PCModal} setPCModal={setPCModal} chosedCity={chosedCity} />
         </PlanDataControll>
     );
 };

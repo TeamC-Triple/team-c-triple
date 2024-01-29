@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import styled from "styled-components";
 
@@ -9,6 +9,7 @@ import PlanKeyword from "./PlanKeyword.js";
 import Plan from "../pages/Plan.js";
 import PlanDate from "./PlanDate.js";
 import PlanExpenses from "./PlanExpenses.js";
+import PlanCourse from "./PlanCourse.js";
 
 const PlanEdit = ({
     handleCity,
@@ -16,7 +17,8 @@ const PlanEdit = ({
     add,
     money,
     AMClick,
-    expenses
+    expenses,
+    PCMClick
 })=>{
     const navigate = useNavigate();
     const location = useLocation();
@@ -48,8 +50,14 @@ const PlanEdit = ({
                     <Add className={add ? 'add on' : 'add off'} onClick={AMClick} >추가</Add>
                     <Money className={money ? 'money on' : 'money off'} onClick={AMClick}>￦ {expenses}</Money>
                 </div>
-
             </Expenses>
+            <Course>
+                <Tourist>
+                    <h2>추천 코스</h2>
+                    <button onClick={PCMClick}>더보기</button>
+                </Tourist>
+                <PlanCourse chosedCity={chosedCity} />
+            </Course>
         </StartWrap>
     );
     }   // PlanEdit끝
@@ -108,6 +116,7 @@ const Expenses = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 60px;
 `
 
 const Cost = styled.div`
@@ -133,4 +142,20 @@ const Money = styled.button`
     font-size: 12px;
     font-weight: 600;
     color: #FFF;
+`
+
+const Course = styled.div`
+    
+`
+
+const Tourist = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+
+    h2{
+        font-size: 18px;
+        font-weight: 700;
+        color: #222;
+    }
 `

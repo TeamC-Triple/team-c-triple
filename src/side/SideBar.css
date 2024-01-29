@@ -119,23 +119,18 @@
 
 /* 리스트 */
 .list > div > ul > li{
+    cursor: pointer;
     margin: 0 20px 0;
-    line-height: 40px;
-}
-.list > h2::after{
-    display: inline-block;
-    content: "";
-    width: 20px;
-    height: 20px;
-    margin-top: 20px;
-    transform: rotate(-90deg);
-    background-image: url(../../public/assets/icon-arrow-left.svg);
-    background-repeat: no-repeat;
 }
 .list .acoTitle{
+    cursor: pointer;
+}
+.list .acoTitle .acoTop img{
+    display: none;
+}
+.list .acoTitle .acoTop .index{
     display: flex;
     justify-content: space-between;
-    cursor: pointer;
 }
 .list .acoTitle .acoArrow{
     width: 20px;
@@ -148,6 +143,9 @@
 }
 .acoArrow.on{
     transform: rotate(90deg);
+}
+.list .btn.active{
+    display: none;
 }
 
 /* 서비스 */
