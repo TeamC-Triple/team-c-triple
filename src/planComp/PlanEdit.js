@@ -97,6 +97,12 @@ const PlanEdit = ({
                     <PlanDays key={idx} day={day} idx={idx} />
                 ))
             }
+            <BtnCreate>
+                <Button 
+                    type={'green'}
+                    text={'저장하기'}
+                />
+            </BtnCreate>
         </StartWrap>
     );
     }   // PlanEdit끝
@@ -239,3 +245,6 @@ const Money = styled.button`
     font-weight: 600;
     color: #FFF;
 `
+const BtnCreate = styled.div`
+
+`;
