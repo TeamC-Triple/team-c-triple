@@ -26,6 +26,10 @@ import MainFeed from "./mainComp/MainFeed.js";
 import MainSearch from './pages/MainSearch.js';
 import Mypage from './pages/Mypage.js';
 import NewPlan from './pages/NewPlan.js';
+import EditPlan from './pages/EditPlan.js';
+import NewLog from './pages/NewLog.js';
+import EditLog from './pages/EditLog.js';
+import TravelLog from './pages/TravelLog.js';
 
 
 
@@ -65,6 +69,22 @@ const reducerPlan = (state, action) => {
     return newStatePlan;
 };
 
+let newStateLog = dummyMyTripList;
+const reducerLog = (state, action) => {
+    switch(action.type){
+        case 'INIT' : {
+            return action.data;
+        }
+        case 'CREATE' : {
+            const newLog = {
+                ...action.data
+            }
+            newStateLog = [newLog, ...newStateLog];
+            break;
+        }
+    }
+};
+
 // 데이터 전역 공급망 (더미데이터)
 // export const MTLDataContext = React.createContext();
 export const RecoCourseDataContext = React.createContext();
@@ -86,6 +106,9 @@ function App() {
     // plan(여행일정짜기) 파트 관리할 reducer 선언.
     const [dataPlan, dispatchPlan] = useReducer(reducerPlan, dummyMyTripPlan);
     const dataPlanId = useRef(5);
+    // log(여행기) 파트 관리할 reducer 선언.
+    const [dataLog, dispatchLog] = useReducer(reducerLog, dummyMyTripList);
+    const dataLogId = useRef(5);
     
     // plan CREATE
     const onCreatePlan = (city, firstDate, lastDate, photo, keyword) => {
@@ -101,6 +124,28 @@ function App() {
             }
         });
         dataPlanId += 1;
+    };
+
+    
+    // log CREATE
+    const onCreateLog = (title, city, firstDate, lastDate, recoNum, commentNum, downloadNum, photo, reviewTxt, keyword) => {
+        dispatchLog({
+            type : 'CREATE',
+            data : {
+                id : dataLogId.current,
+                title,
+                city,
+                firstDate,
+                lastDate,
+                recoNum,
+                commentNum,
+                downloadNum,
+                photo,
+                reviewTxt,
+                keyword
+            }
+        });
+        
     };
 
 
@@ -128,7 +173,11 @@ function App() {
                                                         <Route path='/mypage' element={<Mypage />} />
                                                         <Route path='/plan' element={<PlanLayOut />}>
                                                             <Route index element={<NewPlan />} />
+                                                            <Route path='/plan/editplan/:id' element={<EditPlan />} />
                                                         </Route>
+                                                        <Route path='/travellog/new' element={<NewLog />} />
+                                                        <Route path='/travellog/editlog/:id' element={<EditLog />} />
+                                                        <Route path='/travellog' element={<TravelLog />} />
                                                     </Routes>
                                                 }
                                             </AnimatePresence>

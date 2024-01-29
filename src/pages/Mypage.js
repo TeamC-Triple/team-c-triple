@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Header1 from "../common/Header1";
 import HeaderIcon from "../common/HeaderIcon";
 import styled from "styled-components";
@@ -29,7 +29,7 @@ const Mypage = () => {
             <MypageCate 
                 setCategory={setCategory}
             />
-           <BottomNaviSub centerPage={'plan'} />
+           <BottomNaviSub center={'mytravel'} />
         </MyPage>
     )
 };
