@@ -55,6 +55,7 @@ export default PlanDate
 
 const Div = styled.div`
     margin-right: 20px;
+    margin-bottom: 20px;
 
     & > div {
         display: flex;

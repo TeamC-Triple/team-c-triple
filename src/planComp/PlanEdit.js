@@ -77,15 +77,14 @@ const PlanEdit = ({
                     }
                 </Where>
             </BoxWrap>
-            <When >여행 날짜 선택</When>
-            <PlanDate travelDateRange={travelDateRange} setTravelDateRange={setTravelDateRange} />
-            <PlanDate />
             {keywordList.length >= 1 ?
                 <TripKeyword
                     onClick={onClickKW}>{keywordList} <span> 키워드 편집</span></TripKeyword>
                 : <TripKeyword
                 onClick={onClickKW}>키워드 선택</TripKeyword>
              }
+            <When >여행 날짜 선택</When>
+            <PlanDate travelDateRange={travelDateRange} setTravelDateRange={setTravelDateRange} />
             <Expenses>
                 <Cost>예상 여행 경비(선택하기)</Cost>
                 <div>
@@ -189,7 +188,7 @@ const Where = styled.div`
      
 `
 const When = styled.div`
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     font-size: 16px;
     font-weight: 600;
     color: #368FFF;
@@ -197,11 +196,13 @@ const When = styled.div`
 `
 const TripKeyword = styled.div`
     margin: 20px 0 30px 0;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     color: #368FFF;
+    cursor: pointer;
     span{
-        font-size: 13px;
+        margin-left: 10px;
+        font-size: 12px;
         color : #666;
     }
      
