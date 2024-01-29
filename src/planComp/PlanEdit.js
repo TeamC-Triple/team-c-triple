@@ -1,6 +1,5 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
-import { getStringDate } from "../utill/dateString.js";
 import styled from "styled-components";
 
 
@@ -8,24 +7,61 @@ import { PlanDispatchContext } from "../App.js";
 import PlanCity from "./PlanCity.js";
 import PlanKeyword from "./PlanKeyword.js";
 import Plan from "../pages/Plan.js";
+import PlanDate from "./PlanDate.js";
+import PlanExpenses from "./PlanExpenses.js";
 
-const PlanEdit = ()=>{
+const PlanEdit = ({
+    handleCity,
+    chosedCity,
+    add,
+    money,
+    AMClick,
+    expenses,
+    handleOpenKW,
+    keywordList,
+    setKeywordList,
+    isSelectKW
+})=>{
     const navigate = useNavigate();
     const location = useLocation();
     const [select, setSelect] = useState('');
 
+    const onClickChoiceCity = () => {
+        handleCity();
+    };
 
+    const onClickKW = ()=>{
+        handleOpenKW();
+        setKeywordList();
+    }
     return(
         <StartWrap>
             <Traveler>0</Traveler>
             <BoxWrap>
                 <Where
-                
-                >어디로 여행을 가실건가요?</Where>
+                    onClick={onClickChoiceCity}
+                >
+                    {chosedCity === ''
+                        ? '여행, 어디로 떠나시나요?'
+                        : `${chosedCity} 여행`
+                    }
+                </Where>
             </BoxWrap>
-            <When >날짜 선택</When> 
-            <TripKeyword>키워드 선택</TripKeyword>
-            <Cost>예상 여행 경비(선택하기)</Cost>
+            <When >여행 날짜 선택</When>
+            <PlanDate />
+            {!isSelectKW ?
+                <TripKeyword
+                onClick={onClickKW}>키워드 선택</TripKeyword>
+                : <TripKeyword
+                onClick={onClickKW}> 키워드 {keywordList} <span>편집</span></TripKeyword> }
+            <Expenses>
+                <Cost>예상 여행 경비(선택하기)</Cost>
+                <div>
+                    <Add className={add ? 'add on' : 'add off'} onClick={AMClick} >추가</Add>
+                    <Money className={money ? 'money on' : 'money off'} onClick={AMClick}>￦ {expenses}</Money>
+                </div>
+
+            </Expenses>
         </StartWrap>
     );
     }   // PlanEdit끝
@@ -63,6 +99,7 @@ const BoxWrap = styled.div`
 const Where = styled.div`
     font-size: 18px;
     font-weight: 700;
+    cursor: pointer;
      
 `
 const When = styled.div`
@@ -76,10 +113,40 @@ const TripKeyword = styled.div`
     font-size: 15px;
     font-weight: 600;
     color: #368FFF;
+    span{
+        font-size: 13px;
+        color : #666;
+    }
      
 `
+
+const Expenses = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`
+
 const Cost = styled.div`
     font-size: 15px;
     font-weight: 700;
      
+`
+const Add = styled.button`
+    padding: 7px 20px 8px;
+    margin-right: 20px;
+    border-radius: 30px;
+    background-color: #eeeeee;
+    font-size: 12px;
+    font-weight: 600;
+    color: #121212;
+`
+
+const Money = styled.button`
+    padding: 7px 20px 8px;
+    margin-right: 20px;
+    border-radius: 30px;
+    background-color: #368FFF;
+    font-size: 12px;
+    font-weight: 600;
+    color: #FFF;
 `

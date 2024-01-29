@@ -11,32 +11,84 @@
     - 코드 정리시에도 꼭 주석을 붙여 다른팀원들이 작업시 햇갈리지 않게끔 부탁드립니다!
 */
 
-import { useContext, useState } from "react";
-import styled from "styled-components";
 
+import { useContext, useEffect, useState } from "react";
 import { PlanDataContext, PlanDispatchContext } from "../App";
+import styled from "styled-components";
 
 import PlanCity from "../planComp/PlanCity";
 import PlanKeyword from "../planComp/PlanKeyword";
 import PlanEdit from "../planComp/PlanEdit";
-
+import PlanExpenses from "../planComp/PlanExpenses";
+import PlanDay from "../planComp/PlanDay";
 
 // [planKeyword]의 더미데이터
-const withWho = [ '#친구와', '#연인과', '#아이와', '#부모님과' ];
-const travelStyle = [ '#관광지', '#SNS핫플', '#힐링', '#맛집' ];
+const keywordData = [ {id : 0, kw : '#친구와'}, {id : 1, kw : '#연인과'},{id : 2, kw : '#아이와'},{id : 3, kw : '#부모님과'} ,{id : 4, kw : '#관광지'}, {id : 5, kw : '#SNS핫플'},{id : 6,kw : '#힐링'},{id : 7, kw: '#맛집'} ];
 
 const Plan = () => {
+
     const PlanData = useContext(PlanDataContext);
     const { onCreatePlan } = useContext(PlanDispatchContext);
 
-    const [isKeyword, setIsKeyword] = useState(false);
-    const [keywordValue, setKeywordValue] = useState([]);
+    // planCity
+    // plancity 여닫음 상태변수
+    const [isCity, setIsCity] = useState(false);
+    // 선택한 도시 정보 담는 상태변수
+    const [chosedCity, setChosedCity] = useState('');
+
+    const handleCity = () => {
+        setIsCity(!isCity);
+    };
+
+    // PlanExpenses
+    // PlanExpenses 여닫음 상태변수
+    const [click, setClick] = useState(false);
+    // 버튼 상태변수
+    const [add, setAdd] = useState(true);
+    const [money, setMoney] = useState(false)
+    // 여행 경비를 담는 상태변수
+    const [expenses, setExpenses] = useState();
+
+    const AMClick = () => {
+        setAdd(false);
+        setClick(true);
+        setExpenses();
+    }
+
+    // PlanKeyword
+    // PlanKeyword 여닫음 상태변수
+    const [openKeyword, setOpenKeyword] = useState(false);
+ 
+    const handleOpenKW = ()=>{
+        setOpenKeyword(!openKeyword);
+    }
+
+    // PlanKeyword 키워드 정보
+    const [selectKW, setSelectKW] = useState('');
+    const [isSelectKW, setIsSelectKW] = useState(false);
+    const [keywordList, setKeywordList] = useState([]);
     
+    
+
     return (
         <PlanDataControll>
-            <PlanEdit />
-            <PlanKeyword withWho={withWho} travelStyle={travelStyle} />
-            <PlanCity isKeyword={isKeyword} />
+            <PlanEdit 
+                handleCity={handleCity}
+                chosedCity={chosedCity}
+                add={add}
+                money={money}
+                AMClick={AMClick}
+                expenses={expenses}
+                handleOpenKW= {handleOpenKW}
+                openKeyword={openKeyword}
+                keywordList={keywordList}
+                setKeywordList={setKeywordList}
+                setIsSelectKW={setIsSelectKW}
+                isSelectKW={isSelectKW}
+            />
+            <PlanCity isCity={isCity} setChosedCity={setChosedCity} handleCity={handleCity} />
+            <PlanKeyword keywordData={keywordData} selectKW={selectKW} setSelectKW={setSelectKW} openKeyword={openKeyword} handleOpenKW={handleOpenKW} setKeywordList={setKeywordList} keywordList={keywordList} setIsSelectKW={setIsSelectKW}  />
+            <PlanExpenses expenses={expenses} setExpenses={setExpenses} click={click} setClick={setClick} setAdd={setAdd} setMoney={setMoney} />
         </PlanDataControll>
     );
 };

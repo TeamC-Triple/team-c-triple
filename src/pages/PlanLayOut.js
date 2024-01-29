@@ -103,4 +103,9 @@ const PlanLayout = styled.div`
         margin-left: 18px;
         background-image: url(/assets/icon-menu.svg);
     }
+
+    // 플랜시티 헤더부분 공유버튼 없애기
+    .plancity .head_btn_right1{
+        display: none;
+    }
 `;
