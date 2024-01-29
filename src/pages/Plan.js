@@ -26,7 +26,6 @@ const withWho = [ '#친구와', '#연인과', '#아이와', '#부모님과' ];
 const travelStyle = [ '#관광지', '#SNS핫플', '#힐링', '#맛집' ];
 
 const Plan = () => {
-
     const PlanData = useContext(PlanDataContext);
     const { onCreatePlan } = useContext(PlanDispatchContext);
 
@@ -39,6 +38,11 @@ const Plan = () => {
     const handleCity = () => {
         setIsCity(!isCity);
     };
+
+    // planDate
+    const [travelDateRange, setTravelDateRange] = useState([]);
+    
+
 
     // PlanExpenses
     // PlanExpenses 여닫음 상태변수
@@ -60,6 +64,8 @@ const Plan = () => {
             <PlanEdit 
                 handleCity={handleCity}
                 chosedCity={chosedCity}
+                travelDateRange={travelDateRange}
+                setTravelDateRange={setTravelDateRange}
                 add={add}
                 money={money}
                 AMClick={AMClick}
