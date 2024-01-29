@@ -65,7 +65,6 @@ const Plan = () => {
 
     // PlanKeyword 키워드 정보
     const [selectKW, setSelectKW] = useState('');
-    const [isSelectKW, setIsSelectKW] = useState(false);
     const [keywordList, setKeywordList] = useState([]);
     
     
@@ -82,12 +81,9 @@ const Plan = () => {
                 handleOpenKW= {handleOpenKW}
                 openKeyword={openKeyword}
                 keywordList={keywordList}
-                setKeywordList={setKeywordList}
-                setIsSelectKW={setIsSelectKW}
-                isSelectKW={isSelectKW}
             />
             <PlanCity isCity={isCity} setChosedCity={setChosedCity} handleCity={handleCity} />
-            <PlanKeyword keywordData={keywordData} selectKW={selectKW} setSelectKW={setSelectKW} openKeyword={openKeyword} handleOpenKW={handleOpenKW} setKeywordList={setKeywordList} keywordList={keywordList} setIsSelectKW={setIsSelectKW}  />
+            <PlanKeyword keywordData={keywordData} selectKW={selectKW} setSelectKW={setSelectKW} openKeyword={openKeyword} handleOpenKW={handleOpenKW} setKeywordList={setKeywordList} keywordList={keywordList} />
             <PlanExpenses expenses={expenses} setExpenses={setExpenses} click={click} setClick={setClick} setAdd={setAdd} setMoney={setMoney} />
         </PlanDataControll>
     );

@@ -18,9 +18,7 @@ const PlanEdit = ({
     AMClick,
     expenses,
     handleOpenKW,
-    keywordList,
-    setKeywordList,
-    isSelectKW
+    keywordList
 })=>{
     const navigate = useNavigate();
     const location = useLocation();
@@ -32,7 +30,6 @@ const PlanEdit = ({
 
     const onClickKW = ()=>{
         handleOpenKW();
-        setKeywordList();
     }
     return(
         <StartWrap>
@@ -49,11 +46,12 @@ const PlanEdit = ({
             </BoxWrap>
             <When >여행 날짜 선택</When>
             <PlanDate />
-            {!isSelectKW ?
+            {keywordList ?
                 <TripKeyword
-                onClick={onClickKW}>키워드 선택</TripKeyword>
+                    onClick={onClickKW}>{keywordList} <span> 키워드 편집</span></TripKeyword>
                 : <TripKeyword
-                onClick={onClickKW}> 키워드 {keywordList} <span>편집</span></TripKeyword> }
+                onClick={onClickKW}>키워드 선택</TripKeyword>
+             }
             <Expenses>
                 <Cost>예상 여행 경비(선택하기)</Cost>
                 <div>

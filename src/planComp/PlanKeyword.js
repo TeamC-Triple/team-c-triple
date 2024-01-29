@@ -8,19 +8,20 @@ import KeywordSub from "../plan_subComp/KeywordSub";
 
 
 
-const PlanKeyword = ({keywordData, selectKW, setSelectKW, openKeyword, handleOpenKW, isSelectKW,
-    setIsSelectKW, setKeywordList, keywordList}) => {
+const PlanKeyword = ({keywordData, selectKW, setSelectKW, openKeyword, handleOpenKW, setKeywordList, keywordList}) => {
 
+    const [ isSelect , setIsSelect ]= useState(false);
 
+    useEffect(()=>{
+        keywordList ? setIsSelect(true) : setIsSelect(false)
+    }, [keywordList]);
     // 키워드창 닫기
-    const closeKeyword =()=>{
+    const closeKeyword = ()=>{
         handleOpenKW();
     }
     // 키워드창 선택완료
     const completeKW =()=>{
-        if(isSelectKW){
-            handleOpenKW();
-        }
+        handleOpenKW();
     }
 
     return(
@@ -39,7 +40,7 @@ const PlanKeyword = ({keywordData, selectKW, setSelectKW, openKeyword, handleOpe
                         <SubTitle>누구와?</SubTitle>
                         <KeywordBtn>
                             {keywordData.slice(0, 4).map((it)=>(
-                                <KeywordSub key={it.id} {...it} setSelectKW={setSelectKW} selectKW={selectKW}  setKeywordList={setKeywordList} keywordList={keywordList} setIsSelectKW={setIsSelectKW} isSelectKW={isSelectKW} />
+                                <KeywordSub key={it.id} {...it} setSelectKW={setSelectKW} selectKW={selectKW}  setKeywordList={setKeywordList} keywordList={keywordList} setIsSelect={setIsSelect} />
                             ))}
                         </KeywordBtn>
                     </SubWrap>
@@ -47,16 +48,16 @@ const PlanKeyword = ({keywordData, selectKW, setSelectKW, openKeyword, handleOpe
                         <SubTitle>여행 스타일</SubTitle>
                         <KeywordBtn>
                             {keywordData.slice(4).map((it)=>(
-                                <KeywordSub key={it.id} {...it} setSelectKW={setSelectKW} selectKW={selectKW}  setKeywordList={setKeywordList} keywordList={keywordList} setIsSelectKW={setIsSelectKW} isSelectKW={isSelectKW}  />
+                                <KeywordSub key={it.id} {...it} setSelectKW={setSelectKW} selectKW={selectKW}  setKeywordList={setKeywordList} keywordList={keywordList} setIsSelect={setIsSelect}  />
                             ))}
                         </KeywordBtn>
                     </SubWrap>
                 </ContentsWrap>
                 <BottomBtn>
                     <Button
-                    text={!isSelectKW ?
+                    text={!isSelect ?
                     '키워드 선택' : `선택완료`}
-                    type={!isSelectKW ? 'deActive' : 'active'}
+                    type={!isSelect ? 'deActive' : 'active'}
                     onClick={completeKW}
                     />
                     <StopChoose onClick={closeKeyword}>다음에 선택하기</StopChoose>

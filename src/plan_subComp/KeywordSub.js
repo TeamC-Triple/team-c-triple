@@ -2,25 +2,21 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Button from "../common/Button";
 
-const KeywordSub =({id, kw , setSelectKW, setKeywordList, keywordList, setIsSelectKW, isSelectKW })=>{
+const KeywordSub =({id, kw , setSelectKW, setKeywordList, keywordList, setIsSelect })=>{
     
     const [click, setClick]= useState(false);
     const activeBtn = () => {
         setClick(true);
-        setIsSelectKW(!isSelectKW);
         setSelectKW(kw);
-        setKeywordList([kw, keywordList]);
-        console.log(isSelectKW);
+        setIsSelect(true);
+        setKeywordList([kw, ...keywordList]);
     };
     const deactiveBtn = () => {
         setClick(false);
-        setIsSelectKW(false);
         setSelectKW('');
+        setKeywordList(keywordList.filter((it)=> (it !== kw)));
     }
 
-    useEffect(() => {
-        setKeywordList(keywordList);
-    }, [click]);
 
     return(
         <KWBtn>
