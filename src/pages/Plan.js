@@ -55,6 +55,9 @@ const Plan = () => {
         setExpenses();
     }
 
+    // 인원수 선택
+    const [traveler, setTraveler]= useState(0);
+
     // PlanKeyword
     // PlanKeyword 여닫음 상태변수
     const [openKeyword, setOpenKeyword] = useState(false);
@@ -81,6 +84,8 @@ const Plan = () => {
                 handleOpenKW= {handleOpenKW}
                 openKeyword={openKeyword}
                 keywordList={keywordList}
+                traveler={traveler}
+                setTraveler={setTraveler}
             />
             <PlanCity isCity={isCity} setChosedCity={setChosedCity} handleCity={handleCity} />
             <PlanKeyword keywordData={keywordData} selectKW={selectKW} setSelectKW={setSelectKW} openKeyword={openKeyword} handleOpenKW={handleOpenKW} setKeywordList={setKeywordList} keywordList={keywordList} />
