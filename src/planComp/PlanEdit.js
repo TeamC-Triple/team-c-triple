@@ -15,6 +15,10 @@ import Button from "../common/Button.js";
 const PlanEdit = ({
     handleCity,
     chosedCity,
+    startDate,
+    setStartDate,
+    lastDate,
+    setLastDate,
     travelDateRange,
     setTravelDateRange,
     add,
@@ -84,7 +88,14 @@ const PlanEdit = ({
                 onClick={onClickKW}>키워드 선택</TripKeyword>
              }
             <When >여행 날짜 선택</When>
-            <PlanDate travelDateRange={travelDateRange} setTravelDateRange={setTravelDateRange} />
+            <PlanDate 
+                startDate={startDate} 
+                lastDate={lastDate} 
+                setLastDate={setLastDate} 
+                setStartDate={setStartDate} 
+                travelDateRange={travelDateRange}
+                setTravelDateRange={setTravelDateRange} 
+            />
             <Expenses>
                 <Cost>예상 여행 경비(선택하기)</Cost>
                 <div>
@@ -97,12 +108,6 @@ const PlanEdit = ({
                     <PlanDays key={idx} day={day} idx={idx} />
                 ))
             }
-            <BtnCreate>
-                <Button 
-                    type={'green'}
-                    text={'저장하기'}
-                />
-            </BtnCreate>
         </StartWrap>
     );
     }   // PlanEdit끝
@@ -245,6 +250,3 @@ const Money = styled.button`
     font-weight: 600;
     color: #FFF;
 `
-const BtnCreate = styled.div`
-
-`;
