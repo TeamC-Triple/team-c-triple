@@ -23,8 +23,14 @@ const PlanEdit = ({
     expenses,
     handleOpenKW,
     keywordList,
+    keywordData,
     traveler,
-    setTraveler
+    setTraveler,
+    addDayPlan,
+    selectSpots,
+    setSelectSpots,
+    selectSpotsList,
+    setSelectSpotsList
 })=>{
 
     const navigate = useNavigate();
@@ -57,9 +63,22 @@ const PlanEdit = ({
             <TravelerModal className={`travelerModal ${addPeople ? "open" : ""}`}>
                 <div className="TM_in">
                     <div className="travelerInput">
-                        <input type="text" value={traveler} onChange={(e)=>{setTraveler(e.target.value)}}/>
+                        <input 
+                            type="text" 
+                            value={traveler} 
+                            onChange={(e)=>{setTraveler(e.target.value)}}
+                        />
                         <div className="travelerBtn">
-                            <Button type={'gray_border'} text={'-1'} onClick={()=>{if(traveler > 0) setTraveler(parseInt(traveler) - 1)}} /><Button type={'gray_border'} text={'+1'} onClick={()=>{setTraveler(parseInt(traveler) + 1)}} />
+                            <Button 
+                                type={'gray_border'} 
+                                text={'-1'} 
+                                onClick={()=>{if(traveler > 0) setTraveler(parseInt(traveler) - 1)}} 
+                            />
+                            <Button 
+                                type={'gray_border'} 
+                                text={'+1'} 
+                                onClick={()=>{setTraveler(parseInt(traveler) + 1)}} 
+                            />
                         </div>
                         <div className="closeBtn">
                             <Button type={'active'} text={'확인'} onClick={closeBtn} />
@@ -94,9 +113,26 @@ const PlanEdit = ({
             </Expenses>
             {
                 travelDateRange.map((day, idx) => (
-                    <PlanDays key={idx} day={day} idx={idx} />
+                    <PlanDays key={idx} day={day} idx={idx}
+                    selectSpots={selectSpots} 
+                    setSelectSpots={setSelectSpots}
+                    selectSpotsList={selectSpotsList} 
+                    setSelectSpotsList={setSelectSpotsList} 
+                    addDayPlan={addDayPlan} 
+                    chosedCity={chosedCity}
+                    keywordData={keywordData} />
                 ))
             }
+            <CostWrap>
+                <div>
+                    <p>예상 총 소요경비</p>
+                    <p>￦ {expenses}</p>
+                </div>
+                <div>
+                    <p>예상 잔여경비</p>
+                    <p>￦ {expenses}</p>
+                </div>
+            </CostWrap>
         </StartWrap>
     );
     }   // PlanEdit끝
@@ -104,14 +140,14 @@ export default PlanEdit;
 
 
 const StartWrap = styled.div`
-    padding-top: 80px;
+    padding : 80px 0;
     margin-left: 20px;
 `
 const Traveler = styled.div`
     display: inline-block;
     height: 24px;
-    padding: 2px 18px 4px 50px;
-    margin-bottom: 20px;
+    padding: 0 18px 2px 50px;
+    margin-bottom: 10px;
     border-radius: 20px;
     background-color: #368FFF;
     text-align: right;
@@ -238,4 +274,19 @@ const Money = styled.button`
     font-size: 12px;
     font-weight: 600;
     color: #FFF;
+`
+
+const CostWrap = styled.div`
+    margin: 0 20px 30px 0;
+    padding: 16px 20px;
+    border-radius: 10px;
+    background-color: #ddd;
+    div{
+        display: flex;
+        justify-content: space-between;
+        font-weight: 600;
+    }
+    p{
+        line-height: 2;
+    }
 `

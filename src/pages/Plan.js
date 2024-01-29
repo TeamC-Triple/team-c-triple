@@ -13,7 +13,7 @@
 
 
 import { useContext, useEffect, useState } from "react";
-import { PlanDataContext, PlanDispatchContext } from "../App";
+import { PlanDataContext, PlanDispatchContext, SpotsDataContext } from "../App";
 import styled from "styled-components";
 
 import PlanCity from "../planComp/PlanCity";
@@ -27,6 +27,7 @@ const keywordData = [ {id : 0, kw : '#친구와'}, {id : 1, kw : '#연인과'},{
 const Plan = () => {
     const PlanData = useContext(PlanDataContext);
     const { onCreatePlan } = useContext(PlanDispatchContext);
+    const spotsData = useContext(SpotsDataContext);
 
     // planCity
     // plancity 여닫음 상태변수
@@ -40,7 +41,21 @@ const Plan = () => {
 
     // planDate
     const [travelDateRange, setTravelDateRange] = useState([]);
-    
+
+    // planDays 여행 계획 전체
+    const [dayList, setDayList]= useState([]);
+
+    // planDays 날짜별 관광계획
+    const addDayPlan = (day, spots)=>{
+        const newDay = {
+            date : travelDateRange[day],
+            newdaySpots : [spots, ...selectSpotsList]
+        }
+        setDayList([newDay, ...dayList]);
+    }
+    const [selectSpotsList, setSelectSpotsList]= useState(spotsData);
+
+    const [selectSpots, setSelectSpots]= useState({});
 
 
     // PlanExpenses
@@ -78,17 +93,36 @@ const Plan = () => {
     return (
         <PlanDataControll>
             <PlanEdit 
+                // 도시 
                 handleCity={handleCity}
                 chosedCity={chosedCity}
+
+                // 날짜
                 travelDateRange={travelDateRange}
                 setTravelDateRange={setTravelDateRange}
+
+                // 여행계획
+                addDayPlan={addDayPlan}
+                dayList={dayList}
+                setDayList={setDayList}
+                selectSpots={selectSpots}
+                setSelectSpots={setSelectSpots}
+                selectSpotsList={selectSpotsList}
+                setSelectSpotsList={setSelectSpotsList}
+
+                // 비용
                 add={add}
                 money={money}
                 AMClick={AMClick}
                 expenses={expenses}
+
+                // 키워드
                 handleOpenKW= {handleOpenKW}
                 openKeyword={openKeyword}
                 keywordList={keywordList}
+                keywordData={keywordData}
+
+                // 인원수
                 traveler={traveler}
                 setTraveler={setTraveler}
             />
