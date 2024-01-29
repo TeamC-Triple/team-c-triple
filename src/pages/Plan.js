@@ -25,7 +25,6 @@ const withWho = [ '#친구와', '#연인과', '#아이와', '#부모님과' ];
 const travelStyle = [ '#관광지', '#SNS핫플', '#힐링', '#맛집' ];
 
 const Plan = () => {
-
     const PlanData = useContext(PlanDataContext);
     const { onCreatePlan } = useContext(PlanDispatchContext);
 
@@ -39,11 +38,18 @@ const Plan = () => {
         setIsCity(!isCity);
     };
 
+    // planDate
+    const [travelDateRange, setTravelDateRange] = useState([]);
+    
+
+
     return (
         <PlanDataControll>
             <PlanEdit 
                 handleCity={handleCity}
                 chosedCity={chosedCity}
+                travelDateRange={travelDateRange}
+                setTravelDateRange={setTravelDateRange}
             />
             <PlanCity isCity={isCity} setChosedCity={setChosedCity} handleCity={handleCity} />
             {/* <PlanKeyword withWho={withWho} travelStyle={travelStyle} /> */}

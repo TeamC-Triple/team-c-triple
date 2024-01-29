@@ -8,10 +8,13 @@ import PlanCity from "./PlanCity.js";
 import PlanKeyword from "./PlanKeyword.js";
 import Plan from "../pages/Plan.js";
 import PlanDate from "./PlanDate.js";
+import PlanDays from "./PlanDays.js";
 
 const PlanEdit = ({
     handleCity,
-    chosedCity
+    chosedCity,
+    travelDateRange,
+    setTravelDateRange,
 })=>{
     const navigate = useNavigate();
     const location = useLocation();
@@ -36,9 +39,14 @@ const PlanEdit = ({
                 </Where>
             </BoxWrap>
             <When >여행 날짜 선택</When>
-            <PlanDate />
+            <PlanDate travelDateRange={travelDateRange} setTravelDateRange={setTravelDateRange} />
             <TripKeyword>키워드 선택</TripKeyword>
             <Cost>예상 여행 경비(선택하기)</Cost>
+            {
+                travelDateRange.map((day, idx) => (
+                    <PlanDays key={idx} day={day} idx={idx} />
+                ))
+            }
         </StartWrap>
     );
     }   // PlanEdit끝
@@ -80,14 +88,15 @@ const Where = styled.div`
      
 `
 const When = styled.div`
-    font-size: 15px;
+    margin-bottom: 10px;
+    font-size: 16px;
     font-weight: 600;
     color: #368FFF;
      
 `
 const TripKeyword = styled.div`
     margin: 20px 0 30px 0;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     color: #368FFF;
      
