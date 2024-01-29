@@ -9,12 +9,14 @@ import PlanCity from "./PlanCity.js";
 import PlanKeyword from "./PlanKeyword.js";
 import Plan from "../pages/Plan.js";
 import PlanDate from "./PlanDate.js";
-import PlanExpenses from "./PlanExpenses.js";
+import PlanDays from "./PlanDays.js";
 import Button from "../common/Button.js";
 
 const PlanEdit = ({
     handleCity,
     chosedCity,
+    travelDateRange,
+    setTravelDateRange,
     add,
     money,
     AMClick,
@@ -76,8 +78,9 @@ const PlanEdit = ({
                 </Where>
             </BoxWrap>
             <When >여행 날짜 선택</When>
+            <PlanDate travelDateRange={travelDateRange} setTravelDateRange={setTravelDateRange} />
             <PlanDate />
-            {keywordList ?
+            {keywordList.length >= 1 ?
                 <TripKeyword
                     onClick={onClickKW}>{keywordList} <span> 키워드 편집</span></TripKeyword>
                 : <TripKeyword
@@ -89,8 +92,12 @@ const PlanEdit = ({
                     <Add className={add ? 'add on' : 'add off'} onClick={AMClick} >추가</Add>
                     <Money className={money ? 'money on' : 'money off'} onClick={AMClick}>￦ {expenses}</Money>
                 </div>
-
             </Expenses>
+            {
+                travelDateRange.map((day, idx) => (
+                    <PlanDays key={idx} day={day} idx={idx} />
+                ))
+            }
         </StartWrap>
     );
     }   // PlanEdit끝
@@ -182,14 +189,15 @@ const Where = styled.div`
      
 `
 const When = styled.div`
-    font-size: 15px;
+    margin-bottom: 10px;
+    font-size: 16px;
     font-weight: 600;
     color: #368FFF;
      
 `
 const TripKeyword = styled.div`
     margin: 20px 0 30px 0;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     color: #368FFF;
     span{
@@ -203,6 +211,7 @@ const Expenses = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 20px;
 `
 
 const Cost = styled.div`

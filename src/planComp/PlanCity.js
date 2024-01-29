@@ -20,6 +20,9 @@ const PlanCity = ({isCity, setChosedCity, handleCity}) => {
     const cityData = useContext(CityDataContext);
     const [cityList, setCityList] = useState([]);
     const [checkCity, setCheckCity] = useState('');
+    const [isSelectNone, setIsSelectNone] = useState(true);
+
+    
 
     useEffect(() => {
         if(cityData){
@@ -32,9 +35,15 @@ const PlanCity = ({isCity, setChosedCity, handleCity}) => {
     };
 
     const clickChoiceCity = () => {
-        setChosedCity(checkCity);
-        handleCity();
-        console.log(checkCity);
+        if(window.confirm(`여행지로 ${checkCity}을(를) 선택하시겠습니까?`)){
+            setChosedCity(checkCity);
+            handleCity();
+        }
+    };
+
+    const toggleSelectNone = () => {
+        alert('도시를 선택하여 주십시오.')
+        setCheckCity("");
     };
 
     return (
@@ -86,19 +95,18 @@ const PlanCity = ({isCity, setChosedCity, handleCity}) => {
                                     return it;
                                 }
                             }).map((item) => (
-                                <CityLi key={item.id} {...item} setCheckCity={setCheckCity} />
+                                <CityLi key={item.id} {...item} setCheckCity={setCheckCity} setIsSelectNone={setIsSelectNone} />
                             ))
                         }
                     </ul>
                 </div>
             </CityList>
             <CityBtn>
-                {
-                    checkCity === ''
-                    ? <Button type={'deActive'} text={'도시를 선택해주세요.'} onClick={() => {alert('도시를 선택하지 않았습니다.')}} />
-                    : <Button type={'active'} text={`${checkCity} 선택 완료`} onClick={clickChoiceCity}  />
-                }
-                
+                <Button
+                    type={isSelectNone ? "deActive" : "active"}
+                    text={isSelectNone ? "도시를 선택하지 않았습니다." : `${checkCity} 선택 완료`}
+                    onClick={isSelectNone ? toggleSelectNone : clickChoiceCity}
+                />
             </CityBtn>
         </Plancity>
     );

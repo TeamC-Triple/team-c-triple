@@ -20,13 +20,11 @@ import PlanCity from "../planComp/PlanCity";
 import PlanKeyword from "../planComp/PlanKeyword";
 import PlanEdit from "../planComp/PlanEdit";
 import PlanExpenses from "../planComp/PlanExpenses";
-import PlanDay from "../planComp/PlanDay";
 
 // [planKeyword]의 더미데이터
 const keywordData = [ {id : 0, kw : '#친구와'}, {id : 1, kw : '#연인과'},{id : 2, kw : '#아이와'},{id : 3, kw : '#부모님과'} ,{id : 4, kw : '#관광지'}, {id : 5, kw : '#SNS핫플'},{id : 6,kw : '#힐링'},{id : 7, kw: '#맛집'} ];
 
 const Plan = () => {
-
     const PlanData = useContext(PlanDataContext);
     const { onCreatePlan } = useContext(PlanDispatchContext);
 
@@ -39,6 +37,11 @@ const Plan = () => {
     const handleCity = () => {
         setIsCity(!isCity);
     };
+
+    // planDate
+    const [travelDateRange, setTravelDateRange] = useState([]);
+    
+
 
     // PlanExpenses
     // PlanExpenses 여닫음 상태변수
@@ -77,6 +80,8 @@ const Plan = () => {
             <PlanEdit 
                 handleCity={handleCity}
                 chosedCity={chosedCity}
+                travelDateRange={travelDateRange}
+                setTravelDateRange={setTravelDateRange}
                 add={add}
                 money={money}
                 AMClick={AMClick}

@@ -2,16 +2,18 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Button from "../common/Button";
 
-const CityLi = ({id, val, city, place, setCheckCity}) => {
+const CityLi = ({id, val, city, place, setCheckCity, setIsSelectNone}) => {
     const [check, setCheck] = useState(false);
 
     const handleActiveCheck = () => {
         setCheck(true);
         setCheckCity(city);
+        setIsSelectNone(false);
     };
     const handleDeActiveCheck = () => {
         setCheck(false);
         setCheckCity('');
+        setIsSelectNone(true);
     };
 
     return (
