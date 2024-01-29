@@ -97,6 +97,8 @@ export const CityDataContext = React.createContext();
 // 데이터 전역 공급망 (reducer함수)
 export const PlanDataContext = React.createContext();
 export const PlanDispatchContext = React.createContext();
+export const LogDataContext = React.createContext();
+export const LogDispatchContext = React.createContext();
 
 
 // 메인화면쪽 layout 컴포넌트 선언. => 따로 컴포넌트로 분리시켜서 임포트 시켰습니다.
@@ -152,44 +154,46 @@ function App() {
     
     const location = useLocation();
     return (
-        <PlanDispatchContext.Provider value={{onCreatePlan}}>
-            <CityDataContext.Provider value={dummyCity}>
-                <MyTripListDataContext.Provider value={dummyMyTripList}>    
-                    <PlanDataContext.Provider value={dataPlan}>
-                        <MagazineDataContext.Provider value={dummyMagazine}>
-                            <RecoCourseDataContext.Provider value={dummyRecoCourse}>
-                                <SpotsDataContext.Provider value={dummyTouristSpots}>
-                                    <TravelogContext.Provider value={dummyTravelog} >
-                                        <div className="App">
-                                            <AnimatePresence mode='sync'>
-                                                {isVisible &&
-                                                    <Routes location={location} key={location.pathname}>
-                                                        <Route path='/' element={<Main />}>
-                                                            <Route index element={<Home />} />
-                                                            <Route path='/feed' element={<MainFeed />} />
-                                                            <Route path='/travel' element={<MainTravel />} />
-                                                        </Route>
-                                                        <Route path='/search' element={<MainSearch />} />
-                                                        <Route path='/mypage' element={<Mypage />} />
-                                                        <Route path='/plan' element={<PlanLayOut />}>
-                                                            <Route index element={<NewPlan />} />
-                                                            <Route path='/plan/editplan/:id' element={<EditPlan />} />
-                                                        </Route>
-                                                        <Route path='/travellog/new' element={<NewLog />} />
-                                                        <Route path='/travellog/editlog/:id' element={<EditLog />} />
-                                                        <Route path='/travellog' element={<TravelLog />} />
-                                                    </Routes>
-                                                }
-                                            </AnimatePresence>
-                                        </div>
-                                    </TravelogContext.Provider> 
-                                </SpotsDataContext.Provider>
-                            </RecoCourseDataContext.Provider>
-                        </MagazineDataContext.Provider>
-                    </PlanDataContext.Provider>
-                </MyTripListDataContext.Provider>
-            </CityDataContext.Provider>
-        </PlanDispatchContext.Provider>
+        <LogDispatchContext.Provider value={{onCreateLog}}>
+            <PlanDispatchContext.Provider value={{onCreatePlan}}>
+                <CityDataContext.Provider value={dummyCity}>
+                    <LogDataContext.Provider value={dataLog}>    
+                        <PlanDataContext.Provider value={dataPlan}>
+                            <MagazineDataContext.Provider value={dummyMagazine}>
+                                <RecoCourseDataContext.Provider value={dummyRecoCourse}>
+                                    <SpotsDataContext.Provider value={dummyTouristSpots}>
+                                        <TravelogContext.Provider value={dummyTravelog} >
+                                            <div className="App">
+                                                <AnimatePresence mode='sync'>
+                                                    {isVisible &&
+                                                        <Routes location={location} key={location.pathname}>
+                                                            <Route path='/' element={<Main />}>
+                                                                <Route index element={<Home />} />
+                                                                <Route path='/feed' element={<MainFeed />} />
+                                                                <Route path='/travel' element={<MainTravel />} />
+                                                            </Route>
+                                                            <Route path='/search' element={<MainSearch />} />
+                                                            <Route path='/mypage' element={<Mypage />} />
+                                                            <Route path='/plan' element={<PlanLayOut />}>
+                                                                <Route index element={<NewPlan />} />
+                                                                <Route path='/plan/editplan/:id' element={<EditPlan />} />
+                                                            </Route>
+                                                            <Route path='/travellog/new' element={<NewLog />} />
+                                                            <Route path='/travellog/editlog/:id' element={<EditLog />} />
+                                                            <Route path='/travellog' element={<TravelLog />} />
+                                                        </Routes>
+                                                    }
+                                                </AnimatePresence>
+                                            </div>
+                                        </TravelogContext.Provider> 
+                                    </SpotsDataContext.Provider>
+                                </RecoCourseDataContext.Provider>
+                            </MagazineDataContext.Provider>
+                        </PlanDataContext.Provider>
+                    </LogDataContext.Provider>
+                </CityDataContext.Provider>
+            </PlanDispatchContext.Provider>
+        </LogDispatchContext.Provider>
   );
 }
 

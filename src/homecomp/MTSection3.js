@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from 'react';
 import './MTSection3.css';
 
-import { MyTripListDataContext } from '../App';
+import { LogDataContext } from '../App';
 import MyTripListItem from "../home_subcomp/MyTripListItem";
 
 const MTSection3 = () => {
-    const MyTripList = useContext(MyTripListDataContext);
+    const MyTripList = useContext(LogDataContext);
 
     const [data, setData] = useState([]);
 
