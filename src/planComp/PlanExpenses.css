@@ -1,0 +1,53 @@
+@charset "utf-8";
+/* PlanExpenses.css */
+
+.add.on, .money.on{
+    display: block;
+}
+.add.off, .money.off{
+    display: none;
+}
+.PlanExpenses.on{
+    display: block;
+}
+.PlanExpenses.off{
+    display: none;
+}
+.PlanExpenses .PEBackground{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 700;
+}
+.PlanExpenses .PEModal{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 70%;
+    padding: 30px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: #fff;
+    z-index: 800;
+}
+.PlanExpenses .PEModal input{
+    width: 80%;
+    height: 30px;
+    padding: 0 10px;
+    margin: 12px 0 0 10px;
+    border-radius: 30px;
+    text-align: center;
+}
+.PlanExpenses .PEModal button{
+    display: block;
+    padding: 7px 20px 8px;
+    margin: 20px auto 0;
+    border-radius: 30px;
+    background-color: #eeeeee;
+    font-size: 12px;
+    font-weight: 600;
+    color: #121212;
+}

@@ -4,7 +4,7 @@ const PlanDays = ({day, idx}) => {
     return (
         <Plandays>
             <div className="pdy_top">
-                <h3>{`DAY ${idx+1} (${day})`}</h3>
+                <h3>DAY {idx+1} <span>({day})</span></h3>
                 <p className="pdy_pay">예상 경비 : </p>
             </div>
         </Plandays>
@@ -21,9 +21,14 @@ const Plandays = styled.div`
 
         h3{
             margin-bottom: 6px;
-            font-size: 16px;
-            font-weight: 600;
-            color: #368FFF;
+            font-size: 17px;
+            font-weight: 700;
+
+            span{
+                font-size: 14px;
+                color: #333;
+                font-weight: 600;
+            }
         }
         .pdy_pay{
             font-size: 12px;

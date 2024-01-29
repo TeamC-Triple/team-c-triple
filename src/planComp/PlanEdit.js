@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import styled from "styled-components";
 
@@ -15,12 +15,15 @@ const PlanEdit = ({
     chosedCity,
     travelDateRange,
     setTravelDateRange,
+    add,
+    money,
+    AMClick,
+    expenses
 })=>{
     const navigate = useNavigate();
     const location = useLocation();
     const [select, setSelect] = useState('');
 
-    // planCity
     const onClickChoiceCity = () => {
         handleCity();
     };
@@ -41,7 +44,13 @@ const PlanEdit = ({
             <When >여행 날짜 선택</When>
             <PlanDate travelDateRange={travelDateRange} setTravelDateRange={setTravelDateRange} />
             <TripKeyword>키워드 선택</TripKeyword>
-            <Cost>예상 여행 경비(선택하기)</Cost>
+            <Expenses>
+                <Cost>예상 여행 경비(선택하기)</Cost>
+                <div>
+                    <Add className={add ? 'add on' : 'add off'} onClick={AMClick} >추가</Add>
+                    <Money className={money ? 'money on' : 'money off'} onClick={AMClick}>￦ {expenses}</Money>
+                </div>
+            </Expenses>
             {
                 travelDateRange.map((day, idx) => (
                     <PlanDays key={idx} day={day} idx={idx} />
@@ -101,8 +110,35 @@ const TripKeyword = styled.div`
     color: #368FFF;
      
 `
+
+const Expenses = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+`
+
 const Cost = styled.div`
     font-size: 15px;
     font-weight: 700;
      
+`
+const Add = styled.button`
+    padding: 7px 20px 8px;
+    margin-right: 20px;
+    border-radius: 30px;
+    background-color: #eeeeee;
+    font-size: 12px;
+    font-weight: 600;
+    color: #121212;
+`
+
+const Money = styled.button`
+    padding: 7px 20px 8px;
+    margin-right: 20px;
+    border-radius: 30px;
+    background-color: #368FFF;
+    font-size: 12px;
+    font-weight: 600;
+    color: #FFF;
 `
