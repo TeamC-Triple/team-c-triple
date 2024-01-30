@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import styled from 'styled-components';
 import { BrowserRouter, Route, Routes, Outlet } from 'react-router-dom';
 
@@ -10,18 +10,25 @@ import { dummyTouristSpots } from './api/data_TouristSpots.js';
 import { dummyTravelog } from './api/data_Travelog.js';
 
 import './App.css';
-import Header1 from "./common/Header1.js";
 import MainTravel from "./mainComp/MainTravel.js";
 import Home from "./mainComp/Home.js";
 import MainFeed from "./mainComp/MainFeed.js";
-import Footer1 from "./common/Footer1.js";
-import HeaderIcon from "./common/HeaderIcon.js";
-import BottomNavi from "./common/BottomNavi.js";
 import Main from './pages/Main.js';
 import Mypage from './pages/Mypage.js'
  
- 
+let newState = dummyMyTripPlan;
 
+const reducer = (state, action) => {
+    switch(action.type){
+        case 'REMOVE' : {
+            newState = state.filter((item)=> item.id !== action.targetID);
+            break;
+        }        
+        default :
+            return state;
+    }
+    return newState;
+};
 
 export const MTLDataContext = React.createContext();
 export const RecoCourseDataContext = React.createContext();
@@ -30,7 +37,21 @@ export const SpotsDataContext = React.createContext();
 export const MagazineDataContext = React.createContext();
 export const MyTripListDataContext = React.createContext();
 
+export const MyTripDispatchContext = React.createContext();
+
+
 function App() {
+    const [data, dispatch] = useReducer(reducer, dummyMyTripPlan);
+    console.log(data);
+
+
+    const onRemove = (targetID) => {
+        dispatch({
+            type : 'REMOVE',
+            targetID
+        });
+    };
+
     return (
         <MyTripListDataContext.Provider value={dummyMyTripList}>    
             <MTLDataContext.Provider value={dummyMyTripPlan}>
@@ -38,18 +59,21 @@ function App() {
                     <RecoCourseDataContext.Provider value={dummyRecoCourse}>
                         <SpotsDataContext.Provider value={dummyTouristSpots}>
                                 <TravelogContext.Provider value={dummyTravelog} >
-                                    <BrowserRouter>
-                                        <div className="App">
-                                            <Routes>
-                                                <Route path='/' element={<Main />}>
-                                                    <Route index element={<Home />} />
-                                                    <Route path='/feed' element={<MainFeed />} />
-                                                    <Route path='/travel' element={<MainTravel />} />
-                                                </Route>
-                                                <Route path='/mypage' element={<Mypage />} />
-                                            </Routes>
-                                        </div>
-                                    </BrowserRouter>
+                                    <MyTripDispatchContext.Provider value={{onRemove}}>
+                                        <BrowserRouter>
+                                            <div className="App">
+                                                <Routes>
+                                                    <Route path='/' element={<Main />}>
+                                                        <Route index element={<Home />} />
+                                                        <Route path='/feed' element={<MainFeed />} />
+                                                        <Route path='/travel' element={<MainTravel />} />
+                                                    </Route>
+                                                    <Route path='/mypage' element={<Mypage />}>
+                                                    </Route>
+                                                </Routes>
+                                            </div>
+                                        </BrowserRouter>
+                                    </MyTripDispatchContext.Provider>    
                                 </TravelogContext.Provider> 
                         </SpotsDataContext.Provider>
                     </RecoCourseDataContext.Provider>
