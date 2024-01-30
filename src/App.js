@@ -109,7 +109,7 @@ function App() {
     const dataLogId = useRef(5);
     
     // plan CREATE
-    const onCreatePlan = (city, firstDate, lastDate, keyword, people, expense) => {
+    const onCreatePlan = (city, firstDate, lastDate, keyword, people, expense, days) => {
         dispatchPlan({
             type : 'CREATE',
             data : {
@@ -119,7 +119,8 @@ function App() {
                 lastDate : new Date(lastDate).getTime(),
                 keyword : keyword,
                 people,
-                expense
+                expense,
+                days : days
             }
         });
         dataPlanId.current += 1;
