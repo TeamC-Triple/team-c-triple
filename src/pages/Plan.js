@@ -15,6 +15,7 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { PlanDataContext, PlanDispatchContext, SpotsDataContext } from "../App";
 import styled from "styled-components";
+import { useBodyScrollLock } from "../utill/useBodyScrollLock.js";
 
 import PlanCity from "../planComp/PlanCity";
 import PlanKeyword from "../planComp/PlanKeyword";
@@ -22,8 +23,7 @@ import PlanEdit from "../planComp/PlanEdit";
 import PlanExpenses from "../planComp/PlanExpenses";
 import PlanCourseModal from "../plan_subComp/PlanCourseModal";
 import Button from "../common/Button.js";
-
-import { getStringDate } from "../utill/dateString.js";
+import PlanDateCal from "../planComp/PlanDateCal.js";
 
 // [planKeyword]의 더미데이터
 const keywordData = [ {id : 0, kw : '#친구와'}, {id : 1, kw : '#연인과'},{id : 2, kw : '#아이와'},{id : 3, kw : '#부모님과'} ,{id : 4, kw : '#관광지'}, {id : 5, kw : '#SNS핫플'},{id : 6,kw : '#힐링'},{id : 7, kw: '#맛집'} ];
@@ -32,6 +32,7 @@ const Plan = () => {
     const PlanData = useContext(PlanDataContext);
     const { onCreatePlan } = useContext(PlanDispatchContext);
     const spotsData = useContext(SpotsDataContext);
+    const { lockScroll, openScroll } = useBodyScrollLock();
 
     // planCity
     // plancity 여닫음 상태변수
@@ -39,16 +40,32 @@ const Plan = () => {
     // 선택한 도시 정보 담는 상태변수
     const [chosedCity, setChosedCity] = useState('');
 
+    // 도시선택창 열기
     const handleCity = () => {
         setIsCity(!isCity);
     };
 
-    // planDate
+    // planDate / Calendar
+    const [isCalendar, setIsCalendar] = useState(false);
+    // 첫날짜~마지막날짜 배열
     const [travelDateRange, setTravelDateRange] = useState([]);
+    // 첫날
     const [startDate, setStartDate] = useState(new Date().getTime());
+    // 마지막날
     const [lastDate, setLastDate] = useState(new Date().getTime());
 
-    // planDays 여행장소 일별 전체
+    // 달력창 열기
+    const openModalDateCal = () => {
+        setIsCalendar(true);
+        lockScroll();
+    };
+    // 달력창 닫기
+    const closeModalDateCal = () => {
+        setIsCalendar(false);
+        openScroll();
+    };
+
+    // planDays 여행 계획 전체
     const [dayList, setDayList]= useState([]);
 
     // planDays 
@@ -137,11 +154,9 @@ const Plan = () => {
 
                 // 날짜
                 startDate={startDate}
-                setStartDate={setStartDate}
                 lastDate={lastDate}
-                setLastDate={setLastDate}
                 travelDateRange={travelDateRange}
-                setTravelDateRange={setTravelDateRange}
+                openModalDateCal={openModalDateCal}
 
                 // 여행계획
                 addDayPlan={addDayPlan}
@@ -172,6 +187,17 @@ const Plan = () => {
                 clickCreatePlan={clickCreatePlan}
             />
             <PlanCity isCity={isCity} setChosedCity={setChosedCity} handleCity={handleCity} />
+            <PlanDateCal 
+                isCalendar={isCalendar}
+                setIsCalendar={setIsCalendar}
+                travelDateRange={travelDateRange}
+                setTravelDateRange={setTravelDateRange}
+                startDate={startDate}
+                setStartDate={setStartDate}
+                lastDate={lastDate}
+                setLastDate={setLastDate}
+                closeModalDateCal={closeModalDateCal}
+            />
             <PlanKeyword keywordData={keywordData} selectKW={selectKW} setSelectKW={setSelectKW} openKeyword={openKeyword} handleOpenKW={handleOpenKW} setKeywordList={setKeywordList} keywordList={keywordList} />
             <PlanExpenses expenses={expenses} setExpenses={setExpenses} click={click} setClick={setClick} setAdd={setAdd} setMoney={setMoney} />
             <PlanCourseModal PCModal={PCModal} setPCModal={setPCModal} chosedCity={chosedCity} />
@@ -192,7 +218,7 @@ const PlanDataControll = styled.div`
 
 `;
 const BtnCreate = styled.div`
-    margin: 60px 20px;
+    margin: 60px 20px 120px;
     .btn.active{
         width: 100%;
         height: 48px;
