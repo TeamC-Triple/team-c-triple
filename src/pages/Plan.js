@@ -13,7 +13,7 @@
 
 
 import { useContext, useEffect, useState } from "react";
-import { PlanDataContext, PlanDispatchContext } from "../App";
+import { PlanDataContext, PlanDispatchContext, SpotsDataContext } from "../App";
 import styled from "styled-components";
 
 import PlanCity from "../planComp/PlanCity";
@@ -29,8 +29,9 @@ import { getStringDate } from "../utill/dateString.js";
 const keywordData = [ {id : 0, kw : '#친구와'}, {id : 1, kw : '#연인과'},{id : 2, kw : '#아이와'},{id : 3, kw : '#부모님과'} ,{id : 4, kw : '#관광지'}, {id : 5, kw : '#SNS핫플'},{id : 6,kw : '#힐링'},{id : 7, kw: '#맛집'} ];
 
 const Plan = () => {
-    const planData = useContext(PlanDataContext);
-    const {onCreatePlan} = useContext(PlanDispatchContext);
+    const PlanData = useContext(PlanDataContext);
+    const { onCreatePlan } = useContext(PlanDispatchContext);
+    const spotsData = useContext(SpotsDataContext);
 
     // planCity
     // plancity 여닫음 상태변수
@@ -46,6 +47,22 @@ const Plan = () => {
     const [travelDateRange, setTravelDateRange] = useState([]);
     const [startDate, setStartDate] = useState(new Date().getTime());
     const [lastDate, setLastDate] = useState(new Date().getTime());
+
+    // planDays 여행 계획 전체
+    const [dayList, setDayList]= useState([]);
+
+    // planDays 날짜별 관광계획
+    const addDayPlan = (day, spots)=>{
+        const newDay = {
+            date : travelDateRange[day],
+            newdaySpots : [spots, ...selectSpotsList]
+        }
+        setDayList([newDay, ...dayList]);
+    }
+    const [selectSpotsList, setSelectSpotsList]= useState(spotsData);
+
+    const [selectSpots, setSelectSpots]= useState({});
+
 
     // PlanExpenses
     // PlanExpenses 여닫음 상태변수
@@ -95,22 +112,41 @@ const Plan = () => {
     return (
         <PlanDataControll>
             <PlanEdit 
+                // 도시 
                 handleCity={handleCity}
                 chosedCity={chosedCity}
+
+                // 날짜
                 startDate={startDate}
                 setStartDate={setStartDate}
                 lastDate={lastDate}
                 setLastDate={setLastDate}
                 travelDateRange={travelDateRange}
                 setTravelDateRange={setTravelDateRange}
+
+                // 여행계획
+                addDayPlan={addDayPlan}
+                dayList={dayList}
+                setDayList={setDayList}
+                selectSpots={selectSpots}
+                setSelectSpots={setSelectSpots}
+                selectSpotsList={selectSpotsList}
+                setSelectSpotsList={setSelectSpotsList}
+
+                // 비용
                 add={add}
                 money={money}
                 AMClick={AMClick}
                 expenses={expenses}
                 PCMClick={PCMClick}
+
+                // 키워드
                 handleOpenKW= {handleOpenKW}
                 openKeyword={openKeyword}
                 keywordList={keywordList}
+                keywordData={keywordData}
+
+                // 인원수
                 traveler={traveler}
                 setTraveler={setTraveler}
                 clickCreatePlan={clickCreatePlan}
