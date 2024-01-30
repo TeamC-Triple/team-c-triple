@@ -104,8 +104,12 @@ const PlanLayout = styled.div`
         background-image: url(/assets/icon-menu.svg);
     }
 
-    // 플랜시티 헤더부분 공유버튼 없애기
-    .plancity .head_btn_right1{
+    // 플랜시티 헤더부분 공유버튼,메뉴버튼 없애기
+    .plancity .head_btn_right1, .head_btn_right2{
+        display: none;
+    }
+    // 플랜데이트캘린더 헤더부분 공유버튼 없애기
+    .planDateCalendar .head_btn_right1, .head_btn_right2{
         display: none;
     }
 `;
