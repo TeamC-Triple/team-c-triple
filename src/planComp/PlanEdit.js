@@ -13,19 +13,25 @@ import PlanDays from "./PlanDays.js";
 import Button from "../common/Button.js";
 
 const PlanEdit = ({
+    // 도시
     handleCity,
     chosedCity,
+    // 날짜
     travelDateRange,
     setTravelDateRange,
+    // 비용
     add,
     money,
     AMClick,
     expenses,
+    //키워드
     handleOpenKW,
     keywordList,
     keywordData,
+    // 인원수
     traveler,
     setTraveler,
+    // 여행장소선택
     addDayPlan,
     selectSpots,
     setSelectSpots,
