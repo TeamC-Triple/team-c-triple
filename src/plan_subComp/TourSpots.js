@@ -1,20 +1,36 @@
+import { useEffect, useState } from "react";
 
 import styled from "styled-components";
 import Button from "../common/Button";
 import "./TourSpots.css"
-import { useState } from "react";
 
-const TourSpots = ({city, locationName, setSelectSpots})=>{
+const TourSpots = ({ spotName,  selectSpots, setSelectSpots, selectSpotsList, setSelectSpotsList, openAdd, addNewSpots})=>{
     
-    const [spotsClick, setSpotsClick]= useState(false);
-    const activeBtn = (locationName) => {
-        setSpotsClick(true);
-        setSelectSpots(locationName);
+    const [spotClick, setSpotClick]= useState(false);
+
+    useEffect(()=>{
+    }, [spotClick]);
+
+    useEffect(()=>{
+        setSpotClick(false);
+    }, [openAdd]);
+
+    const activeBtn = () => {
+
+        setSpotClick(true);
+        setSelectSpots(spotName);
+
+        // 새로운 장소 리스트에 추가
+        addNewSpots(spotName);
+
     };
-    const deactiveBtn = () => {
-        setSpotsClick(false);
-        setSelectSpots('');
+    const deActiveBtn = () => {
+        setSpotClick(false);
+        setSelectSpotsList(selectSpotsList.filter((item)=> (item.spotName !== spotName)));
+
     }
+
+    
     return(
         <TourSpotsWrap>
             <div className="spotWrap"> 
@@ -22,13 +38,15 @@ const TourSpots = ({city, locationName, setSelectSpots})=>{
                     사진
                 </div>
                 <div className="spotName">
-                    {locationName}
+                    {spotName}
                 </div>
             </div>
-            {!spotsClick
-                ? <Button type={'deActive'} text={'선택'} onClick={activeBtn} />
-                : <Button type={'active'} text={'선택'} onClick={deactiveBtn} />
-            }
+            <div>
+                {spotClick
+                    ? <Button type={'active'} text={'취소'} onClick={deActiveBtn} />
+                    : <Button type={'deActive'} text={'선택'} onClick={activeBtn} />
+                }
+            </div>
         </TourSpotsWrap>
     )
 }
@@ -39,8 +57,10 @@ const TourSpotsWrap =styled.li`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 20px 20px 0 ;
+    margin: 0 0 20px 0 ;
     line-height: 36px;
+    position: relative;
+    z-index: 1000;
     .spotWrap{
         display: flex;
         .spotPhoto{
@@ -54,9 +74,13 @@ const TourSpotsWrap =styled.li`
             background-color: #368FFF;
         }
     }
-    .Button button{
-        width: 60px;
-        border-radius: 20px;
+    .Button{
+        width: 56px;
+        .btn{
+            width : 100%;
+            border-radius: 20px;
+            text-align: center;
+            }
     }
 
 `

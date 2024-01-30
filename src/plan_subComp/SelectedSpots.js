@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const SelectedSpots =({id, city, locationName, selectSpots})=>{
+const SelectedSpots =({date, newdaySpots})=>{
     const shadowStyles = {
         boxShadow: '0 1px 8px rgba(0,0,0,0.2)',
         marginBottom: '20px',
@@ -11,7 +11,7 @@ const SelectedSpots =({id, city, locationName, selectSpots})=>{
         <SelectPlan>
             <div className="selected" style={shadowStyles}>
                 <div className="numberDot">1</div>
-                <div className="spotName">{locationName}</div>
+                <div className="spotName">{newdaySpots[0].spotName}</div>
             </div>
             <Memo>
                 <div className="memoDot">memo</div>
@@ -24,6 +24,7 @@ const SelectedSpots =({id, city, locationName, selectSpots})=>{
 export default SelectedSpots;
 
 const SelectPlan = styled.div`
+    position: relative;
     .selected{
         display : flex;
         padding: 10px 10px;

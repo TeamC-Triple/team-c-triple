@@ -21,7 +21,7 @@ const PlanEdit = ({
     AMClick,
     expenses,
     PCMClick,
-    //키워드,
+    //키워드
     handleOpenKW,
     keywordList,
     keywordData,
@@ -30,6 +30,9 @@ const PlanEdit = ({
     setTraveler,
     // 여행장소선택
     addDayPlan,
+    addNewSpots,
+    dayList,
+    setDayList,
     selectSpots,
     setSelectSpots,
     selectSpotsList,
@@ -57,6 +60,8 @@ const PlanEdit = ({
             alert('숫자를 입력해주세요.');
         }
     }
+
+    
 
     return(
         <StartWrap>
@@ -125,18 +130,25 @@ const PlanEdit = ({
                 </Tourist>
                 <PlanCourse chosedCity={chosedCity} />
             </Course>
+            <DaySpots>
             {
                 travelDateRange.map((day, idx) => (
-                    <PlanDays key={idx} day={day} idx={idx}
-                    selectSpots={selectSpots} 
-                    setSelectSpots={setSelectSpots}
-                    selectSpotsList={selectSpotsList} 
-                    setSelectSpotsList={setSelectSpotsList} 
-                    addDayPlan={addDayPlan} 
-                    chosedCity={chosedCity}
-                    keywordData={keywordData} />
+                    <PlanDays 
+                        key={idx} day={day} idx={idx}
+                        dayList={dayList}
+                        setDayList={setDayList}
+                        selectSpots={selectSpots} 
+                        setSelectSpots={setSelectSpots}
+                        selectSpotsList={selectSpotsList} 
+                        setSelectSpotsList={setSelectSpotsList} 
+                        addNewSpots={addNewSpots}
+                        addDayPlan={addDayPlan} 
+                        chosedCity={chosedCity}
+                        keywordData={keywordData} 
+                        travelDateRange={travelDateRange} />
                 ))
             }
+            </DaySpots>
         </StartWrap>
     );
     }   // PlanEdit끝
@@ -300,4 +312,8 @@ const Tourist = styled.div`
     button{
         color: #368FFF;
     }
+`
+
+const DaySpots = styled.div`
+margin-bottom: 00px;
 `
