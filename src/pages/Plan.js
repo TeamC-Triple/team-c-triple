@@ -20,6 +20,7 @@ import PlanCity from "../planComp/PlanCity";
 import PlanKeyword from "../planComp/PlanKeyword";
 import PlanEdit from "../planComp/PlanEdit";
 import PlanExpenses from "../planComp/PlanExpenses";
+import PlanCourseModal from "../plan_subComp/PlanCourseModal";
 import Button from "../common/Button.js";
 
 import { getStringDate } from "../utill/dateString.js";
@@ -61,6 +62,14 @@ const Plan = () => {
         setExpenses();
     }
 
+    // PlanCourseModal
+    // PlanCourseModal 여닫음 상태변수
+    const [PCModal, setPCModal] = useState(false);
+
+    const PCMClick = () => {
+        setPCModal(true);
+    }
+
     // 인원수 선택
     const [traveler, setTraveler]= useState(0);
 
@@ -98,6 +107,7 @@ const Plan = () => {
                 money={money}
                 AMClick={AMClick}
                 expenses={expenses}
+                PCMClick={PCMClick}
                 handleOpenKW= {handleOpenKW}
                 openKeyword={openKeyword}
                 keywordList={keywordList}
@@ -108,6 +118,7 @@ const Plan = () => {
             <PlanCity isCity={isCity} setChosedCity={setChosedCity} handleCity={handleCity} />
             <PlanKeyword keywordData={keywordData} selectKW={selectKW} setSelectKW={setSelectKW} openKeyword={openKeyword} handleOpenKW={handleOpenKW} setKeywordList={setKeywordList} keywordList={keywordList} />
             <PlanExpenses expenses={expenses} setExpenses={setExpenses} click={click} setClick={setClick} setAdd={setAdd} setMoney={setMoney} />
+            <PlanCourseModal PCModal={PCModal} setPCModal={setPCModal} chosedCity={chosedCity} />
             <BtnCreate>
                 <Button 
                     type={'active'}

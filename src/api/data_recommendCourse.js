@@ -4,7 +4,13 @@ export const dummyRecoCourse = [
         title : '태안 당일치기 추천 코스',
         city : '태안',
         period : '당일치기',
-        photo : './assets/recommendCourse_0.jpg'
+        photo : './assets/recommendCourse_0.jpg',
+        content : [
+            <li key={1}>a</li>,
+            <li key={2}>aa</li>,
+            <li key={3}>aaa</li>,
+            <li key={4}>aaaa</li>
+        ]
     },
     {
         id : 1,
