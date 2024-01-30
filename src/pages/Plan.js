@@ -20,6 +20,7 @@ import PlanCity from "../planComp/PlanCity";
 import PlanKeyword from "../planComp/PlanKeyword";
 import PlanEdit from "../planComp/PlanEdit";
 import PlanExpenses from "../planComp/PlanExpenses";
+import PlanCourseModal from "../plan_subComp/PlanCourseModal";
 
 // [planKeyword]의 더미데이터
 const keywordData = [ {id : 0, kw : '#친구와'}, {id : 1, kw : '#연인과'},{id : 2, kw : '#아이와'},{id : 3, kw : '#부모님과'} ,{id : 4, kw : '#관광지'}, {id : 5, kw : '#SNS핫플'},{id : 6,kw : '#힐링'},{id : 7, kw: '#맛집'} ];
@@ -58,6 +59,14 @@ const Plan = () => {
         setExpenses();
     }
 
+    // PlanCourseModal
+    // PlanCourseModal 여닫음 상태변수
+    const [PCModal, setPCModal] = useState(false);
+
+    const PCMClick = () => {
+        setPCModal(true);
+    }
+
     // 인원수 선택
     const [traveler, setTraveler]= useState(0);
 
@@ -73,8 +82,6 @@ const Plan = () => {
     const [selectKW, setSelectKW] = useState('');
     const [keywordList, setKeywordList] = useState([]);
     
-    
-
     return (
         <PlanDataControll>
             <PlanEdit 
@@ -86,6 +93,7 @@ const Plan = () => {
                 money={money}
                 AMClick={AMClick}
                 expenses={expenses}
+                PCMClick={PCMClick}
                 handleOpenKW= {handleOpenKW}
                 openKeyword={openKeyword}
                 keywordList={keywordList}
@@ -95,6 +103,7 @@ const Plan = () => {
             <PlanCity isCity={isCity} setChosedCity={setChosedCity} handleCity={handleCity} />
             <PlanKeyword keywordData={keywordData} selectKW={selectKW} setSelectKW={setSelectKW} openKeyword={openKeyword} handleOpenKW={handleOpenKW} setKeywordList={setKeywordList} keywordList={keywordList} />
             <PlanExpenses expenses={expenses} setExpenses={setExpenses} click={click} setClick={setClick} setAdd={setAdd} setMoney={setMoney} />
+            <PlanCourseModal PCModal={PCModal} setPCModal={setPCModal} chosedCity={chosedCity} />
         </PlanDataControll>
     );
 };
