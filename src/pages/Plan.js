@@ -21,6 +21,9 @@ import PlanKeyword from "../planComp/PlanKeyword";
 import PlanEdit from "../planComp/PlanEdit";
 import PlanExpenses from "../planComp/PlanExpenses";
 import PlanCourseModal from "../plan_subComp/PlanCourseModal";
+import Button from "../common/Button.js";
+
+import { getStringDate } from "../utill/dateString.js";
 
 // [planKeyword]의 더미데이터
 const keywordData = [ {id : 0, kw : '#친구와'}, {id : 1, kw : '#연인과'},{id : 2, kw : '#아이와'},{id : 3, kw : '#부모님과'} ,{id : 4, kw : '#관광지'}, {id : 5, kw : '#SNS핫플'},{id : 6,kw : '#힐링'},{id : 7, kw: '#맛집'} ];
@@ -42,6 +45,8 @@ const Plan = () => {
 
     // planDate
     const [travelDateRange, setTravelDateRange] = useState([]);
+    const [startDate, setStartDate] = useState(new Date().getTime());
+    const [lastDate, setLastDate] = useState(new Date().getTime());
 
     // planDays 여행 계획 전체
     const [dayList, setDayList]= useState([]);
@@ -96,7 +101,14 @@ const Plan = () => {
     // PlanKeyword 키워드 정보
     const [selectKW, setSelectKW] = useState('');
     const [keywordList, setKeywordList] = useState([]);
+
+    // 저장하기 버튼 누르기
+    const clickCreatePlan = () => {
+        onCreatePlan(chosedCity, startDate, lastDate, keywordList, traveler, expenses);
+    };
     
+    
+
     return (
         <PlanDataControll>
             <PlanEdit 
@@ -105,6 +117,10 @@ const Plan = () => {
                 chosedCity={chosedCity}
 
                 // 날짜
+                startDate={startDate}
+                setStartDate={setStartDate}
+                lastDate={lastDate}
+                setLastDate={setLastDate}
                 travelDateRange={travelDateRange}
                 setTravelDateRange={setTravelDateRange}
 
@@ -133,11 +149,19 @@ const Plan = () => {
                 // 인원수
                 traveler={traveler}
                 setTraveler={setTraveler}
+                clickCreatePlan={clickCreatePlan}
             />
             <PlanCity isCity={isCity} setChosedCity={setChosedCity} handleCity={handleCity} />
             <PlanKeyword keywordData={keywordData} selectKW={selectKW} setSelectKW={setSelectKW} openKeyword={openKeyword} handleOpenKW={handleOpenKW} setKeywordList={setKeywordList} keywordList={keywordList} />
             <PlanExpenses expenses={expenses} setExpenses={setExpenses} click={click} setClick={setClick} setAdd={setAdd} setMoney={setMoney} />
             <PlanCourseModal PCModal={PCModal} setPCModal={setPCModal} chosedCity={chosedCity} />
+            <BtnCreate>
+                <Button 
+                    type={'active'}
+                    text={'저장하기'}
+                    onClick={clickCreatePlan}
+                />
+            </BtnCreate>
         </PlanDataControll>
     );
 };
@@ -146,4 +170,12 @@ export default Plan;
 
 const PlanDataControll = styled.div`
 
+`;
+const BtnCreate = styled.div`
+    margin: 60px 20px;
+    .btn.active{
+        width: 100%;
+        height: 48px;
+        font-size: 15px;
+    }
 `;

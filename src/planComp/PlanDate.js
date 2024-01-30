@@ -1,18 +1,31 @@
 import { useEffect, useState } from "react"
 import styled from "styled-components";
+
 import { getStringDate } from "../utill/dateString.js";
 
-const PlanDate = ({travelDateRange, setTravelDateRange}) => {
-    const [startDate, setStartDate] = useState(getStringDate(new Date()));
-    const [lastDate, setLastDate] = useState(getStringDate(new Date()));
+
+const PlanDate = ({
+    travelDateRange,
+    setTravelDateRange, 
+    setLastDate, 
+    setStartDate, 
+    lastDate, 
+    startDate
+}) => {
+
+    const [dateStart, setDateStart] = useState(getStringDate(new Date()));
+    const [dateLast, setDateLast] = useState(getStringDate(new Date()));
 
     const handleStartDate = (e) => {
-        setStartDate(e.target.value);
-        setTravelDateRange(getDateRange(e.target.value, lastDate));
+        setDateStart(e.target.value);
+        setTravelDateRange(getDateRange(e.target.value, dateLast));
+        setStartDate(new Date(e.target.value).getTime());
+        
     };
     const handleLastDate = (e) => {
-        setLastDate(e.target.value);
-        setTravelDateRange(getDateRange(startDate, e.target.value));
+        setDateLast(e.target.value);
+        setTravelDateRange(getDateRange(dateStart, e.target.value));
+        setLastDate(new Date(e.target.value).getTime());
     };
 
     // 처음날짜부터 마지막날짜 사이를 구하는 변수
@@ -34,7 +47,7 @@ const PlanDate = ({travelDateRange, setTravelDateRange}) => {
                 <DateH2>시작 날짜 선택</DateH2>
                 <Input 
                     type="date" 
-                    value={startDate} 
+                    value={dateStart} 
                     onChange={handleStartDate} 
                 />
             </div>
@@ -42,9 +55,9 @@ const PlanDate = ({travelDateRange, setTravelDateRange}) => {
                 <DateH2>마지막 날짜 선택</DateH2>
                 <Input 
                     type="date" 
-                    value={lastDate} 
+                    value={dateLast} 
                     onChange={handleLastDate} 
-                    min={startDate} 
+                    min={dateStart} 
                 />
             </div>
         </Div>
