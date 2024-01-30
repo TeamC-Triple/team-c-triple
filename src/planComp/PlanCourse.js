@@ -46,7 +46,6 @@ const PC = styled.div`
         margin-top: 10px;
         flex-wrap: nowrap;
         box-sizing: border-box;
-        border-radius: 10px;
     }
     .slick-slide.slick-active{
         margin-right: -30px;
