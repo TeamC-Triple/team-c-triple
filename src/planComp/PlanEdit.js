@@ -22,7 +22,7 @@ const PlanEdit = ({
     money,
     AMClick,
     expenses,
-    PCMClick
+    PCMClick,
     handleOpenKW,
     keywordList,
     traveler,
