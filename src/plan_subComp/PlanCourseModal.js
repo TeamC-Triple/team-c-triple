@@ -93,6 +93,14 @@ const PCM = styled.div`
     }
     .list > div{
         border-radius: 0 0 10px 10px;
+        background-color: #fff;
+    }
+    .list > div > ul{
+        border-left: 1px solid rgba(0, 0, 0, 0.15);
+        border-right: 1px solid rgba(0, 0, 0, 0.15);
+    }
+    .list > div > ul > li:last-child{
+        margin: 0;
     }
     .list > div > ul > li::before{
         display: inline-block;
@@ -103,6 +111,9 @@ const PCM = styled.div`
         margin: 25px 10px 0 0;
         border-radius: 30px;
         background-color: #9621F1;
+    }
+    .list > div > ul > li:last-child::before{
+        display:none;
     }
     .list .acoTitle .acoTop .index{
         position: relative;

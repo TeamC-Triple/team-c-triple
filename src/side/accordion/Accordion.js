@@ -44,7 +44,7 @@ const Accodion = ({content, title, city, period, photo}) => {
                     {content && content.map((it)=>(
                         <li key={it.id}>{it.data}</li>
                     ))}
-                    <Button type={'active'} text={'가져오기'}></Button>
+                    <li><Button type={'active'} text={'가져오기'}></Button></li>
                 </ul>
             </Div>
         </div>
