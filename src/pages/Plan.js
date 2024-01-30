@@ -40,25 +40,30 @@ const Plan = () => {
     // 선택한 도시 정보 담는 상태변수
     const [chosedCity, setChosedCity] = useState('');
 
+    // 도시선택창 열기
     const handleCity = () => {
         setIsCity(!isCity);
     };
 
     // planDate / Calendar
     const [isCalendar, setIsCalendar] = useState(false);
+    // 첫날짜~마지막날짜 배열
     const [travelDateRange, setTravelDateRange] = useState([]);
+    // 첫날
     const [startDate, setStartDate] = useState(new Date().getTime());
+    // 마지막날
     const [lastDate, setLastDate] = useState(new Date().getTime());
 
+    // 달력창 열기
     const openModalDateCal = () => {
         setIsCalendar(true);
         lockScroll();
     };
+    // 달력창 닫기
     const closeModalDateCal = () => {
         setIsCalendar(false);
         openScroll();
     };
-    console.log(travelDateRange);
 
     // planDays 여행 계획 전체
     const [dayList, setDayList]= useState([]);

@@ -54,8 +54,6 @@ const PlanDateCal = ({
     }
 
     const handleSelectBtn = () => {
-        console.log(startDate);
-        console.log(lastDate);
         setTravelDateRange(travelRange);
         closeModalDateCal();
     };
