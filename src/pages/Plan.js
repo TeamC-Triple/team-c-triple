@@ -23,11 +23,9 @@ import PlanExpenses from "../planComp/PlanExpenses";
 import PlanCourseModal from "../plan_subComp/PlanCourseModal";
 
 // [planKeyword]의 더미데이터
-const withWho = [ '#친구와', '#연인과', '#아이와', '#부모님과' ];
-const travelStyle = [ '#관광지', '#SNS핫플', '#힐링', '#맛집' ];
+const keywordData = [ {id : 0, kw : '#친구와'}, {id : 1, kw : '#연인과'},{id : 2, kw : '#아이와'},{id : 3, kw : '#부모님과'} ,{id : 4, kw : '#관광지'}, {id : 5, kw : '#SNS핫플'},{id : 6,kw : '#힐링'},{id : 7, kw: '#맛집'} ];
 
 const Plan = () => {
-
     const PlanData = useContext(PlanDataContext);
     const { onCreatePlan } = useContext(PlanDispatchContext);
 
@@ -40,6 +38,11 @@ const Plan = () => {
     const handleCity = () => {
         setIsCity(!isCity);
     };
+
+    // planDate
+    const [travelDateRange, setTravelDateRange] = useState([]);
+    
+
 
     // PlanExpenses
     // PlanExpenses 여닫음 상태변수
@@ -64,19 +67,41 @@ const Plan = () => {
         setPCModal(true);
     }
 
+    // 인원수 선택
+    const [traveler, setTraveler]= useState(0);
+
+    // PlanKeyword
+    // PlanKeyword 여닫음 상태변수
+    const [openKeyword, setOpenKeyword] = useState(false);
+ 
+    const handleOpenKW = ()=>{
+        setOpenKeyword(!openKeyword);
+    }
+
+    // PlanKeyword 키워드 정보
+    const [selectKW, setSelectKW] = useState('');
+    const [keywordList, setKeywordList] = useState([]);
+    
     return (
         <PlanDataControll>
             <PlanEdit 
                 handleCity={handleCity}
                 chosedCity={chosedCity}
+                travelDateRange={travelDateRange}
+                setTravelDateRange={setTravelDateRange}
                 add={add}
                 money={money}
                 AMClick={AMClick}
                 expenses={expenses}
                 PCMClick={PCMClick}
+                handleOpenKW= {handleOpenKW}
+                openKeyword={openKeyword}
+                keywordList={keywordList}
+                traveler={traveler}
+                setTraveler={setTraveler}
             />
             <PlanCity isCity={isCity} setChosedCity={setChosedCity} handleCity={handleCity} />
-            {/* <PlanKeyword withWho={withWho} travelStyle={travelStyle} /> */}
+            <PlanKeyword keywordData={keywordData} selectKW={selectKW} setSelectKW={setSelectKW} openKeyword={openKeyword} handleOpenKW={handleOpenKW} setKeywordList={setKeywordList} keywordList={keywordList} />
             <PlanExpenses expenses={expenses} setExpenses={setExpenses} click={click} setClick={setClick} setAdd={setAdd} setMoney={setMoney} />
             <PlanCourseModal PCModal={PCModal} setPCModal={setPCModal} chosedCity={chosedCity} />
         </PlanDataControll>
