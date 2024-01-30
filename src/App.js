@@ -100,10 +100,6 @@ export const PlanDispatchContext = React.createContext();
 export const LogDataContext = React.createContext();
 export const LogDispatchContext = React.createContext();
 
-
-// 메인화면쪽 layout 컴포넌트 선언. => 따로 컴포넌트로 분리시켜서 임포트 시켰습니다.
-// plan관련 layout 컴포넌트 선언. => 따로 컴포넌트로 분리시켜서 임포트 시켰습니다.
-
 function App() {
     // plan(여행일정짜기) 파트 관리할 reducer 선언.
     const [dataPlan, dispatchPlan] = useReducer(reducerPlan, dummyMyTripPlan);
@@ -118,15 +114,15 @@ function App() {
             type : 'CREATE',
             data : {
                 id : dataPlanId.current,
-                city,
+                city : `${city}`,
                 firstDate : new Date(firstDate).getTime(),
                 lastDate : new Date(lastDate).getTime(),
-                keyword,
+                keyword : keyword,
                 people,
                 expense
             }
         });
-        dataPlanId += 1;
+        dataPlanId.current += 1;
     };
 
     
@@ -148,10 +144,12 @@ function App() {
                 keyword
             }
         });
+        dataLogId.current += 1;
         
     };
 
-
+    // onCreatePlan이 잘 작동 되는지 확인하기 위한 콘솔창입니다.
+    console.log(dataPlan);
     
     const location = useLocation();
     return (

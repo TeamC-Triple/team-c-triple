@@ -18,6 +18,10 @@ const PlanEdit = ({
     handleCity,
     chosedCity,
     // 날짜
+    startDate,
+    setStartDate,
+    lastDate,
+    setLastDate,
     travelDateRange,
     setTravelDateRange,
     // 비용
@@ -26,7 +30,7 @@ const PlanEdit = ({
     AMClick,
     expenses,
     PCMClick,
-    //키워드
+    //키워드,
     handleOpenKW,
     keywordList,
     keywordData,
@@ -111,7 +115,14 @@ const PlanEdit = ({
                 onClick={onClickKW}>키워드 선택</TripKeyword>
              }
             <When >여행 날짜 선택</When>
-            <PlanDate travelDateRange={travelDateRange} setTravelDateRange={setTravelDateRange} />
+            <PlanDate 
+                startDate={startDate} 
+                lastDate={lastDate} 
+                setLastDate={setLastDate} 
+                setStartDate={setStartDate} 
+                travelDateRange={travelDateRange}
+                setTravelDateRange={setTravelDateRange} 
+            />
             <Expenses>
                 <Cost>예상 여행 경비(선택하기)</Cost>
                 <div>
@@ -281,9 +292,7 @@ const Money = styled.button`
     color: #FFF;
 `
 
-const Course = styled.div`
-    
-`
+const Course = styled.div``
 
 const Tourist = styled.div`
     display: flex;
@@ -295,8 +304,4 @@ const Tourist = styled.div`
         font-weight: 700;
         color: #222;
     }
-`
-
-const BtnCreate = styled.div`
-
 `
