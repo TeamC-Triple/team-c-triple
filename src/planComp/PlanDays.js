@@ -49,7 +49,7 @@ const PlanDays = ({day, idx,
 
 
     // console.log(travelDateRange);
-    // console.log(selectSpotsList);
+    console.log(selectSpotsList);
     console.log(dayList[idx]);
 
     
@@ -64,8 +64,8 @@ const PlanDays = ({day, idx,
                     ?
                      <Empty>일정이 비어있습니다.</Empty> 
                     
-                    :   dayList.map((it)=>(
-                        it.date === day && <SelectedSpots key={it.date} {...it} />
+                    :   dayList.map((it, idx)=>(
+                        it.date === day && <SelectedSpots key={idx} {...it} />
                     ))
             }
             </div>

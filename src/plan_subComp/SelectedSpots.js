@@ -11,7 +11,7 @@ const SelectedSpots =({date, newdaySpots})=>{
         <SelectPlan>
             <div className="selected" style={shadowStyles}>
                 <div className="numberDot">1</div>
-                <div className="spotName">{newdaySpots[0].spotName}</div>
+                <div className="spotName">{newdaySpots[parseInt(newdaySpots.length)].spotName}</div>
             </div>
             <Memo>
                 <div className="memoDot">memo</div>
