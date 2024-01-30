@@ -34,7 +34,6 @@ const PlanDateCal = ({
     
     const onRangeChange = (items) => {
         setDateCal([items.selection]);
-        console.log(items);
         setStartDate([items.selection.startDate])
         setLastDate([items.selection.endDate])
         setTravelRange(getDateRange([items.selection.startDate], [items.selection.endDate]));
