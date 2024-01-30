@@ -2,13 +2,6 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import styled from "styled-components";
 
-
-import { PlanDispatchContext } from "../App.js";
-import PlanCity from "./PlanCity.js";
-import PlanKeyword from "./PlanKeyword.js";
-import Plan from "../pages/Plan.js";
-import PlanDate from "./PlanDate.js";
-import PlanExpenses from "./PlanExpenses.js";
 import PlanCourse from "./PlanCourse.js";
 import PlanDays from "./PlanDays.js";
 import Button from "../common/Button.js";
@@ -19,11 +12,9 @@ const PlanEdit = ({
     chosedCity,
     // 날짜
     startDate,
-    setStartDate,
     lastDate,
-    setLastDate,
     travelDateRange,
-    setTravelDateRange,
+    openModalDateCal,
     // 비용
     add,
     money,
@@ -108,21 +99,18 @@ const PlanEdit = ({
                     }
                 </Where>
             </BoxWrap>
+            <When >
+                {travelDateRange.length <= 0
+                ? <p className="btnDate" onClick={openModalDateCal}>여행 날짜 선택</p>
+                : <p onClick={openModalDateCal}>{new Date(startDate).toLocaleDateString() + ' ~ ' + new Date(lastDate).toLocaleDateString()}</p>
+                }
+            </When>
             {keywordList.length >= 1 ?
                 <TripKeyword
                     onClick={onClickKW}>{keywordList} <span> 키워드 편집</span></TripKeyword>
                 : <TripKeyword
                 onClick={onClickKW}>키워드 선택</TripKeyword>
              }
-            <When >여행 날짜 선택</When>
-            <PlanDate 
-                startDate={startDate} 
-                lastDate={lastDate} 
-                setLastDate={setLastDate} 
-                setStartDate={setStartDate} 
-                travelDateRange={travelDateRange}
-                setTravelDateRange={setTravelDateRange} 
-            />
             <Expenses>
                 <Cost>예상 여행 경비(선택하기)</Cost>
                 <div>
@@ -156,7 +144,7 @@ export default PlanEdit;
 
 
 const StartWrap = styled.div`
-    padding : 80px 0;
+    padding : 80px 0 0;
     margin-left: 20px;
 `
 const Traveler = styled.div`
@@ -229,7 +217,7 @@ const BoxWrap = styled.div`
     justify-content: space-between;
     align-items: center;
     margin-right: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     line-height: 1.7;
 `
      
@@ -237,18 +225,21 @@ const Where = styled.div`
     font-size: 18px;
     font-weight: 700;
     cursor: pointer;
-     
 `
 const When = styled.div`
-    margin-bottom: 5px;
-    font-size: 16px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 14px;
     font-weight: 600;
-    color: #368FFF;
+    color: #666;
+    .btnDate{
+        color: #368fff;
+    }
      
 `
 const TripKeyword = styled.div`
-    margin: 20px 0 30px 0;
-    font-size: 15px;
+    margin-bottom: 20px;
+    font-size: 14px;
     font-weight: 600;
     color: #368FFF;
     cursor: pointer;
@@ -264,7 +255,7 @@ const Expenses = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 `
 
 const Cost = styled.div`
@@ -293,8 +284,8 @@ const Money = styled.button`
 `
 
 const Course = styled.div`
+    margin-bottom: 35px;
 `
-
 
 const Tourist = styled.div`
     display: flex;
@@ -305,5 +296,8 @@ const Tourist = styled.div`
         font-size: 18px;
         font-weight: 700;
         color: #222;
+    }
+    button{
+        color: #368FFF;
     }
 `
