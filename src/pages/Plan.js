@@ -12,7 +12,7 @@
 */
 
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { PlanDataContext, PlanDispatchContext, SpotsDataContext } from "../App";
 import styled from "styled-components";
 import { useBodyScrollLock } from "../utill/useBodyScrollLock.js";
@@ -68,17 +68,36 @@ const Plan = () => {
     // planDays 여행 계획 전체
     const [dayList, setDayList]= useState([]);
 
-    // planDays 날짜별 관광계획
-    const addDayPlan = (day, spots)=>{
+    // planDays 
+    // 여행장소 리스트를 해당 일자에 추가
+    const addDayPlan = (day, spotsList)=>{
         const newDay = {
-            date : travelDateRange[day],
-            newdaySpots : [spots, ...selectSpotsList]
-        }
+            date : day,
+            newdaySpots : spotsList
+        };
         setDayList([newDay, ...dayList]);
-    }
-    const [selectSpotsList, setSelectSpotsList]= useState(spotsData);
+    };
 
-    const [selectSpots, setSelectSpots]= useState({});
+    // 1일 장소 리스트
+    const [selectSpotsList, setSelectSpotsList]= useState([]);
+
+    const spotOrder = useRef(0);
+
+    // 새로운 장소를 리스트에 추가
+    const addNewSpots = (spotName)=>{
+        const newSpots = {
+            id : spotOrder.current ,
+            spotName : spotName
+        }
+        spotOrder.current += 1;
+        setSelectSpotsList([newSpots, ...selectSpotsList])
+    };
+
+
+    // 장소 하나
+    const [selectSpots, setSelectSpots]= useState();
+
+ 
 
 
     // PlanExpenses
@@ -141,6 +160,7 @@ const Plan = () => {
 
                 // 여행계획
                 addDayPlan={addDayPlan}
+                addNewSpots={addNewSpots}
                 dayList={dayList}
                 setDayList={setDayList}
                 selectSpots={selectSpots}
