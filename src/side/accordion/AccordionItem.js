@@ -2,20 +2,20 @@ import styled from "styled-components"
 import Accodion from "./Accordion"
 
 const content1 = [
-    <li key={1}>트리플 매거진</li>,
-    <li key={2}>추천 여행코스</li>,
-    <li key={3}>추천 여행지</li>,
-    <li key={4}>축제 / 행사</li>
+    {id : 0, data : '트리플 매거진'},
+    {id : 1, data : '추천 여행코스'},
+    {id : 2, data : '추천 여행지'},
+    {id : 3, data : '축제 / 행사'}
 ]
 const content2 = [
-    <li key={5}>나의 여행피드</li>,
-    <li key={6}>베스트 여행기</li>,
-    <li key={7}>인기 급상승 여행기</li>
+    {id : 0, data : '나의 여행피드'},
+    {id : 1, data : '베스트 여행기'},
+    {id : 2, data : '인기 급상승 여행기'}
 ]
 const content3 = [
-    <li key={8}>내 여행</li>,
-    <li key={9}>지난 여행</li>,
-    <li key={10}>나의 여행기</li>
+    {id : 0, data : '내 여행'},
+    {id : 1, data : '지난 여행'},
+    {id : 2, data : '나의 여행기'}
 ]
 
 export const AccodionItem = () => {
