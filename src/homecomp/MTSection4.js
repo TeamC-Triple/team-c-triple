@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
 import './MTSection4.css';
 
-import { MyTripListDataContext } from '../App';
+import { LogDataContext } from '../App';
 import MTSection4Item from '../home_subcomp/MTSection4Item';
 import Button from '../common/Button';
 
 const MTSection4 = () => {
-    const MyTripList = useContext(MyTripListDataContext);
+    const MyTripList = useContext(LogDataContext);
 
     const [data, setData] = useState([]);
 

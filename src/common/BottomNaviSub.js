@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-const BottomNaviSub = ({centerPage}) => {
+const BottomNaviSub = ({center}) => {
     const [activeTab, setActiveTab] = useState('/');
 
     const location = useLocation();
@@ -25,17 +25,17 @@ const BottomNaviSub = ({centerPage}) => {
                 </div>
             </Link>
             <Link 
-                to={`/${centerPage}`}
-                onClick={() => setActiveTab(`/${centerPage}`)}
+                to={location.pathname === '/mypage' ? -1 : `/${center}`}
+                onClick={() => setActiveTab(`/${center}`)}
             >
                 <div>
-                    {activeTab === `/${centerPage}`
+                    {activeTab === `/${center}`
                         ? <BTNVIconOn>
                             <img src={`../assets/icon-bottom-write-on.svg`} alt={`plan-on`} />
                         </BTNVIconOn>
                         : <BTNVIconOff>
                             <img src={`../assets/icon-bottom-write-off.svg`} alt={`plan-off`} />
-                            <span>여행일정</span>
+                            <span>여행작성</span>
                         </BTNVIconOff>
                     }
                 </div>

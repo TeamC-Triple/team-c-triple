@@ -1,4 +1,3 @@
-
 import { useContext, useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import styled from "styled-components";
@@ -9,6 +8,8 @@ import PlanCity from "./PlanCity.js";
 import PlanKeyword from "./PlanKeyword.js";
 import Plan from "../pages/Plan.js";
 import PlanDate from "./PlanDate.js";
+import PlanExpenses from "./PlanExpenses.js";
+import PlanCourse from "./PlanCourse.js";
 import PlanDays from "./PlanDays.js";
 import Button from "../common/Button.js";
 
@@ -24,6 +25,7 @@ const PlanEdit = ({
     money,
     AMClick,
     expenses,
+    PCMClick,
     //키워드
     handleOpenKW,
     keywordList,
@@ -117,6 +119,13 @@ const PlanEdit = ({
                     <Money className={money ? 'money on' : 'money off'} onClick={AMClick}>￦ {expenses}</Money>
                 </div>
             </Expenses>
+            <Course>
+                <Tourist>
+                    <h2>추천 코스</h2>
+                    <button onClick={PCMClick}>더보기</button>
+                </Tourist>
+                <PlanCourse chosedCity={chosedCity} />
+            </Course>
             {
                 travelDateRange.map((day, idx) => (
                     <PlanDays key={idx} day={day} idx={idx}
@@ -129,16 +138,6 @@ const PlanEdit = ({
                     keywordData={keywordData} />
                 ))
             }
-            <CostWrap>
-                <div>
-                    <p>예상 총 소요경비</p>
-                    <p>￦ {expenses}</p>
-                </div>
-                <div>
-                    <p>예상 잔여경비</p>
-                    <p>￦ {expenses}</p>
-                </div>
-            </CostWrap>
         </StartWrap>
     );
     }   // PlanEdit끝
@@ -254,7 +253,7 @@ const Expenses = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 60px;
 `
 
 const Cost = styled.div`
@@ -282,17 +281,22 @@ const Money = styled.button`
     color: #FFF;
 `
 
-const CostWrap = styled.div`
-    margin: 0 20px 30px 0;
-    padding: 16px 20px;
-    border-radius: 10px;
-    background-color: #ddd;
-    div{
-        display: flex;
-        justify-content: space-between;
-        font-weight: 600;
+const Course = styled.div`
+    
+`
+
+const Tourist = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+
+    h2{
+        font-size: 18px;
+        font-weight: 700;
+        color: #222;
     }
-    p{
-        line-height: 2;
-    }
+`
+
+const BtnCreate = styled.div`
+
 `

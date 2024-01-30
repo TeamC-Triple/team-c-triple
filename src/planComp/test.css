@@ -1,5 +1,0 @@
-@charset "utf-8";
-.aa{
-    overflow-y: scroll;
-    height: calc(100vh - 160px);
-}

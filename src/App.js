@@ -26,6 +26,10 @@ import MainFeed from "./mainComp/MainFeed.js";
 import MainSearch from './pages/MainSearch.js';
 import Mypage from './pages/Mypage.js';
 import NewPlan from './pages/NewPlan.js';
+import EditPlan from './pages/EditPlan.js';
+import NewLog from './pages/NewLog.js';
+import EditLog from './pages/EditLog.js';
+import TravelLog from './pages/TravelLog.js';
 
 
 
@@ -65,6 +69,22 @@ const reducerPlan = (state, action) => {
     return newStatePlan;
 };
 
+let newStateLog = dummyMyTripList;
+const reducerLog = (state, action) => {
+    switch(action.type){
+        case 'INIT' : {
+            return action.data;
+        }
+        case 'CREATE' : {
+            const newLog = {
+                ...action.data
+            }
+            newStateLog = [newLog, ...newStateLog];
+            break;
+        }
+    }
+};
+
 // 데이터 전역 공급망 (더미데이터)
 // export const MTLDataContext = React.createContext();
 export const RecoCourseDataContext = React.createContext();
@@ -77,6 +97,8 @@ export const CityDataContext = React.createContext();
 // 데이터 전역 공급망 (reducer함수)
 export const PlanDataContext = React.createContext();
 export const PlanDispatchContext = React.createContext();
+export const LogDataContext = React.createContext();
+export const LogDispatchContext = React.createContext();
 
 
 // 메인화면쪽 layout 컴포넌트 선언. => 따로 컴포넌트로 분리시켜서 임포트 시켰습니다.
@@ -86,9 +108,12 @@ function App() {
     // plan(여행일정짜기) 파트 관리할 reducer 선언.
     const [dataPlan, dispatchPlan] = useReducer(reducerPlan, dummyMyTripPlan);
     const dataPlanId = useRef(5);
+    // log(여행기) 파트 관리할 reducer 선언.
+    const [dataLog, dispatchLog] = useReducer(reducerLog, dummyMyTripList);
+    const dataLogId = useRef(5);
     
     // plan CREATE
-    const onCreatePlan = (city, firstDate, lastDate, photo, keyword) => {
+    const onCreatePlan = (city, firstDate, lastDate, keyword, people, expense) => {
         dispatchPlan({
             type : 'CREATE',
             data : {
@@ -96,51 +121,80 @@ function App() {
                 city,
                 firstDate : new Date(firstDate).getTime(),
                 lastDate : new Date(lastDate).getTime(),
-                photo,
-                keyword
+                keyword,
+                people,
+                expense
             }
         });
         dataPlanId += 1;
+    };
+
+    
+    // log CREATE
+    const onCreateLog = (title, city, firstDate, lastDate, recoNum, commentNum, downloadNum, photo, reviewTxt, keyword) => {
+        dispatchLog({
+            type : 'CREATE',
+            data : {
+                id : dataLogId.current,
+                title,
+                city,
+                firstDate,
+                lastDate,
+                recoNum,
+                commentNum,
+                downloadNum,
+                photo,
+                reviewTxt,
+                keyword
+            }
+        });
+        
     };
 
 
     
     const location = useLocation();
     return (
-        <PlanDispatchContext.Provider value={{onCreatePlan}}>
-            <CityDataContext.Provider value={dummyCity}>
-                <MyTripListDataContext.Provider value={dummyMyTripList}>    
-                    <PlanDataContext.Provider value={dataPlan}>
-                        <MagazineDataContext.Provider value={dummyMagazine}>
-                            <RecoCourseDataContext.Provider value={dummyRecoCourse}>
-                                <SpotsDataContext.Provider value={dummyTouristSpots}>
-                                    <TravelogContext.Provider value={dummyTravelog} >
-                                        <div className="App">
-                                            <AnimatePresence mode='sync'>
-                                                {isVisible &&
-                                                    <Routes location={location} key={location.pathname}>
-                                                        <Route path='/' element={<Main />}>
-                                                            <Route index element={<Home />} />
-                                                            <Route path='/feed' element={<MainFeed />} />
-                                                            <Route path='/travel' element={<MainTravel />} />
-                                                        </Route>
-                                                        <Route path='/search' element={<MainSearch />} />
-                                                        <Route path='/mypage' element={<Mypage />} />
-                                                        <Route path='/plan' element={<PlanLayOut />}>
-                                                            <Route index element={<NewPlan />} />
-                                                        </Route>
-                                                    </Routes>
-                                                }
-                                            </AnimatePresence>
-                                        </div>
-                                    </TravelogContext.Provider> 
-                                </SpotsDataContext.Provider>
-                            </RecoCourseDataContext.Provider>
-                        </MagazineDataContext.Provider>
-                    </PlanDataContext.Provider>
-                </MyTripListDataContext.Provider>
-            </CityDataContext.Provider>
-        </PlanDispatchContext.Provider>
+        <LogDispatchContext.Provider value={{onCreateLog}}>
+            <PlanDispatchContext.Provider value={{onCreatePlan}}>
+                <CityDataContext.Provider value={dummyCity}>
+                    <LogDataContext.Provider value={dataLog}>    
+                        <PlanDataContext.Provider value={dataPlan}>
+                            <MagazineDataContext.Provider value={dummyMagazine}>
+                                <RecoCourseDataContext.Provider value={dummyRecoCourse}>
+                                    <SpotsDataContext.Provider value={dummyTouristSpots}>
+                                        <TravelogContext.Provider value={dummyTravelog} >
+                                            <div className="App">
+                                                <AnimatePresence mode='sync'>
+                                                    {isVisible &&
+                                                        <Routes location={location} key={location.pathname}>
+                                                            <Route path='/' element={<Main />}>
+                                                                <Route index element={<Home />} />
+                                                                <Route path='/feed' element={<MainFeed />} />
+                                                                <Route path='/travel' element={<MainTravel />} />
+                                                            </Route>
+                                                            <Route path='/search' element={<MainSearch />} />
+                                                            <Route path='/mypage' element={<Mypage />} />
+                                                            <Route path='/plan' element={<PlanLayOut />}>
+                                                                <Route index element={<NewPlan />} />
+                                                                <Route path='/plan/editplan/:id' element={<EditPlan />} />
+                                                            </Route>
+                                                            <Route path='/travellog/new' element={<NewLog />} />
+                                                            <Route path='/travellog/editlog/:id' element={<EditLog />} />
+                                                            <Route path='/travellog' element={<TravelLog />} />
+                                                        </Routes>
+                                                    }
+                                                </AnimatePresence>
+                                            </div>
+                                        </TravelogContext.Provider> 
+                                    </SpotsDataContext.Provider>
+                                </RecoCourseDataContext.Provider>
+                            </MagazineDataContext.Provider>
+                        </PlanDataContext.Provider>
+                    </LogDataContext.Provider>
+                </CityDataContext.Provider>
+            </PlanDispatchContext.Provider>
+        </LogDispatchContext.Provider>
   );
 }
 

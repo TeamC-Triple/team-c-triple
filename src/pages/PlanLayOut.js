@@ -55,7 +55,7 @@ const PlanLayOut = () => {
             <AnimatedPages>
                 <Outlet />
             </AnimatedPages>
-            <BottomNaviSub centerPage={'plan'} />
+            <BottomNaviSub center={'plan'} />
             <SideBar 
                 sidebar={sidebar} 
                 setSidebar={setSidebar} 

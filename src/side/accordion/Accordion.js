@@ -1,7 +1,8 @@
 import { useRef, useState } from "react"
 import styled from "styled-components"
+import Button from "../../common/Button";
 
-const Accodion = ({content, title}) => {
+const Accodion = ({content, title, city, period, photo}) => {
     const [isCollapse, setIsCollapse] = useState(false);
     
     const handleClick = () => {
@@ -26,12 +27,22 @@ const Accodion = ({content, title}) => {
     return(
         <div className="list">
             <div className="acoTitle" onClick={handleClick}>
-                <H2>{title}</H2>
-                <p className={parentRefHeight === '0px' || parentRefHeight === '' ? 'acoArrow off' : 'acoArrow on'}></p>
+                <div className="acoTop">
+                    <img src={photo} className={parentRefHeight === '0px' || parentRefHeight === '' ? 'img off' : 'img on'} />
+                    <div className="index">
+                        <H2>{title}</H2>
+                        <p className={parentRefHeight === '0px' || parentRefHeight === '' ? 'acoArrow off' : 'acoArrow on'}></p>
+                    </div>
+                </div>
+                <div className="acoCourse">
+                    <p>{city}</p>
+                    <p>{period}</p>
+                </div>
             </div>
             <Div ref={parentRef}>
                 <ul ref={childRef}>
                     {content}
+                    <Button type={'active'} text={'가져오기'}></Button>
                 </ul>
             </Div>
         </div>
@@ -39,7 +50,6 @@ const Accodion = ({content, title}) => {
 }
 
 export default Accodion;
-
 
 const Div = styled.div`
     width: 100%;
