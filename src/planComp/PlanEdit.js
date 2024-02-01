@@ -33,8 +33,6 @@ const PlanEdit = ({
     addNewSpots,
     dayList,
     setDayList,
-    selectSpots,
-    setSelectSpots,
     selectSpotsList,
     setSelectSpotsList
 })=>{
@@ -137,15 +135,14 @@ const PlanEdit = ({
                         key={idx} day={day} idx={idx}
                         dayList={dayList}
                         setDayList={setDayList}
-                        selectSpots={selectSpots} 
-                        setSelectSpots={setSelectSpots}
                         selectSpotsList={selectSpotsList} 
                         setSelectSpotsList={setSelectSpotsList} 
                         addNewSpots={addNewSpots}
                         addDayPlan={addDayPlan} 
                         chosedCity={chosedCity}
                         keywordData={keywordData} 
-                        travelDateRange={travelDateRange} />
+                        travelDateRange={travelDateRange}
+                        handleCity={handleCity} />
                 ))
             }
             </DaySpots>

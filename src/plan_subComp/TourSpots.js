@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Button from "../common/Button";
 import "./TourSpots.css"
 
-const TourSpots = ({ spotName,  selectSpots, setSelectSpots, selectSpotsList, setSelectSpotsList, openAdd, addNewSpots})=>{
+const TourSpots = ({ spotName, selectSpots, setSelectSpots, selectSpotsList, setSelectSpotsList, openAdd, addNewSpots})=>{
     
     const [spotClick, setSpotClick]= useState(false);
 
@@ -15,19 +15,14 @@ const TourSpots = ({ spotName,  selectSpots, setSelectSpots, selectSpotsList, se
         setSpotClick(false);
     }, [openAdd]);
 
-    const activeBtn = () => {
-
+    const activeBtn =  () => {
         setSpotClick(true);
-        setSelectSpots(spotName);
-
-        // 새로운 장소 리스트에 추가
-        addNewSpots(spotName);
-
+        setSelectSpots(`${spotName}`);
+        addNewSpots(selectSpots);
     };
-    const deActiveBtn = () => {
+    const deActiveBtn = async () => {
         setSpotClick(false);
         setSelectSpotsList(selectSpotsList.filter((item)=> (item.spotName !== spotName)));
-
     }
 
     

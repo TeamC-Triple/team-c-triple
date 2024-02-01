@@ -13,7 +13,7 @@
 
 
 import { useContext, useEffect, useRef, useState } from "react";
-import { PlanDataContext, PlanDispatchContext, SpotsDataContext } from "../App";
+import { PlanDataContext, PlanDispatchContext } from "../App";
 import styled from "styled-components";
 import { useBodyScrollLock } from "../utill/useBodyScrollLock.js";
 
@@ -31,7 +31,6 @@ const keywordData = [ {id : 0, kw : '#친구와'}, {id : 1, kw : '#연인과'},{
 const Plan = () => {
     const PlanData = useContext(PlanDataContext);
     const { onCreatePlan } = useContext(PlanDispatchContext);
-    const spotsData = useContext(SpotsDataContext);
     const { lockScroll, openScroll } = useBodyScrollLock();
 
     // planCity
@@ -67,15 +66,18 @@ const Plan = () => {
 
     // planDays 여행 계획 전체
     const [dayList, setDayList]= useState([]);
+    const daysId = useRef(0);
 
     // planDays 
     // 여행장소 리스트를 해당 일자에 추가
     const addDayPlan = (day, spotsList)=>{
         const newDay = {
+            id : daysId.current,
             date : day,
-            newdaySpots : spotsList
+            sch : spotsList
         };
-        setDayList([newDay, ...dayList]);
+        daysId.current ++;
+        setDayList([...dayList, newDay]);
     };
 
     // 1일 장소 리스트
@@ -84,18 +86,17 @@ const Plan = () => {
     const spotOrder = useRef(0);
 
     // 새로운 장소를 리스트에 추가
-    const addNewSpots = (spotName)=>{
+    const addNewSpots = (place)=>{
         const newSpots = {
-            id : spotOrder.current ,
-            spotName : spotName
+            id : spotOrder.current,
+            place : place
         }
         spotOrder.current += 1;
         setSelectSpotsList([newSpots, ...selectSpotsList])
     };
 
+    console.log(dayList);
 
-    // 장소 하나
-    const [selectSpots, setSelectSpots]= useState();
 
  
 
@@ -163,11 +164,9 @@ const Plan = () => {
                 addNewSpots={addNewSpots}
                 dayList={dayList}
                 setDayList={setDayList}
-                selectSpots={selectSpots}
-                setSelectSpots={setSelectSpots}
                 selectSpotsList={selectSpotsList}
                 setSelectSpotsList={setSelectSpotsList}
-
+                
                 // 비용
                 add={add}
                 money={money}
