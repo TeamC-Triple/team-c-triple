@@ -1,9 +1,15 @@
 import styled from "styled-components";
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const BottomNavi = ({}) => {
     const [activeTab, setActiveTab] = useState('/');
+
+    const location = useLocation();
+    
+    useEffect(()=>{
+        setActiveTab(`${location.pathname}`)
+    },[activeTab]);
 
     return (
         <BottomNav>
@@ -107,7 +113,7 @@ const BTNVIconOn = styled.p`
     height: 36px;
     margin: 0 auto;
     border-radius: 50%;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
     
     img{
         width: 100%;

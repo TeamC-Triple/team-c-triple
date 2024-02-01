@@ -1,19 +1,23 @@
 .MTSection1{
-    margin: 80px 20px 32px 20px;
+    margin: 80px 20px 40px;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.18);
 }
-.MTSection1 input{
-    width: calc(100% - 120px);
+.MTSection1 .content{
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
     height: 45px;
-    margin: 20px;
-    padding: 0 40px 0;
-    border: 0;
+    line-height: 45px;
+    padding: 0 55px 0;
     border-radius: 10px;
+    color: #333333;
+    font-weight: 600;
     background-color: #F2F2F2;
     background-image: url(../../public/assets/icon-search.svg);
     background-repeat: no-repeat;
-    background-size: 16px 16px;
+    background-size: 18px auto;
     background-position: center left 20px;
-    color: #333333;
+    cursor: pointer;
 }

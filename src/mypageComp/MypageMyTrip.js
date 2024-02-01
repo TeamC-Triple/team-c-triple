@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import MypageMyTripList from "../mypage_subcomp/MypageMyTripList";
+import { useNavigate } from "react-router-dom";
 
 const MypageMyTrip = () => {
+    const navigate = useNavigate();
     return (
         <MypageMyTripCss>
-            <div className="makeTrip">
+            <div className="makeTrip" onClick={() => {navigate('/plan')}}>
                 <p>+</p>
                 <div>
                     <p className="bold">여행 일정 만들기</p>

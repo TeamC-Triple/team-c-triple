@@ -1,22 +1,22 @@
 import { useContext, useEffect, useState } from 'react';
 
-import { MyTripListDataContext } from '../App.js';
+import { LogDataContext } from '../App.js';
 import MyFeedItem from '../home_subcomp/MyFeedItem.js';
 import Button from '../common/Button.js';
 import styled from 'styled-components';
 
 const MFSection1 = () => {
-    const myTripList = useContext(MyTripListDataContext);
+    const myTripList = useContext(LogDataContext);
     const [data, setData] = useState([]);
-    const [sliceNum, setSliceNum] = useState(2)
-    const ListSlice = sliceNum + (myTripList.length - sliceNum)
+    const [num, setNum] = useState(0);
+    const slice = num + 2;
 
     useEffect(() => {
         setData(myTripList);
     }, [])
 
     const clickListMore = () => {
-        setSliceNum(ListSlice);
+        setNum(num+3);
     };
 
     return (
@@ -27,11 +27,11 @@ const MFSection1 = () => {
                 </h2>
                 <MyFeedList>
                     <ul>
-                        {data.slice(0,sliceNum).map((it) => <MyFeedItem key={it.id} {...it} />)}
+                        {data.slice(0,slice).map((it) => <MyFeedItem key={it.id} {...it} />)}
                     </ul>
                 </MyFeedList>
                 <Button 
-                    type={`gray_border`}
+                    type= {`gray_border ${num === 0 ? 'on' : 'off'}`}
                     text={'나의 여행 피드 더보기'}
                     onClick={clickListMore}
                 />
@@ -56,6 +56,12 @@ const MfSection1_in = styled.div`
     
     button{
         width: 100%;
+    }
+    button.on{
+        display: block;
+    }
+    button.off{
+        display: none;
     }
 `;
 

@@ -1,33 +1,21 @@
 import { useContext, useState } from "react";
 import styled from "styled-components";
-import { MyTripDispatchContext } from "../App";
+import { PlanDispatchContext } from "../App";
 
 const MypageMyTripItem = ({id, city, firstDate, lastDate}) => {
     const [isEdit, setIsEdit] = useState(false);
-    const { onRemove } = useContext(MyTripDispatchContext);
+    const { onRemovePlan } = useContext(PlanDispatchContext);
 
     const showEdit = () => {
         setIsEdit(true);
         setTimeout(()=>{setIsEdit(false)}, 3000);
     };
-    /*
-        스르륵 닫히도록 구현하고 싶은데..
-
-        const ref = useRef();
-
-        const closeEdit = (e) => {
-            if(isEdit&&ref.current&&!ref.current.contains(e.target)){
-                setIsEdit(false);
-            };
-        };
-    */
 
     const handleRemove = () => {
         if(window.confirm(`${city}일정을 정말로 삭제하시겠습니까?`)){
-            onRemove(id);
+            onRemovePlan(id);
         };
     };
-    console.log(id);
 
     return (
         <MPmyTripItem>
