@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Button from "../common/Button";
 import TourSpots from "../plan_subComp/TourSpots";
@@ -7,15 +7,23 @@ import HeaderIcon from "../common/HeaderIcon";
 import SelectedSpots from "../plan_subComp/SelectedSpots";
 import { SpotsDataContext } from "../App";
 
-const PlanDays = ({day, idx, selectSpots, setSelectSpots, chosedCity, selectSpotsList, setSelectSpotsList, keywordData}) => {
+const PlanDays = ({day, idx, 
+    dayList, setDayList,   
+    selectSpots, setSelectSpots, 
+    chosedCity, 
+    selectSpotsList, setSelectSpotsList, 
+    keywordData, 
+    addNewSpots, addDayPlan, 
+    travelDateRange
+}) => {
     const spotsData = useContext(SpotsDataContext);
 
-    // 장소 추가 안했을때
-    const [isEmpty, setIsEmpty]= useState(true);
 
-    // 장소 추가 창 열기
+    // 장소 추가 여닫기
     const [openAdd, setOpenAdd]= useState(false);
-    const addSpots =()=>{
+    
+    // 장소 추가 버튼
+    const addSpotsBtn =()=>{
         setOpenAdd(true);
     };
 
@@ -30,6 +38,20 @@ const PlanDays = ({day, idx, selectSpots, setSelectSpots, chosedCity, selectSpot
     const closeSpots =()=>{
         setOpenAdd(false);
     }
+
+    // 장소 선택 완료
+    const getSpots = ()=>{
+        setOpenAdd(false);
+        
+        // 여행장소 리스트를 해당 일자에 추가
+        addDayPlan(day, selectSpotsList);
+    }
+
+
+    // console.log(travelDateRange);
+    // console.log(selectSpotsList);
+    console.log(dayList[idx]);
+
     
     return (
         <Plandays className="Plandays">
@@ -37,12 +59,18 @@ const PlanDays = ({day, idx, selectSpots, setSelectSpots, chosedCity, selectSpot
                 <h3>DAY {idx+1} <span>({day})</span></h3>
                 <p className="pdy_pay">예상 경비 : </p>
             </div>
-            {isEmpty ? <Empty>일정이 비어있습니다.</Empty> 
-                    :
-                        <SelectedSpots key={it.id} {...it} selectSpots={selectSpots} />
+            <div>
+            {dayList.length < 1
+                    ?
+                     <Empty>일정이 비어있습니다.</Empty> 
+                    
+                    :   dayList.map((it)=>(
+                        it.date === day && <SelectedSpots key={it.date} {...it} />
+                    ))
             }
+            </div>
             <DayBtn>
-                <Button type={'gray_border'} text='장소추가' onClick={addSpots} />
+                <Button type={'gray_border'} text='장소추가' onClick={addSpotsBtn} />
                 <Button type={'gray_border'} text='메모추가' />
             </DayBtn>
             <SpotAddModal className={openAdd ? 'open' : ''}>
@@ -79,14 +107,14 @@ const PlanDays = ({day, idx, selectSpots, setSelectSpots, chosedCity, selectSpot
                     />}
                 />
                 <SpotListWrap>
-                    <div className="list_top">
+                    <div className="spotlist_top">
                         <div className="keywordTap">
                             {keywordData.map((it)=>
                                 <Button key={it.id} type={'deActive'} text={it.kw} />
                             )}
                         </div>
                     </div>
-                    <div className="list">
+                    <div className="spotlist">
                         <ul>
                             {chosedCity === '' 
                                 ?<li>여행할 지역을 먼저 선택해 주세요.</li>
@@ -94,16 +122,25 @@ const PlanDays = ({day, idx, selectSpots, setSelectSpots, chosedCity, selectSpot
                                 spotsData.filter((it) => { 
                                     if(it.city === chosedCity && search === "") {
                                         return it;
-                                    } else if (it.city === chosedCity && it.locationName.includes(search.toLowerCase()))  {
+                                    } else if (it.city === chosedCity && it.spotName.includes(search.toLowerCase()))  {
                                     return it;
                                     }}
                                 ).map((it)=>(
                                     <TourSpots key={it.id} {...it} 
-                                        setSelectSpots={setSelectSpots} setSelectSpotsList={setSelectSpotsList} 
+                                        openAdd={openAdd}
+                                        addNewSpots={addNewSpots}
+                                        selectSpots={selectSpots} 
+                                        setSelectSpots={setSelectSpots} 
+                                        selectSpotsList={selectSpotsList} 
+                                        setSelectSpotsList={setSelectSpotsList}
                                     />
                             )) 
                             }
                         </ul>
+                        {   selectSpotsList.length > 0   ? 
+                                <Button type={'active'} text='장소 선택 완료' onClick={getSpots}/>
+                                :<Button type={'deActive'} text='장소를 선택해주세요.'/>
+                        }
                     </div>
                 </SpotListWrap>
                 <SpotBtn>
@@ -254,7 +291,7 @@ const SpotListWrap = styled.div`
     padding-top: 40px;
     padding-bottom: 90px;
 
-    .list_top{
+    .spotlist_top{
         margin-bottom: 10px;
     }
     .keywordTap{
