@@ -1,15 +1,25 @@
+import { useState } from "react";
 import styled from "styled-components";
 
-const SelectedSpots =({date, newdaySpots})=>{
+const SelectedSpots =({id, date, newdaySpots})=>{
     const shadowStyles = {
         boxShadow: '0 1px 8px rgba(0,0,0,0.2)',
         marginBottom: '20px',
         borderRadius : '10px',
         lineHeight : '30px'
     };
+
+    // const [spotItem, setSpotItem] = useState({
+    //     id => SelectedSpots의 id값으로 하고,
+    //     place => 장소 프롭스로 하나 받아오고,
+    //     memo 
+    // });
+
+
     return(
         <SelectPlan>
             <div className="selected" style={shadowStyles}>
+                {/* 넘버닷도 여기 컴포넌트의 아이디값으로 */}
                 <div className="numberDot">1</div>
                 <div className="spotName">{newdaySpots[0].spotName}</div>
             </div>

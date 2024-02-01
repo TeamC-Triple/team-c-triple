@@ -13,6 +13,7 @@ export const dummyMyTripPlan = [
             {
                 id: 0, 
                 planDate: new Date(2024, 3, 1).getTime(),
+                spent: 50000,
                 sch: [
                     {
                         id: 0,
@@ -29,6 +30,7 @@ export const dummyMyTripPlan = [
             {
                 id: 1, 
                 planDate: new Date(2024, 3, 2).getTime(),
+                spent: 50000,
                 sch: [
                     {
                         id: 0,
@@ -59,6 +61,7 @@ export const dummyMyTripPlan = [
             {
                 id: 0, 
                 planDate: new Date(2024, 3, 6).getTime(),
+                spent: 50000,
                 sch: [
                     {
                         id: 0,
@@ -74,6 +77,7 @@ export const dummyMyTripPlan = [
             {
                 id: 1, 
                 planDate: new Date(2024, 3, 7).getTime(),
+                spent: 50000,
                 sch: [
                     {
                         id: 0,
@@ -105,6 +109,7 @@ export const dummyMyTripPlan = [
             {
                 id: 0, 
                 planDate: new Date(2024, 3, 12).getTime(),
+                spent: 50000,
                 sch: [
                     {
                         id: 0,
@@ -120,6 +125,7 @@ export const dummyMyTripPlan = [
             {
                 id: 1, 
                 planDate: new Date(2024, 3, 13).getTime(),
+                spent: 50000,
                 sch: [
                     {
                         id: 0,
@@ -140,6 +146,7 @@ export const dummyMyTripPlan = [
             {
                 id: 2, 
                 planDate: new Date(2024, 3, 14).getTime(),
+                spent: 50000,
                 sch: [
                     {
                         id: 0,
@@ -154,6 +161,7 @@ export const dummyMyTripPlan = [
             {
                 id: 3, 
                 planDate: new Date(2024, 3, 15).getTime(),
+                spent: 50000,
                 sch: [
                     {
                         id: 0,
@@ -180,6 +188,7 @@ export const dummyMyTripPlan = [
             {
                 id: 0, 
                 planDate: new Date(2024, 3, 17).getTime(),
+                spent: 50000,
                 sch: [
                     {
                         id: 0,
@@ -196,6 +205,7 @@ export const dummyMyTripPlan = [
             {
                 id: 1, 
                 planDate: new Date(2024, 3, 18).getTime(),
+                spent: 50000,
                 sch: [
                     {
                         id: 0,
@@ -227,6 +237,7 @@ export const dummyMyTripPlan = [
             {
                 id: 0, 
                 planDate: new Date(2024, 4, 11).getTime(),
+                spent: 50000,
                 sch: [
                     {
                         id: 0,
@@ -243,6 +254,7 @@ export const dummyMyTripPlan = [
             {
                 id: 1, 
                 planDate: new Date(2024, 4, 12).getTime(),
+                spent: 50000,
                 sch: [
                     {
                         id: 0,
