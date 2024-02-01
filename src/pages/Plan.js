@@ -82,7 +82,6 @@ const Plan = () => {
 
     // 1일 장소 리스트
     const [selectSpotsList, setSelectSpotsList]= useState([]);
-
     const spotOrder = useRef(0);
 
     // 새로운 장소를 리스트에 추가
@@ -94,12 +93,6 @@ const Plan = () => {
         spotOrder.current += 1;
         setSelectSpotsList([newSpots, ...selectSpotsList])
     };
-
-    console.log(dayList);
-
-
- 
-
 
     // PlanExpenses
     // PlanExpenses 여닫음 상태변수

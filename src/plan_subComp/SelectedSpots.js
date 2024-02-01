@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-const SelectedSpots =({id, date, place})=>{
+const SelectedSpots =({id, place})=>{
     const shadowStyles = {
         boxShadow: '0 1px 8px rgba(0,0,0,0.2)',
         marginBottom: '20px',

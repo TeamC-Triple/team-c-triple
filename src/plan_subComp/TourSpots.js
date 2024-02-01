@@ -20,7 +20,7 @@ const TourSpots = ({ spotName, selectSpots, setSelectSpots, selectSpotsList, set
         setSelectSpots(`${spotName}`);
         addNewSpots(selectSpots);
     };
-    const deActiveBtn = async () => {
+    const deActiveBtn = () => {
         setSpotClick(false);
         setSelectSpotsList(selectSpotsList.filter((item)=> (item.spotName !== spotName)));
     }

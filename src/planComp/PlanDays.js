@@ -35,9 +35,6 @@ const PlanDays = ({day, idx,
     // 장소 선택 완료
     const getSpots = ()=>{
         setOpenAdd(false);
-        
-        // 여행장소 리스트를 해당 일자에 추가
-        addDayPlan(day, selectSpotsList);
     }
     
     return (
