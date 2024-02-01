@@ -143,6 +143,7 @@ const Plan = () => {
         onCreatePlan(chosedCity, startDate, lastDate, keywordList, traveler, expenses);
     };
     
+    console.log(travelDateRange);
     
 
     return (
