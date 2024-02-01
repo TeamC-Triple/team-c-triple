@@ -38,6 +38,7 @@ const PlanDateCal = ({
         setLastDate([items.selection.endDate])
         setTravelRange(getDateRange([items.selection.startDate], [items.selection.endDate]));
     };
+    console.log(travelRange);
 
     // 처음날짜부터 마지막날짜 사이를 구하는 변수
     const getDateRange = (date1, date2) => {
@@ -46,8 +47,8 @@ const PlanDateCal = ({
         const result = [];
 
         while(start <= last){
-            result.push(start.toISOString().slice(0,10));
             start.setDate(start.getDate() + 1);
+            result.push(start.toISOString().slice(0,10));
         }
         return result;
     }
