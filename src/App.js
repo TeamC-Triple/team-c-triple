@@ -93,6 +93,7 @@ const reducerLog = (state, action) => {
         default:
             return state;
     }
+    return newStateLog;
 };
 
 
