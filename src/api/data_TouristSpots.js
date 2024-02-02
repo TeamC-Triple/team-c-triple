@@ -151,31 +151,31 @@ export const dummyTouristSpots = [
      id : 21,
      city : '태안',
      spotName: '샌드힐 카페',
-     keyword : ['#연인과, #SNS핫플']
+     keyword : ['#친구와']
   },
   {
      id : 22,
      city : '태안',
      spotName: '원조 뚝배기식당',
-     keyword : ['#맛집', '#부모님과']
+     keyword : ['#친구와']
   },
   {
      id : 23,
      city : '태안',
      spotName: '청산 수목원',
-     keyword : ['#관광지', '#힐링']
+     keyword : ['#관광지']
   },
   {
      id : 24,
      city : '태안',
      spotName: '백사장항',
-     keyword : ['#관광지', '#힐링']
+     keyword : ['#관광지']
   },
   {
      id : 25,
      city : '태안',
      spotName: '꽃지 해수욕장',
-     keyword : ['#관광지', '#힐링']
+     keyword : ['#관광지']
   },
   {
      id : 26,
@@ -193,7 +193,7 @@ export const dummyTouristSpots = [
      id : 28,
      city : '나주',
      spotName: '빛가람 전망대',
-     keyword : ['#관광지', '#힐링']
+     keyword : ['#관광지']
   },
   
   {
@@ -207,7 +207,7 @@ export const dummyTouristSpots = [
      id : 30,
      city : '나주',
      spotName: '나주 곰탕 하얀집',
-     keyword : ['#관광지', '#맛집']
+     keyword : ['#관광지']
   },
   
   {
@@ -249,207 +249,14 @@ export const dummyTouristSpots = [
      id : 36,
      city : '밀양',
      spotName: '위량못',
-     keyword : ['#관광지', '#힐링']
+     keyword : ['#관광지']
   },
   
   {
      id : 37,
      city : '밀양',
      spotName: '달빛 쌈지 공원',
-     keyword : ['#관광지', '#힐링']
-  },
-  
-  {
-     id : 38,
-     city : '청주',
-     spotName: '디데이',
-     keyword : ['#관광지']
-  },
-  
-  {
-     id : 39,
-     city : '청주',
-     spotName: '스티즈 커피 로스터스',
-     keyword : ['#관광지']
-  },
-  
-  {
-     id : 40,
-     city : '청주',
-     spotName: '정북동 토성',
-     keyword : ['#관광지']
-  },
-  
-  {
-     id : 41,
-     city : '청주',
-     spotName: '수암골',
-     keyword : ['#관광지', '#힐링']
-  },
-  
-  {
-     id : 42,
-     city : '청주',
-     spotName: '봉용 불고기',
      keyword : ['#관광지']
   }
-  ,
-  
-  {
-     id : 43,
-     city : '청주',
-     spotName: '국립 현대 미술관 청주',
-     keyword : ['#관광지']
-  }
-  ,
-  
-  {
-     id : 44,
-     city : '청주',
-     spotName: '산당산성',
-     keyword : ['#관광지']
-  },
-  
-  {
-     id : 45,
-     city : '청주',
-     spotName: '아우트로 커피',
-     keyword : ['#관광지']
-  }
-  ,
-  
-  {
-     id : 46,
-     city : '청주',
-     spotName: '부부농장',
-     keyword : ['#관광지']
-  },
-  
-  {
-     id : 47,
-     city : '청주',
-     spotName: '청남대',
-     keyword : ['#관광지']
-  }
-  ,
-  
-  {
-     id : 48,
-     city : '수원',
-     spotName: '방화수류정',
-     keyword : ['#관광지']
-  },
-  
-  {
-     id : 49,
-     city : '수원',
-     spotName: '정지영 커피 로스터즈',
-     keyword : ['#관광지']
-  },
-  
-  {
-     id : 50,
-     city : '수원',
-     spotName: '행궁애(愛)',
-     keyword : ['#관광지']
-  },
-  
-  {
-     id : 51,
-     city : '수원',
-     spotName: '화성 행궁',
-     keyword : ['#관광지', '#힐링']
-  },
-  
-  {
-     id : 52,
-     city : '수원',
-     spotName: '운멜로',
-     keyword : ['#관광지']
-  },
-  
-  {
-     id : 53,
-     city : '수원',
-     spotName: '홍라드',
-     keyword : ['#관광지']
-  },
-  
-  {
-     id : 54,
-     city : '수원',
-     spotName: '효원 공원 월화원',
-     keyword : ['#관광지']
-  },
-  
-  {
-     id : 55,
-     city : '수원',
-     spotName: '진미 통닭',
-     keyword : ['#관광지', '#맛집']
-  },
-  
-  {
-     id : 56,
-     city : '수원',
-     spotName: '도쿄등심 광교점',
-     keyword : ['#관광지']
-  },
-  
-  {
-     id : 57,
-     city : '수원',
-     spotName: '책발전소 광교',
-     keyword : ['#관광지']
-  },
-  
-  {
-     id : 58,
-     city : '수원',
-     spotName: '아우어 베이커리 광교앨리웨이점',
-     keyword : ['#관광지']
-  },
-  
-  {
-     id : 59,
-     city : '수원',
-     spotName: '광교 호수 공원',
-     keyword : ['#관광지']
-  },
-  
-  {
-     id : 60,
-     city : '천안',
-     spotName: '독립 기념관',
-     keyword : ['#관광지']
-  },
-  
-  {
-     id : 61,
-     city : '천안',
-     spotName: '천안 병천 순대 거리',
-     keyword : ['#맛집','#관광지']
-  },
-  
-  {
-     id : 62,
-     city : '천안',
-     spotName: '박순자아우내순대',
-     keyword : ['#맛집','#관광지']
-  },
-  
-  {
-     id : 63,
-     city : '천안',
-     spotName: '교토리',
-     keyword : ['#맛집','#관광지']
-  },
-  
-  {
-     id : 64,
-     city : '천안',
-     spotName: '신세계 백화점 아라리오 점',
-     keyword : ['#맛집','#관광지']
-  },
-    
-];   
+
+  ];
