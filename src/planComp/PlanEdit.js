@@ -36,7 +36,9 @@ const PlanEdit = ({
     selectSpots,
     setSelectSpots,
     selectSpotsList,
-    setSelectSpotsList
+    setSelectSpotsList,
+    //메모
+    addMemo
 })=>{
 
     const navigate = useNavigate();
@@ -142,7 +144,8 @@ const PlanEdit = ({
                         selectSpotsList={selectSpotsList} 
                         setSelectSpotsList={setSelectSpotsList} 
                         addNewSpots={addNewSpots}
-                        addDayPlan={addDayPlan} 
+                        addDayPlan={addDayPlan}
+                        addMemo={addMemo} 
                         chosedCity={chosedCity}
                         keywordData={keywordData} 
                         travelDateRange={travelDateRange} />

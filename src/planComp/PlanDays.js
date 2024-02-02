@@ -14,10 +14,10 @@ const PlanDays = ({day, idx,
     selectSpotsList, setSelectSpotsList, 
     keywordData, 
     addNewSpots, addDayPlan, 
-    travelDateRange
+    travelDateRange,
+    addMemo
 }) => {
     const spotsData = useContext(SpotsDataContext);
-
 
     // 장소 추가 여닫기
     const [openAdd, setOpenAdd]= useState(false);
@@ -52,6 +52,19 @@ const PlanDays = ({day, idx,
     // console.log(selectSpotsList);
     console.log(dayList[idx]);
 
+
+        // 메모 추가 여닫기
+        const [openAddMemo, setOpenAddMemo] = useState(false);
+
+        // 메모 추가 버튼
+        const addMemoBtn =()=>{
+            setOpenAddMemo(true);
+        };
+        //
+        const closeMemo =()=>{
+            setOpenAddMemo(false);
+        }
+
     
     return (
         <Plandays className="Plandays">
@@ -71,7 +84,7 @@ const PlanDays = ({day, idx,
             </div>
             <DayBtn>
                 <Button type={'gray_border'} text='장소추가' onClick={addSpotsBtn} />
-                <Button type={'gray_border'} text='메모추가' />
+                <Button type={'gray_border'} text='메모추가' onClick={addMemoBtn} />
             </DayBtn>
             <SpotAddModal className={openAdd ? 'open' : ''}>
                 <Header1 
@@ -147,6 +160,14 @@ const PlanDays = ({day, idx,
                     <Button />
                 </SpotBtn>
             </SpotAddModal>
+            <MemoAddModal className={openAddMemo ? 'open': ''}>
+                <div>
+                    메모모달
+                </div>
+                <div onClick={closeMemo}>
+                    닫기
+                </div>
+            </MemoAddModal>
         </Plandays>
     );
 };
@@ -313,4 +334,22 @@ const SpotListWrap = styled.div`
 `
 const SpotBtn = styled.div`
 
+`
+const MemoAddModal = styled.div`
+    position: fixed;
+    bottom : -100%;
+    left: 0;
+    right: 0;
+    width : 100%;
+    height : 100%;
+    background-color: #fff;
+    z-index: 700;
+    transition: 0.3s;
+    &.open{
+        bottom: 0%;
+    }
+    background-color: #fff;
+    >div{
+        text-align: center;
+    }
 `
