@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import MypageMyTripItem from "../mypage_subcomp/MypageMyTripItem";
+import MypageMyTripList from "../mypage_subcomp/MypageMyTripList";
 import { useNavigate } from "react-router-dom";
 
 const MypageMyTrip = () => {
@@ -16,7 +16,7 @@ const MypageMyTrip = () => {
             <div className="scheduledTrip">
                 <h2>다가오는 여행</h2>
                 <ul>
-                    <MypageMyTripItem />
+                    <MypageMyTripList />
                 </ul>
             </div>
         </MypageMyTripCss>

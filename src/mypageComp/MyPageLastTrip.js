@@ -1,10 +1,19 @@
+import { useContext } from "react";
 import MypageLastTripItem from "../mypage_subcomp/MypageLastTripItem";
 import styled from "styled-components";
+import { PlanDataContext } from "../App";
+
 const MypageLastTrip = () => {
+    const myTriplList = useContext(PlanDataContext);
+    const today = new Date().getTime();
     return (
         <MypageLastTripCss>
             <ul>
-                <MypageLastTripItem />
+                {myTriplList?.filter((triplist)=>
+                    today-triplist.firstDate > 0
+                ).sort((a, b)=> b.firstDate - a.firstDate).map((item)=>(
+                    <MypageLastTripItem key={item.id} {...item}/>
+                ))}
             </ul>
         </MypageLastTripCss>
     );
