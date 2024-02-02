@@ -52,18 +52,22 @@ import TravelLog from './pages/TravelLog.js';
 // plan(여행일정짜기) 파트 관리할 reducer 함수
 let newStatePlan = dummyMyTripPlan;
 const reducerPlan = (state, action) => {
-    switch(action.type){
-        case 'INIT' : {
+    switch (action.type) {
+        case 'INIT': {
             return action.data;
         }
-        case 'CREATE' : {
+        case 'CREATE': {
             const newPlan = {
                 ...action.data
             }
             newStatePlan = [newPlan, ...newStatePlan];
             break;
         }
-        default :
+        case 'REMOVE': {
+            newStatePlan = state.filter((item) => item.id !== action.targetID);
+            break;
+        }
+        default:
             return state;
     }
     return newStatePlan;
@@ -71,27 +75,35 @@ const reducerPlan = (state, action) => {
 
 let newStateLog = dummyMyTripList;
 const reducerLog = (state, action) => {
-    switch(action.type){
-        case 'INIT' : {
+    switch (action.type) {
+        case 'INIT': {
             return action.data;
         }
-        case 'CREATE' : {
+        case 'CREATE': {
             const newLog = {
                 ...action.data
             }
             newStateLog = [newLog, ...newStateLog];
             break;
         }
+        case 'REMOVE': {
+            newStateLog = state.filter((item) => item.id !== action.targetID);
+            break;
+        }
+        default:
+            return state;
     }
+    return newStateLog;
 };
+
 
 // 데이터 전역 공급망 (더미데이터)
 // export const MTLDataContext = React.createContext();
+// export const MyTripListDataContext = React.createContext();
 export const RecoCourseDataContext = React.createContext();
 export const TravelogContext = React.createContext();
 export const SpotsDataContext = React.createContext();
 export const MagazineDataContext = React.createContext();
-export const MyTripListDataContext = React.createContext();
 export const CityDataContext = React.createContext();
 
 // 데이터 전역 공급망 (reducer함수)
@@ -103,21 +115,21 @@ export const LogDispatchContext = React.createContext();
 function App() {
     // plan(여행일정짜기) 파트 관리할 reducer 선언.
     const [dataPlan, dispatchPlan] = useReducer(reducerPlan, dummyMyTripPlan);
-    const dataPlanId = useRef(5);
+    const dataPlanId = useRef(9);
     // log(여행기) 파트 관리할 reducer 선언.
     const [dataLog, dispatchLog] = useReducer(reducerLog, dummyMyTripList);
     const dataLogId = useRef(5);
-    
+
     // plan CREATE
     const onCreatePlan = (city, firstDate, lastDate, keyword, people, expense, days) => {
         dispatchPlan({
-            type : 'CREATE',
-            data : {
-                id : dataPlanId.current,
-                city : `${city}`,
-                firstDate : new Date(firstDate).getTime(),
-                lastDate : new Date(lastDate).getTime(),
-                keyword : keyword,
+            type: 'CREATE',
+            data: {
+                id: dataPlanId.current,
+                city: `${city}`,
+                firstDate: new Date(firstDate).getTime(),
+                lastDate: new Date(lastDate).getTime(),
+                keyword: keyword,
                 people,
                 expense,
                 days : days
@@ -126,13 +138,13 @@ function App() {
         dataPlanId.current += 1;
     };
 
-    
+
     // log CREATE
     const onCreateLog = (title, city, firstDate, lastDate, recoNum, commentNum, downloadNum, photo, reviewTxt, keyword) => {
         dispatchLog({
-            type : 'CREATE',
-            data : {
-                id : dataLogId.current,
+            type: 'CREATE',
+            data: {
+                id: dataLogId.current,
                 title,
                 city,
                 firstDate,
@@ -146,18 +158,36 @@ function App() {
             }
         });
         dataLogId.current += 1;
-        
+
     };
 
     // onCreatePlan이 잘 작동 되는지 확인하기 위한 콘솔창입니다.
     console.log(dataPlan);
+
+    // plan REMOVE
+    const onRemovePlan = (targetID) => {
+        dispatchPlan({
+            type: 'REMOVE',
+            targetID
+        });
+        dataPlanId.current -= 1;
+    };
     
+    // log REMOVE
+    const onRemoveLog = (targetID) => {
+        dispatchLog({
+            type: 'REMOVE',
+            targetID
+        });
+        dataLogId.current -= 1;
+    };
+
     const location = useLocation();
     return (
-        <LogDispatchContext.Provider value={{onCreateLog}}>
-            <PlanDispatchContext.Provider value={{onCreatePlan}}>
+        <LogDispatchContext.Provider value={{ onCreateLog, onRemoveLog }}>
+            <PlanDispatchContext.Provider value={{ onCreatePlan, onRemovePlan }}>
                 <CityDataContext.Provider value={dummyCity}>
-                    <LogDataContext.Provider value={dataLog}>    
+                    <LogDataContext.Provider value={dataLog}>
                         <PlanDataContext.Provider value={dataPlan}>
                             <MagazineDataContext.Provider value={dummyMagazine}>
                                 <RecoCourseDataContext.Provider value={dummyRecoCourse}>
@@ -185,7 +215,7 @@ function App() {
                                                     }
                                                 </AnimatePresence>
                                             </div>
-                                        </TravelogContext.Provider> 
+                                        </TravelogContext.Provider>
                                     </SpotsDataContext.Provider>
                                 </RecoCourseDataContext.Provider>
                             </MagazineDataContext.Provider>
@@ -194,7 +224,7 @@ function App() {
                 </CityDataContext.Provider>
             </PlanDispatchContext.Provider>
         </LogDispatchContext.Provider>
-  );
+    );
 }
 
 export default App;
