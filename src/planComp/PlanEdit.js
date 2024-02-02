@@ -30,13 +30,8 @@ const PlanEdit = ({
     setTraveler,
     // 여행장소선택
     addDayPlan,
-    addNewSpots,
     dayList,
     setDayList,
-    selectSpots,
-    setSelectSpots,
-    selectSpotsList,
-    setSelectSpotsList,
     //메모
     addMemo
 })=>{
@@ -139,22 +134,18 @@ const PlanEdit = ({
                         key={idx} day={day} idx={idx}
                         dayList={dayList}
                         setDayList={setDayList}
-                        selectSpots={selectSpots} 
-                        setSelectSpots={setSelectSpots}
-                        selectSpotsList={selectSpotsList} 
-                        setSelectSpotsList={setSelectSpotsList} 
-                        addNewSpots={addNewSpots}
-                        addDayPlan={addDayPlan}
                         addMemo={addMemo} 
+                        addDayPlan={addDayPlan} 
                         chosedCity={chosedCity}
                         keywordData={keywordData} 
-                        travelDateRange={travelDateRange} />
+                        travelDateRange={travelDateRange}
+                        handleCity={handleCity} />
                 ))
             }
             </DaySpots>
         </StartWrap>
     );
-    }   // PlanEdit끝
+}   // PlanEdit끝
 export default PlanEdit;
 
 

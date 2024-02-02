@@ -1,22 +1,23 @@
+import { useState } from "react";
 import styled from "styled-components";
+import TourMemo from "./TourMemo";
 
-const SelectedSpots =({date, newdaySpots})=>{
+const SelectedSpots =({id, place, idx})=>{
     const shadowStyles = {
         boxShadow: '0 1px 8px rgba(0,0,0,0.2)',
         marginBottom: '20px',
         borderRadius : '10px',
         lineHeight : '30px'
     };
+
+    
+
     return(
         <SelectPlan>
             <div className="selected" style={shadowStyles}>
-                <div className="numberDot">1</div>
-                <div className="spotName">{newdaySpots[0].spotName}</div>
+                <div className="numberDot">{idx + 1}</div>
+                <div className="spotName">{place}</div>
             </div>
-            <Memo>
-                <div className="memoDot">memo</div>
-                <div className="memoContents">메모메모</div>
-            </Memo>
         </SelectPlan>
     );
 }
@@ -42,22 +43,4 @@ const SelectPlan = styled.div`
         }
     }
 
-`
-
-const Memo = styled.div`
-    display : flex;
-    margin: 0 0 24px 18px;
-    align-items: center;
-    line-height: 20px;
-        
-    .memoDot{
-        width: 16px;
-        height: 16px;
-        margin-right: 22px;
-        border-radius: 50%;
-        text-indent: -9999px;
-        text-align: center;
-        line-height: 30px;
-        background-color: #368FFF;
-    }
 `
