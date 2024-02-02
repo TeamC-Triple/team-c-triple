@@ -22,7 +22,6 @@ const PlanDays = ({
     const [openAdd, setOpenAdd]= useState(false);
     // 장소 하나
     const [selectSpots, setSelectSpots]= useState('');
-    const [spList, setSpList] = useState([]);
     const spId = useRef(0);
 
     // 장소 추가 버튼
@@ -47,8 +46,7 @@ const PlanDays = ({
                 return it;
             };
         });
-        setSpList(newList);
-        return spList;
+        return newList;
     };
 
     return (
@@ -62,8 +60,8 @@ const PlanDays = ({
                     ?
                      <Empty>일정이 비어있습니다.</Empty> 
                     
-                    :   dayList.map((it)=>(
-                        it.date === day && <SelectedSpots key={it.id} {...it} /> || <TourMemo key={it.id} {...it} />
+                    :   getThisDaySpList().map((it, idx)=>(
+                        it.date === day && <SelectedSpots key={idx} {...it} idx={idx} />
                     ))
             }
             </div>
