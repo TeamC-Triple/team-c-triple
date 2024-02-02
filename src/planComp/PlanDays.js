@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Button from "../common/Button";
 import SelectedSpots from "../plan_subComp/SelectedSpots";
 import PlanSpotModal from "../plan_subComp/PlanSpotModal";
+import PlanMemoModal from "../plan_subComp/planMemoModal";
 import TourMemo from "../plan_subComp/TourMemo";
 
 const PlanDays = ({
@@ -12,13 +13,15 @@ const PlanDays = ({
     dayList, 
     setDayList,
     chosedCity,
-    keywordData,
+    keywordData, 
     addDayPlan, 
-    travelDateRange,
+    travelDateRange, 
     handleCity,
-    addMemo
+        addDayMemo,
+        setMemoList,
+        memoList
 }) => {
-
+    
     // 장소 추가 여닫기
     const [openAdd, setOpenAdd]= useState(false);
     // 장소 하나
@@ -51,16 +54,15 @@ const PlanDays = ({
     };
 
         // 메모 추가 여닫기
-        const [openAddMemo, setOpenAddMemo] = useState(false);
-
+        const [openAddMemo, setOpenAddMemo]= useState(false);
         // 메모 추가 버튼
         const addMemoBtn =()=>{
             setOpenAddMemo(true);
         };
-        //
+        // 메모 창 닫기
         const closeMemo =()=>{
             setOpenAddMemo(false);
-        }
+        };
 
     return (
         <Plandays className="Plandays">
@@ -80,7 +82,7 @@ const PlanDays = ({
             </div>
             <DayBtn>
                 <Button type={'gray_border'} text='장소추가' onClick={addSpotsBtn} />
-                <Button type={'gray_border'} text='메모추가' onClick={addMemoBtn} />
+                <Button type={'gray_border'} text='메모추가' onClick={addMemoBtn}/>
             </DayBtn>
             <PlanSpotModal 
                 openAdd={openAdd}
@@ -92,14 +94,10 @@ const PlanDays = ({
                 setSelectSpots={setSelectSpots}
                 handleCity={handleCity}
             />
-            <MemoAddModal className={openAddMemo ? 'open': ''}>
-                <div>
-                    메모모달
-                </div>
-                <div onClick={closeMemo}>
-                    닫기
-                </div>
-            </MemoAddModal>
+            <PlanMemoModal 
+                openAddMemo={openAddMemo}
+                closeMemo={closeMemo}
+            />
         </Plandays>
     );
 };
@@ -219,23 +217,5 @@ const DayBtn = styled.div`
     }
     .Button .btn{
         font-size: 13px;
-    }
-`
-const MemoAddModal = styled.div`
-    position: fixed;
-    bottom : -100%;
-    left: 0;
-    right: 0;
-    width : 100%;
-    height : 100%;
-    background-color: #fff;
-    z-index: 700;
-    transition: 0.3s;
-    &.open{
-        bottom: 0%;
-    }
-    background-color: #fff;
-    >div{
-        text-align: center;
     }
 `

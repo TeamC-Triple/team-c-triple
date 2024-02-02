@@ -32,8 +32,11 @@ const PlanEdit = ({
     addDayPlan,
     dayList,
     setDayList,
-    //메모
-    addMemo
+        addDayMemo,
+        setMemoList,
+        memoList,
+        memoTxt,
+        onChangeTxt
 })=>{
 
     const navigate = useNavigate();
@@ -134,12 +137,17 @@ const PlanEdit = ({
                         key={idx} day={day} idx={idx}
                         dayList={dayList}
                         setDayList={setDayList}
-                        addMemo={addMemo} 
                         addDayPlan={addDayPlan} 
                         chosedCity={chosedCity}
                         keywordData={keywordData} 
                         travelDateRange={travelDateRange}
-                        handleCity={handleCity} />
+                        handleCity={handleCity}
+                            setMemoList={setMemoList}
+                            addDayMemo={addDayMemo}
+                            memoList={memoList}
+                            memoTxt={memoTxt}
+                            onChangeTxt={onChangeTxt}
+                        />
                 ))
             }
             </DaySpots>

@@ -26,7 +26,7 @@ import Button from "../common/Button.js";
 import PlanDateCal from "../planComp/PlanDateCal.js";
 
 // [planKeyword]의 더미데이터
-const keywordData = [{ id: 0, kw: '#친구와' }, { id: 1, kw: '#연인과' }, { id: 2, kw: '#아이와' }, { id: 3, kw: '#부모님과' }, { id: 4, kw: '#관광지' }, { id: 5, kw: '#SNS핫플' }, { id: 6, kw: '#힐링' }, { id: 7, kw: '#맛집' }];
+const keywordData = [ {id : 0, kw : '#친구와'}, {id : 1, kw : '#연인과'},{id : 2, kw : '#아이와'},{id : 3, kw : '#부모님과'} ,{id : 4, kw : '#관광지'}, {id : 5, kw : '#SNS핫플'},{id : 6,kw : '#힐링'},{id : 7, kw: '#맛집'} ];
 
 const Plan = () => {
     const PlanData = useContext(PlanDataContext);
@@ -65,28 +65,36 @@ const Plan = () => {
     };
 
     // planDays 여행 계획 전체
-    const [dayList, setDayList] = useState([]);
+    const [dayList, setDayList]= useState([]);
+    const daysId = useRef(0);
 
     // planDays 
     // 여행장소 리스트를 해당 일자에 추가
-    const addDayPlan = (day, spotsList) => {
-        const newDay = {
-            date: day,
-            newdaySpots: spotsList
+    const addDayPlan = (date, place)=>{
+        const newPlace = {
+            id : daysId.current,
+            date : date,
+            place : place,
         };
-        setDayList([...dayList, newDay]);
+        daysId.current += 1;
+        setDayList([...dayList, newPlace]);
     };
+        // Memo
+        const [memoList, setMemoList]= useState([]);
+        const MemoId = useRef(0);
 
-        // 메모추가
-        const [memoList, setMemoList] = useState([]);
-        const memoId = useRef(0);
-        const addMemo = (memo) => {
+        const addDayMemo = (date, memo) => {
             const newMemo = {
-                id: memoId.current,
-                memo: memo
-            }
-            memoId.current += 1;
-            setMemoList([newMemo, ...memoList])
+                id : daysId.current,
+                date : date,
+                memo : memo
+            };
+            MemoId.current += 1;
+            setDayList([newMemo, ...memoList]);
+        };
+        const [memoTxt, setMemoTxt] = useState('');
+        const onChangeTxt = (e) => {
+            setMemoTxt(e.target.value)
         };
 
     // PlanExpenses
@@ -113,13 +121,13 @@ const Plan = () => {
     }
 
     // 인원수 선택
-    const [traveler, setTraveler] = useState(0);
+    const [traveler, setTraveler]= useState(0);
 
     // PlanKeyword
     // PlanKeyword 여닫음 상태변수
     const [openKeyword, setOpenKeyword] = useState(false);
-
-    const handleOpenKW = () => {
+ 
+    const handleOpenKW = ()=>{
         setOpenKeyword(!openKeyword);
     }
 
@@ -131,12 +139,12 @@ const Plan = () => {
     const clickCreatePlan = () => {
         onCreatePlan(chosedCity, startDate, lastDate, keywordList, traveler, expenses, dayList);
     };
-
     console.log(dayList);
+    
 
     return (
         <PlanDataControll>
-            <PlanEdit
+            <PlanEdit 
                 // 도시 
                 handleCity={handleCity}
                 chosedCity={chosedCity}
@@ -149,9 +157,13 @@ const Plan = () => {
 
                 // 여행계획
                 addDayPlan={addDayPlan}
-                    addMemo={addMemo}
+                    addDayMemo={addDayMemo}
                 dayList={dayList}
                 setDayList={setDayList}
+                    setMemoList={setMemoList}
+                    memoList={memoList}
+                    memoTxt={memoTxt}
+                    onChangeTxt={onChangeTxt}
                 
                 // 비용
                 add={add}
@@ -161,7 +173,7 @@ const Plan = () => {
                 PCMClick={PCMClick}
 
                 // 키워드
-                handleOpenKW={handleOpenKW}
+                handleOpenKW= {handleOpenKW}
                 openKeyword={openKeyword}
                 keywordList={keywordList}
                 keywordData={keywordData}
@@ -172,7 +184,7 @@ const Plan = () => {
                 clickCreatePlan={clickCreatePlan}
             />
             <PlanCity isCity={isCity} setChosedCity={setChosedCity} handleCity={handleCity} />
-            <PlanDateCal
+            <PlanDateCal 
                 isCalendar={isCalendar}
                 setIsCalendar={setIsCalendar}
                 travelDateRange={travelDateRange}
@@ -187,7 +199,7 @@ const Plan = () => {
             <PlanExpenses expenses={expenses} setExpenses={setExpenses} click={click} setClick={setClick} setAdd={setAdd} setMoney={setMoney} />
             <PlanCourseModal PCModal={PCModal} setPCModal={setPCModal} chosedCity={chosedCity} />
             <BtnCreate>
-                <Button
+                <Button 
                     type={'active'}
                     text={'저장하기'}
                     onClick={clickCreatePlan}
