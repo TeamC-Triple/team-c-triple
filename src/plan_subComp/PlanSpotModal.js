@@ -17,8 +17,6 @@ const PlanSpotModal = ({
     addNewSpots,
     selectSpots,
     setSelectSpots,
-    selectSpotsList,
-    setSelectSpotsList,
     handleCity
 }) => {
     // 장소 추가 창 헤더 검색창 부분 상태변수 시작
@@ -85,11 +83,8 @@ const PlanSpotModal = ({
                             ).map((it) => (
                                 <TourSpots key={it.id} {...it}
                                     openAdd={openAdd}
-                                    addNewSpots={addNewSpots}
                                     selectSpots={selectSpots}
                                     setSelectSpots={setSelectSpots}
-                                    selectSpotsList={selectSpotsList}
-                                    setSelectSpotsList={setSelectSpotsList}
                                 />
                             ))
                         }
@@ -97,8 +92,8 @@ const PlanSpotModal = ({
                 </div>
             </SpotListWrap>
             <SpotBtn>
-                {selectSpotsList.length > 0 ?
-                    <Button type={'active'} text='장소 선택 완료' onClick={getSpots} />
+                {selectSpots !== '' ?
+                    <Button type={'active'} text={`${selectSpots} 선택 완료`} onClick={getSpots} />
                     : <Button type={'deActive'} text='장소를 선택해주세요.' onClick={handleCity} />
                 }
             </SpotBtn>

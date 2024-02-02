@@ -1,4 +1,5 @@
 // data_myTripList.js
+import { getStringDate } from "../utill/dateString"
 
 export const dummyMyTripPlan = [
     {
@@ -12,29 +13,29 @@ export const dummyMyTripPlan = [
         days: [
             {
                 id: 0,
-                date: new Date(2024, 3, 1).getTime(),
+                date: getStringDate(new Date(2024, 3, 1)),
                 place: '부산역',
                 memo: ['부산도착', '점심 편의점']
             },
             {
                 id: 1,
-                date: new Date(2024, 3, 1).getTime(),
+                date: getStringDate(new Date(2024, 3, 1)),
                 place: '해운대',
                 memo: ['숙소도착']
             },
             {
                 id: 2,
-                date: new Date(2024, 3, 2).getTime(),
+                date: getStringDate(new Date(2024, 3, 2)),
                 place: '서면',
             },
             {
                 id: 3,
-                date: new Date(2024, 3, 2).getTime(),
+                date: getStringDate(new Date(2024, 3, 2)),
                 place: '광안리',
             },
             {
                 id: 4,
-                date: new Date(2024, 3, 2).getTime(),
+                date: getStringDate(new Date(2024, 3, 2)),
                 place: '부산역',
                 memo: ['집으로']
             },
@@ -51,29 +52,29 @@ export const dummyMyTripPlan = [
         days: [
             {
                 id: 0,
-                date: new Date(2024, 3, 6).getTime(),
+                date: getStringDate(new Date(2024, 3, 6)),
                 place: '강릉역',
                 memo: ['강릉도착', '점심 어디어디맛집']
             },
             {
                 id: 1,
-                date: new Date(2024, 3, 6).getTime(),
+                date: getStringDate(new Date(2024, 3, 6)),
                 place: '강릉관광지1',
             },
             {
                 id: 2,
-                date: new Date(2024, 3, 7).getTime(),
+                date: getStringDate(new Date(2024, 3, 7)),
                 place: '강릉관광지2',
             },
             {
                 id: 3,
-                date: new Date(2024, 3, 7).getTime(),
+                date: getStringDate(new Date(2024, 3, 7)),
                 place: '강릉관광지3',
                 memo: ['메모1', '메모2']
             },
             {
                 id: 4,
-                date: new Date(2024, 3, 7).getTime(),
+                date: getStringDate(new Date(2024, 3, 7)),
                 place: '강릉역',
                 memo: ['집으로']
             },
@@ -90,51 +91,51 @@ export const dummyMyTripPlan = [
         days: [
             {
                 id: 0,
-                date: new Date(2024, 3, 12).getTime(),
+                date: getStringDate(new Date(2024, 3, 12)),
                 place: '제주공항',
             },
             {
                 id: 1,
-                date: new Date(2024, 3, 12).getTime(),
+                date: getStringDate(new Date(2024, 3, 12)),
                 place: '제주관광지1',
                 memo: ['숙소도착']
             },
             {
                 id: 2,
-                date: new Date(2024, 3, 13).getTime(),
+                date: getStringDate(new Date(2024, 3, 13)),
                 place: '제주관광지2',
                 memo: ['메모1', '메모2']
             },
             {
                 id: 3,
-                date: new Date(2024, 3, 13).getTime(),
+                date: getStringDate(new Date(2024, 3, 13)),
                 place: '제주관광지3',
             },
             {
                 id: 4,
-                date: new Date(2024, 3, 13).getTime(),
+                date: getStringDate(new Date(2024, 3, 13)),
                 place: '제주관광지4',
                 memo: ['메모1']
             },
             {
                 id: 5,
-                date: new Date(2024, 3, 14).getTime(),
+                date: getStringDate(new Date(2024, 3, 14)),
                 place: '제주관광지5',
             },
             {
                 id: 6,
-                date: new Date(2024, 3, 14).getTime(),
+                date: getStringDate(new Date(2024, 3, 14)),
                 place: '제주관광지6',
             },
             {
                 id: 7,
-                date: new Date(2024, 3, 15).getTime(),
+                date: getStringDate(new Date(2024, 3, 15)),
                 place: '제주관광지7',
                 memo: ['메모1', '메모2']
             },
             {
                 id: 8,
-                date: new Date(2024, 3, 15).getTime(),
+                date: getStringDate(new Date(2024, 3, 15)),
                 place: '제주공항',
             },
         ]
@@ -150,30 +151,30 @@ export const dummyMyTripPlan = [
         days: [
             {
                 id: 0,
-                date: new Date(2024, 3, 17).getTime(),
+                date: getStringDate(new Date(2024, 3, 17)),
                 place: '경주터미널',
                 memo: ['경주도착', '점심 편의점']
             },
             {
                 id: 1,
-                date: new Date(2024, 3, 17).getTime(),
+                date: getStringDate(new Date(2024, 3, 17)),
                 place: '불국사',
                 memo: ['숙소도착']
             },
             {
                 id: 2,
-                date: new Date(2024, 3, 18).getTime(),
+                date: getStringDate(new Date(2024, 3, 18)),
                 place: '석굴암',
                 memo: ['메모1', '메모2']
             },
             {
                 id: 3,
-                date: new Date(2024, 3, 18).getTime(),
+                date: getStringDate(new Date(2024, 3, 18)),
                 place: '안압지',
             },
             {
                 id: 4,
-                date: new Date(2024, 3, 18).getTime(),
+                date: getStringDate(new Date(2024, 3, 18)),
                 place: '경주터미널',
             },
         ]
@@ -190,29 +191,29 @@ export const dummyMyTripPlan = [
         days: [
             {
                 id: 0,
-                date: new Date(2024, 4, 11).getTime(),
+                date: getStringDate(new Date(2024, 4, 11)),
                 place: '인천역',
                 memo: ['인천도착', '점심 편의점']
             },
             {
                 id: 1,
-                date: new Date(2024, 4, 11).getTime(),
+                date: getStringDate(new Date(2024, 4, 11)),
                 place: '인천관광지1',
                 memo: ['숙소도착']
             },
             {
                 id: 2,
-                date: new Date(2024, 4, 12).getTime(),
+                date: getStringDate(new Date(2024, 4, 12)),
                 place: '인천관광지2',
             },
             {
                 id: 3,
-                date: new Date(2024, 4, 12).getTime(),
+                date: getStringDate(new Date(2024, 4, 12)),
                 place: '인천관광지3',
             },
             {
                 id: 4,
-                date: new Date(2024, 4, 12).getTime(),
+                date: getStringDate(new Date(2024, 4, 12)),
                 place: '인천역',
                 memo: ['집으로']
             },

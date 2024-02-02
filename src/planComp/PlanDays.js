@@ -1,25 +1,30 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styled from "styled-components";
 
 import Button from "../common/Button";
 import SelectedSpots from "../plan_subComp/SelectedSpots";
 import PlanSpotModal from "../plan_subComp/PlanSpotModal";
+import TourMemo from "../plan_subComp/TourMemo";
 
-const PlanDays = ({day, idx, 
-    dayList, setDayList,
-    chosedCity, 
-    selectSpotsList, setSelectSpotsList, 
+const PlanDays = ({
+    day, 
+    idx,
+    dayList, 
+    setDayList,
+    chosedCity,
     keywordData, 
-    addNewSpots, addDayPlan, 
-    travelDateRange, handleCity
+    addDayPlan, 
+    travelDateRange, 
+    handleCity,
 }) => {
     
     // 장소 추가 여닫기
     const [openAdd, setOpenAdd]= useState(false);
     // 장소 하나
-    const [selectSpots, setSelectSpots]= useState();
+    const [selectSpots, setSelectSpots]= useState('');
+    const [spList, setSpList] = useState([]);
+    const spId = useRef(0);
 
-    
     // 장소 추가 버튼
     const addSpotsBtn =()=>{
         setOpenAdd(true);
@@ -30,13 +35,22 @@ const PlanDays = ({day, idx,
         setOpenAdd(false);
     }
 
-    console.log(dayList);
-
     // 장소 선택 완료
     const getSpots = ()=>{
         setOpenAdd(false);
+        addDayPlan(day, selectSpots);
     }
-    
+
+    const getThisDaySpList = () => {
+        const newList = dayList.filter((it) => {
+            if(it.date === day){
+                return it;
+            };
+        });
+        setSpList(newList);
+        return spList;
+    };
+
     return (
         <Plandays className="Plandays">
             <div className="pdy_top">
@@ -49,7 +63,7 @@ const PlanDays = ({day, idx,
                      <Empty>일정이 비어있습니다.</Empty> 
                     
                     :   dayList.map((it)=>(
-                        it.date === day && <SelectedSpots key={it.id} {...it} />
+                        it.date === day && <SelectedSpots key={it.id} {...it} /> || <TourMemo key={it.id} {...it} />
                     ))
             }
             </div>
@@ -63,11 +77,8 @@ const PlanDays = ({day, idx,
                 getSpots={getSpots}
                 keywordData={keywordData}
                 chosedCity={chosedCity}
-                addNewSpots={addNewSpots}
                 selectSpots={selectSpots}
                 setSelectSpots={setSelectSpots}
-                selectSpotsList={selectSpotsList}
-                setSelectSpotsList={setSelectSpotsList}
                 handleCity={handleCity}
             />
         </Plandays>

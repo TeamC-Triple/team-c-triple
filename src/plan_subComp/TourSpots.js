@@ -4,7 +4,12 @@ import styled from "styled-components";
 import Button from "../common/Button";
 import "./TourSpots.css"
 
-const TourSpots = ({ spotName, selectSpots, setSelectSpots, selectSpotsList, setSelectSpotsList, openAdd, addNewSpots})=>{
+const TourSpots = ({ 
+    spotName,
+    selectSpots, 
+    setSelectSpots,
+    openAdd,
+})=>{
     
     const [spotClick, setSpotClick]= useState(false);
 
@@ -18,13 +23,11 @@ const TourSpots = ({ spotName, selectSpots, setSelectSpots, selectSpotsList, set
     const activeBtn =  () => {
         setSpotClick(true);
         setSelectSpots(`${spotName}`);
-        addNewSpots(selectSpots);
     };
     const deActiveBtn = () => {
         setSpotClick(false);
-        setSelectSpotsList(selectSpotsList.filter((item)=> (item.spotName !== spotName)));
+        setSelectSpots('');
     }
-
     
     return(
         <TourSpotsWrap>
