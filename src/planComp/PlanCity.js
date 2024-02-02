@@ -21,6 +21,7 @@ const PlanCity = ({isCity, setChosedCity, handleCity}) => {
     const [cityList, setCityList] = useState([]);
     const [checkCity, setCheckCity] = useState('');
     const [isSelectNone, setIsSelectNone] = useState(true);
+    const [selectedCity, setSelectedCity] = useState({});
 
     
 
@@ -95,7 +96,14 @@ const PlanCity = ({isCity, setChosedCity, handleCity}) => {
                                     return it;
                                 }
                             }).map((item) => (
-                                <CityLi key={item.id} {...item} setCheckCity={setCheckCity} setIsSelectNone={setIsSelectNone} />
+                                <CityLi 
+                                    key={item.id} 
+                                    {...item} 
+                                    setCheckCity={setCheckCity} 
+                                    setIsSelectNone={setIsSelectNone}
+                                    selectedCity={selectedCity}
+                                    setSelectedCity={setSelectedCity}
+                                />
                             ))
                         }
                     </ul>

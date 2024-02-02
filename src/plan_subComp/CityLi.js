@@ -2,12 +2,16 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Button from "../common/Button";
 
-const CityLi = ({id, val, city, place, setCheckCity, setIsSelectNone}) => {
+const CityLi = ({id, val, city, place, setCheckCity, setIsSelectNone, selectedCity, setSelectedCity}) => {
     const [check, setCheck] = useState(false);
+    const isSelected = setCheckCity[id] ? true : false;
 
-    const handleActiveCheck = () => {
+    const handleActiveCheck = (id) => {
+        const newSelectedCity = {...selectedCity};
+        newSelectedCity[id] = !newSelectedCity[id];
+        setSelectedCity(newSelectedCity);
         setCheck(true);
-        setCheckCity(city);
+        setCheckCity(`${city}`);
         setIsSelectNone(false);
     };
     const handleDeActiveCheck = () => {
@@ -27,7 +31,7 @@ const CityLi = ({id, val, city, place, setCheckCity, setIsSelectNone}) => {
             </div>
             <div className="li_right">
                 {
-                    !check
+                    selectedCity
                     ? <Button type={'deActive'} text={'선택'} onClick={handleActiveCheck} />
                     : <Button type={'active'} text={'취소'} onClick={handleDeActiveCheck} />
 
