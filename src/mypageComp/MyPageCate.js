@@ -37,7 +37,7 @@ const MypageCate = ({setCategory}) => {
             </div>
             <div className="mypageList">
                 {selectedCate==='myTrip'
-                    ? <MypageMyTrip/>
+                    ? <MypageMyTrip />
                     : (selectedCate==='lastTrip')
                         ? <MypageLastTrip />
                         : <MypageTravels />
@@ -60,7 +60,7 @@ const Mypagecate = styled.div`
         background-color: #fff;
     }
     button{
-        width: 33.33%;
+        width: 33%;
         padding: 10px;
         box-sizing: border-box;
         text-align: center;
