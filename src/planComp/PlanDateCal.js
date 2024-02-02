@@ -46,8 +46,8 @@ const PlanDateCal = ({
         const result = [];
 
         while(start <= last){
-            result.push(start.toISOString().slice(0,10));
             start.setDate(start.getDate() + 1);
+            result.push(start.toISOString().slice(0,10));
         }
         return result;
     }
