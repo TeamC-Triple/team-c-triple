@@ -13,7 +13,7 @@
 
 
 import { useContext, useEffect, useRef, useState } from "react";
-import { PlanDataContext, PlanDispatchContext, SpotsDataContext } from "../App";
+import { PlanDataContext, PlanDispatchContext } from "../App";
 import styled from "styled-components";
 import { useBodyScrollLock } from "../utill/useBodyScrollLock.js";
 
@@ -31,7 +31,6 @@ const keywordData = [ {id : 0, kw : '#친구와'}, {id : 1, kw : '#연인과'},{
 const Plan = () => {
     const PlanData = useContext(PlanDataContext);
     const { onCreatePlan } = useContext(PlanDispatchContext);
-    const spotsData = useContext(SpotsDataContext);
     const { lockScroll, openScroll } = useBodyScrollLock();
 
     // planCity
@@ -67,39 +66,29 @@ const Plan = () => {
 
     // planDays 여행 계획 전체
     const [dayList, setDayList]= useState([]);
+    const daysId = useRef(0);
 
     // planDays 
     // 여행장소 리스트를 해당 일자에 추가
-    const addDayPlan = (day, spotsList)=>{
-        const newDay = {
-            date : day,
-            newdaySpots : spotsList
+    const addDayPlan = (date, place)=>{
+        const newPlace = {
+            id : daysId.current,
+            date : date,
+            place : place,
         };
-        setDayList([newDay, ...dayList]);
+        daysId.current += 1;
+        setDayList([...dayList, newPlace]);
     };
 
-    // 1일 장소 리스트
-    const [selectSpotsList, setSelectSpotsList]= useState([]);
-
-    const spotOrder = useRef(0);
-
-    // 새로운 장소를 리스트에 추가
-    const addNewSpots = (spotName)=>{
-        const newSpots = {
-            id : spotOrder.current ,
-            spotName : spotName
-        }
-        spotOrder.current += 1;
-        setSelectSpotsList([newSpots, ...selectSpotsList])
+    const addDayMemo = (date, memo) => {
+        const newMemo = {
+            id : daysId.current,
+            date : date,
+            memo : memo
+        };
+        daysId.current += 1;
+        setDayList([...dayList, newMemo]);
     };
-
-
-    // 장소 하나
-    const [selectSpots, setSelectSpots]= useState();
-
- 
-
-
     // PlanExpenses
     // PlanExpenses 여닫음 상태변수
     const [click, setClick] = useState(false);
@@ -140,8 +129,9 @@ const Plan = () => {
 
     // 저장하기 버튼 누르기
     const clickCreatePlan = () => {
-        onCreatePlan(chosedCity, startDate, lastDate, keywordList, traveler, expenses);
+        onCreatePlan(chosedCity, startDate, lastDate, keywordList, traveler, expenses, dayList);
     };
+    console.log(dayList);
     
 
     return (
@@ -159,14 +149,9 @@ const Plan = () => {
 
                 // 여행계획
                 addDayPlan={addDayPlan}
-                addNewSpots={addNewSpots}
                 dayList={dayList}
                 setDayList={setDayList}
-                selectSpots={selectSpots}
-                setSelectSpots={setSelectSpots}
-                selectSpotsList={selectSpotsList}
-                setSelectSpotsList={setSelectSpotsList}
-
+                
                 // 비용
                 add={add}
                 money={money}
