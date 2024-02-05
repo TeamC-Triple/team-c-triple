@@ -19,10 +19,14 @@ const PlanCity = ({isCity, setChosedCity, handleCity}) => {
     // 헤더 검색창 부분 끝
     const cityData = useContext(CityDataContext);
     const [cityList, setCityList] = useState([]);
+    // 선택한 도시
     const [checkCity, setCheckCity] = useState('');
-    const [isSelectNone, setIsSelectNone] = useState(true);
-
-    
+    // 선택한 버튼
+    const [selectedCityBtn, setSelectedCityBtn] = useState();
+    // 이전 선택 버튼
+    const [selectedBefore, setSelectedBefore] = useState();
+    // 선택 여부
+    const [isCheck, setIsCheck] = useState(false);
 
     useEffect(() => {
         if(cityData){
@@ -45,6 +49,9 @@ const PlanCity = ({isCity, setChosedCity, handleCity}) => {
         alert('도시를 선택하여 주십시오.')
         setCheckCity("");
     };
+
+    
+
 
     return (
         <Plancity className={`plancity ${isCity ? 'on' : ''}`}>
@@ -95,7 +102,17 @@ const PlanCity = ({isCity, setChosedCity, handleCity}) => {
                                     return it;
                                 }
                             }).map((item) => (
-                                <CityLi key={item.id} {...item} setCheckCity={setCheckCity} setIsSelectNone={setIsSelectNone} />
+                                <CityLi 
+                                    key={item.id} 
+                                    {...item} 
+                                    setCheckCity={setCheckCity}
+                                    selectedCityBtn={selectedCityBtn}
+                                    setSelectedCityBtn={setSelectedCityBtn}
+                                    selectedBefore={selectedBefore}
+                                    setSelectedBefore={setSelectedBefore}
+                                    isCheck={isCheck}
+                                    setIsCheck={setIsCheck}
+                                />
                             ))
                         }
                     </ul>
@@ -103,9 +120,9 @@ const PlanCity = ({isCity, setChosedCity, handleCity}) => {
             </CityList>
             <CityBtn>
                 <Button
-                    type={isSelectNone ? "deActive" : "active"}
-                    text={isSelectNone ? "도시를 선택하지 않았습니다." : `${checkCity} 선택 완료`}
-                    onClick={isSelectNone ? toggleSelectNone : clickChoiceCity}
+                    type={!isCheck ? "deActive" : "active"}
+                    text={!isCheck ? "도시를 선택하지 않았습니다." : `${checkCity} 선택 완료`}
+                    onClick={!isCheck ? toggleSelectNone : clickChoiceCity}
                 />
             </CityBtn>
         </Plancity>
