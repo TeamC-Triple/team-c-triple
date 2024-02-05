@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import Button from "../common/Button";
 import SelectedSpots from "../plan_subComp/SelectedSpots";
+import SelectedMemo from "../plan_subComp/SelectedMemo";
 import PlanSpotModal from "../plan_subComp/PlanSpotModal";
 import PlanMemoModal from "../plan_subComp/planMemoModal";
 import TourMemo from "../plan_subComp/TourMemo";
@@ -19,7 +20,10 @@ const PlanDays = ({
     handleCity,
         addDayMemo,
         setMemoList,
-        memoList
+        memoList,
+        memoTxt,
+        onChangeTxt,
+        setMemoTxt
 }) => {
     
     // 장소 추가 여닫기
@@ -62,6 +66,16 @@ const PlanDays = ({
         // 메모 창 닫기
         const closeMemo =()=>{
             setOpenAddMemo(false);
+            setMemoTxt('');
+        };
+
+        const getThisMemoList = () => {
+            const newMemoList = memoList.filter((it) => {
+                if(it.date === day){
+                    return it;
+                };
+            });
+            return newMemoList;
         };
 
     return (
@@ -71,14 +85,20 @@ const PlanDays = ({
                 <p className="pdy_pay">사용 경비 : </p>
             </div>
             <div>
-            {dayList.length < 1
-                    ?
-                     <Empty>일정이 비어있습니다.</Empty> 
-                    
-                    :   getThisDaySpList().map((it, idx)=>(
-                        it.date === day && <SelectedSpots key={idx} {...it} idx={idx} />
+                {dayList.length < 1
+                        ?
+                        <Empty>일정이 비어있습니다.</Empty> 
+                        
+                        :   getThisDaySpList().map((it, idx)=>(
+                            it.date === day && <SelectedSpots key={idx} {...it} idx={idx} />
+                        ))
+                }
+                {memoList.length < 1
+                    ? <span></span>
+                    : getThisMemoList().map((it, idx)=>(
+                        it.date === day && <SelectedMemo key={idx} {...it}/>
                     ))
-            }
+                }
             </div>
             <DayBtn>
                 <Button type={'gray_border'} text='장소추가' onClick={addSpotsBtn} />
@@ -97,6 +117,12 @@ const PlanDays = ({
             <PlanMemoModal 
                 openAddMemo={openAddMemo}
                 closeMemo={closeMemo}
+                setMemoList={setMemoList}
+                day={day}
+                addDayMemo={addDayMemo}
+                memoTxt={memoTxt}
+                onChangeTxt={onChangeTxt}
+                memoList={memoList}
             />
         </Plandays>
     );

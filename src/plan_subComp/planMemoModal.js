@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import { useState, useRef, useContext } from "react";
 
-import { SpotsDataContext } from "../App";
-
 import Header1 from "../common/Header1";
 import HeaderIcon from "../common/HeaderIcon";
 import Button from "../common/Button";
@@ -11,8 +9,17 @@ const PlanMemoModal = ({
     openAddMemo,
     closeMemo,
     memoTxt,
-    onChangeTxt
+    onChangeTxt,
+    addDayMemo,
+    memoList,
+    day,
+    addDayPlan
 }) => {
+    const handleSubmit = () => {
+        addDayMemo(day, memoTxt);
+        closeMemo();
+    }
+
     return (
         <MemoAddModal className={openAddMemo ? 'open' : ''}>
             <Header1
@@ -29,8 +36,8 @@ const PlanMemoModal = ({
                 ></textarea>
             </MemoModalWrap>
             <Btn>
-                <Button type='gray_border' text='취소'/>
-                <Button type='gray_border' text='완료'/>
+                <Button type='gray_border' text='취소' onClick={closeMemo}/>
+                <Button type='gray_border' text='완료' onClick={(e)=>{handleSubmit(e.target.value)}}/>
             </Btn>
         </MemoAddModal>
     );

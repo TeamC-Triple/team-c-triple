@@ -80,22 +80,29 @@ const Plan = () => {
         setDayList([...dayList, newPlace]);
     };
         // Memo
-        const [memoList, setMemoList]= useState([]);
-        const MemoId = useRef(0);
-
-        const addDayMemo = (date, memo) => {
-            const newMemo = {
-                id : daysId.current,
-                date : date,
-                memo : memo
-            };
-            MemoId.current += 1;
-            setDayList([newMemo, ...memoList]);
-        };
         const [memoTxt, setMemoTxt] = useState('');
         const onChangeTxt = (e) => {
             setMemoTxt(e.target.value)
         };
+
+        const [memoList, setMemoList]= useState([]);
+        const MemoId = useRef(0);
+
+        const addDayMemo = (date,memo,time) => {
+            const newMemo = {
+                id : MemoId.current,
+                date : date,
+                memo : memo,
+                writeTime : time
+            };
+            MemoId.current += 1;
+            setMemoList([newMemo, ...memoList]);
+        };
+
+        console.log(memoList);
+
+            // memo, spot 합친 배열
+            const planDay = [...memoList, ...dayList]
 
     // PlanExpenses
     // PlanExpenses 여닫음 상태변수
@@ -164,6 +171,7 @@ const Plan = () => {
                     memoList={memoList}
                     memoTxt={memoTxt}
                     onChangeTxt={onChangeTxt}
+                    setMemoTxt={setMemoTxt}
                 
                 // 비용
                 add={add}
