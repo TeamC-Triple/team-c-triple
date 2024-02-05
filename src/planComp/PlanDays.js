@@ -14,6 +14,7 @@ const PlanDays = ({
     chosedCity,
     keywordData, 
     keywordList,
+    setKeywordList,
     addDayPlan, 
     travelDateRange, 
     handleCity,
@@ -78,6 +79,7 @@ const PlanDays = ({
                 getSpots={getSpots}
                 keywordData={keywordData}
                 keywordList={keywordList}
+                setKeywordList={setKeywordList}
                 chosedCity={chosedCity}
                 selectSpots={selectSpots}
                 setSelectSpots={setSelectSpots}

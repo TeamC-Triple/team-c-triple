@@ -25,6 +25,7 @@ const PlanEdit = ({
     handleOpenKW,
     keywordList,
     keywordData,
+    setKeywordList,
     // 인원수
     traveler,
     setTraveler,
@@ -136,6 +137,7 @@ const PlanEdit = ({
                         chosedCity={chosedCity}
                         keywordData={keywordData} 
                         keywordList={keywordList}
+                        setKeywordList={setKeywordList}
                         travelDateRange={travelDateRange}
                         handleCity={handleCity} />
                 ))

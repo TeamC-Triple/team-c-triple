@@ -14,6 +14,7 @@ const PlanSpotModal = ({
     getSpots,
     keywordData,
     keywordList,
+    setKeywordList,
     chosedCity,
     addNewSpots,
     selectSpots,
@@ -27,6 +28,10 @@ const PlanSpotModal = ({
 
     const changeInput = (e) => {
         setSearch(e.target.value);
+    };
+
+    const clickTap = (it)=>{
+        // setKeywordList([it, ...keywordList]);
     };
 
     return (
@@ -65,7 +70,7 @@ const PlanSpotModal = ({
                 <div className="spotlist_top">
                     <div className="keywordTap">
                         {keywordData.map((it) =>
-                            <Button key={it.id} type={'deActive'} text={it.kw} />
+                            <Button key={it.id} type={keywordList.includes(it.kw) ? 'acitve' : 'deActive'} text={it.kw} onClick={clickTap(it.kw)} />
                         )}
                     </div>
                 </div>
@@ -76,16 +81,11 @@ const PlanSpotModal = ({
                             :
                             spotsData.filter((it) => {
                                 if (it.city === chosedCity && search === "") {
-                                    return it;
+                                    return keywordList.includes(it.keyword) && it;
                                 } else if (it.city === chosedCity && it.spotName.includes(search.toLowerCase())) {
-                                    return it;
+                                    return keywordList.includes(it.keyword) && it;
                                 };
-                            }
-                            ).filter((it)=>{ 
-                                if(it.keyword.includes(...keywordList))
-                                    return it;
-                                }
-                            ).map((it) => (
+                            }).map((it) => (
                                 <TourSpots key={it.id} {...it}
                                     openAdd={openAdd}
                                     selectSpots={selectSpots}
@@ -97,10 +97,11 @@ const PlanSpotModal = ({
                 </div>
             </SpotListWrap>
             <SpotBtn>
-                {selectSpots == '' ?
-                    <Button type={'deActive'} text='장소를 선택해주세요.' onClick={handleCity} />
-                    : <Button type={'active'} text={`${selectSpots} 선택 완료`} onClick={getSpots} />
-                }
+                <Button
+                type={!selectSpots ? "deActive" : "active"}
+                text={!selectSpots ? "장소를 선택하지 않았습니다." : `${selectSpots} 선택 완료`}
+                onClick={selectSpots && getSpots}
+                />
             </SpotBtn>
         </SpotAddModal>
     );
@@ -122,11 +123,6 @@ const SpotAddModal = styled.div`
     &.open{
         bottom: 0%;
     }
-    .Header1 .head_btn_right2{
-        position: relative;
-        display :block;
-        z-index: 700;
-    }
 
 `
 const SpotListWrap = styled.div`
@@ -139,37 +135,36 @@ const SpotListWrap = styled.div`
     .spotlist_top{
         margin-bottom: 10px;
     }
-    .keywordTap{
+    .spotlist_top .keywordTap{
         display : flex;
         justify-content: space-between;
         flex-wrap: wrap;
     }
-    .keywordTap .Button{
+    .spotlist_top .keywordTap .Button{
         width : 23%;
         margin-bottom : 10px;
     }
-    .keywordTap .Button button{
+    .spotlist_top .keywordTap .btn{
         width : 100%;
         margin-right : 10px;
         text-wrap: nowrap;
         border-radius: 20px;
     }
+    .spotlist_top .keywordTap .btn.active{
+        background-color: #368FFF;
+    }
 
 `
 const SpotBtn = styled.div`
-    position: fixed;
+    
+    position: absolute;
     bottom: 20px;
     left: 20px;
     right: 20px;
-    padding-top: 20px;
-    z-index : 800;
-    
-    .Button button{
+    z-index: 1000;
+
+    .Button .btn{
         width: 100%;
-        height: 42px;
-    }
-    .Button button.deActive{
-        width: 100%;
-        height: 42px;
-    }
+        z-index: 1000;
+    } 
 `

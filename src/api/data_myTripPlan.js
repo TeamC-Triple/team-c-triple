@@ -274,19 +274,19 @@ export const dummyMyTripPlan = [
             memo: ['숙소도착']
         },
         {
-            id: 0,
+            id: 2,
             date: new Date(2024, 11, 25).getTime(),
             place: '강릉관광지2',
             memo: []
         },
         {
-            id: 1,
+            id: 3,
             date: new Date(2024, 11, 25).getTime(),
             place: '강릉관광지3',
             memo: []
         },
         {
-            id: 2,
+            id: 4,
             date: new Date(2024, 11, 25).getTime(),
             place: '강릉역',
             memo: ['집으로']

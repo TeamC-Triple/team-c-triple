@@ -164,6 +164,7 @@ const Plan = () => {
                 openKeyword={openKeyword}
                 keywordList={keywordList}
                 keywordData={keywordData}
+                setKeywordList={setKeywordList}
 
                 // 인원수
                 traveler={traveler}

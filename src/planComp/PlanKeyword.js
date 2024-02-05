@@ -10,11 +10,9 @@ import KeywordSub from "../plan_subComp/KeywordSub";
 
 const PlanKeyword = ({keywordData, selectKW, setSelectKW, openKeyword, handleOpenKW, setKeywordList, keywordList}) => {
 
-    const [ isSelect , setIsSelect ]= useState(false);
+    const [ isSelect , setIsSelect ] = useState(false);
 
-    useEffect(()=>{
-        keywordList ? setIsSelect(true) : setIsSelect(false)
-    }, [keywordList]);
+
     // 키워드창 닫기
     const closeKeyword = ()=>{
         handleOpenKW();
