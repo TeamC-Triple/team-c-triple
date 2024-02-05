@@ -25,7 +25,7 @@ export const dummyTouristSpots = [
     },
     {
         id: 3,
-        city: '강릉',
+        city: '강릉·속초',
         spotName: '강릉 중앙 시장',
         keyword: ['#맛집', '#관광지', '#부모님과', '#친구와'],
         photo: '/assets/spot3.JPG',
@@ -749,7 +749,7 @@ export const dummyTouristSpots = [
     {
     
     id: 103,
-    city : '가평',
+    city : '가평·양평',
     spotName: '가평역',
     keyword : ['#관광지']
     },
@@ -757,7 +757,7 @@ export const dummyTouristSpots = [
     {
     
     id: 104,
-    city : '가평',
+    city : '가평·양평',
     spotName: '토담',
     keyword : ['#맛집',]
     },
@@ -765,7 +765,7 @@ export const dummyTouristSpots = [
     {
     
     id: 105,
-    city : '가평',
+    city : '가평·양평',
     spotName: '쁘띠프랑스',
     keyword : ['#관광지','#힐링',]
     },
@@ -773,7 +773,7 @@ export const dummyTouristSpots = [
     {
     
     id: 106,
-    city : '가평',
+    city : '가평·양평',
     spotName: '가평 레일바이크',
     keyword : ['#관광지']
     },
@@ -781,7 +781,7 @@ export const dummyTouristSpots = [
     {
     
     id: 107,
-    city : '가평',
+    city : '가평·양평',
     spotName: '자라섬',
     keyword : ['#관광지','#힐링',]
     },
@@ -789,7 +789,7 @@ export const dummyTouristSpots = [
     {
     
     id: 108,
-    city : '가평',
+    city : '가평·양평',
     spotName: '청평 호반 닭갈비 막국수 본점',
     keyword : ['#맛집',]
     },
@@ -797,15 +797,15 @@ export const dummyTouristSpots = [
     {
     
     id: 109,
-    city : '가평',
-    spotName: '에델바이스 스위스 테마 파크',
+    city : '가평·양평',
+    spotName: '양평 두물머리',
     keyword : ['#힐링',]
     },
     
     {
     
     id: 110,
-    city : '가평',
+    city : '가평·양평',
     spotName: '더 스테이 힐링 파크',
     keyword : ['#힐링',]
     },
@@ -813,7 +813,7 @@ export const dummyTouristSpots = [
     {
     
     id: 111,
-    city : '가평',
+    city : '가평·양평',
     spotName: '나인블럭 가평 점',
     keyword : ['#관광지']
     },
@@ -821,7 +821,7 @@ export const dummyTouristSpots = [
     {
     
     id: 112,
-    city : '가평',
+    city : '가평·양평',
     spotName: '청평역',
     keyword : ['#관광지']
     },
