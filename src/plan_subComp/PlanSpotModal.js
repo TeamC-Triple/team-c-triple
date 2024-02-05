@@ -76,7 +76,7 @@ const PlanSpotModal = ({
                             spotsData.filter((it) => {
                                 if (it.city === chosedCity && search === "") {
                                     return it;
-                                } else if (it.city === chosedCity && it.spotName.includes(search.toLowerCase())) {
+                                } else if (it.city === chosedCity && it.spotName.includes(search)) {
                                     return it;
                                 }
                             }

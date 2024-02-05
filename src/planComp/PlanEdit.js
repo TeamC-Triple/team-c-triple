@@ -105,7 +105,7 @@ const PlanEdit = ({
                 : <p onClick={openModalDateCal}>{new Date(startDate).toLocaleDateString() + ' ~ ' + new Date(lastDate).toLocaleDateString()}</p>
                 }
             </When>
-            {keywordList.length >= 1 ?
+            {keywordList && keywordList.length >= 1 ?
                 <TripKeyword
                     onClick={onClickKW}>{keywordList} <span> 키워드 편집</span></TripKeyword>
                 : <TripKeyword
