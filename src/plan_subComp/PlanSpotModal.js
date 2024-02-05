@@ -13,6 +13,7 @@ const PlanSpotModal = ({
     closeSpots,
     getSpots,
     keywordData,
+    keywordList,
     chosedCity,
     addNewSpots,
     selectSpots,
@@ -78,8 +79,12 @@ const PlanSpotModal = ({
                                     return it;
                                 } else if (it.city === chosedCity && it.spotName.includes(search.toLowerCase())) {
                                     return it;
-                                }
+                                };
                             }
+                            ).filter((it)=>{ 
+                                if(it.keyword.includes(...keywordList))
+                                    return it;
+                                }
                             ).map((it) => (
                                 <TourSpots key={it.id} {...it}
                                     openAdd={openAdd}
@@ -92,9 +97,9 @@ const PlanSpotModal = ({
                 </div>
             </SpotListWrap>
             <SpotBtn>
-                {selectSpots !== '' ?
-                    <Button type={'active'} text={`${selectSpots} 선택 완료`} onClick={getSpots} />
-                    : <Button type={'deActive'} text='장소를 선택해주세요.' onClick={handleCity} />
+                {selectSpots == '' ?
+                    <Button type={'deActive'} text='장소를 선택해주세요.' onClick={handleCity} />
+                    : <Button type={'active'} text={`${selectSpots} 선택 완료`} onClick={getSpots} />
                 }
             </SpotBtn>
         </SpotAddModal>
@@ -111,10 +116,16 @@ const SpotAddModal = styled.div`
     width : 100%;
     height : 100%;
     background-color: #fff;
+    overflow-y: scroll;
     z-index: 700;
     transition: 0.3s;
     &.open{
         bottom: 0%;
+    }
+    .Header1 .head_btn_right2{
+        position: relative;
+        display :block;
+        z-index: 700;
     }
 
 `
@@ -125,7 +136,6 @@ const SpotListWrap = styled.div`
     right: 20px;
     padding-top: 40px;
     padding-bottom: 90px;
-    
     .spotlist_top{
         margin-bottom: 10px;
     }
@@ -147,12 +157,18 @@ const SpotListWrap = styled.div`
 
 `
 const SpotBtn = styled.div`
-    position: absolute;
+    position: fixed;
     bottom: 20px;
     left: 20px;
     right: 20px;
     padding-top: 20px;
-    .btn{
+    z-index : 800;
+    
+    .Button button{
+        width: 100%;
+        height: 42px;
+    }
+    .Button button.deActive{
         width: 100%;
         height: 42px;
     }

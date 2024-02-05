@@ -10,7 +10,6 @@ const SelectedSpots =({id, place, idx})=>{
         lineHeight : '30px'
     };
 
-    
 
     return(
         <SelectPlan>

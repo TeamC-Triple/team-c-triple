@@ -135,6 +135,7 @@ const PlanEdit = ({
                         addDayPlan={addDayPlan} 
                         chosedCity={chosedCity}
                         keywordData={keywordData} 
+                        keywordList={keywordList}
                         travelDateRange={travelDateRange}
                         handleCity={handleCity} />
                 ))
