@@ -2,22 +2,32 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Button from "../common/Button";
 
-const CityLi = ({id, val, city, place, setCheckCity, setIsSelectNone, selectedCity, setSelectedCity}) => {
-    const [check, setCheck] = useState(false);
-    const isSelected = setCheckCity[id] ? true : false;
-
-    const handleActiveCheck = (id) => {
-        const newSelectedCity = {...selectedCity};
-        newSelectedCity[id] = !newSelectedCity[id];
-        setSelectedCity(newSelectedCity);
-        setCheck(true);
+const CityLi = ({
+    id, 
+    val, 
+    city, 
+    place, 
+    setCheckCity,
+    selectedCityBtn, 
+    setSelectedCityBtn, 
+    selectedBefore,
+    setSelectedBefore,
+    setIsCheck,
+}) => {
+    const isSelected = selectedCityBtn === id ? true : false;
+    
+    const handleclickBtn = () => {
+        if(selectedBefore === id) {
+            setIsCheck(false);
+            setSelectedCityBtn(null);
+            setSelectedBefore(null);
+            setCheckCity('');
+            return;
+        }
+        setIsCheck(true);
+        setSelectedCityBtn(id);
+        setSelectedBefore(id);
         setCheckCity(`${city}`);
-        setIsSelectNone(false);
-    };
-    const handleDeActiveCheck = () => {
-        setCheck(false);
-        setCheckCity('');
-        setIsSelectNone(true);
     };
 
     return (
@@ -31,9 +41,11 @@ const CityLi = ({id, val, city, place, setCheckCity, setIsSelectNone, selectedCi
             </div>
             <div className="li_right">
                 {
-                    selectedCity
-                    ? <Button type={'deActive'} text={'선택'} onClick={handleActiveCheck} />
-                    : <Button type={'active'} text={'취소'} onClick={handleDeActiveCheck} />
+                    <Button 
+                        type={isSelected ? 'active' : 'deActive'} 
+                        text={isSelected ? '취소' : '선택'} 
+                        onClick={handleclickBtn}
+                    />
 
                 }
             </div>
