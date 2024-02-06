@@ -19,7 +19,6 @@ import { dummyCity } from './api/data_city.js';
 
 import './App.css';
 import Main from './pages/Main.js';
-import PlanLayOut from './pages/PlanLayOut.js';
 import MainTravel from "./mainComp/MainTravel.js";
 import Home from "./mainComp/Home.js";
 import MainFeed from "./mainComp/MainFeed.js";
@@ -68,8 +67,8 @@ const reducerPlan = (state, action) => {
             break;
         }
         case 'EIDT': {
-            newStatePlan = state.map((item) => 
-                item.id ===  action.data.id ? {...action.data} : item);
+            newStatePlan = state.map((item) =>
+                item.id === action.data.id ? { ...action.data } : item);
             break;
         }
         default:
@@ -126,6 +125,7 @@ function App() {
     const dataLogId = useRef(5);
 
     const location = useLocation();
+    console.log(dataPlan);
 
     // plan CREATE
     const onCreatePlan = (city, firstDate, lastDate, keyword, people, expense, days) => {
@@ -223,12 +223,10 @@ function App() {
                                                             </Route>
                                                             <Route path='/search' element={<MainSearch />} />
                                                             <Route path='/mypage' element={<Mypage />} />
-                                                            <Route path='/plan' element={<PlanLayOut />}>
-                                                                <Route index element={<NewPlan />} />
-                                                                <Route path='/plan/editplan/:id' element={<EditPlan />} />
-                                                            </Route>
-                                                            <Route path='/travellog/new' element={<NewLog />} />
-                                                            <Route path='/travellog/editlog/:id' element={<EditLog />} />
+                                                            <Route path='/newplan' element={<NewPlan />} />
+                                                            <Route path='/editplan/:id' element={<EditPlan />} />
+                                                            <Route path='/newlog' element={<NewLog />} />
+                                                            <Route path='/editlog/:id' element={<EditLog />} />
                                                             <Route path='/travellog' element={<TravelLog />} />
                                                         </Routes>
                                                     }

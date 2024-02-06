@@ -1,21 +1,47 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-
+import { useBodyScrollLock } from '../utill/useBodyScrollLock.js';
 import { PlanDataContext } from "../App";
 import Plan from "./Plan";
+
+import Header1 from '../common/Header1.js';
+import HeaderIcon from '../common/HeaderIcon.js';
+import SideBar from '../side/SideBar.js';
+import BottomNaviSub from '../common/BottomNaviSub.js';
+import AnimatedPages from '../AnimatedPages.js';
+import styled from 'styled-components';
+import Popup from '../planComp/Popup.js';
+import PopupList from '../plan_subComp/PopupList.js';
 
 const EditPlan = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     const planList = useContext(PlanDataContext);
     const [planOriginData, setPlanOriginData] = useState([]);
+    const [sidebar, setSidebar] = useState('off');
+    const [popUp, setPopUp] = useState('off');
+    const [isOpen, setIsOpen] = useState(false);
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const { lockScroll, openScroll } = useBodyScrollLock();
+
+    const sideBtnClick = () => {
+        setSidebar('on')
+        lockScroll();
+        setIsOpen(true);
+    };
+
+    const clickShare = () => {
+        setPopUp('on')
+        lockScroll();
+        setIsPopupOpen(true);
+    };
 
     useEffect(() => {
-        if(planList.length >= 1){
+        if (planList.length >= 1) {
             const targetPlan = planList.find((it) =>
                 parseInt(it.id) === parseInt(id)
             );
-            if(targetPlan) {
+            if (targetPlan) {
                 setPlanOriginData(targetPlan);
             } else {
                 alert('일정이 존재하지 않습니다.');
@@ -26,11 +52,75 @@ const EditPlan = () => {
 
 
     return (
-        <div className="Edit">
-            {planOriginData && 
-            <Plan isEdit={true} planOriginData={planOriginData} />}
-        </div>
+        <Editplan>
+            <Header1
+                leftChild={<HeaderIcon
+                    text={'뒤로가기'}
+                    onClick={() => { navigate(-1) }}
+                />}
+                rightChild1={
+                    <HeaderIcon
+                        text={'일정공유'}
+                        onClick={clickShare}
+                    />
+                }
+                rightChild2={
+                    <HeaderIcon
+                        text={'사이드메뉴'}
+                        onClick={sideBtnClick}
+                    />
+                }
+            />
+            <AnimatedPages>
+                {planOriginData &&
+                    <Plan isEdit={true} planOriginData={planOriginData} />}
+            </AnimatedPages>
+            <BottomNaviSub center={`editplan/${id}`} />
+            <SideBar
+                sidebar={sidebar}
+                setSidebar={setSidebar}
+                leftChild={
+                    <p onClick={() => (navigate('/mypage'))}>
+                        <img />
+                    </p>
+                }
+                headTxt={'김이박님'}
+                setIsOpen={setIsOpen}
+                openScroll={openScroll}
+            />
+            <Popup
+                title={'일정 공유하기'}
+                list1={<PopupList content={'일행과 함께 일정 짜기'} />}
+                list2={<PopupList content={'일정 링크 공유하기(보기 전용)'} />}
+                popUp={popUp}
+                setPopUp={setPopUp}
+                setIsPopupOpen={setIsPopupOpen}
+                openScroll={openScroll}
+            />
+        </Editplan>
     );
 };
 
 export default EditPlan;
+
+const Editplan = styled.div`
+    .head_btn_left, .head_btn_right1, .head_btn_right2{
+        width: 24px;
+        height: 24px;
+        text-indent: -99999px;
+        background-repeat: no-repeat;
+        background-size: 24px auto;
+        background-position: center;
+        cursor: pointer;
+    }
+    .head_btn_left{
+        background-image: url(/assets/icon-arrow-left.svg);
+    }
+    & > .Header1 .head_btn_right1{
+        background-image: url(/assets/icon-share.svg);
+    }
+    & > .Header1 .head_btn_right2{
+        margin-left: 18px;
+        background-image: url(/assets/icon-menu.svg);
+    }
+`;

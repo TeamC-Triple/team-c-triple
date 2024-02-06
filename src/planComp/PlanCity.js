@@ -169,10 +169,11 @@ const Plancity = styled.div`
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 20px;
         input{
+            box-sizing: border-box;
             margin-top: 3px;
             width: calc(100% - 26px);
+            padding: 0 20px;
             height: 50px;
             border: 0;
         }

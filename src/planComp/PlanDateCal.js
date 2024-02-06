@@ -5,7 +5,7 @@ import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { ko } from 'date-fns/locale';
 
-import { getStringDate } from "../utill/dateString.js";
+import { getStringDate } from '../utill/dateString.js';
 import { getDateRange } from "../utill/getDateRange.js";
 
 import Button from '../common/Button.js';
@@ -27,8 +27,8 @@ const PlanDateCal = ({
     const [travelRange, setTravelRange] = useState([]);
     const [dateCal, setDateCal] = useState([
         {
-            startDate: new Date(),
-            endDate: addDays(new Date(), 0),
+            startDate: new Date(startDate),
+            endDate: addDays(new Date(lastDate), travelDateRange.length > 0 ? travelDateRange.length : 0),
             key: 'selection'
         },
     ]);
@@ -73,7 +73,7 @@ const PlanDateCal = ({
                     <Button 
                         type={'active'}
                         text={`
-                            ${dateCal[0].startDate.toLocaleDateString()} ~ ${dateCal[0].endDate.toLocaleDateString()} 선택 완료
+                            ${getStringDate(dateCal[0].startDate)} ~ ${getStringDate(dateCal[0].endDate)} 선택 완료
                         `}
                         onClick={handleSelectBtn}
                     />
