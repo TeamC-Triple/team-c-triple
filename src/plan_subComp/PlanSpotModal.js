@@ -13,6 +13,8 @@ const PlanSpotModal = ({
     closeSpots,
     getSpots,
     keywordData,
+    keywordList,
+    setKeywordList,
     chosedCity,
     addNewSpots,
     selectSpots,
@@ -24,12 +26,24 @@ const PlanSpotModal = ({
     const searchRef = useRef();
     const spotsData = useContext(SpotsDataContext);
 
+    const [activeTab, setActiveTab] = useState(false);
+
+    const activeToggle = ()=>{
+        setActiveTab(!activeTab)
+    }
+
+
     const changeInput = (e) => {
         setSearch(e.target.value);
     };
 
+    const clickTap = (it)=> {
+    };
+
+    console.log(keywordList);
+
     return (
-        <SpotAddModal className={openAdd ? 'open' : ''}>
+        <SpotAddModal className={openAdd ? 'open' : 'close'}>
             <Header1
                 leftChild={<HeaderIcon
                     text={'뒤로가기'}
@@ -62,11 +76,17 @@ const PlanSpotModal = ({
             />
             <SpotListWrap>
                 <div className="spotlist_top">
-                    <div className="keywordTap">
+                    {/* <div className="keywordTap">
                         {keywordData.map((it) =>
-                            <Button key={it.id} type={'deActive'} text={it.kw} />
+                            <Button 
+                            key={it.id} 
+                            type={ keywordList.includes(it.kw)? "acitve" : "deActive" } 
+                            text={it.kw} 
+                            onClick={clickTap(it.kw)} 
+                            />
                         )}
-                    </div>
+                    </div> */}
+                    {/* 키워드 탭 보류...^^ */}
                 </div>
                 <div className="spotlist">
                     <ul>
@@ -76,11 +96,11 @@ const PlanSpotModal = ({
                             spotsData.filter((it) => {
                                 if (it.city === chosedCity && search === "") {
                                     return it;
-                                } else if (it.city === chosedCity && it.spotName.includes(search)) {
+                                } else if (it.city === chosedCity && it.spotName.includes(search.toLowerCase())) {
                                     return it;
                                 }
                             }
-                            ).map((it) => (
+                            ).filter((it)=> keywordList.includes(...it.keyword)).map((it) => (
                                 <TourSpots key={it.id} {...it}
                                     openAdd={openAdd}
                                     selectSpots={selectSpots}
@@ -91,11 +111,12 @@ const PlanSpotModal = ({
                     </ul>
                 </div>
             </SpotListWrap>
-            <SpotBtn>
-                {selectSpots !== '' ?
-                    <Button type={'active'} text={`${selectSpots} 선택 완료`} onClick={getSpots} />
-                    : <Button type={'deActive'} text='장소를 선택해주세요.' onClick={handleCity} />
-                }
+            <SpotBtn className={!openAdd ? 'close' : ''}>
+                <Button
+                type={!selectSpots ? "deActive" : "active"}
+                text={!selectSpots ? "장소를 선택하지 않았습니다." : `${selectSpots} 선택 완료`}
+                onClick={!selectSpots ? closeSpots : getSpots}
+                />
             </SpotBtn>
         </SpotAddModal>
     );
@@ -111,10 +132,23 @@ const SpotAddModal = styled.div`
     width : 100%;
     height : 100%;
     background-color: #fff;
+    overflow-y: scroll;
     z-index: 700;
     transition: 0.3s;
+
     &.open{
         bottom: 0%;
+    } 
+    &.close{
+        display : none;
+    }
+    
+    button{
+        font-size: 12px;
+        font-weight: 600;
+        color: #fff;
+        padding: 10px;
+        background-color: #368FFF;
     }
 
 `
@@ -125,11 +159,10 @@ const SpotListWrap = styled.div`
     right: 20px;
     padding-top: 40px;
     padding-bottom: 90px;
-    
     .spotlist_top{
         margin-bottom: 10px;
     }
-    .keywordTap{
+    .spotlist_top .keywordTap{
         display : flex;
         justify-content: space-between;
         flex-wrap: wrap;
@@ -138,7 +171,7 @@ const SpotListWrap = styled.div`
         width : 23%;
         margin-bottom : 10px;
     }
-    .keywordTap .Button button{
+    .keywordTap .btn{
         width : 100%;
         margin-right : 10px;
         text-wrap: nowrap;
@@ -147,13 +180,16 @@ const SpotListWrap = styled.div`
 
 `
 const SpotBtn = styled.div`
-    position: absolute;
+    
+    position: fixed;
     bottom: 20px;
     left: 20px;
     right: 20px;
-    padding-top: 20px;
-    .btn{
+    z-index: 1000;
+    .Button .btn{
         width: 100%;
-        height: 42px;
+    } 
+    &.close{
+        display: none;
     }
 `

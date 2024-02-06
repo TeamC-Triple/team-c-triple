@@ -14,9 +14,11 @@ const PlanDays = ({
     dayList,
     setDayList,
     chosedCity,
-    keywordData,
-    addDayPlan,
-    travelDateRange,
+    keywordData, 
+    keywordList,
+    setKeywordList,
+    addDayPlan, 
+    travelDateRange, 
     handleCity,
     addDayMemo,
     setMemoList,
@@ -29,11 +31,13 @@ const PlanDays = ({
     // 장소 추가 여닫기
     const [openAdd, setOpenAdd] = useState(false);
     // 장소 하나
-    const [selectSpots, setSelectSpots] = useState('');
+    const [selectSpots, setSelectSpots]= useState('');
+
     const spId = useRef(0);
 
     // 장소 추가 버튼
-    const addSpotsBtn = () => {
+    const addSpotsBtn =()=>{
+        setSelectSpots('');
         setOpenAdd(true);
     };
 
@@ -109,6 +113,8 @@ const PlanDays = ({
                 closeSpots={closeSpots}
                 getSpots={getSpots}
                 keywordData={keywordData}
+                keywordList={keywordList}
+                setKeywordList={setKeywordList}
                 chosedCity={chosedCity}
                 selectSpots={selectSpots}
                 setSelectSpots={setSelectSpots}
