@@ -75,7 +75,7 @@ const PlanEdit = ({
                     <div className="travelerInput">
                         <input 
                             type="text" 
-                            value={traveler} 
+                            value={traveler || ''} 
                             onChange={(e)=>{setTraveler(e.target.value)}}
                         />
                         <div className="travelerBtn">
