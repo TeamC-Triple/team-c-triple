@@ -93,8 +93,10 @@ const PlanSpotModal = ({
                         {chosedCity === ''
                             ? <li>여행할 지역을 먼저 선택해 주세요.</li>
                             :
-                            spotsData.filter((it) =>{
-                                if(it.city === chosedCity && it.spotName.includes(search.toLowerCase())){
+                            spotsData.filter((it) => {
+                                if (it.city === chosedCity && search === "") {
+                                    return it;
+                                } else if (it.city === chosedCity && it.spotName.includes(search.toLowerCase())) {
                                     return it;
                                 }
                             }
