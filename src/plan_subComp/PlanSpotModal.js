@@ -54,7 +54,7 @@ const PlanSpotModal = ({
                         <input
                             type="text"
                             placeholder="검색어를 입력해주세요."
-                            value={search}
+                            value={search || ''}
                             ref={searchRef}
                             onChange={changeInput}
                         />
