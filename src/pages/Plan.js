@@ -56,7 +56,7 @@ const Plan = ({isEdit, planOriginData}) => {
 
     // planDays 여행 계획 전체
     const [dayList, setDayList]= useState([]);
-    const daysId = useRef(0);
+    const daysId = useRef(dayList && isEdit ? dayList.length : 0);
 
     // planDays 
     // 여행장소 리스트를 해당 일자에 추가
@@ -134,7 +134,7 @@ const Plan = ({isEdit, planOriginData}) => {
             if(!isEdit){
                 onCreatePlan(chosedCity, startDate, lastDate, keywordList, traveler, expenses, dayList);
             } else {
-                onEditPlan(planOriginData.id, chosedCity, startDate, lastDate, keywordList, traveler, expenses, dayList)
+                onEditPlan(planOriginData.id, chosedCity, startDate, lastDate, keywordList, traveler, expenses, dayList);
             }
         }
     };

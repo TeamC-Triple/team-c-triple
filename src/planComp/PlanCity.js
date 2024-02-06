@@ -65,7 +65,7 @@ const PlanCity = ({cityData, isCity, setChosedCity, handleCity}) => {
                         <input 
                             type="text"
                             placeholder="여행, 어디로 떠나시나요?"
-                            value={search}
+                            value={search || ''}
                             ref={searchRef}
                             onChange={changeInput}
                         />
