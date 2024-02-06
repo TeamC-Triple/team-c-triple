@@ -131,7 +131,6 @@ const Plan = () => {
     const clickCreatePlan = () => {
         onCreatePlan(chosedCity, startDate, lastDate, keywordList, traveler, expenses, dayList);
     };
-    console.log(dayList);
     
 
     return (

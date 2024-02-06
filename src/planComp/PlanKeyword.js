@@ -23,7 +23,7 @@ const PlanKeyword = ({keywordData, selectKW, setSelectKW, openKeyword, handleOpe
     }
 
     return(
-        <PlanKW className={`PlanKeyword ${openKeyword ? "open" : ""}`}>
+        <PlanKW className={`PlanKeyword ${openKeyword ? "open" : "close"}`}>
             <Header1 
             leftChild={<HeaderIcon 
                 text={'뒤로가기'}
@@ -79,6 +79,9 @@ z-index: 700;
 transition: 0.3s;
 &.open{
     bottom : 0%;
+}
+&.close{
+    display : none;
 }
 .Header1{
     position: absolute;
