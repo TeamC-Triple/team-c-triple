@@ -251,7 +251,8 @@ export const dummyMyTripPlan = [
                 memo: ['집으로']
             },
 
-        ]
+        ],
+        photo: ['myLastTrip_ulsan.jpg']
     },
     {
         id: 6,
@@ -292,8 +293,8 @@ export const dummyMyTripPlan = [
             memo: ['집으로']
         }
 
-        ] // 여행일정의 장소리스트
-
+        ], // 여행일정의 장소리스트
+        photo: ['myLastTrip_gangneung.jpg']
     }, // 한 여행일정 전체 객체 끝
     {
         id: 7,
@@ -333,7 +334,8 @@ export const dummyMyTripPlan = [
                 place: '포항역',
                 memo: ['집으로']
             }
-        ]
+        ],
+        photo: ['myLastTrip_pohang.jpg']
     },
     {
         id: 8,
@@ -374,8 +376,8 @@ export const dummyMyTripPlan = [
                 place: '서울역',
                 memo: ['집으로']
             },
-        ]
-
+        ],
+        photo: ['myLastTrip_seoul.jpg']
     }
 ];  // 전체끝
 
