@@ -5,6 +5,7 @@ import styled from "styled-components";
 import PlanCourse from "./PlanCourse.js";
 import PlanDays from "./PlanDays.js";
 import Button from "../common/Button.js";
+import { getStringDate } from "../utill/dateString.js";
 
 const PlanEdit = ({
     // 도시
@@ -33,6 +34,12 @@ const PlanEdit = ({
     addDayPlan,
     dayList,
     setDayList,
+        addDayMemo,
+        setMemoList,
+        memoList,
+        memoTxt,
+        onChangeTxt,
+        setMemoTxt,
 })=>{
 
     const navigate = useNavigate();
@@ -103,10 +110,10 @@ const PlanEdit = ({
             <When >
                 {travelDateRange.length <= 0
                 ? <p className="btnDate" onClick={openModalDateCal}>여행 날짜 선택</p>
-                : <p onClick={openModalDateCal}>{new Date(startDate).toLocaleDateString() + ' ~ ' + new Date(lastDate).toLocaleDateString()}</p>
+                : <p onClick={openModalDateCal}>{getStringDate(new Date(startDate)) + ' ~ ' + getStringDate(new Date(lastDate))}</p>
                 }
             </When>
-            {keywordList.length >= 1 ?
+            {keywordList && keywordList.length >= 1 ?
                 <TripKeyword
                     onClick={onClickKW}>{keywordList} <span> 키워드 편집</span></TripKeyword>
                 : <TripKeyword
@@ -139,7 +146,14 @@ const PlanEdit = ({
                         keywordList={keywordList}
                         setKeywordList={setKeywordList}
                         travelDateRange={travelDateRange}
-                        handleCity={handleCity} />
+                        handleCity={handleCity}
+                            setMemoList={setMemoList}
+                            addDayMemo={addDayMemo}
+                            memoList={memoList}
+                            memoTxt={memoTxt}
+                            onChangeTxt={onChangeTxt}
+                            setMemoTxt={setMemoTxt}
+                        />
                 ))
             }
             </DaySpots>
@@ -165,7 +179,7 @@ const Traveler = styled.div`
     font-weight: 600;
     line-height: 24px;
     color: #fff;
-    background-image: url('./assets/icon-user-group-wh.svg');
+    background-image: url('/assets/icon-user-group-wh.svg');
     background-size: 20px auto;
     background-position: center left 16px ;
     background-repeat: no-repeat;

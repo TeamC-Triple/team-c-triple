@@ -5,10 +5,9 @@ import Header1 from "../common/Header1.js";
 import HeaderIcon from "../common/HeaderIcon.js";
 import CityLi from "../plan_subComp/CityLi.js";
 import Button from "../common/Button.js";
-import { CityDataContext } from "../App.js";
 
 
-const PlanCity = ({isCity, setChosedCity, handleCity}) => {
+const PlanCity = ({cityData, isCity, setChosedCity, handleCity}) => {
     // 헤더 검색창 부분 상태변수, 관련함수 시작
     const [search, setSearch] = useState('');
     const searchRef = useRef();
@@ -17,7 +16,7 @@ const PlanCity = ({isCity, setChosedCity, handleCity}) => {
     };
     const onClickSearch = () => {};
     // 헤더 검색창 부분 끝
-    const cityData = useContext(CityDataContext);
+
     const [cityList, setCityList] = useState([]);
     // 선택한 도시
     const [checkCity, setCheckCity] = useState('');
@@ -32,7 +31,7 @@ const PlanCity = ({isCity, setChosedCity, handleCity}) => {
         if(cityData){
             setCityList(cityData);
         };
-    }, [isCity]);
+    }, []);
 
     const closeCity = () => {
         handleCity();
@@ -98,7 +97,7 @@ const PlanCity = ({isCity, setChosedCity, handleCity}) => {
                             cityList.filter((it) => {
                                 if (search === "") {
                                     return it;
-                                } else if (it.city.toLowerCase().includes(search.toLowerCase()) || it.place.toLowerCase().includes(search.toLowerCase())) {
+                                } else if (it.city.includes(search) || it.place.includes(search)) {
                                     return it;
                                 }
                             }).map((item) => (
@@ -170,10 +169,11 @@ const Plancity = styled.div`
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 20px;
         input{
+            box-sizing: border-box;
             margin-top: 3px;
             width: calc(100% - 26px);
+            padding: 0 20px;
             height: 50px;
             border: 0;
         }

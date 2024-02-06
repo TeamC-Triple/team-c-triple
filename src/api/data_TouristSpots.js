@@ -119,7 +119,7 @@ export const dummyTouristSpots = [
     {
         id: 16,
         city: '경주',
-        spotName: '황리단길',
+        spotName: '동궁과 월지',
         keyword: ['#SNS핫플', '#관광지', '#힐링', '#친구와', '#아이와', '#연인과', '#부모님과']
     },
     {

@@ -5,7 +5,8 @@ import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { ko } from 'date-fns/locale';
 
-import { getStringDate } from "../utill/dateString.js";
+import { getStringDate } from '../utill/dateString.js';
+import { getDateRange } from "../utill/getDateRange.js";
 
 import Button from '../common/Button.js';
 import styled from 'styled-components';
@@ -26,8 +27,8 @@ const PlanDateCal = ({
     const [travelRange, setTravelRange] = useState([]);
     const [dateCal, setDateCal] = useState([
         {
-            startDate: new Date(),
-            endDate: addDays(new Date(), 0),
+            startDate: new Date(startDate),
+            endDate: addDays(new Date(lastDate), travelDateRange.length > 0 ? travelDateRange.length : 0),
             key: 'selection'
         },
     ]);
@@ -38,19 +39,6 @@ const PlanDateCal = ({
         setLastDate([items.selection.endDate])
         setTravelRange(getDateRange([items.selection.startDate], [items.selection.endDate]));
     };
-
-    // 처음날짜부터 마지막날짜 사이를 구하는 변수
-    const getDateRange = (date1, date2) => {
-        const start = new Date(date1);
-        const last = new Date(date2);
-        const result = [];
-
-        while(start <= last){
-            start.setDate(start.getDate() + 1);
-            result.push(start.toISOString().slice(0,10));
-        }
-        return result;
-    }
 
     const handleSelectBtn = () => {
         setTravelDateRange(travelRange);
@@ -85,7 +73,7 @@ const PlanDateCal = ({
                     <Button 
                         type={'active'}
                         text={`
-                            ${dateCal[0].startDate.toLocaleDateString()} ~ ${dateCal[0].endDate.toLocaleDateString()} 선택 완료
+                            ${getStringDate(dateCal[0].startDate)} ~ ${getStringDate(dateCal[0].endDate)} 선택 완료
                         `}
                         onClick={handleSelectBtn}
                     />
