@@ -189,6 +189,7 @@ const Plan = ({isEdit, planOriginData}) => {
                 openKeyword={openKeyword}
                 keywordList={keywordList}
                 keywordData={keywordData}
+                setKeywordList={setKeywordList}
 
                 // 인원수
                 traveler={traveler}

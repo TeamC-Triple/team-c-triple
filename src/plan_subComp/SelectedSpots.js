@@ -10,7 +10,8 @@ const SelectedSpots = ({ id, place, idx, memoList, day }) => {
         lineHeight: '30px'
     };
 
-    return (
+
+    return(
         <SelectPlan>
             <div className="selected" style={shadowStyles}>
                 <div className="numberDot">{idx + 1}</div>
