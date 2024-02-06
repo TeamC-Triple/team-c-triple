@@ -79,16 +79,27 @@ const Plan = () => {
         daysId.current += 1;
         setDayList([...dayList, newPlace]);
     };
-
-    const addDayMemo = (date, memo) => {
-        const newMemo = {
-            id : daysId.current,
-            date : date,
-            memo : memo
+        // Memo
+        const [memoTxt, setMemoTxt] = useState('');
+        const onChangeTxt = (e) => {
+            setMemoTxt(e.target.value)
         };
-        daysId.current += 1;
-        setDayList([...dayList, newMemo]);
-    };
+
+        const [memoList, setMemoList]= useState([]);
+        const MemoId = useRef(0);
+
+        const addDayMemo = (date,memo,time) => {
+            const newMemo = {
+                id : MemoId.current,
+                date : date,
+                memo : memo,
+                writeTime : time
+            };
+            MemoId.current += 1;
+            setMemoList([...memoList, newMemo]);
+        };
+        
+
     // PlanExpenses
     // PlanExpenses 여닫음 상태변수
     const [click, setClick] = useState(false);
@@ -149,8 +160,14 @@ const Plan = () => {
 
                 // 여행계획
                 addDayPlan={addDayPlan}
+                    addDayMemo={addDayMemo}
                 dayList={dayList}
                 setDayList={setDayList}
+                    setMemoList={setMemoList}
+                    memoList={memoList}
+                    memoTxt={memoTxt}
+                    onChangeTxt={onChangeTxt}
+                    setMemoTxt={setMemoTxt}
                 
                 // 비용
                 add={add}
