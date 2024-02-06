@@ -1,21 +1,8 @@
-/*
-    ※ 필독
-    - Plan.js는 화면에 노출되는 부분입니다.
-    - 데이터 관리를 위해 부득이하게 개별 컴포넌트가 router를 통해 이동하는 방식이 아닌,
-      Plan.js 안에서 각각의 단계들이 보여지고 <-> 보여지지 않는 방식으로 화면전환이 됩니다.
-    - 작업중 화면 주소 : http://localhost:3000/plan
-    - 본인의 작업 중 다른이의 작업이 겹쳐 불편할때는 주석처리를 해주세요.
-    - 추후 브랜치 병합시에는 꼭 주석 해제 해주셔야 합니다.
-    - 주석 해제 후에는 먼저 작업한 다른이들의 작업과 충돌이 되지 않는지 꼭 확인해주셔야 합니다.
-    - 다른 팀원들에게 설명이 필요한 작업부분은 꼭 주석으로 설명을 붙여주시기 바랍니다.
-    - 코드 정리시에도 꼭 주석을 붙여 다른팀원들이 작업시 햇갈리지 않게끔 부탁드립니다!
-*/
-
-
 import { useContext, useEffect, useRef, useState } from "react";
-import { PlanDataContext, PlanDispatchContext } from "../App";
+import { PlanDispatchContext } from "../App";
 import styled from "styled-components";
 import { useBodyScrollLock } from "../utill/useBodyScrollLock.js";
+import { getDateRange } from "../utill/getDateRange.js";
 
 import PlanCity from "../planComp/PlanCity";
 import PlanKeyword from "../planComp/PlanKeyword";
@@ -24,20 +11,23 @@ import PlanExpenses from "../planComp/PlanExpenses";
 import PlanCourseModal from "../plan_subComp/PlanCourseModal";
 import Button from "../common/Button.js";
 import PlanDateCal from "../planComp/PlanDateCal.js";
+import { useNavigate } from "react-router-dom";
+import { CityDataContext } from "../App.js";
 
 // [planKeyword]의 더미데이터
 const keywordData = [ {id : 0, kw : '#친구와'}, {id : 1, kw : '#연인과'},{id : 2, kw : '#아이와'},{id : 3, kw : '#부모님과'} ,{id : 4, kw : '#관광지'}, {id : 5, kw : '#SNS핫플'},{id : 6,kw : '#힐링'},{id : 7, kw: '#맛집'} ];
 
-const Plan = () => {
-    const PlanData = useContext(PlanDataContext);
-    const { onCreatePlan } = useContext(PlanDispatchContext);
+const Plan = ({isEdit, planOriginData}) => {
+    const { onCreatePlan, onEditPlan } = useContext(PlanDispatchContext);
     const { lockScroll, openScroll } = useBodyScrollLock();
+    const navigate = useNavigate();
 
     // planCity
     // plancity 여닫음 상태변수
     const [isCity, setIsCity] = useState(false);
     // 선택한 도시 정보 담는 상태변수
     const [chosedCity, setChosedCity] = useState('');
+    const cityData = useContext(CityDataContext);
 
     // 도시선택창 열기
     const handleCity = () => {
@@ -140,9 +130,27 @@ const Plan = () => {
 
     // 저장하기 버튼 누르기
     const clickCreatePlan = () => {
-        onCreatePlan(chosedCity, startDate, lastDate, keywordList, traveler, expenses, dayList);
+        if(window.confirm(isEdit ? `${chosedCity} 여행 일정을 수정하시겠습니까?` :`${chosedCity} 여행 일정을 저장하시겠습니까?`)){
+            if(!isEdit){
+                onCreatePlan(chosedCity, startDate, lastDate, keywordList, traveler, expenses, dayList);
+            } else {
+                onEditPlan(planOriginData.id, chosedCity, startDate, lastDate, keywordList, traveler, expenses, dayList)
+            }
+        }
     };
-    console.log(dayList);
+
+    useEffect(() => {
+        if(isEdit){
+            setChosedCity(planOriginData.city);
+            setStartDate(planOriginData.firstDate);
+            setLastDate(planOriginData.lastDate);
+            setDayList(planOriginData.days);
+            setExpenses(planOriginData.expenses);
+            setTraveler(planOriginData.people);
+            setKeywordList(planOriginData.keyword);
+            setTravelDateRange(getDateRange(planOriginData.firstDate, planOriginData.lastDate));
+        }
+    }, [isEdit, planOriginData]);
     
 
     return (
@@ -187,7 +195,7 @@ const Plan = () => {
                 setTraveler={setTraveler}
                 clickCreatePlan={clickCreatePlan}
             />
-            <PlanCity isCity={isCity} setChosedCity={setChosedCity} handleCity={handleCity} />
+            <PlanCity cityData={cityData} isCity={isCity} setChosedCity={setChosedCity} handleCity={handleCity} />
             <PlanDateCal 
                 isCalendar={isCalendar}
                 setIsCalendar={setIsCalendar}
@@ -205,7 +213,7 @@ const Plan = () => {
             <BtnCreate>
                 <Button 
                     type={'active'}
-                    text={'저장하기'}
+                    text={isEdit ? '수정완료' : '저장하기'}
                     onClick={clickCreatePlan}
                 />
             </BtnCreate>

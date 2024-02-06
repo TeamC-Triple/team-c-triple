@@ -19,7 +19,6 @@ import { dummyCity } from './api/data_city.js';
 
 import './App.css';
 import Main from './pages/Main.js';
-import PlanLayOut from './pages/PlanLayOut.js';
 import MainTravel from "./mainComp/MainTravel.js";
 import Home from "./mainComp/Home.js";
 import MainFeed from "./mainComp/MainFeed.js";
@@ -65,6 +64,11 @@ const reducerPlan = (state, action) => {
         }
         case 'REMOVE': {
             newStatePlan = state.filter((item) => item.id !== action.targetID);
+            break;
+        }
+        case 'EIDT': {
+            newStatePlan = state.map((item) =>
+                item.id === action.data.id ? { ...action.data } : item);
             break;
         }
         default:
@@ -120,6 +124,9 @@ function App() {
     const [dataLog, dispatchLog] = useReducer(reducerLog, dummyMyTripList);
     const dataLogId = useRef(5);
 
+    const location = useLocation();
+    console.log(dataPlan);
+
     // plan CREATE
     const onCreatePlan = (city, firstDate, lastDate, keyword, people, expense, days) => {
         dispatchPlan({
@@ -132,11 +139,28 @@ function App() {
                 keyword: keyword,
                 people,
                 expense,
-                days : days
+                days: days
             }
         });
         dataPlanId.current += 1;
     };
+
+    // plan Edit
+    const onEditPlan = (targetId, city, firstDate, lastDate, keyword, people, expense, days) => {
+        dispatchPlan({
+            type: 'EDIT',
+            data: {
+                id: targetId,
+                city: `${city}`,
+                firstDate: new Date(firstDate).getTime(),
+                lastDate: new Date(lastDate).getTime(),
+                keyword: keyword,
+                people,
+                expense,
+                days: days
+            }
+        });
+    }
 
 
     // log CREATE
@@ -161,9 +185,6 @@ function App() {
 
     };
 
-    // onCreatePlan이 잘 작동 되는지 확인하기 위한 콘솔창입니다.
-    console.log(dataPlan);
-
     // plan REMOVE
     const onRemovePlan = (targetID) => {
         dispatchPlan({
@@ -172,7 +193,7 @@ function App() {
         });
         dataPlanId.current -= 1;
     };
-    
+
     // log REMOVE
     const onRemoveLog = (targetID) => {
         dispatchLog({
@@ -181,11 +202,9 @@ function App() {
         });
         dataLogId.current -= 1;
     };
-
-    const location = useLocation();
     return (
         <LogDispatchContext.Provider value={{ onCreateLog, onRemoveLog }}>
-            <PlanDispatchContext.Provider value={{ onCreatePlan, onRemovePlan }}>
+            <PlanDispatchContext.Provider value={{ onCreatePlan, onRemovePlan, onEditPlan }}>
                 <CityDataContext.Provider value={dummyCity}>
                     <LogDataContext.Provider value={dataLog}>
                         <PlanDataContext.Provider value={dataPlan}>
@@ -204,12 +223,10 @@ function App() {
                                                             </Route>
                                                             <Route path='/search' element={<MainSearch />} />
                                                             <Route path='/mypage' element={<Mypage />} />
-                                                            <Route path='/plan' element={<PlanLayOut />}>
-                                                                <Route index element={<NewPlan />} />
-                                                                <Route path='/plan/editplan/:id' element={<EditPlan />} />
-                                                            </Route>
-                                                            <Route path='/travellog/new' element={<NewLog />} />
-                                                            <Route path='/travellog/editlog/:id' element={<EditLog />} />
+                                                            <Route path='/newplan' element={<NewPlan />} />
+                                                            <Route path='/editplan/:id' element={<EditPlan />} />
+                                                            <Route path='/newlog' element={<NewLog />} />
+                                                            <Route path='/editlog/:id' element={<EditLog />} />
                                                             <Route path='/travellog' element={<TravelLog />} />
                                                         </Routes>
                                                     }
