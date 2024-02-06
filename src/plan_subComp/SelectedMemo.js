@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const SelectedMemo = ({id, date, memo, writeTime}) => {
+const SelectedMemo = ({id, date, memo}) => {
     return(
         <SelectedMemoWrap>
             <div>

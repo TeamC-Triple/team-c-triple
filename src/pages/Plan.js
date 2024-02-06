@@ -96,13 +96,9 @@ const Plan = () => {
                 writeTime : time
             };
             MemoId.current += 1;
-            setMemoList([newMemo, ...memoList]);
+            setMemoList([...memoList, newMemo]);
         };
-
-        console.log(memoList);
-
-            // memo, spot 합친 배열
-            const planDay = [...memoList, ...dayList]
+        
 
     // PlanExpenses
     // PlanExpenses 여닫음 상태변수

@@ -23,7 +23,7 @@ const PlanDays = ({
         memoList,
         memoTxt,
         onChangeTxt,
-        setMemoTxt
+        setMemoTxt,
 }) => {
     
     // 장소 추가 여닫기
@@ -90,7 +90,7 @@ const PlanDays = ({
                         <Empty>일정이 비어있습니다.</Empty> 
                         
                         :   getThisDaySpList().map((it, idx)=>(
-                            it.date === day && <SelectedSpots key={idx} {...it} idx={idx} />
+                            it.date === day && <SelectedSpots key={idx} {...it} idx={idx}/>
                         ))
                 }
                 {memoList.length < 1

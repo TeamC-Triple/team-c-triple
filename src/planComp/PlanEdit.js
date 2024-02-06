@@ -37,7 +37,7 @@ const PlanEdit = ({
         memoList,
         memoTxt,
         onChangeTxt,
-        setMemoTxt
+        setMemoTxt,
 })=>{
 
     const navigate = useNavigate();
