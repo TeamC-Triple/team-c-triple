@@ -7,7 +7,7 @@ export const dummyMyTripPlan = [
         city: '부산',
         firstDate: new Date(2024, 3, 1).getTime(),
         lastDate: new Date(2024, 3, 2).getTime(),
-        keyword:[],
+        keyword: [],
         people: 2,
         expense: 350000,
         days: [
@@ -46,7 +46,7 @@ export const dummyMyTripPlan = [
         city: '강릉',
         firstDate: new Date(2024, 3, 6).getTime(),
         lastDate: new Date(2024, 3, 7).getTime(),
-        keyword:[],
+        keyword: [],
         people: 3,
         expense: 450000,
         days: [
@@ -85,7 +85,7 @@ export const dummyMyTripPlan = [
         city: '제주',
         firstDate: new Date(2024, 3, 12).getTime(),
         lastDate: new Date(2024, 3, 15).getTime(),
-        keyword:[],
+        keyword: [],
         people: 4,
         expense: 500000,
         days: [
@@ -145,7 +145,7 @@ export const dummyMyTripPlan = [
         city: '경주',
         firstDate: new Date(2024, 3, 17).getTime(),
         lastDate: new Date(2024, 3, 18).getTime(),
-        keyword:[],
+        keyword: [],
         people: 2,
         expense: 650000,
         days: [
@@ -178,14 +178,14 @@ export const dummyMyTripPlan = [
                 place: '경주터미널',
             },
         ]
-        
+
     },
     {
         id: 4,
         city: '인천',
         firstDate: new Date(2024, 4, 11).getTime(),
         lastDate: new Date(2024, 4, 13).getTime(),
-        keyword:[],
+        keyword: [],
         people: 2,
         expense: 350000,
         days: [
@@ -214,7 +214,7 @@ export const dummyMyTripPlan = [
         city: '울산',
         firstDate: new Date(2024, 0, 11).getTime(),
         lastDate: new Date(2024, 0, 13).getTime(),
-        keyword:[],
+        keyword: [],
         people: 2,
         expense: 350000,
         days: [
@@ -231,7 +231,7 @@ export const dummyMyTripPlan = [
                 place: '울산관광지1',
                 memo: ['숙소도착']
             },
-            
+
             {
                 id: 2,
                 date: getStringDate(new Date(2024, 0, 12)),
@@ -251,131 +251,135 @@ export const dummyMyTripPlan = [
                 memo: ['집으로']
             },
 
-        ]
+        ],
+        photo: ['myLastTrip_ulsan.jpg']
     },
     {
         id: 6,
         city: '강릉',
         firstDate: new Date(2023, 11, 24).getTime(),
         lastDate: new Date(2023, 11, 25).getTime(),
-        keyword:[],
+        keyword: [],
         people: 2,
         expense: 350000,
-        days: [{
-            id: 0,
-            date: getStringDate(new Date(2023, 11, 24)),
-            place: '강릉역',
-            memo: ['강릉도착', '점심 편의점']
-        },
-        {
-            id: 1,
-            date: getStringDate(new Date(2023, 11, 24)),
-            place: '강릉관광지1',
-            memo: ['숙소도착']
-        },
-        {
-            id: 0,
-            date: new Date(2024, 11, 25).getTime(),
-            place: '강릉관광지2',
-            memo: []
-        },
-        {
-            id: 1,
-            date: new Date(2024, 11, 25).getTime(),
-            place: '강릉관광지3',
-            memo: []
-        },
-        {
-            id: 2,
-            date: new Date(2024, 11, 25).getTime(),
-            place: '강릉역',
-            memo: ['집으로']
-        }
+        days: [
+            {
+                id: 0,
+                date: getStringDate(new Date(2023, 11, 24)),
+                place: '강릉역',
+                memo: ['강릉도착', '점심 편의점']
+            },
+            {
+                id: 1,
+                date: getStringDate(new Date(2023, 11, 24)),
+                place: '강릉관광지1',
+                memo: ['숙소도착']
+            },
+            {
+                id: 0,
+                date: getStringDate(new Date(2024, 11, 25)),
+                place: '강릉관광지2',
+                memo: []
+            },
+            {
+                id: 1,
+                date: getStringDate(new Date(2024, 11, 25)),
+                place: '강릉관광지3',
+                memo: []
+            },
+            {
+                id: 2,
+                date: getStringDate(new Date(2024, 11, 25)),
+                place: '강릉역',
+                memo: ['집으로']
+            }
 
-        ] // 여행일정의 장소리스트
-
+        ], // 여행일정의 장소리스트
+        photo: ['myLastTrip_gangneung.jpg']
     }, // 한 여행일정 전체 객체 끝
     {
         id: 7,
         city: '포항',
         firstDate: new Date(2024, 0, 1).getTime(),
         lastDate: new Date(2024, 0, 3).getTime(),
-        keyword:[],
+        keyword: [],
         people: 2,
         expense: 350000,
-        days: [{
+        days: [
+            {
                 id: 0,
-                date: new Date(2024, 0, 1).getTime(),
+                date: getStringDate(new Date(2024, 0, 1)),
                 place: '포항역',
                 memo: ['포항도착', '점심 편의점']
             },
             {
                 id: 1,
-                date: new Date(2024, 0, 1).getTime(),
+                date: getStringDate(new Date(2024, 0, 1)),
                 place: '포항관광지1',
                 memo: ['숙소도착']
             },
             {
                 id: 2,
-                date: new Date(2024, 0, 2).getTime(),
+                date: getStringDate(new Date(2024, 0, 2)),
                 place: '포항관광지2',
                 memo: []
             },
             {
                 id: 3,
-                date: new Date(2024, 0, 2).getTime(),
+                date: getStringDate(new Date(2024, 0, 2)),
                 place: '포항관광지3',
                 memo: []
             },
             {
                 id: 4,
-                date: new Date(2024, 0, 3).getTime(),
+                date: getStringDate(new Date(2024, 0, 3)),
                 place: '포항역',
                 memo: ['집으로']
             }
-        ]
+        ],
+        photo: ['myLastTrip_pohang.jpg']
     },
     {
         id: 8,
         city: '서울',
         firstDate: new Date(2024, 0, 5).getTime(),
         lastDate: new Date(2024, 0, 7).getTime(),
-        keyword:[],
+        keyword: [],
         people: 2,
         expense: 350000,
         days: [
             {
                 id: 0,
-                date: new Date(2024, 0, 5).getTime(),
+                date: getStringDate(new Date(2024, 0, 5)),
                 place: '서울역',
                 memo: ['서울도착', '점심 편의점']
             },
             {
                 id: 1,
-                date: new Date(2024, 0, 5).getTime(),
+                date: getStringDate(new Date(2024, 0, 5)),
                 place: '서울관광지1',
                 memo: ['숙소도착']
             },
             {
                 id: 2,
-                date: new Date(2024, 0, 6).getTime(),
+                date: getStringDate(new Date(2024, 0, 6)),
                 place: '서울관광지2',
                 memo: []
             },
             {
                 id: 3,
-                date: new Date(2024, 0, 7).getTime(),
+                date: getStringDate(new Date(2024, 0, 7)),
                 place: '서울관광지3',
                 memo: []
             },
             {
                 id: 4,
-                date: new Date(2024, 0, 7).getTime(),
+                date: getStringDate(new Date(2024, 0, 7)),
                 place: '서울역',
                 memo: ['집으로']
             },
-        ]
-
+        ],
+        photo: ['myLastTrip_seoul.jpg']
     }
 ];  // 전체끝
 
