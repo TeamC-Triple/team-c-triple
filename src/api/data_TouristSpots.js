@@ -119,7 +119,7 @@ export const dummyTouristSpots = [
     {
         id: 16,
         city: '경주',
-        spotName: '황리단길',
+        spotName: '동궁과 월지',
         keyword: ['#SNS핫플', '#관광지', '#힐링', '#친구와', '#아이와', '#연인과', '#부모님과']
     },
     {
@@ -144,7 +144,7 @@ export const dummyTouristSpots = [
         id: 20,
         city: '태안',
         spotName: '신두리 해안사구',
-        keyword: ['#관광지', '#친구와']
+        keyword: ['#관광지', '#친구와', '#아이와']
     },
 
     {
@@ -163,13 +163,13 @@ export const dummyTouristSpots = [
         id: 23,
         city: '태안',
         spotName: '청산 수목원',
-        keyword: ['#관광지', '#힐링', '#연인과', '#친구와']
+        keyword: ['#관광지', '#힐링', '#연인과', '#친구와', '#아이와']
     },
     {
         id: 24,
         city: '태안',
         spotName: '백사장항',
-        keyword: ['#관광지', '#힐링', '#친구와']
+        keyword: ['#관광지', '#힐링', '#친구와', '#아이와']
     },
     {
         id: 25,
@@ -207,7 +207,7 @@ export const dummyTouristSpots = [
         id: 30,
         city: '나주',
         spotName: '나주 곰탕 하얀집',
-        keyword: ['#관광지', '#맛집', '#부모님과']
+        keyword: ['#관광지', '#맛집', '#부모님과', '#아이와']
     },
 
     {
@@ -235,7 +235,7 @@ export const dummyTouristSpots = [
         id: 34,
         city: '밀양',
         spotName: '밀양댐',
-        keyword: ['#관광지', '#친구와']
+        keyword: ['#관광지', '#친구와', '#아이와']
     },
 
     {
@@ -249,14 +249,14 @@ export const dummyTouristSpots = [
         id: 36,
         city: '밀양',
         spotName: '위량못',
-        keyword: ['#관광지', '#힐링', '#친구와']
+        keyword: ['#관광지', '#힐링', '#친구와', '#아이와']
     },
 
     {
         id: 37,
         city: '밀양',
         spotName: '달빛 쌈지 공원',
-        keyword: ['#관광지', '#힐링', '#친구와']
+        keyword: ['#관광지', '#힐링', '#친구와', '#아이와']
     },
 
     {
@@ -277,7 +277,7 @@ export const dummyTouristSpots = [
         id: 40,
         city: '청주',
         spotName: '정북동 토성',
-        keyword: ['#관광지', '#힐링']
+        keyword: ['#관광지', '#힐링', '#아이와']
     },
 
     {
@@ -291,7 +291,7 @@ export const dummyTouristSpots = [
         id: 42,
         city: '청주',
         spotName: '봉용 불고기',
-        keyword: ['#관광지', '#부모님과']
+        keyword: ['#관광지', '#부모님과', '#아이와']
     }
     ,
 
@@ -322,14 +322,14 @@ export const dummyTouristSpots = [
         id: 46,
         city: '청주',
         spotName: '부부농장',
-        keyword: ['#관광지', '#힐링','#연인과']
+        keyword: ['#관광지', '#힐링','#연인과', '#아이와']
     },
 
     {
         id: 47,
         city: '청주',
         spotName: '청남대',
-        keyword: ['#관광지', '#친구와']
+        keyword: ['#관광지', '#친구와', '#아이와']
     }
     ,
 
@@ -337,7 +337,7 @@ export const dummyTouristSpots = [
         id: 48,
         city: '수원',
         spotName: '방화수류정',
-        keyword: ['#관광지', '#힐링', '#부모님과']
+        keyword: ['#관광지', '#힐링', '#부모님과', '#아이와']
     },
 
     {
@@ -351,14 +351,14 @@ export const dummyTouristSpots = [
         id: 50,
         city: '수원',
         spotName: '행궁애(愛)',
-        keyword: ['#관광지']
+        keyword: ['#관광지', '#아이와']
     },
 
     {
         id: 51,
         city: '수원',
         spotName: '화성 행궁',
-        keyword: ['#관광지', '#힐링']
+        keyword: ['#관광지', '#힐링', '#아이와']
     },
 
     {
@@ -400,7 +400,7 @@ export const dummyTouristSpots = [
         id: 57,
         city: '수원',
         spotName: '책발전소 광교',
-        keyword: ['#관광지', '#SNS핫플', '#친구와']
+        keyword: ['#관광지', '#SNS핫플', '#친구와', '#아이와']
     },
 
     {
@@ -414,14 +414,14 @@ export const dummyTouristSpots = [
         id: 59,
         city: '수원',
         spotName: '광교 호수 공원',
-        keyword: ['#관광지', '#친구와']
+        keyword: ['#관광지', '#친구와', '#아이와']
     },
 
     {
         id: 60,
         city: '천안',
         spotName: '독립 기념관',
-        keyword: ['#관광지']
+        keyword: ['#관광지', '#아이와']
     },
 
     {
@@ -442,7 +442,7 @@ export const dummyTouristSpots = [
         id: 63,
         city: '천안',
         spotName: '교토리',
-        keyword: ['#맛집', '#관광지']
+        keyword: ['#맛집', '#관광지', '#아이와']
     },
 
     {
@@ -455,7 +455,7 @@ export const dummyTouristSpots = [
         id: 65,
         city: '강릉·속초',
         spotName: '오죽헌',
-        keyword: ['#힐링', '#관광지']
+        keyword: ['#힐링', '#관광지', '#아이와']
     },
 
     {
@@ -470,7 +470,7 @@ export const dummyTouristSpots = [
         id: 67,
         city: '천안',
         spotName: '신정호 관광지', 
-        keyword: ['#관광지']
+        keyword: ['#관광지', '#아이와']
     }, 
 
     { 
@@ -484,7 +484,7 @@ export const dummyTouristSpots = [
          id: 69,
          city: '천안', 
          spotName: '곡교천 은행나무길',
-          keyword: ['#힐링',] 
+          keyword: ['#힐링', '#아이와'] 
         },
 
     { 
@@ -497,13 +497,13 @@ export const dummyTouristSpots = [
         id: 71, 
         city: '포항', 
         spotName: '이가리 닻 전망대', 
-        keyword: ['#관광지','#힐링',] 
+        keyword: ['#관광지','#힐링', '#아이와','#SNS핫플'] 
     }, 
     { 
         id: 72,
          city: '포항',
           spotName: '카페 포토피아',
-           keyword: ['#맛집',] 
+           keyword: ['#맛집','#SNS핫플'] 
     }, 
     
     {
@@ -511,7 +511,7 @@ export const dummyTouristSpots = [
     id: 73,
     city : '포항',
     spotName: '죽도 시장',
-    keyword : ['#관광지']
+    keyword : ['#관광지', '#부모님과']
     },
     
     {
@@ -519,7 +519,7 @@ export const dummyTouristSpots = [
     id: 74,
     city : '포항',
     spotName: '포항 운하',
-    keyword : ['#관광지']
+    keyword : ['#관광지', '#아이와','#SNS핫플']
     },
     
     {
@@ -527,7 +527,7 @@ export const dummyTouristSpots = [
     id: 75,
     city : '포항',
     spotName: '영일대',
-    keyword : ['#관광지','#힐링',]
+    keyword : ['#관광지','#힐링', '#아이와','#SNS핫플']
     },
     
     {
@@ -543,7 +543,7 @@ export const dummyTouristSpots = [
     id: 77,
     city : '포항',
     spotName: '이라 예술촌',
-    keyword : ['#관광지','#힐링',]
+    keyword : ['#관광지','#힐링', '#아이와','#SNS핫플']
     },
     
     {
@@ -551,7 +551,7 @@ export const dummyTouristSpots = [
     id: 78,
     city : '포항',
     spotName: '구룡포 일본인 가옥 거리',
-    keyword : ['#관광지']
+    keyword : ['#관광지', '#아이와']
     },
     
     {
@@ -559,7 +559,7 @@ export const dummyTouristSpots = [
     id: 79,
     city : '포항',
     spotName: '짬홍',
-    keyword : ['#맛집',]
+    keyword : ['#맛집','#SNS핫플']
     },
     
     {
@@ -567,7 +567,7 @@ export const dummyTouristSpots = [
     id: 80,
     city : '포항',
     spotName: '포항역',
-    keyword : ['#관광지']
+    keyword : ['#관광지', '#아이와',]
     },
     
     {
@@ -575,7 +575,7 @@ export const dummyTouristSpots = [
     id: 81,
     city : '부산',
     spotName: '부산역',
-    keyword : ['#관광지']
+    keyword : ['#관광지', '#아이와']
     },
     
     {
@@ -583,7 +583,7 @@ export const dummyTouristSpots = [
     id: 82,
     city : '부산',
     spotName: '초량 밀면 본점',
-    keyword : ['#맛집',]
+    keyword : ['#맛집', '#아이와']
     },
     
     {
@@ -591,7 +591,7 @@ export const dummyTouristSpots = [
     id: 83,
     city : '부산',
     spotName: '흰여울 문화 마을',
-    keyword : ['#관광지']
+    keyword : ['#관광지', '#아이와','#SNS핫플']
     },
     
     {
@@ -599,7 +599,7 @@ export const dummyTouristSpots = [
     id: 84,
     city : '부산',
     spotName: '흰여울 비치',
-    keyword : ['#관광지','#힐링',]
+    keyword : ['#관광지','#힐링', '#아이와','#SNS핫플']
     },
     
     {
@@ -607,7 +607,7 @@ export const dummyTouristSpots = [
     id: 85,
     city : '부산',
     spotName: '송도 해상 케이블 카',
-    keyword : ['#관광지','#힐링',]
+    keyword : ['#관광지','#힐링', '#아이와','#SNS핫플']
     },
     
     {
@@ -703,7 +703,7 @@ export const dummyTouristSpots = [
     id: 97,
     city : '부산',
     spotName: '광안리 해수욕장',
-    keyword : ['#관광지']
+    keyword : ['#관광지','#SNS핫플']
     },
     
     {
@@ -711,7 +711,7 @@ export const dummyTouristSpots = [
     id: 98,
     city : '부산',
     spotName: '필소굿 커피',
-    keyword : ['#맛집',]
+    keyword : ['#맛집','#SNS핫플']
     },
     
     {
@@ -727,7 +727,7 @@ export const dummyTouristSpots = [
     id: 100,
     city : '부산',
     spotName: '168 계단',
-    keyword : []
+    keyword : ['#SNS핫플']
     },
     
     {

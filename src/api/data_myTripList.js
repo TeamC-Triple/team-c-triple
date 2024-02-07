@@ -1,4 +1,5 @@
 // data_myTripList.js
+import { getStringDate } from "../utill/dateString"
 
 export const dummyMyTripList = [
     {
@@ -34,6 +35,50 @@ export const dummyMyTripList = [
                 writer: '하율맘',
                 date: new Date(2024, 0, 5).getTime(),
                 comment: '아이와 여행가려고 하는데 참고해야겠어요👍⭐'
+            }
+        ],
+        days: [
+            {
+                id: 0,
+                date: getStringDate(new Date(2023, 2, 1)),
+                day: [
+                    {
+                        id: 0,
+                        place: '인천역',
+                        memo: '인천도착',
+                        photo: '/assets/myTripList_busan_photo01.jpg'
+                    },
+                    {
+                        id: 1,
+                        place: '인천관광지1',
+                        memo: '숙소도착',
+                        photo: '/assets/myTripList_busan_photo02.jpg'
+                    }
+                ]
+            },
+            {
+                id: 1,
+                date: getStringDate(new Date(2023, 2, 2)),
+                day: [
+                    {
+                        id: 0,
+                        place: '인천관광지2',
+                        memo: '맛집 탐방',
+                        photo: '/assets/myTripList_busan_photo03.jpg'
+                    },
+                    {
+                        id: 1,
+                        place: '인천관광지3',
+                        memo: '차이나타운',
+                        photo: '/assets/myTripList_busan_photo04.jpg'
+                    },
+                    {
+                        id: 2,
+                        place: '인천역',
+                        memo: '집으로',
+                        photo: '/assets/myTripList_busan_photo05.jpg'
+                    }
+                ]
             }
         ]
     },
@@ -71,6 +116,50 @@ export const dummyMyTripList = [
                 date: new Date(2024, 0, 5).getTime(),
                 comment: '아이와 여행가려고 하는데 참고해야겠어요👍⭐'
             }
+        ],
+        days: [
+            {
+                id: 0,
+                date: getStringDate(new Date(2023, 5, 6)),
+                day: [
+                    {
+                        id: 0,
+                        place: '강릉역',
+                        memo: '강릉도착',
+                        photo: '/assets/myTripList_gangneung_photo01.jpg'
+                    },
+                    {
+                        id: 1,
+                        place: '강릉관광지1',
+                        memo: '숙소도착',
+                        photo: '/assets/myTripList_gangneung_photo02.jpg'
+                    }
+                ]
+            },
+            {
+                id: 1,
+                date: getStringDate(new Date(2023, 5, 7)),
+                day: [
+                    {
+                        id: 0,
+                        place: '강릉관광지2',
+                        memo: '맛집 탐방',
+                        photo: '/assets/myTripList_gangneung_photo03.jpg'
+                    },
+                    {
+                        id: 1,
+                        place: '강릉관광지3',
+                        memo: '차이나타운',
+                        photo: '/assets/myTripList_gangneung_photo04.jpg'
+                    },
+                    {
+                        id: 2,
+                        place: '강릉역',
+                        memo: '집으로',
+                        photo: '/assets/myTripList_gangneung_photo05.jpg'
+                    }
+                ]
+            }
         ]
     },
     {
@@ -106,6 +195,50 @@ export const dummyMyTripList = [
                 writer: '하율맘',
                 date: new Date(2024, 0, 5).getTime(),
                 comment: '아이와 여행가려고 하는데 참고해야겠어요👍⭐'
+            }
+        ],
+        days: [
+            {
+                id: 0,
+                date: getStringDate(new Date(2023, 11, 24)),
+                day: [
+                    {
+                        id: 0,
+                        place: '제주공항',
+                        memo: '제주도착',
+                        photo: '/assets/myTripList_jeju_photo01.jpg'
+                    },
+                    {
+                        id: 1,
+                        place: '제주관광지1',
+                        memo: '숙소도착',
+                        photo: '/assets/myTripList_jeju_photo02.jpg'
+                    }
+                ]
+            },
+            {
+                id: 1,
+                date: getStringDate(new Date(2023, 11, 25)),
+                day: [
+                    {
+                        id: 0,
+                        place: '제주관광지2',
+                        memo: '맛집 탐방',
+                        photo: '/assets/myTripList_jeju_photo03.jpg'
+                    },
+                    {
+                        id: 1,
+                        place: '제주관광지3',
+                        memo: '차이나타운',
+                        photo: '/assets/myTripList_jeju_photo04.jpg'
+                    },
+                    {
+                        id: 2,
+                        place: '제주공항',
+                        memo: '집으로',
+                        photo: '/assets/myTripList_jeju_photo05.jpg'
+                    }
+                ]
             }
         ]
     },
@@ -143,6 +276,50 @@ export const dummyMyTripList = [
                 date: new Date(2024, 0, 5).getTime(),
                 comment: '아이와 여행가려고 하는데 참고해야겠어요👍⭐'
             }
+        ],
+        days: [
+            {
+                id: 0,
+                date: getStringDate(new Date(2024, 0, 1)),
+                day: [
+                    {
+                        id: 0,
+                        place: '경주역',
+                        memo: '경주도착',
+                        photo: '/assets/myTripList_gyeongJu_photo01.jpg'
+                    },
+                    {
+                        id: 1,
+                        place: '경주관광지1',
+                        memo: '숙소도착',
+                        photo: '/assets/myTripList_gyeongJu_photo02.jpg'
+                    }
+                ]
+            },
+            {
+                id: 1,
+                date: getStringDate(new Date(2024, 0, 2)),
+                day: [
+                    {
+                        id: 0,
+                        place: '경주관광지2',
+                        memo: '맛집 탐방',
+                        photo: '/assets/myTripList_gyeongJu_photo03.jpg'
+                    },
+                    {
+                        id: 1,
+                        place: '경주관광지3',
+                        memo: '차이나타운',
+                        photo: '/assets/myTripList_gyeongJu_photo04.jpg'
+                    },
+                    {
+                        id: 2,
+                        place: '경주역',
+                        memo: '집으로',
+                        photo: '/assets/myTripList_gyeongJu_photo05.jpg'
+                    }
+                ]
+            }
         ]
     },
     {
@@ -178,6 +355,50 @@ export const dummyMyTripList = [
                 writer: '하율맘',
                 date: new Date(2024, 0, 5).getTime(),
                 comment: '아이와 여행가려고 하는데 참고해야겠어요👍⭐'
+            }
+        ],
+        days: [
+            {
+                id: 0,
+                date: getStringDate(new Date(2024, 0, 5)),
+                day: [
+                    {
+                        id: 0,
+                        place: '인천역',
+                        memo: '인천도착',
+                        photo: '/assets/myTripList_incheon_photo01.jpg'
+                    },
+                    {
+                        id: 1,
+                        place: '인천관광지1',
+                        memo: '숙소도착',
+                        photo: '/assets/myTripList_incheon_photo02.jpg'
+                    }
+                ]
+            },
+            {
+                id: 1,
+                date: getStringDate(new Date(2024, 0, 6)),
+                day: [
+                    {
+                        id: 0,
+                        place: '인천관광지2',
+                        memo: '맛집 탐방',
+                        photo: '/assets/myTripList_incheon_photo03.jpg'
+                    },
+                    {
+                        id: 1,
+                        place: '인천관광지3',
+                        memo: '차이나타운',
+                        photo: '/assets/myTripList_incheon_photo04.jpg'
+                    },
+                    {
+                        id: 2,
+                        place: '인천역',
+                        memo: '집으로',
+                        photo: '/assets/myTripList_incheon_photo05.jpg'
+                    }
+                ]
             }
         ]
     }

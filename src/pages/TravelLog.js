@@ -64,7 +64,6 @@ const TravelLog = () => {
                 <div className="photo">
                     <MagaSlide {...msSettings}>
                         {data.photo && data.photo.map((it)=><img src={it} />)}
-                        {/* <img src={data?.photo && data?.photo[0]} /> */}
                     </MagaSlide>
                 </div>
                 <div className="info">
@@ -74,6 +73,28 @@ const TravelLog = () => {
                     <div className="content">
                         {data.reviewTxt}
                     </div>
+                    <DayTravel>
+                        {data?.days&&data?.days.map((it)=><div>
+                            <div className="day">
+                                <span className="dayNum">DAY {it.id+1}</span>
+                                <span className="dayDate">{it.date}</span>
+                            </div>
+                            {it.day&&it.day.map((it)=>
+                                <div className="wrap">
+                                    <div className="place">
+                                        <p className="placeId">{it.id+1}</p>
+                                        <p className="placeName">{it.place}</p>
+                                    </div>
+                                    <div className="memo">
+                                        {it.memo}
+                                    </div>
+                                    <div className="dayphoto">
+                                        <img src={it.photo}/>
+                                    </div>
+                                </div>
+                            )}
+                        </div>)}
+                    </DayTravel>
                     <div className="feed">
                         <p className="recoNum">{data.recoNum}</p>
                         <p className="commentNum">{data.commentNum}</p>
@@ -232,5 +253,54 @@ const TravlePage = styled.div`
     .profile_date>p:last-child{
         font-size: 12px;
         color : #666;
+    }
+`
+const DayTravel = styled.div`
+    margin-bottom: 20px;
+    .day{
+        margin: 10px 0;
+        margin-top: 20px;
+    }
+    .dayNum, .dayDate{
+        font-size: 15px;
+        font-weight: 500;
+    }
+    .dayNum::after{
+        content:"|";
+        margin: 0 5px;
+        color: #ddd;
+    }
+    .wrap{
+        padding: 10px;
+    }
+    .place{
+        display: flex;
+    }
+    .placeId{
+        background-color : #368FFF;
+        width: 20px;
+        color: #fff;
+        font-size: 12px;
+        text-align: center;
+        border-radius: 50px;
+        margin-right: 10px;
+    }
+    .placeName{
+        font-size: 13px;
+        font-weight: 500;
+    }
+    .memo{
+        margin-left: 30px;
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+    .dayphoto{
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .dayphoto img{
+        width: 100%;
+        height: 55vw;
+        object-fit: cover;
     }
 `
