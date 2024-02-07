@@ -210,7 +210,7 @@ function App() {
                                                             <Route path='/editplan/:id' element={<EditPlan />} />
                                                             <Route path='/newlog' element={<NewLog />} />
                                                             <Route path='/editlog/:id' element={<EditLog />} />
-                                                            <Route path='/travellog' element={<TravelLog />} />
+                                                            <Route path='/travellog/:id' element={<TravelLog />} />
                                                         </Routes>
                                                     }
                                                 </AnimatePresence>
