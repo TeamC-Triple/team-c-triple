@@ -32,6 +32,7 @@ const PlanEdit = ({
     setTraveler,
     // 여행장소선택
     addDayPlan,
+    delDayPlace,
     dayList,
     setDayList,
         addDayMemo,
@@ -141,6 +142,7 @@ const PlanEdit = ({
                         dayList={dayList}
                         setDayList={setDayList}
                         addDayPlan={addDayPlan} 
+                        delDayPlace={delDayPlace}
                         chosedCity={chosedCity}
                         keywordData={keywordData} 
                         keywordList={keywordList}

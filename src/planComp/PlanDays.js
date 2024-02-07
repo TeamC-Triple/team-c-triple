@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 import Button from "../common/Button";
@@ -18,6 +18,7 @@ const PlanDays = ({
     keywordList,
     setKeywordList,
     addDayPlan, 
+    delDayPlace,
     travelDateRange, 
     handleCity,
     addDayMemo,
@@ -37,13 +38,13 @@ const PlanDays = ({
 
     // 장소 추가 버튼
     const addSpotsBtn =()=>{
-        setSelectSpots('');
         setOpenAdd(true);
     };
 
     // 장소 창 닫기
     const closeSpots = () => {
         setOpenAdd(false);
+        setSelectSpots('');
     }
 
     // 장소 선택 완료
@@ -60,6 +61,18 @@ const PlanDays = ({
         });
         return newList;
     };
+
+
+    // 장소 계획에서 삭제
+    const deleteSpot = (placeName)=> {
+        delDayPlace(placeName);
+        console.log('삭제');
+        console.log(dayList);
+    }
+    useEffect(()=>{
+    }, [dayList])
+
+
 
     // 메모 추가 여닫기
     const [openAddMemo, setOpenAddMemo] = useState(false);
@@ -81,6 +94,8 @@ const PlanDays = ({
         });
         return newMemoList;
     };
+    
+
 
     return (
         <Plandays className="Plandays">
@@ -89,12 +104,19 @@ const PlanDays = ({
                 <p className="pdy_pay">사용 경비 : </p>
             </div>
             <div>
-                {dayList.length < 1
+                { selectSpots === '' || dayList.length < 1
                     ?
                     <Empty>일정이 비어있습니다.</Empty>
 
                     : getThisDaySpList().map((it, idx) => (
-                        it.date === day && <SelectedSpots key={idx} {...it} idx={idx} />
+                        it.date === day &&
+                        <SelectedSpots 
+                            key={idx} {...it} 
+                            idx={idx} 
+                            deleteSpot={deleteSpot}
+                            dayList= {dayList}
+                            getThisDaySpList={getThisDaySpList}
+                            />
                     ))
                 }
                 {memoList.length < 1
