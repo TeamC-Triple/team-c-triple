@@ -17,6 +17,7 @@ const TravelLog = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         if (MyTripList?.length > 0) {
             const targetTrip = MyTripList?.find((it) =>
                 parseInt(it.id) === parseInt(id)
