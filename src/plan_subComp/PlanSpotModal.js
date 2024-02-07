@@ -40,7 +40,6 @@ const PlanSpotModal = ({
     const clickTap = (it)=> {
     };
 
-    console.log(keywordList);
 
     return (
         <SpotAddModal className={openAdd ? 'open' : 'close'}>
@@ -75,32 +74,21 @@ const PlanSpotModal = ({
                 />}
             />
             <SpotListWrap>
-                <div className="spotlist_top">
-                    {/* <div className="keywordTap">
-                        {keywordData.map((it) =>
-                            <Button 
-                            key={it.id} 
-                            type={ keywordList.includes(it.kw)? "acitve" : "deActive" } 
-                            text={it.kw} 
-                            onClick={clickTap(it.kw)} 
-                            />
-                        )}
-                    </div> */}
-                    {/* 키워드 탭 보류...^^ */}
-                </div>
                 <div className="spotlist">
                     <ul>
                         {chosedCity === ''
                             ? <li>여행할 지역을 먼저 선택해 주세요.</li>
                             :
-                            spotsData.filter((it) => {
-                                if (it.city === chosedCity && search === "") {
+                            spotsData.filter((item)=> item.city === chosedCity && item.spotName.includes(search.toLowerCase()) )
+                            .filter((it) => {
+                                if (it.keyword.includes(...keywordList) !== false) {
                                     return it;
-                                } else if (it.city === chosedCity && it.spotName.includes(search.toLowerCase())) {
+                                } else{
                                     return it;
                                 }
                             }
-                            ).filter((it)=> keywordList.includes(...it.keyword)).map((it) => (
+                            )
+                            .map((it) => (
                                 <TourSpots key={it.id} {...it}
                                     openAdd={openAdd}
                                     selectSpots={selectSpots}
@@ -159,24 +147,6 @@ const SpotListWrap = styled.div`
     right: 20px;
     padding-top: 40px;
     padding-bottom: 90px;
-    .spotlist_top{
-        margin-bottom: 10px;
-    }
-    .spotlist_top .keywordTap{
-        display : flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
-    .keywordTap .Button{
-        width : 23%;
-        margin-bottom : 10px;
-    }
-    .keywordTap .btn{
-        width : 100%;
-        margin-right : 10px;
-        text-wrap: nowrap;
-        border-radius: 20px;
-    }
 
 `
 const SpotBtn = styled.div`

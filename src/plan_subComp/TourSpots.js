@@ -11,7 +11,7 @@ const TourSpots = ({
     openAdd,
 })=>{
     
-    const [spotClick, setSpotClick]= useState(false);
+    const [spotClick, setSpotClick ] = useState(false);
 
     useEffect(()=>{
     }, [spotClick]);
@@ -33,7 +33,7 @@ const TourSpots = ({
         <TourSpotsWrap>
             <div className="spotWrap"> 
                 <div className="spotPhoto">
-                    사진
+                    관광지
                 </div>
                 <div className="spotName">
                     {spotName}
@@ -56,20 +56,25 @@ const TourSpotsWrap =styled.li`
     justify-content: space-between;
     align-items: center;
     margin: 0 0 20px 0 ;
-    line-height: 36px;
+    line-height: 40px;
     position: relative;
     z-index: 1000;
     .spotWrap{
         display: flex;
+        align-items: center;
         .spotPhoto{
-            width: 36px;
-            height: 36px;
+            width: 12px;
+            height: 12px;
+            margin-top : 2px;
             margin-right : 16px;
             border-radius: 50%;
             text-indent: -9999px;
-            text-align: center;
-            line-height: 30px;
-            background-color: #368FFF;
+            line-height: 40px;
+            background-color: #ccc;
+        }
+        .spotName{
+            font-size: 15px;
+            line-height: 40px;
         }
     }
     .Button{
