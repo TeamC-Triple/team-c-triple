@@ -25,7 +25,7 @@ const TravelLog = () => {
             if (targetTrip) {
                 setData(targetTrip);
             } else {
-                alert('없는 여행기입니다.');
+                alert('없는 매거진입니다.');
                 navigate('/', { replace: true });
             };
         };
