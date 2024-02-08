@@ -245,7 +245,7 @@ export const dummyMyTripPlan = [
                 memo: ['숙소도착']
             },
             {
-                id: 3,
+                id: 4,
                 date: getStringDate(new Date(2024, 0, 13)),
                 place: '울산역',
                 memo: ['집으로']
