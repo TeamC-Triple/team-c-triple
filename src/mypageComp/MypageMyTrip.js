@@ -6,7 +6,7 @@ const MypageMyTrip = () => {
     const navigate = useNavigate();
     return (
         <MypageMyTripCss>
-            <div className="makeTrip" onClick={() => {navigate('/plan')}}>
+            <div className="makeTrip" onClick={() => {navigate('/newplan')}}>
                 <p>+</p>
                 <div>
                     <p className="bold">여행 일정 만들기</p>

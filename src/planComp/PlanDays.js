@@ -7,6 +7,7 @@ import SelectedMemo from "../plan_subComp/SelectedMemo";
 import PlanSpotModal from "../plan_subComp/PlanSpotModal";
 import PlanMemoModal from "../plan_subComp/planMemoModal";
 import TourMemo from "../plan_subComp/TourMemo";
+import UseExpenses from "./UseExpenses";
 
 const PlanDays = ({
     day,
@@ -14,6 +15,12 @@ const PlanDays = ({
     dayList,
     setDayList,
     chosedCity,
+    keywordData,
+    addDayPlan,
+    travelDateRange,
+    handleCity,
+    useMoney,
+    setUseMoney,
     keywordData, 
     keywordList,
     setKeywordList,
@@ -61,9 +68,23 @@ const PlanDays = ({
         return newList;
     };
 
+    const [useExpenses, setUseExpenses] = useState(0);
 
+    const [click, setClick] = useState(false);
 
+    const [add, setAdd] = useState(true);
 
+    const AMClick = () => {
+        setClick(true);
+        setUseExpenses();
+    }
+
+    useEffect(() => {
+        if (useExpenses !== undefined && useExpenses !== 0) {
+            setUseMoney(prevMoney => [...prevMoney, useExpenses]);
+        }
+    }, [useExpenses, setUseMoney]);
+  
     // 메모 추가 여닫기
     const [openAddMemo, setOpenAddMemo] = useState(false);
     // 메모 추가 버튼
@@ -92,8 +113,12 @@ const PlanDays = ({
         <Plandays className="Plandays">
             <div className="pdy_top">
                 <h3>DAY {idx + 1} <span>({day})</span></h3>
-                <p className="pdy_pay">사용 경비 : </p>
+                <div className="pdy_pay">
+                    <span>사용 경비 :</span>
+                    <Add className={add ? 'on' : ''} onClick={AMClick}>추가</Add>
+                </div>
             </div>
+            <UseExpenses useExpenses={useExpenses} setUseExpenses={setUseExpenses} click={click} setClick={setClick} setAdd={setAdd} useMoney={useMoney} setUseMoney={setUseMoney} />
             <div>
                 { selectSpots === '' || dayList.length < 1
                     ?
@@ -165,8 +190,12 @@ const Plandays = styled.div`
             }
         }
         .pdy_pay{
+            display: flex;
             font-size: 12px;
             color: #666;
+        }
+        .pdy_pay span{
+            line-height: 30px
         }
     }
     .Header1{
@@ -261,5 +290,19 @@ const DayBtn = styled.div`
     }
     .Button .btn{
         font-size: 13px;
+    }
+`
+const Add = styled.button`
+    display: none;
+    padding: 7px 20px 8px;
+    margin-left: 10px;
+    border-radius: 30px;
+    background-color: #eeeeee;
+    font-size: 12px;
+    font-weight: 600;
+    color: #121212;
+
+    &.on{
+        display: block;
     }
 `

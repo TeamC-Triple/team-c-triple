@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const MTSection4Item = ({id, title, city, firstDate, lastDate, recoNum, commentNum, downloadNum, photo, reviewTxt}) => {
@@ -6,9 +7,13 @@ const MTSection4Item = ({id, title, city, firstDate, lastDate, recoNum, commentN
             ? str.substring(0, n) + '...'
             : str;
     }
+    const navigate = useNavigate();
+    const goDetail = () => {
+        navigate(`/travellog/${id}`);
+    };
 
     return(
-        <li key={id} className="MTSection4Item">
+        <li key={id} className="MTSection4Item" onClick={goDetail}>
             <div className="top">
                 <MT_cityProfile>{city}</MT_cityProfile>
                 <div className="top_box">
@@ -20,11 +25,11 @@ const MTSection4Item = ({id, title, city, firstDate, lastDate, recoNum, commentN
             </div>
             <div className="photoList">
                 <div className="p_L">
-                    <img src={`/assets/${photo[0]}`}/>
+                    <img src={photo[0]}/>
                 </div>
                 <div className="p_R">
                     {photo.slice(1).map((it)=>(
-                            <p key={it}><img src={`/assets/${it}`} /></p>
+                            <p key={it}><img src={it} /></p>
                     ))}
                 </div>
             </div>

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import TourMemo from "./TourMemo";
 import Button from "../common/Button";
 
-const SelectedSpots = ({ id, place, idx, memoList, day}) => {
+const SelectedSpots =({id, place, idx, useExpense, setUseExpense, Expense, memoList, day})=>{
     const shadowStyles = {
         boxShadow: '0 1px 8px rgba(0,0,0,0.2)',
         margin: '0 0 20px 0',

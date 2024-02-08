@@ -1,6 +1,13 @@
+import { useNavigate } from "react-router-dom";
+
 const MyTripListItem = ({id, city, firstDate, lastDate, photo}) => {
+    const navigate = useNavigate();
+    const goDetail = () => {
+        navigate(`/LastTripLog/${id}`);
+    };
+
     return(
-        <li className="MyTripListItem">
+        <li className="MyTripListItem" onClick={goDetail}>
             <p className="item_photo">
                 <img src={`/assets/${photo[0]}`}/>
             </p>
