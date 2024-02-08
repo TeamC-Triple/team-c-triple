@@ -11,7 +11,7 @@ const PlanCourse = ({chosedCity}) => {
     const [course, setCourse] = useState([]);
     
     useEffect(()=>{
-        setCourse(recommendCourse)
+        setCourse(recommendCourse);
     })
 
     const PCSettings = {
@@ -27,7 +27,7 @@ const PlanCourse = ({chosedCity}) => {
             <PCSlide {...PCSettings}>
                 {
                     course.filter((it)=>{
-                        if(it.city.toLowerCase().includes(chosedCity.toLowerCase())) {
+                        if(it.city.includes(chosedCity)) {
                             return it;
                         }
                     }).map((item)=>(

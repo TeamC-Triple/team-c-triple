@@ -30,7 +30,7 @@ const PlanCourseModal = ({chosedCity, PCModal, setPCModal}) => {
                 <h2>트리플의 추천 코스</h2>
                 {
                     course.filter((it)=>{
-                        if(it.city.toLowerCase().includes(chosedCity.toLowerCase())) {
+                        if(it.city.includes(chosedCity)) {
                             return it;
                         }
                     }).map((item)=>(

@@ -5,10 +5,9 @@ import Header1 from "../common/Header1.js";
 import HeaderIcon from "../common/HeaderIcon.js";
 import CityLi from "../plan_subComp/CityLi.js";
 import Button from "../common/Button.js";
-import { CityDataContext } from "../App.js";
 
 
-const PlanCity = ({isCity, setChosedCity, handleCity}) => {
+const PlanCity = ({cityData, isCity, setChosedCity, handleCity}) => {
     // 헤더 검색창 부분 상태변수, 관련함수 시작
     const [search, setSearch] = useState('');
     const searchRef = useRef();
@@ -17,18 +16,22 @@ const PlanCity = ({isCity, setChosedCity, handleCity}) => {
     };
     const onClickSearch = () => {};
     // 헤더 검색창 부분 끝
-    const cityData = useContext(CityDataContext);
-    const [cityList, setCityList] = useState([]);
-    const [checkCity, setCheckCity] = useState('');
-    const [isSelectNone, setIsSelectNone] = useState(true);
 
-    
+    const [cityList, setCityList] = useState([]);
+    // 선택한 도시
+    const [checkCity, setCheckCity] = useState('');
+    // 선택한 버튼
+    const [selectedCityBtn, setSelectedCityBtn] = useState();
+    // 이전 선택 버튼
+    const [selectedBefore, setSelectedBefore] = useState();
+    // 선택 여부
+    const [isCheck, setIsCheck] = useState(false);
 
     useEffect(() => {
         if(cityData){
             setCityList(cityData);
         };
-    }, [isCity]);
+    }, []);
 
     const closeCity = () => {
         handleCity();
@@ -46,6 +49,9 @@ const PlanCity = ({isCity, setChosedCity, handleCity}) => {
         setCheckCity("");
     };
 
+    
+
+
     return (
         <Plancity className={`plancity ${isCity ? 'on' : ''}`}>
             <Header1 
@@ -59,7 +65,7 @@ const PlanCity = ({isCity, setChosedCity, handleCity}) => {
                         <input 
                             type="text"
                             placeholder="여행, 어디로 떠나시나요?"
-                            value={search}
+                            value={search || ''}
                             ref={searchRef}
                             onChange={changeInput}
                         />
@@ -91,11 +97,21 @@ const PlanCity = ({isCity, setChosedCity, handleCity}) => {
                             cityList.filter((it) => {
                                 if (search === "") {
                                     return it;
-                                } else if (it.city.toLowerCase().includes(search.toLowerCase()) || it.place.toLowerCase().includes(search.toLowerCase())) {
+                                } else if (it.city.includes(search) || it.place.includes(search)) {
                                     return it;
                                 }
                             }).map((item) => (
-                                <CityLi key={item.id} {...item} setCheckCity={setCheckCity} setIsSelectNone={setIsSelectNone} />
+                                <CityLi 
+                                    key={item.id} 
+                                    {...item} 
+                                    setCheckCity={setCheckCity}
+                                    selectedCityBtn={selectedCityBtn}
+                                    setSelectedCityBtn={setSelectedCityBtn}
+                                    selectedBefore={selectedBefore}
+                                    setSelectedBefore={setSelectedBefore}
+                                    isCheck={isCheck}
+                                    setIsCheck={setIsCheck}
+                                />
                             ))
                         }
                     </ul>
@@ -103,9 +119,9 @@ const PlanCity = ({isCity, setChosedCity, handleCity}) => {
             </CityList>
             <CityBtn>
                 <Button
-                    type={isSelectNone ? "deActive" : "active"}
-                    text={isSelectNone ? "도시를 선택하지 않았습니다." : `${checkCity} 선택 완료`}
-                    onClick={isSelectNone ? toggleSelectNone : clickChoiceCity}
+                    type={!isCheck ? "deActive" : "active"}
+                    text={!isCheck ? "도시를 선택하지 않았습니다." : `${checkCity} 선택 완료`}
+                    onClick={!isCheck ? toggleSelectNone : clickChoiceCity}
                 />
             </CityBtn>
         </Plancity>
@@ -153,10 +169,11 @@ const Plancity = styled.div`
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 20px;
         input{
+            box-sizing: border-box;
             margin-top: 3px;
             width: calc(100% - 26px);
+            padding: 0 20px;
             height: 50px;
             border: 0;
         }

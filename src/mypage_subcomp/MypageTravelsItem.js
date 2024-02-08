@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { LogDispatchContext } from "../App";
 
@@ -16,14 +17,18 @@ const MypageTravlesItem = ({ id, city, firstDate, lastDate, photo, title }) => {
             onRemoveLog(id);
         };
     };
+    const navigate = useNavigate();
+    const goDetail = () => {
+        navigate(`/travellog/${id}`);
+    };
 
     return (
         <MPTravlesItem>    
             <div key={id}>
-                <div className="photo">
-                    <img src={`/assets/${photo[0]}`} />
+                <div className="photo" onClick={goDetail}>
+                    <img src={photo[0]} />
                 </div>
-                <div className="info">
+                <div className="info" onClick={goDetail}>
                     <p className="title">{title}</p>
                     <p className="date">{new Date(firstDate).toLocaleDateString()} - {new Date(lastDate).toLocaleDateString()}</p>
                 </div>

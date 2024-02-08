@@ -1,14 +1,27 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useBodyScrollLock } from '../utill/useBodyScrollLock.js';
+
 import Header1 from "../common/Header1";
 import HeaderIcon from "../common/HeaderIcon";
 import styled from "styled-components";
 import MypageCate from "../mypageComp/MyPageCate";
 import BottomNaviSub from "../common/BottomNaviSub";
+import SideBar from '../side/SideBar';
 
 const Mypage = () => {
     const navigate = useNavigate();
     const [category, setCategory] = useState('myTrip');
+
+    const [sidebar, setSidebar] = useState('off');
+    const [isOpen, setIsOpen] = useState(false);
+    const { lockScroll, openScroll } = useBodyScrollLock();
+
+    const sideBtnClick = () => {
+        setSidebar('on')
+        lockScroll();
+        setIsOpen(true);
+    };
 
     return(
         <MyPage>
@@ -21,7 +34,8 @@ const Mypage = () => {
                 }
                 rightChild2={
                     <HeaderIcon 
-                        text={'사이드메뉴'}   
+                        text={'사이드메뉴'}
+                        onClick={sideBtnClick}   
                     />
                 }
                 className="mypage_header"
@@ -30,6 +44,18 @@ const Mypage = () => {
                 setCategory={setCategory}
             />
            <BottomNaviSub center={'mytravel'} />
+           <SideBar 
+                sidebar={sidebar} 
+                setSidebar={setSidebar} 
+                leftChild={
+                    <p onClick={()=>(navigate('/mypage'))}>
+                        <img />
+                    </p>
+                } 
+                headTxt={'김이박님'} 
+                setIsOpen={setIsOpen} 
+                openScroll={openScroll} 
+            />
         </MyPage>
     )
 };

@@ -3,7 +3,9 @@ import styled from "styled-components";
 
 import Button from "../common/Button";
 import SelectedSpots from "../plan_subComp/SelectedSpots";
+import SelectedMemo from "../plan_subComp/SelectedMemo";
 import PlanSpotModal from "../plan_subComp/PlanSpotModal";
+import PlanMemoModal from "../plan_subComp/planMemoModal";
 import TourMemo from "../plan_subComp/TourMemo";
 import UseExpenses from "./UseExpenses";
 
@@ -18,17 +20,31 @@ const PlanDays = ({
     travelDateRange,
     handleCity,
     useMoney,
-    setUseMoney
+    setUseMoney,
+    keywordData, 
+    keywordList,
+    setKeywordList,
+    addDayPlan, 
+    travelDateRange, 
+    handleCity,
+    addDayMemo,
+    setMemoList,
+    memoList,
+    memoTxt,
+    onChangeTxt,
+    setMemoTxt,
 }) => {
 
     // 장소 추가 여닫기
     const [openAdd, setOpenAdd] = useState(false);
     // 장소 하나
-    const [selectSpots, setSelectSpots] = useState('');
+    const [selectSpots, setSelectSpots]= useState('');
+
     const spId = useRef(0);
 
     // 장소 추가 버튼
-    const addSpotsBtn = () => {
+    const addSpotsBtn =()=>{
+        setSelectSpots('');
         setOpenAdd(true);
     };
 
@@ -68,6 +84,27 @@ const PlanDays = ({
             setUseMoney(prevMoney => [...prevMoney, useExpenses]);
         }
     }, [useExpenses, setUseMoney]);
+  
+    // 메모 추가 여닫기
+    const [openAddMemo, setOpenAddMemo] = useState(false);
+    // 메모 추가 버튼
+    const addMemoBtn = () => {
+        setOpenAddMemo(true);
+    };
+    // 메모 창 닫기
+    const closeMemo = () => {
+        setOpenAddMemo(false);
+        setMemoTxt('');
+    };
+
+    const getThisMemoList = () => {
+        const newMemoList = memoList.filter((it) => {
+            if (it.date === day) {
+                return it;
+            };
+        });
+        return newMemoList;
+    };
 
     return (
         <Plandays className="Plandays">
@@ -85,23 +122,41 @@ const PlanDays = ({
                     <Empty>일정이 비어있습니다.</Empty>
 
                     : getThisDaySpList().map((it, idx) => (
-                        it.date === day && <SelectedSpots key={idx} idx={idx} {...it} />
+                        it.date === day && <SelectedSpots key={idx} {...it} idx={idx} />
+                    ))
+                }
+                {memoList.length < 1
+                    ? <span></span>
+                    : getThisMemoList().map((it, idx) => (
+                        it.date === day && <SelectedMemo key={idx} {...it} />
                     ))
                 }
             </div>
             <DayBtn>
                 <Button type={'gray_border'} text='장소추가' onClick={addSpotsBtn} />
-                <Button type={'gray_border'} text='메모추가' />
+                <Button type={'gray_border'} text='메모추가' onClick={addMemoBtn} />
             </DayBtn>
             <PlanSpotModal
                 openAdd={openAdd}
                 closeSpots={closeSpots}
                 getSpots={getSpots}
                 keywordData={keywordData}
+                keywordList={keywordList}
+                setKeywordList={setKeywordList}
                 chosedCity={chosedCity}
                 selectSpots={selectSpots}
                 setSelectSpots={setSelectSpots}
                 handleCity={handleCity}
+            />
+            <PlanMemoModal
+                openAddMemo={openAddMemo}
+                closeMemo={closeMemo}
+                setMemoList={setMemoList}
+                day={day}
+                addDayMemo={addDayMemo}
+                memoTxt={memoTxt}
+                onChangeTxt={onChangeTxt}
+                memoList={memoList}
             />
         </Plandays>
     );
@@ -227,7 +282,6 @@ const DayBtn = styled.div`
     .Button .btn{
         font-size: 13px;
     }
-`
 
 const Add = styled.button`
     display: none;

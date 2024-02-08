@@ -36,7 +36,7 @@ const Main = () => {
                 rightChild1={
                     <HeaderIcon 
                         text={'일정짜기'}
-                        onClick={() => (navigate('/plan'))} 
+                        onClick={() => (navigate('/newplan'))} 
                     />
                 }
                 rightChild2={

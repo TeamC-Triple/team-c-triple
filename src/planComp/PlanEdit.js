@@ -5,6 +5,7 @@ import styled from "styled-components";
 import PlanCourse from "./PlanCourse.js";
 import PlanDays from "./PlanDays.js";
 import Button from "../common/Button.js";
+import { getStringDate } from "../utill/dateString.js";
 
 const PlanEdit = ({
     // 도시
@@ -25,14 +26,21 @@ const PlanEdit = ({
     handleOpenKW,
     keywordList,
     keywordData,
+    setKeywordList,
     // 인원수
     traveler,
     setTraveler,
     // 여행장소선택
     addDayPlan,
     dayList,
-    setDayList
-}) => {
+    setDayList,
+        addDayMemo,
+        setMemoList,
+        memoList,
+        memoTxt,
+        onChangeTxt,
+        setMemoTxt,
+})=>{
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -72,10 +80,10 @@ const PlanEdit = ({
             <TravelerModal className={`travelerModal ${addPeople ? "open" : ""}`}>
                 <div className="TM_in">
                     <div className="travelerInput">
-                        <input
-                            type="text"
-                            value={traveler}
-                            onChange={(e) => { setTraveler(e.target.value) }}
+                        <input 
+                            type="text" 
+                            value={traveler || ''} 
+                            onChange={(e)=>{setTraveler(e.target.value)}}
                         />
                         <div className="travelerBtn">
                             <Button
@@ -107,11 +115,11 @@ const PlanEdit = ({
             </BoxWrap>
             <When >
                 {travelDateRange.length <= 0
-                    ? <p className="btnDate" onClick={openModalDateCal}>여행 날짜 선택</p>
-                    : <p onClick={openModalDateCal}>{new Date(startDate).toLocaleDateString() + ' ~ ' + new Date(lastDate).toLocaleDateString()}</p>
+                ? <p className="btnDate" onClick={openModalDateCal}>여행 날짜 선택</p>
+                : <p onClick={openModalDateCal}>{getStringDate(new Date(startDate)) + ' ~ ' + getStringDate(new Date(lastDate))}</p>
                 }
             </When>
-            {keywordList.length >= 1 ?
+            {keywordList && keywordList.length >= 1 ?
                 <TripKeyword
                     onClick={onClickKW}>{keywordList} <span> 키워드 편집</span></TripKeyword>
                 : <TripKeyword
@@ -132,21 +140,30 @@ const PlanEdit = ({
                 <PlanCourse chosedCity={chosedCity} />
             </Course>
             <DaySpots>
-                {
-                    travelDateRange.map((day, idx) => (
-                        <PlanDays
-                            key={idx} day={day} idx={idx}
-                            dayList={dayList}
-                            setDayList={setDayList}
-                            addDayPlan={addDayPlan}
-                            chosedCity={chosedCity}
-                            keywordData={keywordData}
-                            travelDateRange={travelDateRange}
-                            handleCity={handleCity}
+            {
+                travelDateRange.map((day, idx) => (
+                    <PlanDays 
+                        key={idx} day={day} idx={idx}
+                        dayList={dayList}
+                        setDayList={setDayList}
+                        addDayPlan={addDayPlan} 
+                        chosedCity={chosedCity}
+                        keywordData={keywordData} 
+                        keywordList={keywordList}
+                        setKeywordList={setKeywordList}
+                        travelDateRange={travelDateRange}
+                        handleCity={handleCity}
                             useMoney={useMoney}
-                            setUseMoney={setUseMoney} />
-                    ))
-                }
+                            setUseMoney={setUseMoney}
+                            setMemoList={setMemoList}
+                            addDayMemo={addDayMemo}
+                            memoList={memoList}
+                            memoTxt={memoTxt}
+                            onChangeTxt={onChangeTxt}
+                            setMemoTxt={setMemoTxt}
+                        />
+                ))
+            }
             </DaySpots>
             <TotalExpenses>
                 <p>예상 총 사용 경비: {sumArray(useMoney)}</p>
@@ -174,7 +191,7 @@ const Traveler = styled.div`
     font-weight: 600;
     line-height: 24px;
     color: #fff;
-    background-image: url('./assets/icon-user-group-wh.svg');
+    background-image: url('/assets/icon-user-group-wh.svg');
     background-size: 20px auto;
     background-position: center left 16px ;
     background-repeat: no-repeat;
