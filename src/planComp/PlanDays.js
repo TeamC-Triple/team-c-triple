@@ -21,7 +21,6 @@ const PlanDays = ({
     handleCity,
     useMoney,
     setUseMoney,
-    keywordData, 
     keywordList,
     setKeywordList,
     addDayMemo,
