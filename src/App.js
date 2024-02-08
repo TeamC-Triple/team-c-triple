@@ -30,6 +30,7 @@ import NewLog from './pages/NewLog.js';
 import EditLog from './pages/EditLog.js';
 import TravelLog from './pages/TravelLog.js';
 import LastTripLog from './pages/LastTripLog.js';
+import BestTravelLog from './pages/BestTravelLog.js';
 
 // plan(여행일정짜기) 파트 관리할 reducer 함수
 let newStatePlan = dummyMyTripPlan;
@@ -212,6 +213,7 @@ function App() {
                                                             <Route path='/editlog/:id' element={<EditLog />} />
                                                             <Route path='/travellog/:id' element={<TravelLog />} />
                                                             <Route path='/LastTripLog/:id' element={<LastTripLog />} />
+                                                            <Route path='/bestTravelLog/:id' element={<BestTravelLog />} />
                                                         </Routes>
                                                     }
                                                 </AnimatePresence>

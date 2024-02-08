@@ -1,9 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const TravelogItem = ({id, title, writer, profileImg, travelImg, date, ment, city, truncate})=> {
-    
-    return(
-        <TL_Item>
+const TravelogItem = ({ id, title, writer, profileImg, travelImg, date, ment, city, truncate }) => {
+    const navigate = useNavigate();
+    const goDetail = () => {
+        navigate(`/bestTravelLog/${id}`);
+    };
+    return (
+        <TL_Item onClick={goDetail}>
             <TL_Info>
                 <TL_profile><img src={`/assets/travelogPhoto${profileImg}`} /></TL_profile>
                 <TL_postInfo>
@@ -12,12 +16,12 @@ const TravelogItem = ({id, title, writer, profileImg, travelImg, date, ment, cit
                 </TL_postInfo>
             </TL_Info>
             <TL_photo>
-                    <TL_mainImg><img src={`/assets/travelogPhoto${travelImg[0]}`} alt="여행사진" /></TL_mainImg>
-                    <TL_smallImg>
-                        {travelImg.slice(1).map((it)=>(
-                            <TL_Img key={it}><img src={`/assets/travelogPhoto${it}`} /></TL_Img>
-                        ))}
-                    </TL_smallImg>
+                <TL_mainImg><img src={`/assets/travelogPhoto${travelImg[0]}`} alt="여행사진" /></TL_mainImg>
+                <TL_smallImg>
+                    {travelImg.slice(1).map((it) => (
+                        <TL_Img key={it}><img src={`/assets/travelogPhoto${it}`} /></TL_Img>
+                    ))}
+                </TL_smallImg>
             </TL_photo>
             <TL_ment>{truncate(ment, 60)}</TL_ment>
         </TL_Item>
@@ -53,7 +57,7 @@ const TL_profile = styled.div`
         height: auto;
     }
     `
-    const TL_postInfo = styled.div`
+const TL_postInfo = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -65,18 +69,18 @@ const TL_title = styled.div`
     font-size: 16px;
     font-weight: 600;
 `
-const TL_writer= styled.div`
+const TL_writer = styled.div`
     color: #999;
     font-size: 12px;
 `
-const TL_photo= styled.div`
+const TL_photo = styled.div`
     display: flex;
     height: 120px;
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 8px;
 `
-const TL_mainImg= styled.div`
+const TL_mainImg = styled.div`
     box-sizing: border-box;
     width: 50%;
     height: 100%;
@@ -87,7 +91,7 @@ const TL_mainImg= styled.div`
         object-fit: cover;
     }
 `
-const TL_Img= styled.p`
+const TL_Img = styled.p`
 
     box-sizing: border-box;
     width: 50%;
@@ -101,12 +105,12 @@ const TL_Img= styled.p`
     }
 `
 
-const TL_smallImg= styled.div`
+const TL_smallImg = styled.div`
     display: flex;
     flex-wrap: wrap;
     width: 50%;
 `
-const TL_ment= styled.div`
+const TL_ment = styled.div`
     font-size : 14px;
 }
 `

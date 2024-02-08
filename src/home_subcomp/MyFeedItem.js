@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const MyFeedItem = ({id, photo, title, firstDate, lastDate, recoNum, commentNum, downloadNum}) => {
@@ -37,8 +38,13 @@ const MyFeedItem = ({id, photo, title, firstDate, lastDate, recoNum, commentNum,
             : str;
     };
 
+    const navigate = useNavigate();
+    const goDetail = () => {
+        navigate(`/travellog/${id}`);
+    };
+
     return (
-        <MyFeedItemLi>
+        <MyFeedItemLi onClick={goDetail}>
             <div className="myFeedItem_in">
                 <MyTravelLog>
                     <div>    
