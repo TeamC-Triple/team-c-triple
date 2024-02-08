@@ -43,7 +43,7 @@ const MyFeedItem = ({id, photo, title, firstDate, lastDate, recoNum, commentNum,
                 <MyTravelLog>
                     <div>    
                         <MylIcon>
-                            <img src={`/assets/${photo[0]}`} />
+                            <img src={`${photo[0]}`} />
                         </MylIcon>
                         <MylTitle>{truncate(title, 10)}</MylTitle>
                     </div>

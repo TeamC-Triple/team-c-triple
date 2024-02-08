@@ -76,17 +76,17 @@ const EditPlan = () => {
                     <Plan isEdit={true} planOriginData={planOriginData} />}
             </AnimatedPages>
             <BottomNaviSub center={`editplan/${id}`} />
-            <SideBar
-                sidebar={sidebar}
-                setSidebar={setSidebar}
+            <SideBar 
+                sidebar={sidebar} 
+                setSidebar={setSidebar} 
                 leftChild={
-                    <p onClick={() => (navigate('/mypage'))}>
-                        <img />
+                    <p onClick={()=>(navigate('/mypage'))}>
+                        <img src='/assets/travelogPhoto/profile0.jpg' />
                     </p>
-                }
-                headTxt={'김이박님'}
-                setIsOpen={setIsOpen}
-                openScroll={openScroll}
+                } 
+                headTxt={'김이박님'} 
+                setIsOpen={setIsOpen} 
+                openScroll={openScroll} 
             />
             <Popup
                 title={'일정 공유하기'}

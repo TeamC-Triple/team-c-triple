@@ -9,6 +9,7 @@
     display: flex;
     box-sizing: border-box;
     align-items: center;
+    justify-content: space-between;
     padding: 0 20px;
     height: 60px;
     line-height: 60px;
@@ -16,9 +17,13 @@
     background-color: #fff;
     z-index: 500;
 }
+.Header1 .hd_left{
+    display: flex;
+    align-items: center;
+}
 .Header1 .head_text{
     font-weight: 500;
-    flex-grow: 1;
+    /* flex-grow: 1; */
     cursor: pointer;
 }
 .Header1 .head_btn_right{
@@ -33,6 +38,13 @@
     margin-right: 18px;
     background-color: aquamarine;
     cursor: pointer;
+    overflow: hidden;
+    border: 1px solid #ccc;
+}
+#Main .Header1 .head_btn_left p img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 #Main .Header1 .head_btn_right1{
     width: 24px;

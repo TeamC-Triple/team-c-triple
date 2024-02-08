@@ -162,11 +162,12 @@ const SpotListWrap = styled.div`
 
 `
 const SpotBtn = styled.div`
-    
     position: fixed;
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background-color: #fff;
     z-index: 1000;
     .Button .btn{
         width: 100%
