@@ -63,7 +63,7 @@ export const dummyRecoCourse = [
         title : '입소문난 청주의 숨겨진 힐링 여행코스 (2)',
         city : '청주',
         period : '2박 3일',
-        photo : '/assets/recommendCourse_1.jpg',
+        photo : '/assets/recommendCourse_10.jpg',
         content : [
             {id : 0, data : '봉용 불고기'},
             {id : 1, data : '국립 현대 미술관 청주'},
@@ -76,7 +76,7 @@ export const dummyRecoCourse = [
         title : '입소문난 청주의 숨겨진 힐링 여행코스 (3)',
         city : '청주',
         period : '2박 3일',
-        photo : '/assets/recommendCourse_1.jpg',
+        photo : '/assets/recommendCourse_11.jpg',
         content : [
             {id : 0, data : '부부농장'},
             {id : 1, data : '청남대'}
@@ -100,7 +100,7 @@ export const dummyRecoCourse = [
         title : '핫플만 골라 떠나는 수원 드라이브 코스 (2)',
         city : '수원',
         period : '2박 3일',
-        photo : '/assets/recommendCourse_4.jpg',
+        photo : '/assets/recommendCourse_12.jpg',
         content : [
             {id : 0, data : '운멜로'},
             {id : 1, data : '홍라드'},
@@ -113,7 +113,7 @@ export const dummyRecoCourse = [
         title : '핫플만 골라 떠나는 수원 드라이브 코스 (3)',
         city : '수원',
         period : '2박 3일',
-        photo : '/assets/recommendCourse_4.jpg',
+        photo : '/assets/recommendCourse_13.jpg',
         content : [
             {id : 0, data : '도쿄등심 광교점'},
             {id : 1, data : '책발전소 광교'},
@@ -139,7 +139,7 @@ export const dummyRecoCourse = [
         title : '기차 타고 떠나는 천안 카페 투어 (2일차)',
         city : '천안',
         period : '2박 3일',
-        photo : '/assets/recommendCourse_5.jpg',
+        photo : '/assets/recommendCourse_14.jpg',
         content : [
             {id : 0, data : '천안 병천 순대 거리'},
             {id : 1, data : '박순자아우내순대'},
@@ -152,7 +152,7 @@ export const dummyRecoCourse = [
         title : '기차 타고 떠나는 천안 카페 투어 (3일차)',
         city : '천안',
         period : '2박 3일',
-        photo : '/assets/recommendCourse_5.jpg',
+        photo : '/assets/recommendCourse_15.jpg',
         content : [
             {id : 0, data : '북한강쭈꾸미'},
             {id : 1, data : '신정호 관광지'},
@@ -179,7 +179,7 @@ export const dummyRecoCourse = [
         title : '뚜벅이 vs 자차, 1박 2일 추천 코스 (2일차)',
         city : '포항',
         period : '1박 2일',
-        photo : '/assets/recommendCourse_6.jpg',
+        photo : '/assets/recommendCourse_16.jpg',
         content : [
             {id : 0, data : '호미곶 해맞이 광장'},
             {id : 1, data : '박물관 횟집'},
@@ -210,7 +210,7 @@ export const dummyRecoCourse = [
         title : '요즘 핫한 부산 2박 3일 추천 코스 (2일차)',
         city : '부산',
         period : '2박 3일',
-        photo : '/assets/recommendCourse_7.jpg',
+        photo : '/assets/recommendCourse_17.jpg',
         content : [
             {id : 0, data : '해동 용궁사'},
             {id : 1, data : '해운대 블루 라인 파크 청사포 정거장'},
@@ -228,7 +228,7 @@ export const dummyRecoCourse = [
         title : '요즘 핫한 부산 2박 3일 추천 코스 (3일차)',
         city : '부산',
         period : '2박 3일',
-        photo : '/assets/recommendCourse_7.jpg',
+        photo : '/assets/recommendCourse_18.jpg',
         content : [
             {id : 0, data : '광안리 해수욕장'},
             {id : 1, data : '필소굿 커피'},
@@ -257,7 +257,7 @@ export const dummyRecoCourse = [
         title : '가평 청춘을 위한 뚜벅이 1박 2일 코스 (2일차)',
         city : '가평',
         period : '1박 2일',
-        photo : '/assets/recommendCourse_8.jpg',
+        photo : '/assets/recommendCourse_19.jpg',
         content : [
             {id : 0, data : '청평 호반 닭갈비 막국수 본점'},
             {id : 1, data : '에델바이스 스위스 테마 파크'},
@@ -287,7 +287,7 @@ export const dummyRecoCourse = [
         title : '서쪽부터 동쪽까지, 2박 3일 추천 코스 (2일차)',
         city : '제주',
         period : '2박 3일',
-        photo : '/assets/recommendCourse_9.jpg',
+        photo : '/assets/recommendCourse_20.jpg',
         content : [
             {id : 0, data : '쇠소깍'},
             {id : 1, data : '바굥 식당'},
@@ -303,7 +303,7 @@ export const dummyRecoCourse = [
         title : '서쪽부터 동쪽까지, 2박 3일 추천 코스 (3일차)',
         city : '제주',
         period : '2박 3일',
-        photo : '/assets/recommendCourse_9.jpg',
+        photo : '/assets/recommendCourse_21.jpg',
         content : [
             {id : 0, data : '스누피 가든'},
             {id : 1, data : '안돌 오름 편백나무 숲'},
