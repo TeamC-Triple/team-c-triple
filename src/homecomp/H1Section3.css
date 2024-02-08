@@ -17,6 +17,7 @@
 .H1Section3 .go_more{
     font-size: 12px;
     color: #368FFF;
+    cursor: pointer;
 }
 .H1Section3 .coursList .RecoCourseItem{
     position: relative;

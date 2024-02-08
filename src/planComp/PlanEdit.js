@@ -34,13 +34,13 @@ const PlanEdit = ({
     addDayPlan,
     dayList,
     setDayList,
-        addDayMemo,
-        setMemoList,
-        memoList,
-        memoTxt,
-        onChangeTxt,
-        setMemoTxt,
-})=>{
+    addDayMemo,
+    setMemoList,
+    memoList,
+    memoTxt,
+    onChangeTxt,
+    setMemoTxt,
+}) => {
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -80,10 +80,10 @@ const PlanEdit = ({
             <TravelerModal className={`travelerModal ${addPeople ? "open" : ""}`}>
                 <div className="TM_in">
                     <div className="travelerInput">
-                        <input 
-                            type="text" 
-                            value={traveler || ''} 
-                            onChange={(e)=>{setTraveler(e.target.value)}}
+                        <input
+                            type="text"
+                            value={traveler || ''}
+                            onChange={(e) => { setTraveler(e.target.value) }}
                         />
                         <div className="travelerBtn">
                             <Button
@@ -115,8 +115,8 @@ const PlanEdit = ({
             </BoxWrap>
             <When >
                 {travelDateRange.length <= 0
-                ? <p className="btnDate" onClick={openModalDateCal}>여행 날짜 선택</p>
-                : <p onClick={openModalDateCal}>{getStringDate(new Date(startDate)) + ' ~ ' + getStringDate(new Date(lastDate))}</p>
+                    ? <p className="btnDate" onClick={openModalDateCal}>여행 날짜 선택</p>
+                    : <p onClick={openModalDateCal}>{getStringDate(new Date(startDate)) + ' ~ ' + getStringDate(new Date(lastDate))}</p>
                 }
             </When>
             {keywordList && keywordList.length >= 1 ?
@@ -140,19 +140,19 @@ const PlanEdit = ({
                 <PlanCourse chosedCity={chosedCity} />
             </Course>
             <DaySpots>
-            {
-                travelDateRange.map((day, idx) => (
-                    <PlanDays 
-                        key={idx} day={day} idx={idx}
-                        dayList={dayList}
-                        setDayList={setDayList}
-                        addDayPlan={addDayPlan} 
-                        chosedCity={chosedCity}
-                        keywordData={keywordData} 
-                        keywordList={keywordList}
-                        setKeywordList={setKeywordList}
-                        travelDateRange={travelDateRange}
-                        handleCity={handleCity}
+                {
+                    travelDateRange.map((day, idx) => (
+                        <PlanDays
+                            key={idx} day={day} idx={idx}
+                            dayList={dayList}
+                            setDayList={setDayList}
+                            addDayPlan={addDayPlan}
+                            chosedCity={chosedCity}
+                            keywordData={keywordData}
+                            keywordList={keywordList}
+                            setKeywordList={setKeywordList}
+                            travelDateRange={travelDateRange}
+                            handleCity={handleCity}
                             useMoney={useMoney}
                             setUseMoney={setUseMoney}
                             setMemoList={setMemoList}
@@ -162,8 +162,8 @@ const PlanEdit = ({
                             onChangeTxt={onChangeTxt}
                             setMemoTxt={setMemoTxt}
                         />
-                ))
-            }
+                    ))
+                }
             </DaySpots>
             <TotalExpenses>
                 <p>예상 총 사용 경비: {sumArray(useMoney)}</p>
