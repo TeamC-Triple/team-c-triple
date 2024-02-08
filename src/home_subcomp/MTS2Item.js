@@ -1,4 +1,8 @@
-const MTS2Item = ({id, city, firstDate, lastDate, photo}) => {
+import { useNavigate } from "react-router-dom";
+
+const MTS2Item = ({id, city, firstDate, lastDate}) => {
+    const navigate = useNavigate();
+
     const getDayOfWeek = (yyyyMMdd) => {
         const week = ['일', '월', '화', '수', '목', '금', '토'];
         const dayWeek = week[new Date(yyyyMMdd).getDay()];
@@ -11,9 +15,9 @@ const MTS2Item = ({id, city, firstDate, lastDate, photo}) => {
     const day = Math.floor(untilFirstDate / (1000*3600*24)+1);
 
     return(
-        <li className="MTS2Item">
+        <li className="MTS2Item" onClick={() => {navigate(`/editplan/${id}`)}}>
             <div className="MTSLeft">
-                <p className="photo">{photo}</p>
+                <p className="photo">{city}</p>
                 <p className="city">{city} 여행</p>
                 <p className="d-day">D-{day}</p>
             </div>

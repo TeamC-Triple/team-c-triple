@@ -26,7 +26,7 @@ const MypageMyTrip = () => {
 export default MypageMyTrip;
 
 const MypageMyTripCss = styled.div`
-    padding: 20px;
+    padding: 20px 20px 60px;
     .makeTrip{
         display: flex;
         padding: 10px;

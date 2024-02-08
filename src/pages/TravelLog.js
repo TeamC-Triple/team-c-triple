@@ -127,6 +127,9 @@ const TravelLog = () => {
 export default TravelLog;
 
 const TravelLogWrap = styled.div`
+    .Header1 .hd_left{
+        flex-grow: 1;
+    }
     .head_btn_left{
         text-indent: -9999px;
     }
@@ -141,6 +144,7 @@ const TravelLogWrap = styled.div`
     }
     .head_text{
         text-align: center;
+        flex-grow: 1;
     }
     .head_text>div>p{
         line-height : 1.4em;
@@ -191,12 +195,14 @@ const TravlePage = styled.div`
         padding: 40px 20px;
     }
     .title{
-        font-size: 15px;
-        font-weight: 500;
+        font-size: 16px;
+        font-weight: 600;
         margin-bottom: 20px;
     }
     .content{
         margin-bottom: 30px;
+        line-height: 1.6em;
+        color: #666;
     }
     .feed{
         display: flex;
@@ -263,7 +269,7 @@ const DayTravel = styled.div`
         margin-top: 20px;
     }
     .dayNum, .dayDate{
-        font-size: 15px;
+        font-size: 16px;
         font-weight: 500;
     }
     .dayNum::after{
@@ -287,13 +293,14 @@ const DayTravel = styled.div`
         margin-right: 10px;
     }
     .placeName{
-        font-size: 13px;
-        font-weight: 500;
+        font-size: 14px;
+        font-weight: 600;
     }
     .memo{
         margin-left: 30px;
         font-size: 12px;
         margin-bottom: 10px;
+        color: #888;
     }
     .dayphoto{
         border-radius: 10px;

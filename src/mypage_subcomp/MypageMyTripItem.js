@@ -1,10 +1,12 @@
 import { useContext, useState } from "react";
 import styled from "styled-components";
 import { PlanDispatchContext } from "../App";
+import { useNavigate } from "react-router-dom";
 
 const MypageMyTripItem = ({id, city, firstDate, lastDate}) => {
     const [isEdit, setIsEdit] = useState(false);
     const { onRemovePlan } = useContext(PlanDispatchContext);
+    const navigate = useNavigate();
 
     const showEdit = () => {
         setIsEdit(true);
@@ -19,10 +21,10 @@ const MypageMyTripItem = ({id, city, firstDate, lastDate}) => {
 
     return (
         <MPmyTripItem>
-            <div className="photo">
+            <div className="photo"  onClick={() => {navigate(`/editplan/${id}`)}}>
                 {city}
             </div>
-            <div className="info">
+            <div className="info"  onClick={() => {navigate(`/editplan/${id}`)}}>
                 <p className="title">{city} 일정</p>
                 <p className="date">{new Date(firstDate).toLocaleDateString()} - {new Date(lastDate).toLocaleDateString()}</p>
             </div>
@@ -35,7 +37,7 @@ const MypageMyTripItem = ({id, city, firstDate, lastDate}) => {
                     </p>
                     {isEdit &&
                         <MPEdit>
-                            <p className="dateEdit">일정 수정</p>
+                            <p className="dateEdit" onClick={() => {navigate(`/editplan/${id}`)}}>일정 수정</p>
                             <p className="deleteTravle" onClick={()=>{handleRemove(id)}}>일정 삭제</p>
                         </MPEdit>
                     }

@@ -22,7 +22,7 @@ const MypageLastTrip = () => {
 export default MypageLastTrip;
 
 const MypageLastTripCss = styled.div`
-    padding: 30px 20px;
+    padding: 30px 20px 60px;
     .makeTrip{
         display: flex;
         padding: 10px;

@@ -144,6 +144,14 @@ function App() {
         });
     }
 
+    // plan REMOVE
+    const onRemovePlan = (targetID) => {
+        dispatchPlan({
+            type: 'REMOVE',
+            targetID
+        });
+        dataPlanId.current -= 1;
+    };
 
     // log CREATE
     const onCreateLog = (title, city, firstDate, lastDate, recoNum, commentNum, downloadNum, photo, reviewTxt, keyword) => {
@@ -165,15 +173,6 @@ function App() {
         });
         dataLogId.current += 1;
 
-    };
-
-    // plan REMOVE
-    const onRemovePlan = (targetID) => {
-        dispatchPlan({
-            type: 'REMOVE',
-            targetID
-        });
-        dataPlanId.current -= 1;
     };
 
     // log REMOVE

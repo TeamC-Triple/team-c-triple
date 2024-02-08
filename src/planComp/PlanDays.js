@@ -15,10 +15,6 @@ const PlanDays = ({
     dayList,
     setDayList,
     chosedCity,
-    keywordData,
-    addDayPlan,
-    travelDateRange,
-    handleCity,
     useMoney,
     setUseMoney,
     keywordList,
@@ -98,7 +94,6 @@ const PlanDays = ({
             if (it.date === day) {
                 return it;
             };
-            return newMemoList;
         });
         return newMemoList;
     };
@@ -116,7 +111,7 @@ const PlanDays = ({
             </div>
             <UseExpenses useExpenses={useExpenses} setUseExpenses={setUseExpenses} click={click} setClick={setClick} setAdd={setAdd} useMoney={useMoney} setUseMoney={setUseMoney} />
             <div>
-                { selectSpots === '' || dayList.length < 1
+                { dayList.length < 1
                     ?
                     <Empty>일정이 비어있습니다.</Empty>
 

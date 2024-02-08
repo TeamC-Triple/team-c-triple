@@ -27,7 +27,7 @@ const MypageTravels = () => {
 export default MypageTravels;
 
 const MypageTravlesCss = styled.ul`
-    margin-top: 30px;
+    margin-top: 30px 30px 60px;
 `
 const WriteTrip = styled.div`
     margin: 0 20px;

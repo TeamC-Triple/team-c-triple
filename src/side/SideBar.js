@@ -1,7 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import './SideBar.css';
 import { AccodionItem } from './accordion/AccordionItem';
 
 const SideBar = ({sidebar, setSidebar, leftChild, headTxt, setIsOpen, openScroll}) => {
+    const navigate = useNavigate();
     const side = `sideBG ${sidebar}`
     const bar = `bar ${sidebar}`
     const closeBtn = () => {
@@ -28,9 +30,9 @@ const SideBar = ({sidebar, setSidebar, leftChild, headTxt, setIsOpen, openScroll
                     <div className='pPhoto'>{leftChild}</div>
                 </div>
                 <div className='btn'>
-                    <button className='myTrip'>내 여행</button>
-                    <button className='lastTrip'>지난 여행</button>
-                    <button className='myTravels'>내 여행기</button>
+                    <button className='myTrip' onClick={() => {navigate('/mypage')}}>내 여행</button>
+                    <button className='lastTrip' onClick={() => {navigate('/mypage')}}>지난 여행</button>
+                    <button className='myTravels' onClick={() => {navigate('/mypage')}}>내 여행기</button>
                 </div>
                 <AccodionItem />
                 <div className='service'>

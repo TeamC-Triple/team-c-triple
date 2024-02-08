@@ -88,7 +88,7 @@ const LastTripLog = () => {
                 setSidebar={setSidebar} 
                 leftChild={
                     <p onClick={()=>(navigate('/mypage'))}>
-                        <img />
+                        <img src='/assets/travelogPhoto/profile0.jpg' />
                     </p>
                 } 
                 headTxt={'김이박님'} 

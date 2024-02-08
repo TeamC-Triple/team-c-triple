@@ -49,7 +49,7 @@ const Mypage = () => {
                 setSidebar={setSidebar} 
                 leftChild={
                     <p onClick={()=>(navigate('/mypage'))}>
-                        <img />
+                        <img src='/assets/travelogPhoto/profile0.jpg' />
                     </p>
                 } 
                 headTxt={'김이박님'} 
@@ -65,6 +65,7 @@ export default Mypage;
 const MyPage = styled.div`
     .head_btn_left{
         text-indent: -9999px;
+        margin-right: 14px;
     }
     .head_btn_left p{
         width: 24px;
