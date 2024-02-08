@@ -135,9 +135,6 @@ const PCM = styled.div`
         transition-delay: 0.2s;
     }
     .list .acoTitle .acoTop .index > h2{
-        padding-top: 25px;
-        height: 35px;
-        line-height: 1em;
         background-color: rgba(0, 0, 0, 0);
         color: #fff;
     }
