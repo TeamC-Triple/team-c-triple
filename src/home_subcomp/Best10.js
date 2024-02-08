@@ -1,3 +1,4 @@
+
 import BoxItem from "./BoxItem";
 
 const Best10 = ({SpotsData})=> {
