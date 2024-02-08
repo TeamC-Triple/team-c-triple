@@ -30,6 +30,7 @@ import NewLog from './pages/NewLog.js';
 import EditLog from './pages/EditLog.js';
 import TravelLog from './pages/TravelLog.js';
 import LastTripLog from './pages/LastTripLog.js';
+import SpotInfo from './pages/SpotInfo.js';
 import BestTravelLog from './pages/BestTravelLog.js';
 import MagaDetail from './pages/MagaDetail.js';
 
@@ -214,6 +215,7 @@ function App() {
                                                             <Route path='/editlog/:id' element={<EditLog />} />
                                                             <Route path='/travellog/:id' element={<TravelLog />} />
                                                             <Route path='/LastTripLog/:id' element={<LastTripLog />} />
+                                                            <Route path='/spotinfo/:id' element={<SpotInfo />} />
                                                             <Route path='/bestTravelLog/:id' element={<BestTravelLog />} />
                                                             <Route path='/magaDetail/:id' element={<MagaDetail />} />
                                                         </Routes>
