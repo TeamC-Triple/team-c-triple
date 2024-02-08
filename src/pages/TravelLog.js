@@ -64,7 +64,7 @@ const TravelLog = () => {
             <TravlePage>
                 <div className="photo">
                     <MagaSlide {...msSettings}>
-                        {data.photo && data.photo.map((it)=><img src={it} />)}
+                        {data.photo && data.photo.map((it,idx)=><img src={it} key={idx}/>)}
                     </MagaSlide>
                 </div>
                 <div className="info">
@@ -75,13 +75,13 @@ const TravelLog = () => {
                         {data.reviewTxt}
                     </div>
                     <DayTravel>
-                        {data?.days&&data?.days.map((it)=><div>
+                        {data?.days&&data?.days.map((it)=><div key={it.id}>
                             <div className="day">
                                 <span className="dayNum">DAY {it.id+1}</span>
                                 <span className="dayDate">{it.date}</span>
                             </div>
                             {it.day&&it.day.map((it)=>
-                                <div className="wrap">
+                                <div className="wrap" key={it.id}>
                                     <div className="place">
                                         <p className="placeId">{it.id+1}</p>
                                         <p className="placeName">{it.place}</p>
