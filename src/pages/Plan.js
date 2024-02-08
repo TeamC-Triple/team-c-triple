@@ -97,7 +97,7 @@ const Plan = ({isEdit, planOriginData}) => {
     const [add, setAdd] = useState(true);
     const [money, setMoney] = useState(false)
     // 여행 경비를 담는 상태변수
-    const [expenses, setExpenses] = useState();
+    const [expenses, setExpenses] = useState(0);
 
     const AMClick = () => {
         setAdd(false);
@@ -138,7 +138,7 @@ const Plan = ({isEdit, planOriginData}) => {
             }
         }
     };
-
+  
     useEffect(() => {
         if(isEdit){
             setChosedCity(planOriginData.city);
@@ -151,7 +151,6 @@ const Plan = ({isEdit, planOriginData}) => {
             setTravelDateRange(getDateRange(planOriginData.firstDate, planOriginData.lastDate));
         }
     }, [isEdit, planOriginData]);
-    
 
     return (
         <PlanDataControll>
