@@ -18,7 +18,6 @@ const PlanDays = ({
     keywordList,
     setKeywordList,
     addDayPlan, 
-    delDayPlace,
     travelDateRange, 
     handleCity,
     addDayMemo,
@@ -63,15 +62,6 @@ const PlanDays = ({
     };
 
 
-    // 장소 계획에서 삭제
-    const deleteSpot = (placeName)=> {
-        delDayPlace(placeName);
-        console.log('삭제');
-        console.log(dayList);
-    }
-    useEffect(()=>{
-    }, [dayList])
-
 
 
     // 메모 추가 여닫기
@@ -91,6 +81,7 @@ const PlanDays = ({
             if (it.date === day) {
                 return it;
             };
+            return newMemoList;
         });
         return newMemoList;
     };
@@ -113,7 +104,6 @@ const PlanDays = ({
                         <SelectedSpots 
                             key={idx} {...it} 
                             idx={idx} 
-                            deleteSpot={deleteSpot}
                             dayList= {dayList}
                             getThisDaySpList={getThisDaySpList}
                             />

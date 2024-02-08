@@ -70,14 +70,14 @@ const Plan = ({isEdit, planOriginData}) => {
         setDayList([...dayList, newPlace]);
     };
 
-    // 여행 장소 계획에서 삭제
-    const delDayPlace = (place)=> {
-        dayList.filter((it)=> {
-            if(it.place !== place){
-                return it;
-            }}
-        )
-    }
+    // // 여행 장소 계획에서 삭제
+    // const delDayPlace = (place)=> {
+    //     dayList.filter((it)=> {
+    //         if(it.place !== place){
+    //             return it;
+    //         }}
+    //     )
+    // }
 
         // Memo
         const [memoTxt, setMemoTxt] = useState('');
@@ -178,7 +178,6 @@ const Plan = ({isEdit, planOriginData}) => {
 
                 // 여행계획
                 addDayPlan={addDayPlan}
-                delDayPlace={delDayPlace}
                     addDayMemo={addDayMemo}
                 dayList={dayList}
                 setDayList={setDayList}

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import TourMemo from "./TourMemo";
 import Button from "../common/Button";
 
-const SelectedSpots = ({ id, place, idx, memoList, day, deleteSpot, getThisDaySpList , dayList }) => {
+const SelectedSpots = ({ id, place, idx, memoList, day}) => {
     const shadowStyles = {
         boxShadow: '0 1px 8px rgba(0,0,0,0.2)',
         margin: '0 0 20px 0',
@@ -17,11 +17,6 @@ const SelectedSpots = ({ id, place, idx, memoList, day, deleteSpot, getThisDaySp
                 <div className="left"> 
                     <div className="numberDot">{idx + 1}</div>
                     <div className="spotName">{place}</div>
-                </div>
-                <div className="placeDelete"
-                    onClick={()=>deleteSpot(place)}
-                >
-                    삭제
                 </div>
             </div>
         </SelectPlan>
@@ -54,7 +49,17 @@ const SelectPlan = styled.div`
         }
         .placeDelete{
             margin-right: 10px;
-            background-color: red;
+        }
+        .placeDelete button{
+            width: 24px;
+            height: 24px;
+            margin-top: 4px;
+            opacity: 0.8;
+            text-indent: -99999px;
+            background-repeat: no-repeat;
+            background-size: 20px auto;
+            background-position: center;
+            background-image: url(/assets/icon-trash.svg);
         }
     }
 
