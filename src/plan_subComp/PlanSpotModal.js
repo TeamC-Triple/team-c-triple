@@ -26,20 +26,26 @@ const PlanSpotModal = ({
     const searchRef = useRef();
     const spotsData = useContext(SpotsDataContext);
 
-    const [activeTab, setActiveTab] = useState(false);
+  
+    // 선택한 버튼
+    const [clickedBtn, setClickedBtn] = useState();
+    // 이전 선택 버튼
+    const [beforeClick, setBeforeClick] = useState();
 
-    const activeToggle = ()=>{
-        setActiveTab(!activeTab)
-    }
-
+    const [isCheck, setIsCheck ] = useState(false);
 
     const changeInput = (e) => {
         setSearch(e.target.value);
     };
 
-    const clickTap = (it)=> {
-    };
 
+    // 장소 선택완료
+    const completeSpot = ()=>{
+        getSpots();
+        setIsCheck(false);
+        setSelectSpots(null);
+        setBeforeClick(null);
+    }
 
     return (
         <SpotAddModal className={openAdd ? 'open' : 'close'}>
@@ -93,6 +99,12 @@ const PlanSpotModal = ({
                                     openAdd={openAdd}
                                     selectSpots={selectSpots}
                                     setSelectSpots={setSelectSpots}
+                                    clickedBtn={clickedBtn}
+                                    setClickedBtn={setClickedBtn}
+                                    beforeClick={beforeClick}
+                                    setBeforeClick={setBeforeClick}
+                                    isCheck={isCheck}
+                                    setIsCheck={setIsCheck}
                                 />
                             ))
                         }
@@ -101,9 +113,9 @@ const PlanSpotModal = ({
             </SpotListWrap>
             <SpotBtn className={!openAdd ? 'close' : ''}>
                 <Button
-                type={!selectSpots ? "deActive" : "active"}
-                text={!selectSpots ? "장소를 선택하지 않았습니다." : `${selectSpots} 선택 완료`}
-                onClick={!selectSpots ? closeSpots : getSpots}
+                type={!isCheck ? "deActive" : "active"}
+                text={!isCheck ? "장소를 선택하지 않았습니다." : `${selectSpots} 선택 완료`}
+                onClick={!isCheck ? closeSpots : completeSpot}
                 />
             </SpotBtn>
         </SpotAddModal>
@@ -131,15 +143,15 @@ const SpotAddModal = styled.div`
         display : none;
     }
     
-    button{
-        font-size: 12px;
-        font-weight: 600;
-        color: #fff;
-        padding: 10px;
-        background-color: #368FFF;
-    }
 
-`
+
+`    // button{
+    //     font-size: 12px;
+    //     font-weight: 600;
+    //     color: #fff;
+    //     padding: 10px;
+    //     background-color: #368FFF;
+    // }
 const SpotListWrap = styled.div`
     position: absolute;
     top: 40px;
@@ -157,7 +169,10 @@ const SpotBtn = styled.div`
     right: 20px;
     z-index: 1000;
     .Button .btn{
-        width: 100%;
+        width: 100%
+    } 
+    .Button .btn.deActive{
+        background-color: #eee;
     } 
     &.close{
         display: none;

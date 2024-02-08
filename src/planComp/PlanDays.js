@@ -41,13 +41,13 @@ const PlanDays = ({
 
     // 장소 추가 버튼
     const addSpotsBtn =()=>{
-        setSelectSpots('');
         setOpenAdd(true);
     };
 
     // 장소 창 닫기
     const closeSpots = () => {
         setOpenAdd(false);
+        setSelectSpots('');
     }
 
     // 장소 선택 완료
@@ -99,9 +99,12 @@ const PlanDays = ({
             if (it.date === day) {
                 return it;
             };
+            return newMemoList;
         });
         return newMemoList;
     };
+    
+
 
     return (
         <Plandays className="Plandays">
@@ -114,12 +117,18 @@ const PlanDays = ({
             </div>
             <UseExpenses useExpenses={useExpenses} setUseExpenses={setUseExpenses} click={click} setClick={setClick} setAdd={setAdd} useMoney={useMoney} setUseMoney={setUseMoney} />
             <div>
-                {dayList.length < 1
+                { selectSpots === '' || dayList.length < 1
                     ?
                     <Empty>일정이 비어있습니다.</Empty>
 
                     : getThisDaySpList().map((it, idx) => (
-                        it.date === day && <SelectedSpots key={idx} {...it} idx={idx} />
+                        it.date === day &&
+                        <SelectedSpots 
+                            key={idx} {...it} 
+                            idx={idx} 
+                            dayList= {dayList}
+                            getThisDaySpList={getThisDaySpList}
+                            />
                     ))
                 }
                 {memoList.length < 1

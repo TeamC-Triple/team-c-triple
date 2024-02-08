@@ -5,29 +5,32 @@ import Button from "../common/Button";
 import "./TourSpots.css"
 
 const TourSpots = ({ 
+    id,
     spotName,
     selectSpots, 
     setSelectSpots,
-    openAdd,
+    setClickedBtn,
+    beforeClick,
+    setBeforeClick,
+    isCheck,
+    setIsCheck
 })=>{
-    
-    const [spotClick, setSpotClick ] = useState(false);
 
-    useEffect(()=>{
-    }, [spotClick]);
+    const isSelected = beforeClick === id ? true : false;
 
-    useEffect(()=>{
-        setSpotClick(false);
-    }, [openAdd]);
-
-    const activeBtn =  () => {
-        setSpotClick(true);
+    const toggleBtn =  () => {
+        if(beforeClick === id){
+            setIsCheck(false);
+            setSelectSpots(null);
+            setBeforeClick(null);
+            setClickedBtn('');
+            return;
+        }
+        setIsCheck(true);
         setSelectSpots(`${spotName}`);
+        setBeforeClick(id);
+        setClickedBtn(id);
     };
-    const deActiveBtn = () => {
-        setSpotClick(false);
-        setSelectSpots('');
-    }
     
     return(
         <TourSpotsWrap>
@@ -40,10 +43,10 @@ const TourSpots = ({
                 </div>
             </div>
             <div>
-                {spotClick
-                    ? <Button type={'active'} text={'취소'} onClick={deActiveBtn} />
-                    : <Button type={'deActive'} text={'선택'} onClick={activeBtn} />
-                }
+                <Button 
+                type={isSelected ? 'active' : 'deActive'} 
+                text={!isSelected ? '선택' : '취소'} 
+                onClick={toggleBtn} />
             </div>
         </TourSpotsWrap>
     )
