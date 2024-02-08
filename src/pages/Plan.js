@@ -96,7 +96,7 @@ const Plan = () => {
     const [add, setAdd] = useState(true);
     const [money, setMoney] = useState(false)
     // 여행 경비를 담는 상태변수
-    const [expenses, setExpenses] = useState();
+    const [expenses, setExpenses] = useState(0);
 
     const AMClick = () => {
         setAdd(false);
@@ -132,7 +132,6 @@ const Plan = () => {
         onCreatePlan(chosedCity, startDate, lastDate, keywordList, traveler, expenses, dayList);
     };
     console.log(dayList);
-    
 
     return (
         <PlanDataControll>

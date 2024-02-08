@@ -31,8 +31,8 @@ const PlanEdit = ({
     // 여행장소선택
     addDayPlan,
     dayList,
-    setDayList,
-})=>{
+    setDayList
+}) => {
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -42,45 +42,51 @@ const PlanEdit = ({
     };
 
     // 키워드 선택창 열기
-    const onClickKW = ()=>{
+    const onClickKW = () => {
         handleOpenKW();
     };
 
     // 인원수 입력창 열기
     const [addPeople, setAddPeople] = useState(false);
-    const closeBtn =()=>{
-        if( parseInt(traveler) ){
+    const closeBtn = () => {
+        if (parseInt(traveler)) {
             setAddPeople(false);
-        } else{
+        } else {
             alert('숫자를 입력해주세요.');
         }
     }
 
-    
+    const [useMoney, setUseMoney] = useState([]);
 
-    return(
+    const sumArray = (arr) => {
+        return arr.reduce((total, current) => total + current, 0);
+    };
+
+    console.log(useMoney)
+
+    return (
         <StartWrap>
             <Traveler
-                onClick={()=>{setAddPeople(true)}}> {traveler}
+                onClick={() => { setAddPeople(true) }}> {traveler}
             </Traveler>
             <TravelerModal className={`travelerModal ${addPeople ? "open" : ""}`}>
                 <div className="TM_in">
                     <div className="travelerInput">
-                        <input 
-                            type="text" 
-                            value={traveler} 
-                            onChange={(e)=>{setTraveler(e.target.value)}}
+                        <input
+                            type="text"
+                            value={traveler}
+                            onChange={(e) => { setTraveler(e.target.value) }}
                         />
                         <div className="travelerBtn">
-                            <Button 
-                                type={'gray_border'} 
-                                text={'-1'} 
-                                onClick={()=>{if(traveler > 0) setTraveler(parseInt(traveler) - 1)}} 
+                            <Button
+                                type={'gray_border'}
+                                text={'-1'}
+                                onClick={() => { if (traveler > 0) setTraveler(parseInt(traveler) - 1) }}
                             />
-                            <Button 
-                                type={'gray_border'} 
-                                text={'+1'} 
-                                onClick={()=>{setTraveler(parseInt(traveler) + 1)}} 
+                            <Button
+                                type={'gray_border'}
+                                text={'+1'}
+                                onClick={() => { setTraveler(parseInt(traveler) + 1) }}
                             />
                         </div>
                         <div className="closeBtn">
@@ -101,16 +107,16 @@ const PlanEdit = ({
             </BoxWrap>
             <When >
                 {travelDateRange.length <= 0
-                ? <p className="btnDate" onClick={openModalDateCal}>여행 날짜 선택</p>
-                : <p onClick={openModalDateCal}>{new Date(startDate).toLocaleDateString() + ' ~ ' + new Date(lastDate).toLocaleDateString()}</p>
+                    ? <p className="btnDate" onClick={openModalDateCal}>여행 날짜 선택</p>
+                    : <p onClick={openModalDateCal}>{new Date(startDate).toLocaleDateString() + ' ~ ' + new Date(lastDate).toLocaleDateString()}</p>
                 }
             </When>
             {keywordList.length >= 1 ?
                 <TripKeyword
                     onClick={onClickKW}>{keywordList} <span> 키워드 편집</span></TripKeyword>
                 : <TripKeyword
-                onClick={onClickKW}>키워드 선택</TripKeyword>
-             }
+                    onClick={onClickKW}>키워드 선택</TripKeyword>
+            }
             <Expenses>
                 <Cost>예상 여행 경비(선택하기)</Cost>
                 <div>
@@ -126,20 +132,26 @@ const PlanEdit = ({
                 <PlanCourse chosedCity={chosedCity} />
             </Course>
             <DaySpots>
-            {
-                travelDateRange.map((day, idx) => (
-                    <PlanDays 
-                        key={idx} day={day} idx={idx}
-                        dayList={dayList}
-                        setDayList={setDayList}
-                        addDayPlan={addDayPlan} 
-                        chosedCity={chosedCity}
-                        keywordData={keywordData} 
-                        travelDateRange={travelDateRange}
-                        handleCity={handleCity} />
-                ))
-            }
+                {
+                    travelDateRange.map((day, idx) => (
+                        <PlanDays
+                            key={idx} day={day} idx={idx}
+                            dayList={dayList}
+                            setDayList={setDayList}
+                            addDayPlan={addDayPlan}
+                            chosedCity={chosedCity}
+                            keywordData={keywordData}
+                            travelDateRange={travelDateRange}
+                            handleCity={handleCity}
+                            useMoney={useMoney}
+                            setUseMoney={setUseMoney} />
+                    ))
+                }
             </DaySpots>
+            <TotalExpenses>
+                <p>예상 총 사용 경비: {sumArray(useMoney)}</p>
+                <p>예상 잔여 경비: {expenses - sumArray(useMoney)}</p>
+            </TotalExpenses>
         </StartWrap>
     );
 }   // PlanEdit끝
@@ -223,7 +235,7 @@ const BoxWrap = styled.div`
     margin-bottom: 5px;
     line-height: 1.7;
 `
-     
+
 const Where = styled.div`
     font-size: 18px;
     font-weight: 700;
@@ -306,5 +318,11 @@ const Tourist = styled.div`
 `
 
 const DaySpots = styled.div`
-margin-bottom: 00px;
+    margin-bottom: 00px;
+`
+
+const TotalExpenses = styled.div`
+    padding: 10px 20px;
+    margin-right: 20px;
+    background-color: #eee;
 `

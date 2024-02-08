@@ -1,75 +1,99 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 import Button from "../common/Button";
 import SelectedSpots from "../plan_subComp/SelectedSpots";
 import PlanSpotModal from "../plan_subComp/PlanSpotModal";
 import TourMemo from "../plan_subComp/TourMemo";
+import UseExpenses from "./UseExpenses";
 
 const PlanDays = ({
-    day, 
+    day,
     idx,
-    dayList, 
+    dayList,
     setDayList,
     chosedCity,
-    keywordData, 
-    addDayPlan, 
-    travelDateRange, 
+    keywordData,
+    addDayPlan,
+    travelDateRange,
     handleCity,
+    useMoney,
+    setUseMoney
 }) => {
-    
+
     // 장소 추가 여닫기
-    const [openAdd, setOpenAdd]= useState(false);
+    const [openAdd, setOpenAdd] = useState(false);
     // 장소 하나
-    const [selectSpots, setSelectSpots]= useState('');
+    const [selectSpots, setSelectSpots] = useState('');
     const spId = useRef(0);
 
     // 장소 추가 버튼
-    const addSpotsBtn =()=>{
+    const addSpotsBtn = () => {
         setOpenAdd(true);
     };
 
     // 장소 창 닫기
-    const closeSpots =()=>{
+    const closeSpots = () => {
         setOpenAdd(false);
     }
 
     // 장소 선택 완료
-    const getSpots = ()=>{
+    const getSpots = () => {
         setOpenAdd(false);
         addDayPlan(day, selectSpots);
     }
 
     const getThisDaySpList = () => {
         const newList = dayList.filter((it) => {
-            if(it.date === day){
+            if (it.date === day) {
                 return it;
             };
         });
         return newList;
     };
 
+    const [useExpenses, setUseExpenses] = useState(0);
+
+    const [click, setClick] = useState(false);
+
+    const [add, setAdd] = useState(true);
+
+    const AMClick = () => {
+        setClick(true);
+        setUseExpenses();
+    }
+
+    useEffect(() => {
+        if (useExpenses !== undefined && useExpenses !== 0) {
+            setUseMoney(prevMoney => [...prevMoney, useExpenses]);
+        }
+    }, [useExpenses, setUseMoney]);
+
     return (
         <Plandays className="Plandays">
             <div className="pdy_top">
-                <h3>DAY {idx+1} <span>({day})</span></h3>
-                <p className="pdy_pay">사용 경비 : </p>
+                <h3>DAY {idx + 1} <span>({day})</span></h3>
+                <div className="pdy_pay">
+                    <span>사용 경비 :</span>
+                    <Add className={add ? 'on' : ''} onClick={AMClick}>추가</Add>
+                </div>
             </div>
+            <UseExpenses useExpenses={useExpenses} setUseExpenses={setUseExpenses} click={click} setClick={setClick} setAdd={setAdd} useMoney={useMoney} setUseMoney={setUseMoney} />
             <div>
-            {dayList.length < 1
+                {dayList.length < 1
                     ?
-                     <Empty>일정이 비어있습니다.</Empty> 
-                    
-                    :   getThisDaySpList().map((it, idx)=>(
-                        it.date === day && <SelectedSpots key={idx} {...it} idx={idx} />
+                    <Empty>일정이 비어있습니다.</Empty>
+
+                    : getThisDaySpList().map((it, idx) => (
+                        it.date === day && <SelectedSpots key={idx} idx={idx} {...it} />
                     ))
-            }
+                }
             </div>
             <DayBtn>
                 <Button type={'gray_border'} text='장소추가' onClick={addSpotsBtn} />
                 <Button type={'gray_border'} text='메모추가' />
             </DayBtn>
-            <PlanSpotModal 
+            <PlanSpotModal
                 openAdd={openAdd}
                 closeSpots={closeSpots}
                 getSpots={getSpots}
@@ -102,8 +126,12 @@ const Plandays = styled.div`
             }
         }
         .pdy_pay{
+            display: flex;
             font-size: 12px;
             color: #666;
+        }
+        .pdy_pay span{
+            line-height: 30px
         }
     }
     .Header1{
@@ -198,5 +226,20 @@ const DayBtn = styled.div`
     }
     .Button .btn{
         font-size: 13px;
+    }
+`
+
+const Add = styled.button`
+    display: none;
+    padding: 7px 20px 8px;
+    margin-left: 10px;
+    border-radius: 30px;
+    background-color: #eeeeee;
+    font-size: 12px;
+    font-weight: 600;
+    color: #121212;
+
+    &.on{
+        display: block;
     }
 `
