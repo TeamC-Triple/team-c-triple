@@ -94,7 +94,7 @@ const PCM = styled.div`
         margin-bottom: 20px;
     }
     .list{
-        margin-bottom: 10px;
+        margin-bottom: 20px;
         border-radius: 10px;
     }
     .list > div{
