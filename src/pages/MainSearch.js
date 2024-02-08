@@ -2,34 +2,45 @@ import { useState, useContext, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-import { MagazineDataContext } from "../App";
+import { CityDataContext, LogDataContext, MagazineDataContext, TravelogContext } from "../App";
 
 import Header1 from "../common/Header1";
 import HeaderIcon from "../common/HeaderIcon";
 import RecentLi from "../searchMainComp/RecentLi";
 import { truncate } from "../utill/truncate.js";
 
+const bestSearchKeyword = [
+    { id: 0, keyword: '제주' }, { id: 1, keyword: '오사카' }, { id: 2, keyword: '후쿠오카' }, { id: 3, keyword: '나트랑' }, { id: 4, keyword: '부산' }, { id: 5, keyword: '방콕' }, { id: 6, keyword: '삿포로 1일 투어' },
+]
+
 const MainSearch = () => {
     const [searchInput, setSearchInput] = useState('');
     const [data, setData] = useState([]);
+    const [logData, setLogData] = useState([]);
+    const [cityData, setCityData] = useState([]);
     const [searchResult, setSearchResult] = useState([]);
     const dataId = useRef(0);
 
     const navigate = useNavigate();
     const magazineList = useContext(MagazineDataContext);
+    const myLogList = useContext(LogDataContext);
+    const trLogList = useContext(TravelogContext);
+    const cityList = useContext(CityDataContext);
 
     useEffect(() => {
         setData(magazineList);
+        setLogData([...myLogList, ...trLogList]);
+        setCityData(cityList);
     }, []);
 
     const handleChange = (e) => {
         setSearchInput(e.target.value.toLowerCase());
     };
-    
+
     const onCreateSearchResult = (inputData) => {
         const newSearchResult = {
-            id : dataId.current,
-            inputData : inputData
+            id: dataId.current,
+            inputData: inputData
         };
         dataId.current += 1;
         setSearchResult([newSearchResult, ...searchResult]);
@@ -47,36 +58,35 @@ const MainSearch = () => {
         )
     }
 
-     
+
     return (
         <Mainsearch>
-            <Header1 
-                leftChild={<HeaderIcon 
+            <Header1
+                leftChild={<HeaderIcon
                     text={'뒤로가기'}
-                    onClick={() => {navigate(-1)}}
+                    onClick={() => { navigate(-1) }}
                 />}
                 headTxt={
                     <>
-                        <input 
+                        <input
                             type="text"
                             placeholder="도시, 장소, 키워드 등 검색"
                             value={searchInput}
                             onChange={handleChange}
                         />
-                        <p 
-                            className={`btnDel ${
-                                searchInput.length > 0
+                        <p
+                            className={`btnDel ${searchInput.length > 0
                                 ? "show"
                                 : ""
-                            }
-                            `} 
-                            onClick={() => {setSearchInput('')}}
+                                }
+                            `}
+                            onClick={() => { setSearchInput('') }}
                         >
                             <span className="hide">삭제</span>
                         </p>
                     </>
                 }
-                rightChild2={<HeaderIcon 
+                rightChild2={<HeaderIcon
                     text={'검색'}
                     onClick={onClickSearchInput}
                 />}
@@ -84,7 +94,15 @@ const MainSearch = () => {
             <SearchContents>
                 <ContentBox>
                     <h3>인기 검색어</h3>
-                    
+                    <ul className="best">
+                        {
+                            bestSearchKeyword.map((it) => (
+                                <li key={it.id} onClick={() => { setSearchInput(`${it.keyword}`) }}>
+                                    {it.keyword}
+                                </li>
+                            ))
+                        }
+                    </ul>
                 </ContentBox>
                 <ContentBox>
                     <h3>최근 검색어</h3>
@@ -94,6 +112,37 @@ const MainSearch = () => {
                         ))}
                     </ul>
                 </ContentBox>
+                {
+                    searchInput.length <= 0 ? (
+                        null
+                    ) : (
+                        <ContentBox>
+                            <h3>도시</h3>
+                            {cityData.filter((it) => {
+                                if (searchInput === "") {
+                                    return null;
+                                } else if (it.place.toLowerCase().includes(searchInput.toLowerCase()) || it.city.toLowerCase().includes(searchInput.toLowerCase()) || it.val.toLowerCase().includes(searchInput.toLowerCase())) {
+                                    return it;
+                                }
+                            }).length === 0 ? (
+                                <p>검색결과가 없습니다.</p>
+                            ) : (
+                                cityData.filter((it) => {
+                                    if (searchInput === "") {
+                                        return null;
+                                    } else if (it.place.toLowerCase().includes(searchInput.toLowerCase()) || it.city.toLowerCase().includes(searchInput.toLowerCase()) || it.val.toLowerCase().includes(searchInput.toLowerCase())) {
+                                        return it;
+                                    }
+                                }).map(it => (
+                                    <div key={it.id} className="maga">
+                                        <p className="photo"><img src={`./assets/city_${it.val}.jpg`} /></p>
+                                        <p className="title">{it.city}</p>
+                                    </div>
+                                ))
+                            )}
+                        </ContentBox>
+                    )
+                }
                 {
                     searchInput.length <= 0 ? (
                         null
@@ -125,6 +174,37 @@ const MainSearch = () => {
                         </ContentBox>
                     )
                 }
+                {
+                    searchInput.length === 0 ? (
+                        null
+                    ) : (
+                        <ContentBox>
+                            <h3>여행기</h3>
+                            { logData.length !== 0 && logData.filter((val) => {
+                                if (searchInput === "") {
+                                    return null;
+                                } else if (val.title.toLowerCase().includes(searchInput.toLowerCase()) || val.city.toLowerCase().includes(searchInput.toLowerCase())) {
+                                    return val;
+                                }
+                            }).length === 0 ? (
+                                <p>검색결과가 없습니다.</p>
+                            ) : (
+                                logData.length !== 0 && logData.filter((val) => {
+                                    if (searchInput === "") {
+                                        return null;
+                                    } else if (val.title.toLowerCase().includes(searchInput.toLowerCase()) || val.city.toLowerCase().includes(searchInput.toLowerCase())) {
+                                        return val;
+                                    }
+                                }).map((it, idx) => (
+                                    <div key={it.idx} className="maga">
+                                        {/* <p className="photo"><img src={it.photo.length !== 0 && it.travelImg.length !== 0 ? `${it.photo[0]}` || `assets/travelogPhoto/${it.travelImg[0]}` : ''} /></p> */}
+                                        <p className="title">{truncate(it.title, 25)}</p>
+                                    </div>
+                                ))
+                            )}
+                        </ContentBox>
+                    )
+                }
             </SearchContents>
         </Mainsearch>
     );
@@ -133,6 +213,9 @@ const MainSearch = () => {
 export default MainSearch;
 
 const Mainsearch = styled.div`
+    .hd_left{
+        width: 100%;
+    }
     .head_btn_left, .head_btn_right2{
         width: 24px;
         height: 24px;
@@ -152,6 +235,7 @@ const Mainsearch = styled.div`
         display: flex;
         align-items: center;
         justify-content: space-between;
+        width: 100%;
         padding: 0 20px;
         input{
             margin-top: 3px;
@@ -201,19 +285,36 @@ const SearchContents = styled.div`
 const ContentBox = styled.div`
     padding: 20px;
     border-bottom: 1px solid #eee;
+    font-size: 13px;
+
+    & > p{
+        padding: 0 20px;
+    }
+
     h3{
         margin-bottom: 20px;
         font-size: 16px;
         font-weight: 700;
     }
+    .best{
+        display: flex;
+        flex-wrap: wrap;
+
+        li{
+            padding: 6px 15px;
+            background-color: #f3f3f3;
+            border-radius: 30px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+    }
     .recent{
         li{
             display: flex;
             justify-content: space-between;
-            margin: 0 25px 10px 0;
             padding: 6px 20px;
             border-radius: 30px;
-            background-color: #eee;
+            background-color: #f3f3f3;
 
             button{
                 width: 20px;
@@ -221,7 +322,7 @@ const ContentBox = styled.div`
                 text-indent: -99999px;
                 background-image: url('./assets/icon-cancel.svg');
                 background-repeat: no-repeat;
-                background-size: 14px auto;
+                background-size: 12px auto;
                 background-position: center;
             }
         }
@@ -229,6 +330,7 @@ const ContentBox = styled.div`
     .maga{
         display: flex;
         margin-bottom: 12px;
+        padding: 0 20px;
 
         .photo{
             width: 24px;

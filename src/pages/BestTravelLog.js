@@ -7,29 +7,29 @@ import MagaSlide from "react-slick";
 import BottomNaviSub from "../common/BottomNaviSub";
 import Header1 from "../common/Header1";
 import styled from "styled-components";
-import { LogDataContext } from "../App";
+import { TravelogContext } from "../App";
 
-const TravelLog = () => {
+const BestTravelLog = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const MyTripList = useContext(LogDataContext);
+    const TripList = useContext(TravelogContext);
 
     const [data, setData] = useState([]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        if (MyTripList?.length > 0) {
-            const targetTrip = MyTripList?.find((it) =>
+        if (TripList?.length > 0) {
+            const targetTrip = TripList?.find((it) =>
                 parseInt(it.id) === parseInt(id)
             );
             if (targetTrip) {
                 setData(targetTrip);
             } else {
-                alert('없는 매거진입니다.');
+                alert('없는 여행기입니다.');
                 navigate('/', { replace: true });
             };
         };
-    }, [id, MyTripList]);
+    }, [id, TripList]);
 
     const msSettings = {
         arrows : false,
@@ -46,10 +46,7 @@ const TravelLog = () => {
                 headTxt={
                     <div>
                         <p className="TripTitle">
-                            {data.city} 여행기
-                        </p>
-                        <p className="TripDate">
-                            {new Date(data.firstDate).toLocaleDateString()}-{new Date(data.lastDate).toLocaleDateString()}
+                            '{data.writer}'의 {data.city} 여행기
                         </p>
                     </div>
                 }
@@ -64,7 +61,7 @@ const TravelLog = () => {
             <TravlePage>
                 <div className="photo">
                     <MagaSlide {...msSettings}>
-                        {data.photo && data.photo.map((it,idx)=><img src={it} key={idx}/>)}
+                        {data.travelImg && data.travelImg.map((it,idx)=><img src={`/assets/travelogPhoto${it}`} key={idx}/>)}
                     </MagaSlide>
                 </div>
                 <div className="info">
@@ -72,7 +69,7 @@ const TravelLog = () => {
                         {data.title}
                     </div>
                     <div className="content">
-                        {data.reviewTxt}
+                        {data.ment}
                     </div>
                     <DayTravel>
                         {data?.days&&data?.days.map((it)=><div key={it.id}>
@@ -124,7 +121,7 @@ const TravelLog = () => {
     );
 };
 
-export default TravelLog;
+export default BestTravelLog;
 
 const TravelLogWrap = styled.div`
     .Header1 .hd_left{

@@ -72,6 +72,7 @@ const LastTripLog = () => {
                         <div key={idx} className="plan_Item">
                             <p className="plan_Id">{it.id+1}</p>
                             <p className="plan_Place">{it.place}</p>
+                            <p className="plan_memo">{it.memo}</p>
                         </div>
                     )}
                 </div>
@@ -136,6 +137,8 @@ const LastTripLogPage = styled.div`
     }
     .Button{
         padding: 0 20px;
+        padding-bottom: 20px;
+        background-color: #eee;
     }
     .Button .btn.active{
         width: 100%;
@@ -161,10 +164,13 @@ const LastTripLogItem = styled.div`
     }
 `
 const TravelWriteBtn = styled.div`
-    padding: 0 20px;
-    margin-bottom: 10px;
+    background-color: #eee;
+    padding: 20px 20px;
+    padding-bottom: 10px;
     .txt>p{
-        color: #666; 
+        color: #666;
+        font-size: 13px;
+        text-align: center;
     }
 `
 const MyTripPlan = styled.div`
@@ -175,11 +181,11 @@ const MyTripPlan = styled.div`
         margin-bottom: 10px;
     }
     .plan_List{
-        display: flex;
         margin-bottom: 20px;
     }
     .plan_Item{
         position: relative;
+        display: flex;
         margin-right: 15px;
         padding: 15px;
     }
@@ -187,30 +193,34 @@ const MyTripPlan = styled.div`
         content: "";
         display: block;
         position: absolute;
-        top: 27px;
-        right: -25px;
-        width: 30px;
-        height: 1px;
-        background-color: #ccc;
+        top: 35px;
+        left: 25px;
+        width: 1px;
+        height: 30px;
+        background-color: #ddd;
     }
     .plan_Item:last-child::before{
         display: none;
     }
-    .plan_Item>p{
-        text-align: center;
-    }
     .plan_Item>p.plan_Id{
         display: inline-block;
         background-color: #9621F1;
-        margin-left: 50%;
-        transform: translateX(-50%);
-        padding: 2px 9px;
+        width: 20px;
         font-size: 11px;
+        text-align: center;
         border-radius: 50px;
         color: #fff;
-        margin-bottom: 5px;
+        margin-right: 10px;
     }
     .plan_Item>p.plan_Place{
+        font-size: 12px;
+        font-weight: 500;
+        flex-grow: 1;
+    }
+    .plan_Item>p.plan_memo{
+        width: 50px;
+        text-align: center;
         font-size: 11px;
+        color: #777;
     }
 `

@@ -1,9 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const TravelogItem = ({id, title, writer, profileImg, travelImg, date, ment,city, truncate})=> {
-    
+    const navigate = useNavigate();
+    const goDetail = () => {
+        navigate(`/bestTravelLog/${id}`);
+    };
     return(
-        <TL_Item>
+        <TL_Item onClick={goDetail}>
             <TL_Info>
                 <TL_profile><img src={`/assets/travelogPhoto${profileImg}`} /></TL_profile>
                 <TL_postInfo>
