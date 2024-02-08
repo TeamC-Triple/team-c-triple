@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import styled from "styled-components";
 import { PlanDispatchContext } from "../App";
+import { useNavigate } from "react-router-dom";
 
 const MypageLastTripItem = ({id, city, firstDate, lastDate}) => {
     const [isEdit, setIsEdit] = useState(false);
@@ -17,13 +18,18 @@ const MypageLastTripItem = ({id, city, firstDate, lastDate}) => {
         };
     };
 
+    const navigate = useNavigate();
+    const goDetail = () => {
+        navigate(`/LastTripLog/${id}`);
+    };
+
     return (
         <MPLastTripItem>
                 <div key={id}>
-                    <div className="photo">
+                    <div className="photo" onClick={goDetail}>
                         {city}
                     </div>
-                    <div className="info">
+                    <div className="info" onClick={goDetail}>
                         <p className="title">{city} 일정</p>
                         <p className="date">{new Date(firstDate).toLocaleDateString()} - {new Date(lastDate).toLocaleDateString()}</p>
                     </div>
