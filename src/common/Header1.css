@@ -31,7 +31,7 @@
 }
 
 /* Main 헤더부분 */
-#Main .Header1 .head_btn_left p{
+#Main > .Header1 .head_btn_left p{
     width: 26px;
     height: 26px;
     border-radius: 50%;
