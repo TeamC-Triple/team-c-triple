@@ -5,45 +5,48 @@ import Button from "../common/Button";
 import "./TourSpots.css"
 
 const TourSpots = ({ 
+    id,
     spotName,
     selectSpots, 
     setSelectSpots,
-    openAdd,
+    setClickedBtn,
+    beforeClick,
+    setBeforeClick,
+    isCheck,
+    setIsCheck
 })=>{
-    
-    const [spotClick, setSpotClick]= useState(false);
 
-    useEffect(()=>{
-    }, [spotClick]);
+    const isSelected = beforeClick === id ? true : false;
 
-    useEffect(()=>{
-        setSpotClick(false);
-    }, [openAdd]);
-
-    const activeBtn =  () => {
-        setSpotClick(true);
+    const toggleBtn =  () => {
+        if(beforeClick === id){
+            setIsCheck(false);
+            setSelectSpots(null);
+            setBeforeClick(null);
+            setClickedBtn('');
+            return;
+        }
+        setIsCheck(true);
         setSelectSpots(`${spotName}`);
+        setBeforeClick(id);
+        setClickedBtn(id);
     };
-    const deActiveBtn = () => {
-        setSpotClick(false);
-        setSelectSpots('');
-    }
     
     return(
         <TourSpotsWrap>
             <div className="spotWrap"> 
                 <div className="spotPhoto">
-                    사진
+                    관광지
                 </div>
                 <div className="spotName">
                     {spotName}
                 </div>
             </div>
             <div>
-                {spotClick
-                    ? <Button type={'active'} text={'취소'} onClick={deActiveBtn} />
-                    : <Button type={'deActive'} text={'선택'} onClick={activeBtn} />
-                }
+                <Button 
+                type={isSelected ? 'active' : 'deActive'} 
+                text={!isSelected ? '선택' : '취소'} 
+                onClick={toggleBtn} />
             </div>
         </TourSpotsWrap>
     )
@@ -56,20 +59,25 @@ const TourSpotsWrap =styled.li`
     justify-content: space-between;
     align-items: center;
     margin: 0 0 20px 0 ;
-    line-height: 36px;
+    line-height: 40px;
     position: relative;
     z-index: 1000;
     .spotWrap{
         display: flex;
+        align-items: center;
         .spotPhoto{
-            width: 36px;
-            height: 36px;
+            width: 12px;
+            height: 12px;
+            margin-top : 2px;
             margin-right : 16px;
             border-radius: 50%;
             text-indent: -9999px;
-            text-align: center;
-            line-height: 30px;
-            background-color: #368FFF;
+            line-height: 40px;
+            background-color: #ccc;
+        }
+        .spotName{
+            font-size: 15px;
+            line-height: 40px;
         }
     }
     .Button{

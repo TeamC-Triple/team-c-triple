@@ -59,7 +59,7 @@ const Plan = ({isEdit, planOriginData}) => {
     const daysId = useRef(dayList && isEdit ? dayList.length : 0);
 
     // planDays 
-    // 여행장소 리스트를 해당 일자에 추가
+    // 여행장소를 해당 일자 계획에 추가
     const addDayPlan = (date, place)=>{
         const newPlace = {
             id : daysId.current,
@@ -69,6 +69,16 @@ const Plan = ({isEdit, planOriginData}) => {
         daysId.current += 1;
         setDayList([...dayList, newPlace]);
     };
+
+    // // 여행 장소 계획에서 삭제
+    // const delDayPlace = (place)=> {
+    //     dayList.filter((it)=> {
+    //         if(it.place !== place){
+    //             return it;
+    //         }}
+    //     )
+    // }
+
         // Memo
         const [memoTxt, setMemoTxt] = useState('');
         const onChangeTxt = (e) => {

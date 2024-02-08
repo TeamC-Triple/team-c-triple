@@ -20,6 +20,7 @@ const PlanCity = ({cityData, isCity, setChosedCity, handleCity}) => {
     const [cityList, setCityList] = useState([]);
     // 선택한 도시
     const [checkCity, setCheckCity] = useState('');
+
     // 선택한 버튼
     const [selectedCityBtn, setSelectedCityBtn] = useState();
     // 이전 선택 버튼
