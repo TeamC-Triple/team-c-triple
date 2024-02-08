@@ -24,9 +24,6 @@ const PlanDays = ({
     keywordData, 
     keywordList,
     setKeywordList,
-    addDayPlan, 
-    travelDateRange, 
-    handleCity,
     addDayMemo,
     setMemoList,
     memoList,
@@ -282,7 +279,7 @@ const DayBtn = styled.div`
     .Button .btn{
         font-size: 13px;
     }
-
+`
 const Add = styled.button`
     display: none;
     padding: 7px 20px 8px;
