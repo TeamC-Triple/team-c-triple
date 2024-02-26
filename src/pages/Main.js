@@ -56,7 +56,7 @@ const Main = () => {
                 setSidebar={setSidebar} 
                 leftChild={
                     <p onClick={()=>(navigate('/mypage'))}>
-                        <img src='/assets/travelogPhoto/profile0.jpg' />
+                        <img src='/assets/travelogPhoto/profile0.JPG' />
                     </p>
                 } 
                 headTxt={'김이박님'} 
