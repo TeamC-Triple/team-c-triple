@@ -30,7 +30,7 @@ const Main = () => {
                 onClickHeadTxt={()=>(navigate('/mypage'))}
                 leftChild={
                     <p onClick={()=>(navigate('/mypage'))}>
-                        <img src='/assets/travelogPhoto/profile0.jpg' />
+                        <img src='/assets/travelogPhoto/profile0.JPG' />
                     </p>
                 }
                 rightChild1={
